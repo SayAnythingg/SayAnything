@@ -171,20 +171,7 @@ class _LoginPageState extends State<LoginPage> {
                         child: CustomElevatedButton(
                           message: "Login",
                           function: () {
-                            if (flag) {
-                              setState(() {
-                                flag = false;
-                              });
-                            } else {
-                              setState(() {
-                                flag = true;
-                              });
-                            }
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => MainPage(initialIndex: 2)),
-                            );
+                            _login();
                           },
                           color:  Color(0xFF7EC4CF), 
                         ),
