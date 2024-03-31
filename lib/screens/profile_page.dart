@@ -4,15 +4,19 @@ import 'package:SayAnything/screens/fade_animationtest.dart';
 import 'package:SayAnything/screens/login_page.dart';
 import 'package:SayAnything/widgets/custom_widget.dart';
 import 'package:flutter/material.dart';
+/*
 import 'package:SayAnything/screens/edit_description.dart';
-
+*/
 import 'package:SayAnything/screens/edit_name.dart';
-
-import '../services/user.dart';
-import '../services/user_data.dart';
+import 'package:SayAnything/services/Model.dart';
 
 
 class Profile extends StatefulWidget {
+  
+   final User user;
+  
+   Profile({required this.user});
+
   @override
   _ProfilePageState createState() => _ProfilePageState();
 }
@@ -21,7 +25,7 @@ class _ProfilePageState extends State<Profile> {
   
   @override
   Widget build(BuildContext context) {
-    final user = UserData.myUser;
+  
     return Scaffold(
       body: Container(
         decoration: BoxDecoration(
@@ -42,12 +46,12 @@ class _ProfilePageState extends State<Profile> {
               Icon(
                 Icons.person,
                 size: 100, 
-                color: user.gender == 'Male' ? Colors.blue : (user.gender == 'Female' ? Colors.pink : Colors.grey),
+                color: widget.user.gender == 'Male' ? Colors.blue : (widget.user.gender == 'Female' ? Colors.pink : Colors.grey),
               ),
-            buildUserInfoDisplay(user.name, 'Name', EditNameFormPage()),
-            buildUserInfoDisplay(user.email, 'Email', null),
+            buildUserInfoDisplay(widget.user.name, 'Name', EditNameFormPage()),
+            buildUserInfoDisplay(widget.user.email, 'Email', null),
             Expanded(
-              child: buildAbout(user),
+              child: buildAbout(widget.user),
               flex: 4,
             ),
           ],
@@ -110,6 +114,7 @@ class _ProfilePageState extends State<Profile> {
     child: Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
+        /*
         Padding(
           padding: EdgeInsets.only(left: 0),
           child: Text(
@@ -154,6 +159,7 @@ class _ProfilePageState extends State<Profile> {
                 size: 40.0,
               )
             ])),
+            */
         SizedBox(height: 20.0), // Add space above the Logout button
         Container(
           width: 350,

@@ -5,8 +5,7 @@ import 'package:SayAnything/screens/aboutus_page.dart';
 import 'package:SayAnything/screens/page2.dart';
 import 'package:SayAnything/screens/profile_page.dart';
 import 'package:SayAnything/screens/home.dart';
-
-
+import 'package:SayAnything/services/Model.dart';
 
 
 class MainPage extends StatefulWidget {
@@ -18,24 +17,40 @@ class MainPage extends StatefulWidget {
   _MainPageState createState() => _MainPageState();
 }
 
-
-
 class _MainPageState extends State<MainPage> {
   late PageController _pageController = PageController(initialPage: widget.initialIndex);
+  /*
+  late User user;
+  */
+  User user = User(name: 'John Doe', gender: 'Female', email: 'johndoe@example.com', password: 'password123', userId: '1234567890');
   int _selectedIndex = 0;
-  final List<Widget> _widgetOptions = <Widget>[
-    Aboutus(),
-    Page2(),
-    HomePage(),
-    ChatList(),
-    Profile(),
-  ];
 
+  List<Widget> get _widgetOptions {
+    return <Widget>[
+      Aboutus(),
+      Page2(),
+      HomePage(),
+      ChatList(),
+      Profile(user: user),
+    ];
+  }
+  /*
+    Future<void> _loadUserInfo() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    String userId = prefs.getString('userId') ?? '';
+    String userName = prefs.getString('name') ?? '';
+    String userEmail = prefs.getString('email') ?? '';
+    user = User(id: userId, name: name, email: email);
+  }
+*/
   List<Color> _iconColors = List.generate(5, (index) => Color(0xFFDECFE2));
 
   @override
   void initState() {
     super.initState();
+    /*
+    _loadUserInfo();
+    */
     _pageController = PageController(initialPage: widget.initialIndex);
     Future.delayed(Duration.zero, () {
       setState(() {

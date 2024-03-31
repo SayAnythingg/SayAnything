@@ -12,6 +12,7 @@ import 'package:SayAnything/services/API_services.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 
+
 final apiService = LoginApiService();
 
 class LoginPage extends StatefulWidget {
@@ -38,9 +39,14 @@ class _LoginPageState extends State<LoginPage> {
 
  Future<void> _login() async {
   try {
-    String userId = await apiService.login(emailController.text, passwordController.text);
+    String userId = (await apiService.login(emailController.text, passwordController.text)) as String;
     SharedPreferences prefs = await SharedPreferences.getInstance();
     await prefs.setString('userId', userId);
+    /*
+    await prefs.setString('name', user.name);
+    await prefs.setString('email', user.email);
+    await prefs.setString('password', user.password);
+    */
     Navigator.push(
       context,
       MaterialPageRoute(
@@ -165,7 +171,20 @@ class _LoginPageState extends State<LoginPage> {
                         child: CustomElevatedButton(
                           message: "Login",
                           function: () {
-                            _login();
+                            if (flag) {
+                              setState(() {
+                                flag = false;
+                              });
+                            } else {
+                              setState(() {
+                                flag = true;
+                              });
+                            }
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => MainPage(initialIndex: 2)),
+                            );
                           },
                           color:  Color(0xFF7EC4CF), 
                         ),

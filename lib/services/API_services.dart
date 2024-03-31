@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
+import 'package:SayAnything/services/Model.dart';
 
 class SignupApiService {
   Future<void> registerUser(String username, String email, String password, String gender) async {  
@@ -25,7 +26,7 @@ class SignupApiService {
 }
 
 class LoginApiService {
-  Future<String> login(String email, String password) async {
+  Future<User> login(String email, String password) async {
     var url = Uri.parse(''); // add flask api.
 
     var response = await http.post(
@@ -41,9 +42,9 @@ class LoginApiService {
 
     if (response.statusCode == 200) {
       var jsonResponse = jsonDecode(response.body);
-      String userId = jsonResponse['userId'];
+      User user = User.fromJson(jsonResponse);
       print('User logged in successfully');
-      return userId;
+      return user;
     } else {
       throw Exception('Failed to log in');
     }

@@ -14,6 +14,7 @@ import 'package:path_provider/path_provider.dart';
 import 'package:uuid/uuid.dart';
 
 
+
 void main() {
   initializeDateFormatting().then((_) => runApp(const MyApp()));
 }
@@ -38,6 +39,7 @@ class ChatPage extends StatefulWidget {
 
 
 class _ChatPageState extends State<ChatPage> {
+  
 
   List<types.Message> _messages = [];
   final _user = const types.User(
