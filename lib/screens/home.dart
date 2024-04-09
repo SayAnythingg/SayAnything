@@ -1,11 +1,15 @@
 import 'package:SayAnything/screens/fade_animationtest.dart';
+import 'package:SayAnything/services/Model.dart';
 import 'package:flutter/material.dart';
 import 'package:rive/rive.dart' as rive;
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:SayAnything/services/API_services.dart';
 import 'package:SayAnything/screens/loading_page.dart';
 
+import 'package:SayAnything/widgets/sideMenu.dart';
+
 final matchApiService = MatchApiService();
+final controller = rive.SimpleAnimation('Animation1');
 
 class UserIdService {
   static Future<String> getCurrentUserId() async {
@@ -16,13 +20,16 @@ class UserIdService {
 }
 
 class HomePage extends StatelessWidget {
-
+  
+  final User user;
+  HomePage({required this.user});
   @override
   Widget build(BuildContext context) {
     double screenWidth = MediaQuery.of(context).size.width;
     
 
     return Scaffold(
+      endDrawer: SideMenu(user: user),
       body: Stack(
         children: [
           Container(
@@ -36,11 +43,30 @@ class HomePage extends StatelessWidget {
             child: Column(
               children: [
                 AppBar(
-                  title: Text('Pair'),
-                  centerTitle: true,
-                  backgroundColor: Colors.transparent,
-                  elevation: 0,
-                ),
+  title: Text('Pair'),
+  centerTitle: true,
+  backgroundColor: Colors.transparent,
+  elevation: 0,
+  actions: <Widget>[
+    Builder(
+      builder: (context) => IconButton(
+        icon: Container(
+          width: 30,  
+          height: 30, 
+          child: ColorFiltered(
+            colorFilter: ColorFilter.mode(Colors.black, BlendMode.srcIn),
+            child: rive.RiveAnimation.asset(
+              'assets/animation/setting.riv',  
+              fit: BoxFit.contain,
+              alignment: Alignment.center,
+            ),
+          ),
+        ),
+        onPressed: () => Scaffold.of(context).openEndDrawer(),
+      ),
+    ),
+  ],
+),
                 Expanded(
                   child: Center(
                     child: FadeInAnimation(

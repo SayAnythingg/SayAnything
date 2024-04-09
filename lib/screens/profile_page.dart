@@ -10,6 +10,8 @@ import 'package:SayAnything/screens/edit_description.dart';
 import 'package:SayAnything/screens/edit_name.dart';
 import 'package:SayAnything/services/Model.dart';
 
+import 'package:SayAnything/widgets/sideMenu.dart';
+
 
 class Profile extends StatefulWidget {
   
@@ -26,7 +28,8 @@ class _ProfilePageState extends State<Profile> {
   @override
   Widget build(BuildContext context) {
   
-    return Scaffold(
+     return Scaffold(
+      endDrawer: SideMenu(user: widget.user), // Add this line
       body: Container(
         decoration: BoxDecoration(
           gradient: LinearGradient(
@@ -38,11 +41,22 @@ class _ProfilePageState extends State<Profile> {
         child: Column(
           children: [
             AppBar(
-              title: Text('Profile'),
-              backgroundColor: Colors.transparent, 
-              elevation: 0, 
-              automaticallyImplyLeading: false,
-            ),
+                title: Text('Profile'),
+                backgroundColor: Colors.transparent, 
+                elevation: 0, 
+                automaticallyImplyLeading: false,
+                actions: <Widget>[
+                  Builder(
+                    builder: (context) => IconButton(
+                      icon: Icon(
+                        Icons.settings,
+                        color: Colors.black,
+                      ),
+                      onPressed: () => Scaffold.of(context).openEndDrawer(),
+                    ),
+                  ),
+                ],
+              ),
               Icon(
                 Icons.person,
                 size: 100, 

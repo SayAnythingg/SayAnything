@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:SayAnything/screens/aboutus_page.dart';
 import 'package:SayAnything/screens/page2.dart';
-import 'package:SayAnything/screens/profile_page.dart';
 import 'package:SayAnything/screens/home.dart';
 import 'package:SayAnything/services/Model.dart';
 
@@ -11,7 +10,9 @@ import 'package:SayAnything/services/Model.dart';
 class MainPage extends StatefulWidget {
   final int initialIndex;
 
-  MainPage({Key? key, this.initialIndex = 0}) : super(key: key);
+  MainPage({Key? key, this.initialIndex = 0}) : super(key: key) {
+  assert(0 <= initialIndex && initialIndex < 4, 'initialIndex must be between 0 and 3.');
+}
 
   @override
   _MainPageState createState() => _MainPageState();
@@ -19,9 +20,6 @@ class MainPage extends StatefulWidget {
 
 class _MainPageState extends State<MainPage> {
   late PageController _pageController = PageController(initialPage: widget.initialIndex);
-  /*
-  late User user;
-  */
   User user = User(name: 'John Doe', gender: 'Female', email: 'johndoe@example.com', password: 'password123', userId: '1234567890');
   int _selectedIndex = 0;
 
@@ -29,28 +27,16 @@ class _MainPageState extends State<MainPage> {
     return <Widget>[
       Aboutus(),
       Page2(),
-      HomePage(),
+      HomePage(user: user),
       ChatList(),
-      Profile(user: user),
     ];
   }
-  /*
-    Future<void> _loadUserInfo() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    String userId = prefs.getString('userId') ?? '';
-    String userName = prefs.getString('name') ?? '';
-    String userEmail = prefs.getString('email') ?? '';
-    user = User(id: userId, name: name, email: email);
-  }
-*/
-  List<Color> _iconColors = List.generate(5, (index) => Color(0xFFDECFE2));
+
+  List<Color> _iconColors = List.generate(4, (index) => Color(0xFFDECFE2));
 
   @override
   void initState() {
     super.initState();
-    /*
-    _loadUserInfo();
-    */
     _pageController = PageController(initialPage: widget.initialIndex);
     Future.delayed(Duration.zero, () {
       setState(() {
@@ -61,13 +47,17 @@ class _MainPageState extends State<MainPage> {
   }
 
   void _onItemTapped(int index) {
-    setState(() {
-      _iconColors[_selectedIndex] = Color(0xFFDECFE2);  
-      _selectedIndex = index;
-      _iconColors[_selectedIndex] = Color(0xFF7EC4CF);  
-    });
-    _pageController.jumpToPage(index);
-  }
+  setState(() {
+    _iconColors[_selectedIndex] = Color(0xFFDECFE2);  
+    _selectedIndex = index;
+    _iconColors[_selectedIndex] = Color(0xFF7EC4CF);  
+  });
+  _pageController.animateToPage(
+    index,
+    duration: Duration(milliseconds: 300),
+    curve: Curves.easeInOut,
+  );
+}
 
   @override
   Widget build(BuildContext context) {
@@ -92,14 +82,6 @@ class _MainPageState extends State<MainPage> {
           Icon(Icons.people, size: 30, color: _iconColors[1]),
           Icon(Icons.home, size: 30, color: _iconColors[2]),
           Icon(Icons.wechat, size: 30, color: _iconColors[3]),
-          ShaderMask(
-            shaderCallback: (bounds) => LinearGradient(
-              colors: [Color(0xFFDECFE2), Color(0xFF7EC4CF)],
-              begin: Alignment.topCenter,
-              end: Alignment.bottomCenter,
-            ).createShader(bounds),
-            child: Icon(Icons.person, size: 30, color: _iconColors[4]),
-          ),
         ],
         onTap: _onItemTapped,
       ),

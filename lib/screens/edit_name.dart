@@ -46,6 +46,12 @@ class EditNameFormPageState extends State<EditNameFormPage> {
               backgroundColor: Colors.transparent,
               elevation: 0,
               automaticallyImplyLeading: false,
+              leading: IconButton(
+                icon: Icon(Icons.arrow_back),
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+              ),
             ),
             Form(
               key: _formKey,

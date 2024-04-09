@@ -121,6 +121,7 @@ class _ChatListState extends State<ChatList> {
                 actions: [
                   IconButton(
                     icon: Icon(Icons.search),
+                    color: Colors.black,
                     onPressed: () {
                       showSearch(
                         context: context,
