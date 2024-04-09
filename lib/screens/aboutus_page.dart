@@ -24,6 +24,12 @@ class Aboutus extends StatelessWidget {
               backgroundColor: Colors.transparent,
               elevation: 0, 
               automaticallyImplyLeading: false,
+              leading: IconButton(
+                icon: Icon(Icons.arrow_back),
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+              ),
             ),
             Expanded(
               child: ListView(

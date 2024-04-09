@@ -16,7 +16,7 @@ class Page2 extends StatelessWidget {
           child: Column(
             children: [
               AppBar(
-                title: Text('2'),
+                title: Text('AI Chat'),
                 backgroundColor: Colors.transparent, 
                 elevation: 0, 
                 automaticallyImplyLeading: false,

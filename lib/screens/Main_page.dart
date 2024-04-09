@@ -1,7 +1,6 @@
 import 'package:SayAnything/screens/chatList_page.dart';
 import 'package:flutter/material.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
-import 'package:SayAnything/screens/aboutus_page.dart';
 import 'package:SayAnything/screens/page2.dart';
 import 'package:SayAnything/screens/home.dart';
 import 'package:SayAnything/services/Model.dart';
@@ -25,7 +24,6 @@ class _MainPageState extends State<MainPage> {
 
   List<Widget> get _widgetOptions {
     return <Widget>[
-      Aboutus(),
       Page2(),
       HomePage(user: user),
       ChatList(),
@@ -78,10 +76,9 @@ class _MainPageState extends State<MainPage> {
         height: 60.0,
         backgroundColor: Color(0xFF7EC4CF),
         items: <Widget>[
-          Icon(Icons.volunteer_activism, size: 30, color: _iconColors[0]),
-          Icon(Icons.people, size: 30, color: _iconColors[1]),
-          Icon(Icons.home, size: 30, color: _iconColors[2]),
-          Icon(Icons.wechat, size: 30, color: _iconColors[3]),
+          Icon(Icons.people, size: 30, color: _iconColors[0]),
+          Icon(Icons.home, size: 30, color: _iconColors[1]),
+          Icon(Icons.wechat, size: 30, color: _iconColors[2]),
         ],
         onTap: _onItemTapped,
       ),

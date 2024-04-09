@@ -43,30 +43,31 @@ class HomePage extends StatelessWidget {
             child: Column(
               children: [
                 AppBar(
-  title: Text('Pair'),
-  centerTitle: true,
-  backgroundColor: Colors.transparent,
-  elevation: 0,
-  actions: <Widget>[
-    Builder(
-      builder: (context) => IconButton(
-        icon: Container(
-          width: 30,  
-          height: 30, 
-          child: ColorFiltered(
-            colorFilter: ColorFilter.mode(Colors.black, BlendMode.srcIn),
-            child: rive.RiveAnimation.asset(
-              'assets/animation/setting.riv',  
-              fit: BoxFit.contain,
-              alignment: Alignment.center,
-            ),
-          ),
-        ),
-        onPressed: () => Scaffold.of(context).openEndDrawer(),
-      ),
-    ),
-  ],
-),
+                  title: Text('Pair'),
+                  centerTitle: true,
+                  backgroundColor: Colors.transparent,
+                  elevation: 0,
+                  automaticallyImplyLeading: false, // Add this line
+                  actions: <Widget>[
+                    Builder(
+                      builder: (context) => IconButton(
+                        icon: Container(
+                          width: 30,  
+                          height: 30, 
+                          child: ColorFiltered(
+                            colorFilter: ColorFilter.mode(Colors.black, BlendMode.srcIn),
+                            child: rive.RiveAnimation.asset(
+                              'assets/animation/setting.riv',  
+                              fit: BoxFit.contain,
+                              alignment: Alignment.center,
+                            ),
+                          ),
+                        ),
+                        onPressed: () => Scaffold.of(context).openEndDrawer(),
+                      ),
+                    ),
+                  ],
+                ),
                 Expanded(
                   child: Center(
                     child: FadeInAnimation(

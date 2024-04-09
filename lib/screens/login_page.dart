@@ -50,7 +50,7 @@ class _LoginPageState extends State<LoginPage> {
     Navigator.push(
       context,
       MaterialPageRoute(
-        builder: (context) => MainPage(initialIndex: 2),
+        builder: (context) => MainPage(initialIndex: 1),
       ),
     );
   } catch (e) {

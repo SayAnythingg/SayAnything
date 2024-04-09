@@ -1,7 +1,9 @@
-import 'package:SayAnything/screens/login_page.dart';
+import 'package:SayAnything/screens/SayAnything.dart';
+import 'package:SayAnything/screens/aboutus_page.dart';
 import 'package:flutter/material.dart';
 import 'package:SayAnything/screens/edit_name.dart';
 import 'package:SayAnything/services/Model.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class SideMenu extends StatelessWidget {
   final User user;
@@ -42,46 +44,34 @@ class SideMenu extends StatelessWidget {
             ),
           ListTile(
             leading: Icon(Icons.info, color: Color(0xFF7EC4CF)),
-            title: Text('Website Introduction', style: TextStyle(color: Color(0xFF7EC4CF))),
+            title: Text('Privacy Policy', style: TextStyle(color: Color(0xFF7EC4CF))),
             onTap: () {
               // Navigate to website introduction
             },
           ),
           ListTile(
-            leading: Icon(Icons.gavel, color: Color(0xFF7EC4CF)),
-            title: Text('Terms and Conditions', style: TextStyle(color: Color(0xFF7EC4CF))),
-            onTap: () {
-              // Navigate to terms and conditions
-            },
-          ),
-          ListTile(
-            leading: Icon(Icons.person, color: Color(0xFF7EC4CF)),
-            title: Text('Profile Picture', style: TextStyle(color: Color(0xFF7EC4CF))),
-            onTap: () {
-              // Navigate to profile picture
-            },
-          ),
-          ListTile(
-            leading: Icon(Icons.account_circle, color: Color(0xFF7EC4CF)),
-            title: Text('Account', style: TextStyle(color: Color(0xFF7EC4CF))),
-            onTap: () {
-              // Navigate to account
-            },
-          ),
-          ListTile(
-            leading: Icon(Icons.vpn_key, color: Color(0xFF7EC4CF)),
-            title: Text('ID', style: TextStyle(color: Color(0xFF7EC4CF))),
-            onTap: () {
-              // Navigate to ID
-            },
-          ),
+              leading: Icon(Icons.info, color: Color(0xFF7EC4CF)),
+              title: Text('About Us', style: TextStyle(color: Color(0xFF7EC4CF))),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => Aboutus()),
+                );
+              },
+            ),
           ListTile(
             leading: Icon(Icons.logout, color: Color(0xFF7EC4CF)),
             title: Text('Logout', style: TextStyle(color: Color(0xFF7EC4CF))),
-            onTap: () {
+            onTap: () async {
+              // Add your logout logic here
+              // For example, remove user id from shared preferences
+              SharedPreferences prefs = await SharedPreferences.getInstance();
+              await prefs.remove('userId');
+
+              // Then navigate to AuthenticationUI
               Navigator.pushReplacement(
                 context,
-                MaterialPageRoute(builder: (context) => const LoginPage()),
+                MaterialPageRoute(builder: (context) => const AuthenticationUI()),
               );
             },
           ),
