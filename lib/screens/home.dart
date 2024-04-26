@@ -46,12 +46,12 @@ class HomePage extends StatelessWidget {
                 AppBar(
                   title: Row(
                     children: [
-                      Image.asset('assets/images/logo.png', width: 50), // Adjust width as needed
+                      Image.asset('assets/images/logo.png', width: 50), 
                       
-                      Image.asset('assets/images/logo_word.png', width: 140), // Adjust width as needed
+                      Image.asset('assets/images/logo_word.png', width: 120), 
                     ],
                   ),
-                  centerTitle: false, // Change this to false
+                  centerTitle: false, 
                   backgroundColor: Colors.transparent,
                   elevation: 0,
                   automaticallyImplyLeading: false,

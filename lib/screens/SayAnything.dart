@@ -38,14 +38,6 @@ class _AuthenticationUIState extends State<AuthenticationUI> {
                 child: Column(
                   children: [
                     FadeInAnimation(
-                      delay: 1.5,
-                      child: Opacity(
-                        opacity: 0.5,
-                        child: Image.asset('assets/images/logo.png', width: 200),
-                      ),
-                    ),
-                    
-                    FadeInAnimation(
                       delay: 1,
                       child: Container(
                         height: 150,
