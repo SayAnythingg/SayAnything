@@ -20,6 +20,12 @@
       "languageVersion": "2.17"
     },
     {
+      "name": "ansicolor",
+      "rootUri": "file:///Users/zhonghonghao/.pub-cache/hosted/pub.dev/ansicolor-2.0.2",
+      "packageUri": "lib/",
+      "languageVersion": "3.0"
+    },
+    {
       "name": "archive",
       "rootUri": "file:///Users/zhonghonghao/.pub-cache/hosted/pub.dev/archive-3.4.10",
       "packageUri": "lib/",
@@ -328,6 +334,12 @@
     {
       "name": "flutter_lints",
       "rootUri": "file:///Users/zhonghonghao/.pub-cache/hosted/pub.dev/flutter_lints-3.0.1",
+      "packageUri": "lib/",
+      "languageVersion": "3.0"
+    },
+    {
+      "name": "flutter_native_splash",
+      "rootUri": "file:///Users/zhonghonghao/.pub-cache/hosted/pub.dev/flutter_native_splash-2.4.0",
       "packageUri": "lib/",
       "languageVersion": "3.0"
     },
@@ -860,6 +872,12 @@
       "languageVersion": "2.17"
     },
     {
+      "name": "universal_io",
+      "rootUri": "file:///Users/zhonghonghao/.pub-cache/hosted/pub.dev/universal_io-2.2.2",
+      "packageUri": "lib/",
+      "languageVersion": "2.17"
+    },
+    {
       "name": "universal_platform",
       "rootUri": "file:///Users/zhonghonghao/.pub-cache/hosted/pub.dev/universal_platform-1.0.0+1",
       "packageUri": "lib/",
@@ -998,7 +1016,7 @@
       "languageVersion": "3.2"
     }
   ],
-  "generated": "2024-04-09T04:28:47.788969Z",
+  "generated": "2024-04-26T10:43:45.491978Z",
   "generator": "pub",
   "generatorVersion": "3.3.1"
 }

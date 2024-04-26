@@ -43,7 +43,8 @@ dependencies:
   rive: any
   mockito: ^5.0.16
   http: ^1.2.0
-  animated_text_kit: ^4.2.1  
+  animated_text_kit: ^4.2.1 
+  flutter_native_splash: ^2.4.0 
  
 
 dev_dependencies:
@@ -64,6 +65,7 @@ flutter:
     - assets/animation/click.riv
     - assets/animation/buttoncta.riv
     - assets/animation/setting.riv
+    - assets/images/logo_all.png
     
   fonts:
     - family: Urbanist
@@ -76,5 +78,11 @@ flutter:
 flutter_icons:
   android: "launcher_icon"
   ios: true
-  image_path: "assets/images/AAA.jpg"
+  image_path: "assets/images/logo.png"
   remove_alpha_ios: true
+
+flutter_native_splash:
+  color: "#7EC4CF"
+  image: "assets/images/logo_all1000.png"
+  android: true
+  ios: true

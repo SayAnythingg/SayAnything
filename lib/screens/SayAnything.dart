@@ -1,6 +1,6 @@
 import 'dart:ui';
 
-import 'package:SayAnything/common/common.dart';
+
 import 'package:SayAnything/router/router.dart';
 import 'package:SayAnything/screens/fade_animationtest.dart';
 import 'package:SayAnything/widgets/custom_widget.dart';
@@ -38,6 +38,14 @@ class _AuthenticationUIState extends State<AuthenticationUI> {
                 child: Column(
                   children: [
                     FadeInAnimation(
+                      delay: 1.5,
+                      child: Opacity(
+                        opacity: 0.5,
+                        child: Image.asset('assets/images/logo.png', width: 200),
+                      ),
+                    ),
+                    
+                    FadeInAnimation(
                       delay: 1,
                       child: Container(
                         height: 150,
@@ -51,10 +59,11 @@ class _AuthenticationUIState extends State<AuthenticationUI> {
                     ),
                     FadeInAnimation(
                       delay: 1.5,
-                      child: Text(
-                        "SayAnything",
-                        style: Common().titelTheme.copyWith(color: Color.fromARGB(255, 0, 0, 0)),
-                      ),
+                      child: Image.asset('assets/images/title_logo_logo.png', width: 250),
+                    ),
+                    FadeInAnimation(
+                      delay: 1.5,
+                      child: Image.asset('assets/images/slogan.png', width: 200),
                     ),
                     const SizedBox(
                       height: 60,

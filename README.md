@@ -20,6 +20,9 @@ samples, guidance on mobile development, and a full API reference.
 
 > 
 
+
+### how to use
+
 ```flutter=
 flutter pub get
 ```
@@ -33,6 +36,16 @@ flutter run
 ```
 ```
  sudo rm -R ~/Library/Developer/CoreSimulator/Caches
+```
+
+### update launch Screen.storyboard
+```
+flutter pub run flutter_native_splash:create
+```
+
+### update main icon 
+```
+flutter pub run flutter_launcher_icons:main
 ```
 
 ### RF

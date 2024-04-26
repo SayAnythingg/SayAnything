@@ -1,3 +1,4 @@
+
 import 'package:SayAnything/screens/fade_animationtest.dart';
 import 'package:SayAnything/services/Model.dart';
 import 'package:flutter/material.dart';
@@ -43,21 +44,27 @@ class HomePage extends StatelessWidget {
             child: Column(
               children: [
                 AppBar(
-                  title: Text('Pair'),
-                  centerTitle: true,
+                  title: Row(
+                    children: [
+                      Image.asset('assets/images/logo.png', width: 50), // Adjust width as needed
+                      
+                      Image.asset('assets/images/logo_word.png', width: 140), // Adjust width as needed
+                    ],
+                  ),
+                  centerTitle: false, // Change this to false
                   backgroundColor: Colors.transparent,
                   elevation: 0,
-                  automaticallyImplyLeading: false, // Add this line
+                  automaticallyImplyLeading: false,
                   actions: <Widget>[
                     Builder(
                       builder: (context) => IconButton(
                         icon: Container(
-                          width: 30,  
-                          height: 30, 
+                          width: 30,
+                          height: 30,
                           child: ColorFiltered(
                             colorFilter: ColorFilter.mode(Colors.black, BlendMode.srcIn),
                             child: rive.RiveAnimation.asset(
-                              'assets/animation/setting.riv',  
+                              'assets/animation/setting.riv',
                               fit: BoxFit.contain,
                               alignment: Alignment.center,
                             ),
