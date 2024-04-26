@@ -5,6 +5,9 @@
 [![GitHub Forks](https://img.shields.io/github/forks/CHUNG-HAO/iOS?style=flat&label=Forks)](https://github.com/chris911024/Embedded-Linux-kernel/network/members)
 [![GitHub Issues](https://img.shields.io/github/issues/CHUNG-HAO/iOS?style=flat&label=Issues)](https://github.com/chris911024/Embedded-Linux-kernel/issues)
 
+<p align="center">
+  <img src="assets/images/logo_all.png">
+</p>
 ## Getting Started.
 
 This project is a starting point for a Flutter application.
