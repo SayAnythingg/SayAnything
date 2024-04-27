@@ -8,6 +8,7 @@
 <p align="center">
   <img src="assets/images/logo_all.png">
 </p>
+
 ## Getting Started.
 
 This project is a starting point for a Flutter application.
