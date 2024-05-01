@@ -5,7 +5,7 @@ import 'package:SayAnything/services/Model.dart';
 class SignupApiService {
   Future<void> registerUser(String username, String email, String password, String gender) async {  
     final response = await http.post(
-      Uri.parse(''), // add flask API.
+      Uri.parse('https://10.1.1.102:8000/auth/register'), // add flask API.
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',
       },
@@ -27,7 +27,7 @@ class SignupApiService {
 
 class LoginApiService {
   Future<User> login(String email, String password) async {
-    var url = Uri.parse(''); // add flask api.
+    var url = Uri.parse('https://10.1.1.102:8000/auth/register'); // add flask api.
 
     var response = await http.post(
       url,
@@ -97,7 +97,7 @@ class MatchApiService {
 class ForgetPasswordApiService {
   Future<void> resetPassword(String email) async {
     final response = await http.post(
-      Uri.parse(''), // add flask API 
+      Uri.parse('https://10.1.1.102:8000/auth/register'), // add flask API 
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',
       },
@@ -117,7 +117,7 @@ class ForgetPasswordApiService {
 class OtpVerificationApiService {
   Future<int> verifyOtp(String otp) async {
     final response = await http.post(
-      Uri.parse(''), 
+      Uri.parse('https://10.1.1.102:8000/auth/verifyOTP'), 
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',
       },
@@ -139,7 +139,7 @@ class OtpVerificationApiService {
 class PasswordResetApiService {
   Future<int> resetPassword(String newPassword) async {
     final response = await http.post(
-      Uri.parse(''), // replace with your API endpoint
+      Uri.parse('https://10.1.1.102:8000/auth/passwordReset'), // replace with your API endpoint
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',
       },

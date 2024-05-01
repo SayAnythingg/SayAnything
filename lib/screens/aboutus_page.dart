@@ -42,17 +42,17 @@ class Aboutus extends StatelessWidget {
                   ListTile(
                     title: Text('Professor👨‍🏫', textAlign: TextAlign.center),
                   ),
-                  buildCard(context, 'assets/images/ting.png', '李文廷', 'wtlee@mail.nknu.edu.tw'),
+                  buildCard(context, 'assets/images/ting.png', '李文廷', 'wtlee@mail.nknu.edu.tw', ''),
                   ListTile(
                     title: Text('Developer👨‍🎓👩‍🎓👨‍🏫', textAlign: TextAlign.center),
                   ),
-                  buildCard(context, 'assets/images/chung.jpeg', '鍾弘浩', 'chunghao777@gmail.com'),
-                  buildCard(context, 'assets/images/T.png', '談宇容', 'sylvia15334@gmail.com'),
-                  buildCard(context, 'assets/images/george.png', '林鈺佑', 'george920102@gmail.com'),
+                  buildCard(context, 'assets/images/chung.jpeg', '鍾弘浩', 'chunghao777@gmail.com', 'Mobile Developer'),
+                  buildCard(context, 'assets/images/T.png', '談宇容', 'sylvia15334@gmail.com', 'Project Manager'),
+                  buildCard(context, 'assets/images/george.png', '林鈺佑', 'george920102@gmail.com', 'Backend Developer'),
                   ListTile(
                     title: Text('特別感謝', textAlign: TextAlign.center),
                   ),
-                  buildCard(context, 'https://example.com/image5.jpg', '友情協助成員', '@gmail.com'),
+                  buildCard(context, 'https://example.com/image5.jpg', '友情協助成員', '@gmail.com', ''),
                   ListTile(
                     title: Text('問題回報', textAlign: TextAlign.center),
                   ),
@@ -118,7 +118,7 @@ class Aboutus extends StatelessWidget {
     );
   }
 
-  Widget buildCard(BuildContext context, String imageUrl, String title, String email) {
+  Widget buildCard(BuildContext context, String imageUrl, String title, String email, String body) {
     return Card(
       margin: const EdgeInsets.symmetric(vertical: 8.0),
       child: Container(
@@ -137,6 +137,7 @@ class Aboutus extends StatelessWidget {
                 child: Text(title, textAlign: TextAlign.center),
               ),
               Text(' $email', textAlign: TextAlign.center),
+              Text(body, textAlign: TextAlign.center),
             ],
           ),
         ),

@@ -76,7 +76,7 @@ class _MainPageState extends State<MainPage> {
         height: 60.0,
         backgroundColor: Color(0xFF7EC4CF),
         items: <Widget>[
-          Icon(Icons.people, size: 30, color: _iconColors[0]),
+          Icon(Icons.psychology_rounded, size: 30, color: _iconColors[0]),
           Icon(Icons.home, size: 30, color: _iconColors[1]),
           Icon(Icons.wechat, size: 30, color: _iconColors[2]),
         ],

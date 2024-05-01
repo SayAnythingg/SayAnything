@@ -50,6 +50,13 @@ class SideMenu extends StatelessWidget {
             },
           ),
           ListTile(
+              leading: Icon(Icons.fiber_new, color: Color(0xFF7EC4CF)),
+              title: Text('News', style: TextStyle(color: Color(0xFF7EC4CF))),
+              onTap: () {
+                
+              },
+            ),
+          ListTile(
               leading: Icon(Icons.info, color: Color(0xFF7EC4CF)),
               title: Text('About Us', style: TextStyle(color: Color(0xFF7EC4CF))),
               onTap: () {
