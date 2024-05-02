@@ -3,7 +3,7 @@ import 'package:SayAnything/screens/fade_animationtest.dart';
 import 'package:SayAnything/widgets/custom_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:string_validator/string_validator.dart';
-import 'package:SayAnything/services/user_data.dart';
+
 
 class EditNameFormPage extends StatefulWidget {
   const EditNameFormPage({Key? key}) : super(key: key);
@@ -16,7 +16,7 @@ class EditNameFormPageState extends State<EditNameFormPage> {
   final _formKey = GlobalKey<FormState>();
   final firstNameController = TextEditingController();
   final secondNameController = TextEditingController();
-  var user = UserData.myUser;
+
 
   @override
   void dispose() {
@@ -26,7 +26,7 @@ class EditNameFormPageState extends State<EditNameFormPage> {
   }
 
   void updateUserValue(String name) {
-    user.name = name;
+
   }
 
   @override

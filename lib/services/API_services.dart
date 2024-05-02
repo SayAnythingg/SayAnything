@@ -5,7 +5,7 @@ import 'package:SayAnything/services/Model.dart';
 class SignupApiService {
   Future<void> registerUser(String username, String email, String password, String gender) async {  
     final response = await http.post(
-      Uri.parse('https://10.1.1.102:8000/auth/register'), // add flask API.
+      Uri.parse('https://sayanythingapi.sdpmlab.org/auth/register'), // add flask API.
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',
       },
@@ -27,7 +27,7 @@ class SignupApiService {
 
 class LoginApiService {
   Future<User> login(String email, String password) async {
-    var url = Uri.parse('https://10.1.1.102:8000/auth/register'); // add flask api.
+    var url = Uri.parse('https://sayanythingapi.sdpmlab.org/auth/login'); // add flask api.
 
     var response = await http.post(
       url,
@@ -40,14 +40,14 @@ class LoginApiService {
       }),
     );
 
-    if (response.statusCode == 200) {
-      var jsonResponse = jsonDecode(response.body);
-      User user = User.fromJson(jsonResponse);
-      print('User logged in successfully');
-      return user;
-    } else {
-      throw Exception('Failed to log in');
-    }
+ if (response.statusCode == 200) {
+  var jsonResponse = jsonDecode(response.body);
+  print('Server response: $jsonResponse');
+  User user = User.fromJson(jsonResponse);
+  return user;
+} else {
+  throw Exception('Failed to log in');
+}
   }
 }
 
@@ -97,7 +97,7 @@ class MatchApiService {
 class ForgetPasswordApiService {
   Future<void> resetPassword(String email) async {
     final response = await http.post(
-      Uri.parse('https://10.1.1.102:8000/auth/register'), // add flask API 
+      Uri.parse('https://sayanythingapi.sdpmlab.org/auth/forgetPassword'), // add flask API 
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',
       },
@@ -117,7 +117,7 @@ class ForgetPasswordApiService {
 class OtpVerificationApiService {
   Future<int> verifyOtp(String otp) async {
     final response = await http.post(
-      Uri.parse('https://10.1.1.102:8000/auth/verifyOTP'), 
+      Uri.parse('https://sayanythingapi.sdpmlab.org/auth/verifyOTP'), 
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',
       },
@@ -139,7 +139,7 @@ class OtpVerificationApiService {
 class PasswordResetApiService {
   Future<int> resetPassword(String newPassword) async {
     final response = await http.post(
-      Uri.parse('https://10.1.1.102:8000/auth/passwordReset'), // replace with your API endpoint
+      Uri.parse('https://sayanythingapi.sdpmlab.org/auth/passwordReset'), // replace with your API endpoint
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',
       },

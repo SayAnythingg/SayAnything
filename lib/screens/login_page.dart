@@ -2,6 +2,7 @@ import 'package:SayAnything/common/common.dart';
 import 'package:SayAnything/router/router.dart';
 import 'package:SayAnything/screens/fade_animationtest.dart';
 import 'package:SayAnything/screens/Main_page.dart';
+import 'package:SayAnything/services/Model.dart';
 import 'package:SayAnything/widgets/custom_widget.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -9,7 +10,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
 
 import 'package:SayAnything/services/API_services.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+
 
 
 final apiService = LoginApiService();
@@ -38,22 +39,17 @@ class _LoginPageState extends State<LoginPage> {
 
  Future<void> _login() async {
   try {
-    String userId = (await apiService.login(emailController.text, passwordController.text)) as String;
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    await prefs.setString('userId', userId);
-    /*
-    await prefs.setString('name', user.name);
-    await prefs.setString('email', user.email);
-    await prefs.setString('password', user.password);
-    */
+    // Attempt to log in the user
+    User user = await apiService.login(emailController.text, passwordController.text);
     Navigator.push(
       context,
       MaterialPageRoute(
-        builder: (context) => MainPage(initialIndex: 1),
+        builder: (context) => MainPage(initialIndex: 1, user: user),
       ),
     );
   } catch (e) {
-    print('Failed to log in');
+    // If the login failed, show a SnackBar with the error message
+    print('Failed to log in $e');
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
         content: Text('Failed to log in: $e'),

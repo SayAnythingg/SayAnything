@@ -8,10 +8,9 @@ import 'package:SayAnything/services/Model.dart';
 
 class MainPage extends StatefulWidget {
   final int initialIndex;
+  final User user;
 
-  MainPage({Key? key, this.initialIndex = 0}) : super(key: key) {
-  assert(0 <= initialIndex && initialIndex < 4, 'initialIndex must be between 0 and 3.');
-}
+  MainPage({required this.initialIndex, required this.user});
 
   @override
   _MainPageState createState() => _MainPageState();
@@ -19,13 +18,12 @@ class MainPage extends StatefulWidget {
 
 class _MainPageState extends State<MainPage> {
   late PageController _pageController = PageController(initialPage: widget.initialIndex);
-  User user = User(name: 'John Doe', gender: 'Female', email: 'johndoe@example.com', password: 'password123', userId: '1234567890');
   int _selectedIndex = 0;
 
   List<Widget> get _widgetOptions {
     return <Widget>[
       Page2(),
-      HomePage(user: user),
+      HomePage(user: widget.user),
       ChatList(),
     ];
   }
