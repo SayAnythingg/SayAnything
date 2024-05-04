@@ -3,8 +3,9 @@ class User {
   final String gender;
   final String email;
   final String password;
+  final String userId; 
 
-  User({required this.name, required this.gender, required this.email, required this.password});
+  User({required this.name, required this.gender, required this.email, required this.password, required this.userId});
 
   static User? currentUser;
 
@@ -14,6 +15,7 @@ class User {
       gender: json['gender'] != null && json['gender'].isNotEmpty ? json['gender'] : 'Default Gender',
       email: json['email'] != null && json['email'].isNotEmpty ? json['email'] : 'Default Email',
       password: json['password'] != null && json['password'].isNotEmpty ? json['password'] : 'Default Password',
+      userId: json['userId'] != null && json['userId'].isNotEmpty ? json['userId'] : 'Default UserId', 
     );
   }
 }

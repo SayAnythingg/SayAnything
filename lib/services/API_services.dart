@@ -42,7 +42,7 @@ class LoginApiService {
 
  if (response.statusCode == 200) {
   var jsonResponse = jsonDecode(response.body);
-  print('Server response: $jsonResponse');
+  print('Server response: ${response.body}');
   User user = User.fromJson(jsonResponse);
   return user;
 } else {

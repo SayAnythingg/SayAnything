@@ -1,5 +1,6 @@
 import 'package:SayAnything/common/common.dart';
 import 'package:SayAnything/router/router.dart';
+import 'package:SayAnything/screens/PrivacyPolicy_Page.dart';
 import 'package:SayAnything/screens/fade_animationtest.dart';
 import 'package:SayAnything/screens/Main_page.dart';
 import 'package:SayAnything/services/Model.dart';
@@ -37,14 +38,14 @@ class _LoginPageState extends State<LoginPage> {
     super.dispose();
   }
 
- Future<void> _login() async {
+Future<void> _login() async {
   try {
     // Attempt to log in the user
     User user = await apiService.login(emailController.text, passwordController.text);
     Navigator.push(
       context,
       MaterialPageRoute(
-        builder: (context) => MainPage(initialIndex: 1, user: user),
+        builder: (context) => PrivacyPolicyPage(user: user),
       ),
     );
   } catch (e) {

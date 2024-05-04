@@ -130,6 +130,10 @@ diffutil_dart
 2.12
 file:///Users/zhonghonghao/.pub-cache/hosted/pub.dev/diffutil_dart-3.0.0/
 file:///Users/zhonghonghao/.pub-cache/hosted/pub.dev/diffutil_dart-3.0.0/lib/
+dio
+2.15
+file:///Users/zhonghonghao/.pub-cache/hosted/pub.dev/dio-5.4.3+1/
+file:///Users/zhonghonghao/.pub-cache/hosted/pub.dev/dio-5.4.3+1/lib/
 email_validator
 2.12
 file:///Users/zhonghonghao/.pub-cache/hosted/pub.dev/email_validator-2.1.17/
@@ -226,6 +230,10 @@ flutter_parsed_text
 2.12
 file:///Users/zhonghonghao/.pub-cache/hosted/pub.dev/flutter_parsed_text-2.2.1/
 file:///Users/zhonghonghao/.pub-cache/hosted/pub.dev/flutter_parsed_text-2.2.1/lib/
+flutter_pdfview
+2.17
+file:///Users/zhonghonghao/.pub-cache/hosted/pub.dev/flutter_pdfview-1.3.2/
+file:///Users/zhonghonghao/.pub-cache/hosted/pub.dev/flutter_pdfview-1.3.2/lib/
 flutter_plugin_android_lifecycle
 2.19
 file:///Users/zhonghonghao/.pub-cache/hosted/pub.dev/flutter_plugin_android_lifecycle-2.0.17/
@@ -246,6 +254,10 @@ flutter_svg
 2.19
 file:///Users/zhonghonghao/.pub-cache/hosted/pub.dev/flutter_svg-2.0.9/
 file:///Users/zhonghonghao/.pub-cache/hosted/pub.dev/flutter_svg-2.0.9/lib/
+flutter_webview_plugin
+2.12
+file:///Users/zhonghonghao/.pub-cache/hosted/pub.dev/flutter_webview_plugin-0.4.0/
+file:///Users/zhonghonghao/.pub-cache/hosted/pub.dev/flutter_webview_plugin-0.4.0/lib/
 fluttertoast
 2.12
 file:///Users/zhonghonghao/.pub-cache/hosted/pub.dev/fluttertoast-8.2.4/

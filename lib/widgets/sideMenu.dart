@@ -1,3 +1,4 @@
+import 'package:SayAnything/screens/News_page.dart';
 import 'package:SayAnything/screens/SayAnything.dart';
 import 'package:SayAnything/screens/aboutus_page.dart';
 import 'package:flutter/material.dart';
@@ -16,16 +17,21 @@ class SideMenu extends StatelessWidget {
       child: ListView(
         padding: EdgeInsets.zero,
         children: <Widget>[
-          UserAccountsDrawerHeader(
-              decoration: BoxDecoration(
-                color: Color(0xFF7EC4CF),
-              ),
-              accountName: Row(
+         UserAccountsDrawerHeader(
+            decoration: BoxDecoration(
+              color: Color(0xFF7EC4CF),
+            ),
+            accountName: Padding(
+              padding: EdgeInsets.only(top: 13.0),  
+              child: Row(
                 children: [
-                  Text(user.name, style: TextStyle(color: Colors.white)),
+                  Padding(  
+                    padding: EdgeInsets.only(top: 12.0),  
+                    child: Text(user.name, style: TextStyle(color: Colors.white)),
+                  ),
                   IconButton(
-                    icon: Icon(Icons.arrow_forward_ios_rounded, size: 16),  // Reduce the size of the icon
-                    padding: EdgeInsets.all(16),  // Increase the clickable area
+                    icon: Icon(Icons.arrow_forward_ios_rounded, size: 16),  
+                    padding: EdgeInsets.all(14),  
                     onPressed: () {
                       Navigator.push(
                         context,
@@ -35,27 +41,37 @@ class SideMenu extends StatelessWidget {
                   ),
                 ],
               ),
-              accountEmail: Text(user.email, style: TextStyle(color: Colors.white)),
-              currentAccountPicture: Icon(
-                Icons.person,
-                size: 80,  // Adjust the size to fit within the CircleAvatar
-                color: user.gender == 'Male' ? Colors.blue : (user.gender == 'Female' ? Colors.pink : Colors.grey),
-              ),
             ),
+            accountEmail: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(user.email, style: TextStyle(color: Colors.white)),
+                Text('User ID: ${user.userId}', style: TextStyle(color: Colors.white)),
+              ],
+            ),
+            currentAccountPicture: Icon(
+              Icons.person,
+              size: 80, 
+              color: user.gender == 'Male' ? Colors.blue : (user.gender == 'Female' ? Colors.pink : Colors.grey),
+            ),
+          ),
           ListTile(
             leading: Icon(Icons.info, color: Color(0xFF7EC4CF)),
             title: Text('Privacy Policy', style: TextStyle(color: Color(0xFF7EC4CF))),
             onTap: () {
-              // Navigate to website introduction
+            
             },
           ),
           ListTile(
-              leading: Icon(Icons.fiber_new, color: Color(0xFF7EC4CF)),
-              title: Text('News', style: TextStyle(color: Color(0xFF7EC4CF))),
-              onTap: () {
-                
-              },
-            ),
+            leading: Icon(Icons.fiber_new, color: Color(0xFF7EC4CF)),
+            title: Text('News', style: TextStyle(color: Color(0xFF7EC4CF))),
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => NewsPage()),
+              );
+            },
+          ),
           ListTile(
               leading: Icon(Icons.info, color: Color(0xFF7EC4CF)),
               title: Text('About Us', style: TextStyle(color: Color(0xFF7EC4CF))),
