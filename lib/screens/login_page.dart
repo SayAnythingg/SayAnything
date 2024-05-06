@@ -2,7 +2,6 @@ import 'package:SayAnything/common/common.dart';
 import 'package:SayAnything/router/router.dart';
 import 'package:SayAnything/screens/PrivacyPolicy_Page.dart';
 import 'package:SayAnything/screens/fade_animationtest.dart';
-import 'package:SayAnything/screens/Main_page.dart';
 import 'package:SayAnything/services/Model.dart';
 import 'package:SayAnything/widgets/custom_widget.dart';
 import 'package:flutter/cupertino.dart';

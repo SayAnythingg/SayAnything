@@ -11,7 +11,7 @@ class CustomTextFormField extends StatefulWidget {
   final bool obsecuretext;
   final TextEditingController? controller;
   final InputDecoration? decoration;
-  final bool addSuffix; // 新增的屬性
+  final bool addSuffix; 
 
   const CustomTextFormField({
     Key? key,
@@ -19,7 +19,7 @@ class CustomTextFormField extends StatefulWidget {
     required this.obsecuretext,
     this.controller,
     this.decoration,
-    this.addSuffix = false, // 預設值為 false
+    this.addSuffix = false,
   }) : super(key: key);
 
   @override

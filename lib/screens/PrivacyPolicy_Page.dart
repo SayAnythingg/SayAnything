@@ -44,60 +44,60 @@ class _PrivacyPolicyPageState extends State<PrivacyPolicyPage> {
   Widget build(BuildContext context) {
     double screenWidth = MediaQuery.of(context).size.width;
 
-    return Scaffold(
-      appBar: AppBar(
-        automaticallyImplyLeading: false,  // 隱藏返回按鈕
-        title: Text('Privacy Policy'),
-      ),
+return Scaffold(
+  appBar: AppBar(
+    automaticallyImplyLeading: false, 
+    title: Text('Privacy Policy'),
+  ),
       body: Stack(
-        children: [
-          pdfPath != null
-              ? Padding(
-                  padding: EdgeInsets.symmetric(horizontal: screenWidth * 0.1),
-                  child: PDFView(
-                    filePath: pdfPath!,
-                    enableSwipe: true,
-                    swipeHorizontal: false,
-                    autoSpacing: false,
-                    pageFling: false,
-                    fitPolicy: FitPolicy.BOTH,
-                    onRender: (_pages) {
-                      setState(() {
-                        _totalPages = _pages!;
-                      });
-                    },
-                    onPageChanged: (int? page, int? total) {
-                      setState(() {
-                        _currentPage = page ?? 0;
-                        _agreed = _currentPage == (_totalPages - 1);
-                      });
-                    },
-                  ),
-                )
-              : Center(child: CircularProgressIndicator()),
+    children: [
+      pdfPath != null
+          ? Padding(
+              padding: EdgeInsets.symmetric(horizontal: screenWidth * 0.1),  
+              child: PDFView(
+                filePath: pdfPath!,
+                enableSwipe: true,
+                swipeHorizontal: false,
+                autoSpacing: false,
+                pageFling: false,
+                fitPolicy: FitPolicy.BOTH,
+                onRender: (_pages) {
+                  setState(() {
+                    _totalPages = _pages!;
+                  });
+                },
+                onPageChanged: (int? page, int? total) {
+                  setState(() {
+                    _currentPage = page ?? 0;
+                    _agreed = _currentPage == (_totalPages - 1);
+                  });
+                },
+              ),
+            )
+          : Center(child: CircularProgressIndicator()),
           Positioned(
-            bottom: 16.0,
-            left: 0.0,
-            right: 0.0,
-            child: _agreed
-                ? FloatingActionButton.extended(
-                    onPressed: () {
-                      Navigator.of(context).pop();
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => MainPage(initialIndex: 1, user: widget.user),
-                        ),
-                      );
-                    },
-                    icon: Icon(Icons.check),
-                    label: Text('我已閱讀並確認'),
-                    backgroundColor: Color(0xFF7EC4CF),
-                  )
-                : Container(),
-          ),
-        ],
+        bottom: 16.0,
+        left: 0.0,
+        right: 0.0,
+        child: _agreed
+            ? FloatingActionButton.extended(
+                onPressed: () {
+                  Navigator.of(context).pop();
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => MainPage(initialIndex: 1, user: widget.user),
+                    ),
+                  );
+                },
+                icon: Icon(Icons.check),
+                label: Text('我已閱讀並確認'),
+                backgroundColor: Color(0xFF7EC4CF),  
+              )
+            : Container(),
       ),
-    );
+    ],
+  ),
+);
   }
 }
