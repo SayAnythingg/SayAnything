@@ -139,7 +139,7 @@ class OtpVerificationApiService {
 class PasswordResetApiService {
   Future<int> resetPassword(String newPassword) async {
     final response = await http.post(
-      Uri.parse('https://sayanythingapi.sdpmlab.org/auth/passwordReset'), // replace with your API endpoint
+      Uri.parse('https://sayanythingapi.sdpmlab.org/auth/passwordReset'), 
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',
       },
@@ -155,5 +155,28 @@ class PasswordResetApiService {
     }
 
     return response.statusCode;
+  }
+}
+
+class NewsApiService {
+  Future<List<News>> getAllNews() async {
+    final response = await http.get(
+      Uri.parse('https://sayanythingapi.sdpmlab.org/news/news_all'),
+      headers: <String, String>{
+        'Content-Type': 'application/json; charset=UTF-8',
+      },
+    );
+
+    print('Status code: ${response.statusCode}');
+    print('Response body: ${response.body}');
+
+    if (response.statusCode == 200) {
+      print('News fetched successfully');
+      List jsonResponse = json.decode(response.body);
+      return jsonResponse.map((item) => News.fromJson(item)).toList();
+    } else {
+      print('Failed to fetch news');
+      throw Exception('Failed to load news');
+    }
   }
 }

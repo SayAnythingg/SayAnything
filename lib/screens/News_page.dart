@@ -1,76 +1,114 @@
+import 'package:SayAnything/widgets/wait.dart';
+import 'package:SayAnything/services/API_services.dart';
+import 'package:SayAnything/services/Model.dart';
 import 'package:flutter/material.dart';
 
-class NewsPage extends StatelessWidget {
+class NewsPage extends StatefulWidget {
+  @override
+  _NewsPageState createState() => _NewsPageState();
+}
+
+class _NewsPageState extends State<NewsPage> {
+  final Future<List<News>> futureNews = NewsApiService().getAllNews();
+  final ScrollController _scrollController = ScrollController();
+
+  final List<News> defaultNews = [
+    News(id: '0', title: 'Default Title1', content: 'Default ContentDefaultDefault ContentDefault ContentDefault ContentDefault ContentDefault Content ContentDefault ContentDefault ContentDefault ContentDefault ContentDefault ContentDefault ContentDefault ContentDefault ContentDefault ContentDefault ContentDefault ContentDefault ContentDefault ContentDefault ContentDefault ContentDefault Content', createdTime: ' 2024-01-01 00:00:00'),
+    News(id: '1', title: 'Default Title2', content: 'Default ContentDefaultDefault ContentDefault ContentDefault ContentDefault ContentDefault Content ContentDefault ContentDefault ContentDefault ContentDefault ContentDefault ContentDefault ContentDefault ContentDefault ContentDefault ContentDefault ContentDefault ContentDefault ContentDefault ContentDefault ContentDefault Content', createdTime: ' 2024-01-01 00:00:00'),
+    News(id: '2', title: 'Default Title3', content: 'Default ContentDefaultDefault ContentDefault ContentDefault ContentDefault ContentDefault Content ContentDefault ContentDefault ContentDefault ContentDefault ContentDefault ContentDefault ContentDefault ContentDefault ContentDefault ContentDefault ContentDefault ContentDefault ContentDefault ContentDefault ContentDefault Content', createdTime: ' 2024-01-01 00:00:00'),
+    News(id: '3', title: 'Default Title4', content: 'Default ContentDefaultDefault ContentDefault ContentDefault ContentDefault ContentDefault Content ContentDefault ContentDefault ContentDefault ContentDefault ContentDefault ContentDefault ContentDefault ContentDefault ContentDefault ContentDefault ContentDefault ContentDefault ContentDefault ContentDefault ContentDefault Content', createdTime: ' 2024-01-01 00:00:00'),
+  ];
+
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        gradient: LinearGradient(
-          begin: Alignment.topCenter,
-          end: Alignment.bottomCenter,
-          colors: [Color(0xFFDECFE2), Color(0xFF7EC4CF)],
-        ),
-      ),
-      child: Scaffold(
-        backgroundColor: Colors.transparent,
-        appBar: AppBar(
-          backgroundColor: Colors.transparent,
-          elevation: 0,
-          title: Text('News'),
-          leading: IconButton(
-            icon: Icon(Icons.arrow_back),
-            onPressed: () {
-              Navigator.pop(context);
-            },
+    return FutureBuilder<List<News>>(
+      future: futureNews,
+      builder: (context, snapshot) {
+        List<News> newsList;
+
+        if (snapshot.connectionState == ConnectionState.waiting) {
+          return WaitPage();  
+        } else if (snapshot.hasError) {
+          newsList = defaultNews; 
+        } else {
+          newsList = snapshot.data!;
+        }
+
+        return Container(
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+              begin: Alignment.topCenter,
+              end: Alignment.bottomCenter,
+              colors: [Color(0xFFDECFE2), Color(0xFF7EC4CF)],
+            ),
           ),
-        ),
-        body: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: [
-            Container(
-              width: MediaQuery.of(context).size.width * 0.9, // 90% of screen width
-              height: 200.0, // Fixed height
-              margin: EdgeInsets.all(20.0),
-              padding: EdgeInsets.all(20.0),
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(20.0),
+          child: Scaffold(
+            backgroundColor: Colors.transparent,
+            appBar: AppBar(
+              backgroundColor: Colors.transparent,
+              elevation: 0,
+              title: Text('News'),
+              leading: IconButton(
+                icon: Icon(Icons.arrow_back),
+                onPressed: () {
+                  Navigator.pop(context);
+                },
               ),
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.start, // Align the logo and the text at the top
-                children: [
-                  Padding(
-                    padding: EdgeInsets.only(top: 1.0), // Decrease the space at the top of the logo
-                    child: Image.asset('assets/images/logo.png', width: 50.0, height: 50.0), // Adjust the size of your logo
-                  ),
-                  SizedBox(width: 10.0), // Add some space between the logo and the text
-                  Expanded(
-                    child: Column(
+            ),
+            body: Scrollbar(
+                controller: _scrollController,
+                child: ListView.builder(
+                  controller: _scrollController,
+                  itemCount: newsList.length,
+                itemBuilder: (context, index) {
+                  News news = newsList[index];
+                  return Container(
+                    width: MediaQuery.of(context).size.width * 0.9,
+                    height: 200.0,
+                    margin: EdgeInsets.all(20.0),
+                    padding: EdgeInsets.all(20.0),
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(20.0),
+                    ),
+                    child: Row(
                       crossAxisAlignment: CrossAxisAlignment.start,
-                      children: <Widget>[
-                        Align(
-                          alignment: Alignment.topLeft,
-                          child: Text('究竟是發生什麼事？', style: TextStyle(fontSize: 12.0)), // Adjust the font size of your title
+                      children: [
+                        Padding(
+                          padding: EdgeInsets.only(top: 1.0),
+                          child: Image.asset('assets/images/logo.png', width: 50.0, height: 50.0),
                         ),
-                        Align(
-                          alignment: Alignment.topLeft,
-                          child: Text('2024/5/4', style: TextStyle(fontSize: 10.0)), // Adjust the font size of your time
-                        ),
-                        SizedBox(height: 10.0), // Add some space between the title/time and the content
+                        SizedBox(width: 10.0),
                         Expanded(
-                          child: SingleChildScrollView(
-                            child: Text('這是一個關於三個人的故事...待續這是一個關於三個人的故事...待續這是一個關於三個人的故事...待續這是一個關於三個人的故事...待續這是一個關於三個人的故事...待續這是一個關於三個人的故事...待續這是一個關於三個人的故事...待續這是一個關於三個人的故事...待續這是一個關於三個人的故事...待續這是一個關於三個人的故事...待續這是一個關於三個人的故事...待續這是一個關於三個人的故事...待續這是一個關於三個人的故事...待續這是一個關於三個人的故事...待續', style: TextStyle(fontSize: 12.0)), // Replace with your content
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: <Widget>[
+                              Align(
+                                alignment: Alignment.topLeft,
+                                child: Text(news.title, style: TextStyle(fontSize: 12.0)),
+                              ),
+                              Align(
+                                alignment: Alignment.topLeft,
+                                child: Text(news.createdTime, style: TextStyle(fontSize: 10.0)),
+                              ),
+                              SizedBox(height: 10.0),
+                              Expanded(
+                                child: SingleChildScrollView(
+                                  child: Text(news.content, style: TextStyle(fontSize: 12.0)),
+                                ),
+                              ),
+                            ],
                           ),
                         ),
                       ],
                     ),
-                  ),
-                ],
+                  );
+                },
               ),
             ),
-          ],
-        ),
-      ),
+          ),
+        );
+      },
     );
   }
 }

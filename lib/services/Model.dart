@@ -20,6 +20,29 @@ class User {
   }
 }
 
-class Message {
-  
+class News {
+  final String id;
+  final String title;
+  final String content;
+  final String createdTime;
+
+  News({required this.id, required this.title, required this.content, required this.createdTime});
+
+  factory News.fromJson(Map<String, dynamic> json) {
+    return News(
+      id: json['ID'].toString(),
+      title: json['title'],
+      content: json['content'],
+      createdTime: json['created_time'],
+    );
+  }
+
+  Map<String, dynamic> toJson() {
+    return {
+      'ID': id,
+      'title': title,
+      'content': content,
+      'created_time': createdTime,
+    };
+  }
 }
