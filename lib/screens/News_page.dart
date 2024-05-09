@@ -13,10 +13,7 @@ class _NewsPageState extends State<NewsPage> {
   final ScrollController _scrollController = ScrollController();
 
   final List<News> defaultNews = [
-    News(id: '0', title: 'Default Title1', content: 'Default ContentDefaultDefault ContentDefault ContentDefault ContentDefault ContentDefault Content ContentDefault ContentDefault ContentDefault ContentDefault ContentDefault ContentDefault ContentDefault ContentDefault ContentDefault ContentDefault ContentDefault ContentDefault ContentDefault ContentDefault ContentDefault ContentDefault Content', createdTime: ' 2024-01-01 00:00:00'),
-    News(id: '1', title: 'Default Title2', content: 'Default ContentDefaultDefault ContentDefault ContentDefault ContentDefault ContentDefault Content ContentDefault ContentDefault ContentDefault ContentDefault ContentDefault ContentDefault ContentDefault ContentDefault ContentDefault ContentDefault ContentDefault ContentDefault ContentDefault ContentDefault ContentDefault Content', createdTime: ' 2024-01-01 00:00:00'),
-    News(id: '2', title: 'Default Title3', content: 'Default ContentDefaultDefault ContentDefault ContentDefault ContentDefault ContentDefault Content ContentDefault ContentDefault ContentDefault ContentDefault ContentDefault ContentDefault ContentDefault ContentDefault ContentDefault ContentDefault ContentDefault ContentDefault ContentDefault ContentDefault ContentDefault Content', createdTime: ' 2024-01-01 00:00:00'),
-    News(id: '3', title: 'Default Title4', content: 'Default ContentDefaultDefault ContentDefault ContentDefault ContentDefault ContentDefault Content ContentDefault ContentDefault ContentDefault ContentDefault ContentDefault ContentDefault ContentDefault ContentDefault ContentDefault ContentDefault ContentDefault ContentDefault ContentDefault ContentDefault ContentDefault Content', createdTime: ' 2024-01-01 00:00:00'),
+    News(id: '0', title: '歡迎進入最佳世界', content: '歡迎加入這個大家庭', createdTime: ' 2024-01-01 09:00:00'),
   ];
 
   @override

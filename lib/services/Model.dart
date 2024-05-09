@@ -16,6 +16,7 @@ class User {
       email: json['email'] != null && json['email'].isNotEmpty ? json['email'] : 'Default Email',
       password: json['password'] != null && json['password'].isNotEmpty ? json['password'] : 'Default Password',
       userId: json['userId'] != null && json['userId'].isNotEmpty ? json['userId'] : 'Default UserId', 
+
     );
   }
 }
@@ -28,14 +29,14 @@ class News {
 
   News({required this.id, required this.title, required this.content, required this.createdTime});
 
-  factory News.fromJson(Map<String, dynamic> json) {
-    return News(
-      id: json['ID'].toString(),
-      title: json['title'],
-      content: json['content'],
-      createdTime: json['created_time'],
-    );
-  }
+factory News.fromJson(Map<String, dynamic> json) {
+  return News(
+    id: json['ID'].toString(),
+    title: json['title'],
+    content: json['content'],
+    createdTime: json['created_time'],
+  );
+}
 
   Map<String, dynamic> toJson() {
     return {

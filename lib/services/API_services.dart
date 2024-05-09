@@ -5,7 +5,7 @@ import 'package:SayAnything/services/Model.dart';
 class SignupApiService {
   Future<void> registerUser(String username, String email, String password, String gender) async {  
     final response = await http.post(
-      Uri.parse('https://sayanythingapi.sdpmlab.org/auth/register'), // add flask API.
+      Uri.parse('https://sayanythingapi.sdpmlab.org/auth/register'), 
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',
       },
@@ -27,7 +27,7 @@ class SignupApiService {
 
 class LoginApiService {
   Future<User> login(String email, String password) async {
-    var url = Uri.parse('https://sayanythingapi.sdpmlab.org/auth/login'); // add flask api.
+    var url = Uri.parse('https://sayanythingapi.sdpmlab.org/auth/login'); 
 
     var response = await http.post(
       url,
@@ -97,7 +97,7 @@ class MatchApiService {
 class ForgetPasswordApiService {
   Future<void> resetPassword(String email) async {
     final response = await http.post(
-      Uri.parse('https://sayanythingapi.sdpmlab.org/auth/forgetPassword'), // add flask API 
+      Uri.parse('https://sayanythingapi.sdpmlab.org/auth/forgetPassword'), 
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',
       },
@@ -161,7 +161,7 @@ class PasswordResetApiService {
 class NewsApiService {
   Future<List<News>> getAllNews() async {
     final response = await http.get(
-      Uri.parse('https://sayanythingapi.sdpmlab.org/news/news_all'),
+      Uri.parse('https://sayanythingapi.sdpmlab.org/news/'),
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',
       },
@@ -172,7 +172,7 @@ class NewsApiService {
 
     if (response.statusCode == 200) {
       print('News fetched successfully');
-      List jsonResponse = json.decode(response.body);
+      List jsonResponse = json.decode(response.body)['datas'];
       return jsonResponse.map((item) => News.fromJson(item)).toList();
     } else {
       print('Failed to fetch news');
