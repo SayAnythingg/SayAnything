@@ -9,6 +9,11 @@
   <img src="assets/images/logo_all.png">
 </p>
 
+<p align="center">
+  <img src="https://github.com/CHUNG-HAO/SayAnything/assets/67829896/bf759717-f005-412e-9233-bc19cfcbc692">
+
+</p>
+
 ## Getting Started.
 
 This project is a starting point for a Flutter application.
