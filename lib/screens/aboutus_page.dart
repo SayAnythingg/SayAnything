@@ -47,7 +47,7 @@ class Aboutus extends StatelessWidget {
                     title: Text('Developer👨‍🎓👩‍🎓👨‍🏫', textAlign: TextAlign.center),
                   ),
                   buildCard(context, 'assets/images/chung.jpeg', '鍾弘浩', 'chunghao777@gmail.com', 'Mobile Developer'),
-                  buildCard(context, 'assets/images/T.png', '談宇容', 'sylvia15334@gmail.com', 'Project Manager'),
+                  buildCard(context, 'assets/images/T.png', '談宇容', 'sylvia15334@gmail.com', 'Backend Developer'),
                   buildCard(context, 'assets/images/george.png', '林鈺佑', 'george920102@gmail.com', 'Backend Developer'),
                   ListTile(
                     title: Text('特別感謝', textAlign: TextAlign.center),
@@ -122,7 +122,7 @@ class Aboutus extends StatelessWidget {
     return Card(
       margin: const EdgeInsets.symmetric(vertical: 8.0),
       child: Container(
-        width: MediaQuery.of(context).size.width * 0.8, // 80% of screen width
+        width: MediaQuery.of(context).size.width * 0.8, 
         child: Padding(
           padding: const EdgeInsets.all(16.0),
           child: Column(
@@ -133,7 +133,7 @@ class Aboutus extends StatelessWidget {
               ),
               SizedBox(height: 16.0),
               Padding(
-                padding: const EdgeInsets.symmetric(vertical: 8.0), // Add vertical padding
+                padding: const EdgeInsets.symmetric(vertical: 8.0), 
                 child: Text(title, textAlign: TextAlign.center),
               ),
               Text(' $email', textAlign: TextAlign.center),

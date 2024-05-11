@@ -25,23 +25,23 @@ class SideMenu extends StatelessWidget {
   child: Stack(
     children: [
       Positioned(
-        top: 70,  // Changed from -20 to 10
-        left: 10,  // Added left position
+        top: 70,  
+        left: 10,  
         child: Text(user.name, style: TextStyle(color: Colors.white)),
       ),
       Positioned(
-        top: 90,  // Changed from 20 to 30
-        left: 10,  // Added left position
+        top: 90,  
+        left: 10,  
         child: Text('ID: ${user.userId}', style: TextStyle(color: Colors.white)),
       ),
       Positioned(
-        top: 110,  // Changed from 0 to 50
-        left: 10,  // Added left position
+        top: 110,  
+        left: 10,  
         child: Text(user.email, style: TextStyle(color: Colors.white)),
       ),
       Positioned(
-        top: 10,  // Changed from -20 to 10
-        right: 170,  // Changed from 0 to 10
+        top: 10,  
+        right: 170,  
         child: IconButton(
           icon: Icon(Icons.arrow_forward_ios_rounded, size: 16),  
           onPressed: () {
@@ -53,8 +53,8 @@ class SideMenu extends StatelessWidget {
         ),
       ),
       Positioned(
-        top: 0,  // Changed from 0 to 10
-        right: 190,  // Changed from 0 to 50
+        top: 0,  
+        right: 190,  
         child: Padding(
           padding: EdgeInsets.only(right: 8.0),
           child: Icon(

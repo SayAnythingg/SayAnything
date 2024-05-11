@@ -57,20 +57,31 @@ class HomePage extends StatelessWidget {
                   automaticallyImplyLeading: false,
                   actions: <Widget>[
                     Builder(
-                      builder: (context) => IconButton(
-                        icon: Container(
-                          width: 30,
-                          height: 30,
-                          child: ColorFiltered(
-                            colorFilter: ColorFilter.mode(Colors.black, BlendMode.srcIn),
-                            child: rive.RiveAnimation.asset(
-                              'assets/animation/setting.riv',
-                              fit: BoxFit.contain,
-                              alignment: Alignment.center,
+                      builder: (context) => Row(
+                        children: [
+                          Text(
+                            'on-line:3',
+                            style: TextStyle(
+                              color: Colors.black,
+                              fontSize: 12,
                             ),
                           ),
-                        ),
-                        onPressed: () => Scaffold.of(context).openEndDrawer(),
+                          IconButton(
+                            icon: Container(
+                              width: 30,
+                              height: 30,
+                              child: ColorFiltered(
+                                colorFilter: ColorFilter.mode(Colors.black, BlendMode.srcIn),
+                                child: rive.RiveAnimation.asset(
+                                  'assets/animation/setting.riv',
+                                  fit: BoxFit.contain,
+                                  alignment: Alignment.center,
+                                ),
+                              ),
+                            ),
+                            onPressed: () => Scaffold.of(context).openEndDrawer(),
+                          ),
+                        ],
                       ),
                     ),
                   ],

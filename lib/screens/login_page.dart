@@ -23,7 +23,6 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
-  bool flag = true;
 
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
@@ -39,7 +38,6 @@ class _LoginPageState extends State<LoginPage> {
 
 Future<void> _login() async {
   try {
-    // Attempt to log in the user
     User user = await apiService.login(emailController.text, passwordController.text);
     Navigator.push(
       context,
@@ -48,7 +46,6 @@ Future<void> _login() async {
       ),
     );
   } catch (e) {
-    // If the login failed, show a SnackBar with the error message
     print('Failed to log in $e');
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
