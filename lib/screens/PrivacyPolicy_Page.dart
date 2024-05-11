@@ -47,8 +47,9 @@ class _PrivacyPolicyPageState extends State<PrivacyPolicyPage> {
 return Scaffold(
   appBar: AppBar(
     automaticallyImplyLeading: false, 
-    title: Text('Privacy Policy'),
-  ),
+    title: Text('Privacy Policy', style: TextStyle(color: Colors.white)),
+    backgroundColor: Color(0xFF7EC4CF),
+),
       body: Stack(
     children: [
       pdfPath != null
