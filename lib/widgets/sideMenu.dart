@@ -111,12 +111,35 @@ class SideMenu extends StatelessWidget {
           ListTile(
             leading: Icon(Icons.logout, color: Color(0xFF7EC4CF)),
             title: Text('Logout', style: TextStyle(color: Color(0xFF7EC4CF))),
-            onTap: () async {
-              SharedPreferences prefs = await SharedPreferences.getInstance();
-              await prefs.remove('userId');
-              Navigator.pushReplacement(
-                context,
-                MaterialPageRoute(builder: (context) => const AuthenticationUI()),
+            onTap: () {
+              showDialog(
+                context: context,
+                builder: (BuildContext context) {
+                  return AlertDialog(
+                    backgroundColor: Color(0xFF7EC4CF),
+                    title: Text('Logout Confirmation', style: TextStyle(color: Colors.white)),
+                    content: Text('Are you sure you want to logout?', style: TextStyle(color: Colors.white)),
+                    actions: <Widget>[
+                      TextButton(
+                        child: Text('Cancel', style: TextStyle(color: Colors.white)),
+                        onPressed: () {
+                          Navigator.of(context).pop();
+                        },
+                      ),
+                      TextButton(
+                        child: Text('Yes', style: TextStyle(color: Colors.white)),
+                        onPressed: () async {
+                          SharedPreferences prefs = await SharedPreferences.getInstance();
+                          await prefs.remove('userId');
+                          Navigator.pushReplacement(
+                            context,
+                            MaterialPageRoute(builder: (context) => const AuthenticationUI()),
+                          );
+                        },
+                      ),
+                    ],
+                  );
+                },
               );
             },
           ),
@@ -124,6 +147,14 @@ class SideMenu extends StatelessWidget {
             padding: const EdgeInsets.all(8.0),
             child: Text(
               'Version 1.0.0',
+              style: TextStyle(color: Color(0xFF7EC4CF)),
+              textAlign: TextAlign.center,
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Text(
+              'Copyright © SayAnything',
               style: TextStyle(color: Color(0xFF7EC4CF)),
               textAlign: TextAlign.center,
             ),

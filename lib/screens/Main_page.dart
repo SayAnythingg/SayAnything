@@ -1,7 +1,7 @@
 import 'package:SayAnything/screens/chatList_page.dart';
 import 'package:flutter/material.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
-import 'package:SayAnything/screens/page2.dart';
+import 'package:SayAnything/screens/AI.dart';
 import 'package:SayAnything/screens/home.dart';
 import 'package:SayAnything/services/Model.dart';
 
@@ -22,7 +22,7 @@ class _MainPageState extends State<MainPage> {
 
   List<Widget> get _widgetOptions {
     return <Widget>[
-      Page2(),
+      multimedia(),
       HomePage(user: widget.user),
       ChatList(),
     ];

@@ -70,14 +70,11 @@ void main() {
     await tester.enterText(find.widgetWithText(TextFormField, 'Password'), 'password123');
     await tester.pump();
 
-    // Assert that the email suffix was added correctly
     expect(emailController.text, '411077033@mail.nknu.edu.tw');
 
-    // Simulate tapping the register button
     await tester.tap(find.widgetWithText(ElevatedButton, 'Register'));
     await tester.pump();
 
-    // Verify that the API was called with the correct data
     verify(api.register(
       'testuser',
       'male',
