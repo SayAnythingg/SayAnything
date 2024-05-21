@@ -130,10 +130,10 @@ class SideMenu extends StatelessWidget {
                         child: Text('Yes', style: TextStyle(color: Colors.white)),
                         onPressed: () async {
                           SharedPreferences prefs = await SharedPreferences.getInstance();
-                          await prefs.remove('userId');
+                          await prefs.clear();
                           Navigator.pushReplacement(
                             context,
-                            MaterialPageRoute(builder: (context) => const AuthenticationUI()),
+                            MaterialPageRoute(builder: (context) => const Sayanything()),
                           );
                         },
                       ),

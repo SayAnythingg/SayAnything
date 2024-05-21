@@ -9,14 +9,14 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:rive/rive.dart' as rive;
 
-class AuthenticationUI extends StatefulWidget {
-  const AuthenticationUI({super.key});
+class Sayanything extends StatefulWidget {
+  const Sayanything({super.key});
 
   @override
-  State<AuthenticationUI> createState() => _AuthenticationUIState();
+  State<Sayanything> createState() => _AuthenticationUIState();
 }
 
-class _AuthenticationUIState extends State<AuthenticationUI> {
+class _AuthenticationUIState extends State<Sayanything> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

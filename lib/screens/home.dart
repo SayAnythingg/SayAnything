@@ -124,8 +124,6 @@ class HomePage extends StatelessWidget {
                 SizedBox(height: 20), 
                 FloatingActionButton(
                   onPressed: () async {
-                    String userId = await UserIdService.getCurrentUserId();
-
                     showDialog(
                       context: context,
                       barrierDismissible: false,
@@ -134,7 +132,7 @@ class HomePage extends StatelessWidget {
                       },
                     );
 
-                    await matchApiService.requestMatch(userId);
+                    await matchApiService.requestMatch(user.userId);
 
                     Navigator.pop(context);
                   },

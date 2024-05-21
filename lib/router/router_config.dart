@@ -14,7 +14,7 @@ final router = GoRouter(routes: [
     path: Routers.authenticationpage.path,
     name: Routers.authenticationpage.name,
     pageBuilder: (context, state) {
-      return const CupertinoPage(child: AuthenticationUI());
+      return const CupertinoPage(child: Sayanything());
     },
   ),
   GoRoute(

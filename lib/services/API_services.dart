@@ -54,7 +54,7 @@ class LoginApiService {
 class MatchApiService {
 
   Future<void> requestMatch(String userId) async {
-    var url = Uri.parse(''); // add flask api.
+    var url = Uri.parse('https://80f8bfb1-1d54-4368-a44a-061504fc0b84.mock.pstmn.io/match'); // add flask api.
     print('requestMatch called with userId: $userId');
     var response = await http.post(
       url,
@@ -74,9 +74,9 @@ class MatchApiService {
   }
 
   Future<void> cancelMatch(String userId) async {
-    var url = Uri.parse(''); // add flask api.
+    var url = Uri.parse('https://80f8bfb1-1d54-4368-a44a-061504fc0b84.mock.pstmn.io/match'); // add flask api.
 
-    var response = await http.post(
+    var response = await http.delete(
       url,
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',

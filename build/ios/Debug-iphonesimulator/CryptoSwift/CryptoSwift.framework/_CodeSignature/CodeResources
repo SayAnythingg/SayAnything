@@ -14,7 +14,7 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		n8k0zJxMaVmBIQ/pEz4kv+rpL04=
+		mryn3mAD4sUyB/bL0i2uZaUboQY=
 		</data>
 		<key>Modules/CryptoSwift.swiftmodule/Project/arm64-apple-ios-simulator.swiftsourceinfo</key>
 		<data>
@@ -34,7 +34,7 @@
 		</data>
 		<key>Modules/CryptoSwift.swiftmodule/arm64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		xE5DeQ8Lo8FK1CGA1BRwuQ/HVRs=
+		V5vx9b8vKIokSiITSXToSOEUyBw=
 		</data>
 		<key>Modules/CryptoSwift.swiftmodule/x86_64-apple-ios-simulator.abi.json</key>
 		<data>
@@ -46,7 +46,7 @@
 		</data>
 		<key>Modules/CryptoSwift.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		QzTWGp3S8HkwuuRxdiHsRjhuvhE=
+		xvdeelvFNt6Aqu4aE/U9rroQvYw=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -101,7 +101,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			+Sw80ZAGQiw+g8Te6mdz40ivWcrZG1BTPd65DLzLqgk=
+			GZxuYM8NWTlxw0v6yAiIyLPl0E/nHb75ukQTEnNOv24=
 			</data>
 		</dict>
 		<key>Modules/CryptoSwift.swiftmodule/x86_64-apple-ios-simulator.abi.json</key>
@@ -122,7 +122,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			PQcQKzKwerD3AHPENpNZ+oOX52LWzQdTPVqyNDhdVgw=
+			jEqBbs3KVFriggCqoInQsQpQmV73Yus7pQiEPNydJrI=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>
