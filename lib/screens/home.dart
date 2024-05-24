@@ -134,7 +134,25 @@ class HomePage extends StatelessWidget {
 
                     await matchApiService.requestMatch(user.userId);
 
-                    Navigator.pop(context);
+                    Navigator.pop(context); 
+
+                      showDialog(
+                      context: context,
+                      builder: (BuildContext context) {
+                        return AlertDialog(
+                          title: Text('Success'),
+                          content: Text('Successfully matched!'),
+                          actions: <Widget>[
+                            TextButton(
+                              child: Text('OK'),
+                              onPressed: () {
+                                Navigator.of(context).pop();
+                              },
+                            ),
+                          ],
+                        );
+                      },
+                    );
                   },
                   child: Icon(Icons.navigation),
                   backgroundColor: Color.fromARGB(255, 244, 246, 247),

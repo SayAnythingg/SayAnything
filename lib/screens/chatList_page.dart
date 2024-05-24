@@ -36,9 +36,16 @@ class _ChatListState extends State<ChatList> {
           child: Column(
             children: [
               AppBar(
-                title: Text('Chat'),
-                backgroundColor: Colors.transparent, 
-                elevation: 0, 
+                title: Row(
+                  mainAxisAlignment: MainAxisAlignment.center, 
+                  children: [
+                    Icon(Icons.wechat, size: 40),
+                    SizedBox(width: 4),
+                    Image.asset('assets/images/chat.png', height: 70, width: 70),
+                  ],
+                ),
+                backgroundColor: Colors.transparent,
+                elevation: 0,
                 automaticallyImplyLeading: false,
                 actions: [
                   IconButton(

@@ -27,8 +27,15 @@ class _AIState extends State<multimedia> {
             child: Column(
               children: [
                 AppBar(
-                  title: Text('Multimedia'),
-                  automaticallyImplyLeading: false, // Hide default back button
+                  title: Row(
+                    mainAxisAlignment: MainAxisAlignment.center, 
+                    children: [
+                      Icon(Icons.psychology_rounded, size: 40), 
+                      SizedBox(width: 4), 
+                      Image.asset('assets/images/multiMedia.png', height: 145, width: 145), 
+                    ],
+                  ),
+                  automaticallyImplyLeading: false,
                   backgroundColor: Colors.transparent,
                   elevation: 0,
                 ),
