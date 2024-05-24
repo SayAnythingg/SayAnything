@@ -54,23 +54,20 @@ class LoginApiService {
 class MatchApiService {
 
   Future<void> requestMatch(String userId) async {
-    var url = Uri.parse('https://80f8bfb1-1d54-4368-a44a-061504fc0b84.mock.pstmn.io/match'); // add flask api.
-    print('requestMatch called with userId: $userId');
-    var response = await http.post(
-      url,
-      headers: <String, String>{
-        'Content-Type': 'application/json; charset=UTF-8',
-      },
-      body: jsonEncode(<String, String>{
-        'userId': userId,
-      }),
-    );
+  var url = Uri.parse('https://80f8bfb1-1d54-4368-a44a-061504fc0b84.mock.pstmn.io/match'); // add flask api.
 
-    if (response.statusCode == 200) {
-      print('Match successfully');
-    } else {
-      throw Exception('Failed');
-    }
+  var response = await http.post(
+    url,
+    headers: <String, String>{
+      'Content-Type': 'application/json; charset=UTF-8',
+    },
+  );
+
+  if (response.statusCode == 200) {
+    print('${response.body}');
+  } else {
+    throw Exception('Failed to fetch match data');
+  }
   }
 
   Future<void> cancelMatch(String userId) async {
