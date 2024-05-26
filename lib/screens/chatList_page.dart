@@ -35,13 +35,12 @@ class _ChatListState extends State<ChatList> {
           ),
           child: Column(
             children: [
-              AppBar(
+             AppBar(
                 title: Row(
-                  mainAxisAlignment: MainAxisAlignment.center, 
+                  mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    Icon(Icons.wechat, size: 40),
-                    SizedBox(width: 4),
-                    Image.asset('assets/images/chat.png', height: 70, width: 70),
+                    Icon(Icons.wechat, size: 30, color: Color(0xFF545454)),
+                    Image.asset('assets/images/chat3.png', height: 60, width: 60),
                   ],
                 ),
                 backgroundColor: Colors.transparent,
@@ -49,8 +48,7 @@ class _ChatListState extends State<ChatList> {
                 automaticallyImplyLeading: false,
                 actions: [
                   IconButton(
-                    icon: Icon(Icons.search),
-                    color: Colors.black,
+                    icon: Icon(Icons.search, color: Color(0xFF545454)),
                     onPressed: () {
                       showSearch(
                         context: context,
