@@ -177,3 +177,16 @@ class NewsApiService {
     }
   }
 }
+
+
+class JokeApi {
+  Future<Joke> getJoke(int id) async {
+    final response = await http.get(Uri.parse('https://official-joke-api.appspot.com/random_joke'));
+    print('${response.body}');
+    if (response.statusCode == 200) {
+      return Joke.fromJson(jsonDecode(response.body));
+    } else {
+      throw Exception('Failed to load joke');
+    }
+  }
+}
