@@ -302,6 +302,12 @@
       "languageVersion": "2.12"
     },
     {
+      "name": "flutter_buttombar_chung",
+      "rootUri": "file:///Users/zhonghonghao/.pub-cache/hosted/pub.dev/flutter_buttombar_chung-0.0.4",
+      "packageUri": "lib/",
+      "languageVersion": "3.3"
+    },
+    {
       "name": "flutter_callkit_incoming",
       "rootUri": "file:///Users/zhonghonghao/.pub-cache/hosted/pub.dev/flutter_callkit_incoming-2.0.1+2",
       "packageUri": "lib/",
@@ -438,6 +444,12 @@
       "rootUri": "file:///Users/zhonghonghao/.pub-cache/hosted/pub.dev/google_fonts-6.1.0",
       "packageUri": "lib/",
       "languageVersion": "2.14"
+    },
+    {
+      "name": "google_generative_ai",
+      "rootUri": "file:///Users/zhonghonghao/.pub-cache/hosted/pub.dev/google_generative_ai-0.4.2",
+      "packageUri": "lib/",
+      "languageVersion": "3.1"
     },
     {
       "name": "graphs",
@@ -1034,7 +1046,7 @@
       "languageVersion": "3.2"
     }
   ],
-  "generated": "2024-05-29T04:04:08.019668Z",
+  "generated": "2024-06-01T08:19:08.834587Z",
   "generator": "pub",
   "generatorVersion": "3.3.1"
 }
