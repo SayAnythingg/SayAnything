@@ -11,7 +11,7 @@ class CustomTextFormField extends StatefulWidget {
   final bool obsecuretext;
   final TextEditingController? controller;
   final InputDecoration? decoration;
-  final bool addSuffix; 
+  final bool addSuffix;
 
   const CustomTextFormField({
     Key? key,
@@ -39,8 +39,9 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
     super.dispose();
   }
 
-   void _handleTextChanged() {
-    if (widget.addSuffix && !widget.controller!.text.endsWith('@mail.nknu.edu.tw')) {
+  void _handleTextChanged() {
+    if (widget.addSuffix &&
+        !widget.controller!.text.endsWith('@mail.nknu.edu.tw')) {
       widget.controller!.text = widget.controller!.text + '@mail.nknu.edu.tw';
       widget.controller!.selection = TextSelection.fromPosition(
         TextPosition(
@@ -102,7 +103,7 @@ class _CustomElevatedButtonState extends State<CustomElevatedButton> {
           loading = true;
         });
         await widget.function();
-      
+
         setState(() {
           loading = false;
         });

@@ -26,42 +26,49 @@ class SideMenu extends StatelessWidget {
             child: Stack(
               children: [
                 Positioned(
-                  top: 70,  
-                  left: 10,  
+                  top: 70,
+                  left: 10,
                   child: Text(user.name, style: TextStyle(color: Colors.white)),
                 ),
                 Positioned(
-                  top: 90,  
-                  left: 10,  
-                  child: Text('ID: ${user.userId}', style: TextStyle(color: Colors.white)),
+                  top: 90,
+                  left: 10,
+                  child: Text('ID: ${user.userId}',
+                      style: TextStyle(color: Colors.white)),
                 ),
                 Positioned(
-                  top: 110,  
-                  left: 10,  
-                  child: Text(user.email, style: TextStyle(color: Colors.white)),
+                  top: 110,
+                  left: 10,
+                  child:
+                      Text(user.email, style: TextStyle(color: Colors.white)),
                 ),
                 Positioned(
-                  top: 10,  
-                  right: 170,  
+                  top: 10,
+                  right: 170,
                   child: IconButton(
-                    icon: Icon(Icons.arrow_forward_ios_rounded, size: 16),  
+                    icon: Icon(Icons.arrow_forward_ios_rounded, size: 16),
                     onPressed: () {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => EditNameFormPage()),
+                        MaterialPageRoute(
+                            builder: (context) => EditNameFormPage()),
                       );
                     },
                   ),
                 ),
                 Positioned(
-                  top: 0,  
-                  right: 190,  
+                  top: 0,
+                  right: 190,
                   child: Padding(
                     padding: EdgeInsets.only(right: 8.0),
                     child: Icon(
                       Icons.person,
-                      size: 80, 
-                      color: user.gender == 'Male' ? Colors.blue : (user.gender == 'Female' ? Colors.pink : Colors.grey),
+                      size: 80,
+                      color: user.gender == 'Male'
+                          ? Colors.blue
+                          : (user.gender == 'Female'
+                              ? Colors.pink
+                              : Colors.grey),
                     ),
                   ),
                 ),
@@ -70,11 +77,13 @@ class SideMenu extends StatelessWidget {
           ),
           ListTile(
             leading: Icon(Icons.info, color: Color(0xFF7EC4CF)),
-            title: Text('Privacy Policy', style: TextStyle(color: Color(0xFF7EC4CF))),
+            title: Text('Privacy Policy',
+                style: TextStyle(color: Color(0xFF7EC4CF))),
             onTap: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => PrivacyPolicyPage(user: user)),
+                MaterialPageRoute(
+                    builder: (context) => PrivacyPolicyPage(user: user)),
               );
             },
           ),
@@ -104,7 +113,8 @@ class SideMenu extends StatelessWidget {
             onTap: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => SettingsPage(user: user)),
+                MaterialPageRoute(
+                    builder: (context) => SettingsPage(user: user)),
               );
             },
           ),
@@ -117,23 +127,29 @@ class SideMenu extends StatelessWidget {
                 builder: (BuildContext context) {
                   return AlertDialog(
                     backgroundColor: Color(0xFF7EC4CF),
-                    title: Text('Logout Confirmation', style: TextStyle(color: Colors.white)),
-                    content: Text('Are you sure you want to logout?', style: TextStyle(color: Colors.white)),
+                    title: Text('Logout Confirmation',
+                        style: TextStyle(color: Colors.white)),
+                    content: Text('Are you sure you want to logout?',
+                        style: TextStyle(color: Colors.white)),
                     actions: <Widget>[
                       TextButton(
-                        child: Text('Cancel', style: TextStyle(color: Colors.white)),
+                        child: Text('Cancel',
+                            style: TextStyle(color: Colors.white)),
                         onPressed: () {
                           Navigator.of(context).pop();
                         },
                       ),
                       TextButton(
-                        child: Text('Yes', style: TextStyle(color: Colors.white)),
+                        child:
+                            Text('Yes', style: TextStyle(color: Colors.white)),
                         onPressed: () async {
-                          SharedPreferences prefs = await SharedPreferences.getInstance();
+                          SharedPreferences prefs =
+                              await SharedPreferences.getInstance();
                           await prefs.clear();
                           Navigator.pushReplacement(
                             context,
-                            MaterialPageRoute(builder: (context) => const Sayanything()),
+                            MaterialPageRoute(
+                                builder: (context) => const Sayanything()),
                           );
                         },
                       ),

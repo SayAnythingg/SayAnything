@@ -37,7 +37,9 @@ class ChatSearch extends SearchDelegate<String> {
   Widget buildSuggestions(BuildContext context) {
     final suggestions = query.isEmpty
         ? chatRooms
-        : chatRooms.where((c) => c.toLowerCase().startsWith(query.toLowerCase())).toList();
+        : chatRooms
+            .where((c) => c.toLowerCase().startsWith(query.toLowerCase()))
+            .toList();
 
     return ListView.builder(
       itemCount: suggestions.length,
@@ -47,7 +49,9 @@ class ChatSearch extends SearchDelegate<String> {
           onTap: () {
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => ChatPage(chatRoomName: suggestions[index])),
+              MaterialPageRoute(
+                  builder: (context) =>
+                      ChatPage(chatRoomName: suggestions[index])),
             );
           },
         );

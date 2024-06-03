@@ -8,6 +8,7 @@ import 'package:go_router/go_router.dart';
 import 'package:SayAnything/services/API_services.dart';
 
 final apiService = PasswordResetApiService();
+
 class NewPasswordPage extends StatefulWidget {
   const NewPasswordPage({super.key});
 
@@ -16,7 +17,6 @@ class NewPasswordPage extends StatefulWidget {
 }
 
 class _NewPasswordPageState extends State<NewPasswordPage> {
-
   final newPasswordController = TextEditingController();
   final confirmPasswordController = TextEditingController();
   final passwordResetService = PasswordResetApiService();
@@ -96,22 +96,29 @@ class _NewPasswordPageState extends State<NewPasswordPage> {
                         child: CustomElevatedButton(
                           message: "Reset Password ",
                           function: () async {
-                            if (newPasswordController.text != confirmPasswordController.text) {
+                            if (newPasswordController.text !=
+                                confirmPasswordController.text) {
                               ScaffoldMessenger.of(context).showSnackBar(
-                                SnackBar(content: Text('Passwords do not match')),
+                                SnackBar(
+                                    content: Text('Passwords do not match')),
                               );
                               return;
                             }
 
-                            final response = await passwordResetService.resetPassword(newPasswordController.text);
+                            final response = await passwordResetService
+                                .resetPassword(newPasswordController.text);
                             if (response == 200) {
                               ScaffoldMessenger.of(context).showSnackBar(
-                                SnackBar(content: Text('Password reset successfully')),
+                                SnackBar(
+                                    content:
+                                        Text('Password reset successfully')),
                               );
-                              GoRouter.of(context).pushNamed(Routers.passwordchanges.name);
+                              GoRouter.of(context)
+                                  .pushNamed(Routers.passwordchanges.name);
                             } else {
                               ScaffoldMessenger.of(context).showSnackBar(
-                                SnackBar(content: Text('Failed to reset password')),
+                                SnackBar(
+                                    content: Text('Failed to reset password')),
                               );
                             }
                           },

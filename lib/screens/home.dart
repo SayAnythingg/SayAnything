@@ -1,4 +1,3 @@
-
 import 'package:SayAnything/screens/fade_animationtest.dart';
 import 'package:SayAnything/services/Model.dart';
 import 'package:flutter/material.dart';
@@ -21,13 +20,11 @@ class UserIdService {
 }
 
 class HomePage extends StatelessWidget {
-  
   final User user;
   HomePage({required this.user});
   @override
   Widget build(BuildContext context) {
     double screenWidth = MediaQuery.of(context).size.width;
-    
 
     return Scaffold(
       endDrawer: SideMenu(user: user),
@@ -46,12 +43,11 @@ class HomePage extends StatelessWidget {
                 AppBar(
                   title: Row(
                     children: [
-                      Image.asset('assets/images/logo.png', width: 50), 
-                      
-                      Image.asset('assets/images/logo_word.png', width: 120), 
+                      Image.asset('assets/images/logo.png', width: 50),
+                      Image.asset('assets/images/logo_word.png', width: 120),
                     ],
                   ),
-                  centerTitle: false, 
+                  centerTitle: false,
                   backgroundColor: Colors.transparent,
                   elevation: 0,
                   automaticallyImplyLeading: false,
@@ -71,7 +67,8 @@ class HomePage extends StatelessWidget {
                               width: 30,
                               height: 30,
                               child: ColorFiltered(
-                                colorFilter: ColorFilter.mode(Colors.black, BlendMode.srcIn),
+                                colorFilter: ColorFilter.mode(
+                                    Colors.black, BlendMode.srcIn),
                                 child: rive.RiveAnimation.asset(
                                   'assets/animation/setting.riv',
                                   fit: BoxFit.contain,
@@ -79,7 +76,8 @@ class HomePage extends StatelessWidget {
                                 ),
                               ),
                             ),
-                            onPressed: () => Scaffold.of(context).openEndDrawer(),
+                            onPressed: () =>
+                                Scaffold.of(context).openEndDrawer(),
                           ),
                         ],
                       ),
@@ -113,7 +111,7 @@ class HomePage extends StatelessWidget {
                   delay: 1,
                   child: Container(
                     height: 300,
-                    width: screenWidth, 
+                    width: screenWidth,
                     child: rive.RiveAnimation.asset(
                       'assets/animation/hand.riv',
                       fit: BoxFit.cover,
@@ -121,7 +119,7 @@ class HomePage extends StatelessWidget {
                     ),
                   ),
                 ),
-                SizedBox(height: 20), 
+                SizedBox(height: 20),
                 FloatingActionButton(
                   onPressed: () async {
                     showDialog(
@@ -134,9 +132,9 @@ class HomePage extends StatelessWidget {
 
                     await matchApiService.requestMatch(user.userId);
 
-                    Navigator.pop(context); 
+                    Navigator.pop(context);
 
-                      showDialog(
+                    showDialog(
                       context: context,
                       builder: (BuildContext context) {
                         return AlertDialog(

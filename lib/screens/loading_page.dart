@@ -25,7 +25,7 @@ class LoadingPage extends StatelessWidget {
                     color: Color(0xFF7EC4CF),
                     size: 50,
                   ),
-                  SizedBox(height: 20), 
+                  SizedBox(height: 20),
                   AnimatedTextKit(
                     animatedTexts: [
                       TypewriterAnimatedText(

@@ -1,9 +1,7 @@
-
 import 'package:SayAnything/screens/fade_animationtest.dart';
 import 'package:SayAnything/widgets/custom_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:string_validator/string_validator.dart';
-
 
 class EditNameFormPage extends StatefulWidget {
   const EditNameFormPage({Key? key}) : super(key: key);
@@ -17,7 +15,6 @@ class EditNameFormPageState extends State<EditNameFormPage> {
   final firstNameController = TextEditingController();
   final secondNameController = TextEditingController();
 
-
   @override
   void dispose() {
     firstNameController.dispose();
@@ -25,9 +22,7 @@ class EditNameFormPageState extends State<EditNameFormPage> {
     super.dispose();
   }
 
-  void updateUserValue(String name) {
-
-  }
+  void updateUserValue(String name) {}
 
   @override
   Widget build(BuildContext context) {
@@ -88,7 +83,8 @@ class EditNameFormPageState extends State<EditNameFormPage> {
                               }
                               return null;
                             },
-                            decoration: InputDecoration(labelText: 'First Name'),
+                            decoration:
+                                InputDecoration(labelText: 'First Name'),
                             controller: firstNameController,
                           ),
                         ),
@@ -107,7 +103,8 @@ class EditNameFormPageState extends State<EditNameFormPage> {
                               }
                               return null;
                             },
-                            decoration: const InputDecoration(labelText: 'Last Name'),
+                            decoration:
+                                const InputDecoration(labelText: 'Last Name'),
                             controller: secondNameController,
                           ),
                         ),
@@ -124,8 +121,11 @@ class EditNameFormPageState extends State<EditNameFormPage> {
                           message: "Save",
                           function: () {
                             if (_formKey.currentState!.validate() &&
-                                isAlpha(firstNameController.text + secondNameController.text)) {
-                              updateUserValue(firstNameController.text + " " + secondNameController.text);
+                                isAlpha(firstNameController.text +
+                                    secondNameController.text)) {
+                              updateUserValue(firstNameController.text +
+                                  " " +
+                                  secondNameController.text);
                               Navigator.pop(context);
                             }
                           },

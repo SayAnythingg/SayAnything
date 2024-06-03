@@ -5,7 +5,6 @@ import 'package:SayAnything/screens/AI.dart';
 import 'package:SayAnything/screens/home.dart';
 import 'package:SayAnything/services/Model.dart';
 
-
 class MainPage extends StatefulWidget {
   final int initialIndex;
   final User user;
@@ -17,7 +16,8 @@ class MainPage extends StatefulWidget {
 }
 
 class _MainPageState extends State<MainPage> {
-  late PageController _pageController = PageController(initialPage: widget.initialIndex);
+  late PageController _pageController =
+      PageController(initialPage: widget.initialIndex);
   int _selectedIndex = 0;
 
   List<Widget> get _widgetOptions {
@@ -37,23 +37,23 @@ class _MainPageState extends State<MainPage> {
     Future.delayed(Duration.zero, () {
       setState(() {
         _selectedIndex = widget.initialIndex;
-        _iconColors[_selectedIndex] = Color(0xFF7EC4CF);  
+        _iconColors[_selectedIndex] = Color(0xFF7EC4CF);
       });
     });
   }
 
   void _onItemTapped(int index) {
-  setState(() {
-    _iconColors[_selectedIndex] = Color(0xFFDECFE2);  
-    _selectedIndex = index;
-    _iconColors[_selectedIndex] = Color(0xFF7EC4CF);  
-  });
-  _pageController.animateToPage(
-    index,
-    duration: Duration(milliseconds: 300),
-    curve: Curves.easeInOut,
-  );
-}
+    setState(() {
+      _iconColors[_selectedIndex] = Color(0xFFDECFE2);
+      _selectedIndex = index;
+      _iconColors[_selectedIndex] = Color(0xFF7EC4CF);
+    });
+    _pageController.animateToPage(
+      index,
+      duration: Duration(milliseconds: 300),
+      curve: Curves.easeInOut,
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -62,9 +62,9 @@ class _MainPageState extends State<MainPage> {
         controller: _pageController,
         onPageChanged: (index) {
           setState(() {
-            _iconColors[_selectedIndex] = Color(0xFFDECFE2);  
+            _iconColors[_selectedIndex] = Color(0xFFDECFE2);
             _selectedIndex = index;
-            _iconColors[_selectedIndex] = Color(0xFF7EC4CF);  
+            _iconColors[_selectedIndex] = Color(0xFF7EC4CF);
           });
         },
         children: _widgetOptions,

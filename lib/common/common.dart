@@ -29,5 +29,4 @@ class Common {
       fontSize: 15, fontFamily: "Urbanist-SemiBold", color: Colors.black);
   TextStyle hinttext = const TextStyle(
       fontSize: 15, fontFamily: 'Urbanist-Medium', color: Color(0xFF8391A1));
- 
 }

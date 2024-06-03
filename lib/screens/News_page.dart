@@ -13,7 +13,11 @@ class _NewsPageState extends State<NewsPage> {
   final ScrollController _scrollController = ScrollController();
 
   final List<News> defaultNews = [
-    News(id: '0', title: '歡迎進入最佳世界', content: '歡迎加入這個大家庭', createdTime: ' 2024-01-01 09:00:00'),
+    News(
+        id: '0',
+        title: '歡迎進入最佳世界',
+        content: '歡迎加入這個大家庭',
+        createdTime: ' 2024-01-01 09:00:00'),
   ];
 
   @override
@@ -24,9 +28,9 @@ class _NewsPageState extends State<NewsPage> {
         List<News> newsList;
 
         if (snapshot.connectionState == ConnectionState.waiting) {
-          return WaitPage();  
+          return WaitPage();
         } else if (snapshot.hasError) {
-          newsList = defaultNews; 
+          newsList = defaultNews;
         } else {
           newsList = snapshot.data!;
         }
@@ -53,10 +57,10 @@ class _NewsPageState extends State<NewsPage> {
               ),
             ),
             body: Scrollbar(
+              controller: _scrollController,
+              child: ListView.builder(
                 controller: _scrollController,
-                child: ListView.builder(
-                  controller: _scrollController,
-                  itemCount: newsList.length,
+                itemCount: newsList.length,
                 itemBuilder: (context, index) {
                   News news = newsList[index];
                   return Container(
@@ -73,7 +77,8 @@ class _NewsPageState extends State<NewsPage> {
                       children: [
                         Padding(
                           padding: EdgeInsets.only(top: 1.0),
-                          child: Image.asset('assets/images/logo.png', width: 50.0, height: 50.0),
+                          child: Image.asset('assets/images/logo.png',
+                              width: 50.0, height: 50.0),
                         ),
                         SizedBox(width: 10.0),
                         Expanded(
@@ -82,16 +87,19 @@ class _NewsPageState extends State<NewsPage> {
                             children: <Widget>[
                               Align(
                                 alignment: Alignment.topLeft,
-                                child: Text(news.title, style: TextStyle(fontSize: 12.0)),
+                                child: Text(news.title,
+                                    style: TextStyle(fontSize: 12.0)),
                               ),
                               Align(
                                 alignment: Alignment.topLeft,
-                                child: Text(news.createdTime, style: TextStyle(fontSize: 10.0)),
+                                child: Text(news.createdTime,
+                                    style: TextStyle(fontSize: 10.0)),
                               ),
                               SizedBox(height: 10.0),
                               Expanded(
                                 child: SingleChildScrollView(
-                                  child: Text(news.content, style: TextStyle(fontSize: 12.0)),
+                                  child: Text(news.content,
+                                      style: TextStyle(fontSize: 12.0)),
                                 ),
                               ),
                             ],

@@ -93,28 +93,31 @@ class _OtpVerificationPageState extends State<OtpVerificationPage> {
                   child: Column(
                     children: [
                       FadeInAnimation(
-                          delay: 1.9,
-                          child: Pinput(
-                            defaultPinTheme: defaultPinTheme,
-                            focusedPinTheme: focusedPinTheme,
-                            submittedPinTheme: submittedPinTheme,
-                            pinputAutovalidateMode: PinputAutovalidateMode.onSubmit,
-                            showCursor: true,
-                            onCompleted: (pin) async {
-                              final response = await otpService.verifyOtp(pin);
-                              if (response == 200) {
-                                ScaffoldMessenger.of(context).showSnackBar(
-                                  SnackBar(content: Text('OTP verified successfully')),
-                                );
-                                GoRouter.of(context).pushNamed(Routers.newpassword.name);
-                              } else if (response == 400) {
-                                ScaffoldMessenger.of(context).showSnackBar(
-                                  SnackBar(content: Text('Failed to verify OTP')),
-                                );
-                              }
-                            },
-                          ),
+                        delay: 1.9,
+                        child: Pinput(
+                          defaultPinTheme: defaultPinTheme,
+                          focusedPinTheme: focusedPinTheme,
+                          submittedPinTheme: submittedPinTheme,
+                          pinputAutovalidateMode:
+                              PinputAutovalidateMode.onSubmit,
+                          showCursor: true,
+                          onCompleted: (pin) async {
+                            final response = await otpService.verifyOtp(pin);
+                            if (response == 200) {
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                SnackBar(
+                                    content: Text('OTP verified successfully')),
+                              );
+                              GoRouter.of(context)
+                                  .pushNamed(Routers.newpassword.name);
+                            } else if (response == 400) {
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                SnackBar(content: Text('Failed to verify OTP')),
+                              );
+                            }
+                          },
                         ),
+                      ),
                       const SizedBox(
                         height: 30,
                       ),
@@ -127,7 +130,6 @@ class _OtpVerificationPageState extends State<OtpVerificationPage> {
                                 .pushNamed(Routers.newpassword.name);
                           },
                           color: Color(0xFF7EC4CF),
-                          
                         ),
                       ),
                     ],

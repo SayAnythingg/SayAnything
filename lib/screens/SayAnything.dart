@@ -1,6 +1,5 @@
 import 'dart:ui';
 
-
 import 'package:SayAnything/router/router.dart';
 import 'package:SayAnything/screens/fade_animationtest.dart';
 import 'package:SayAnything/widgets/custom_widget.dart';
@@ -51,11 +50,13 @@ class _AuthenticationUIState extends State<Sayanything> {
                     ),
                     FadeInAnimation(
                       delay: 1.5,
-                      child: Image.asset('assets/images/title_logo_logo.png', width: 250),
+                      child: Image.asset('assets/images/title_logo_logo.png',
+                          width: 250),
                     ),
                     FadeInAnimation(
                       delay: 1.5,
-                      child: Image.asset('assets/images/slogan.png', width: 200),
+                      child:
+                          Image.asset('assets/images/slogan.png', width: 200),
                     ),
                     const SizedBox(
                       height: 60,
@@ -65,7 +66,8 @@ class _AuthenticationUIState extends State<Sayanything> {
                       child: CustomElevatedButton(
                         message: "Login",
                         function: () {
-                          GoRouter.of(context).pushNamed(Routers.loginpage.name);
+                          GoRouter.of(context)
+                              .pushNamed(Routers.loginpage.name);
                         },
                         color: Color(0xFF7EC4CF),
                       ),

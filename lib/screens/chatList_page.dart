@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:SayAnything/function/ChatSearch.dart';
 import 'package:SayAnything/function/ChatListItem.dart';
 
-
 class ChatList extends StatefulWidget {
   ChatList({Key? key}) : super(key: key);
 
@@ -35,12 +34,13 @@ class _ChatListState extends State<ChatList> {
           ),
           child: Column(
             children: [
-             AppBar(
+              AppBar(
                 title: Row(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     Icon(Icons.wechat, size: 30, color: Color(0xFF545454)),
-                    Image.asset('assets/images/chat3.png', height: 60, width: 60),
+                    Image.asset('assets/images/chat3.png',
+                        height: 60, width: 60),
                   ],
                 ),
                 backgroundColor: Colors.transparent,
@@ -59,9 +59,9 @@ class _ChatListState extends State<ChatList> {
                 ],
               ),
               Container(
-                height: 50, 
-                color: Colors.yellow, 
-                child: Center(child: Text('廣告')), 
+                height: 50,
+                color: Colors.yellow,
+                child: Center(child: Text('廣告')),
               ),
               Expanded(
                 child: ListView.builder(

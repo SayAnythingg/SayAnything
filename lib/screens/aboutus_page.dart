@@ -22,7 +22,7 @@ class Aboutus extends StatelessWidget {
             AppBar(
               title: Text('About Us'),
               backgroundColor: Colors.transparent,
-              elevation: 0, 
+              elevation: 0,
               automaticallyImplyLeading: false,
               leading: IconButton(
                 icon: Icon(Icons.arrow_back),
@@ -37,22 +37,29 @@ class Aboutus extends StatelessWidget {
                 children: [
                   ListTile(
                     title: Text('Origin👍', textAlign: TextAlign.center),
-                    subtitle: Text('Our history...', textAlign: TextAlign.center),
+                    subtitle:
+                        Text('Our history...', textAlign: TextAlign.center),
                   ),
                   ListTile(
                     title: Text('Professor👨‍🏫', textAlign: TextAlign.center),
                   ),
-                  buildCard(context, 'assets/images/ting.png', '李文廷', 'wtlee@mail.nknu.edu.tw', ''),
+                  buildCard(context, 'assets/images/ting.png', '李文廷',
+                      'wtlee@mail.nknu.edu.tw', ''),
                   ListTile(
-                    title: Text('Developer👨‍🎓👩‍🎓👨‍🏫', textAlign: TextAlign.center),
+                    title: Text('Developer👨‍🎓👩‍🎓👨‍🏫',
+                        textAlign: TextAlign.center),
                   ),
-                  buildCard(context, 'assets/images/chung.jpeg', '鍾弘浩', 'chunghao777@gmail.com', 'Mobile Developer'),
-                  buildCard(context, 'assets/images/T.png', '談宇容', 'sylvia15334@gmail.com', 'Backend Developer'),
-                  buildCard(context, 'assets/images/george.png', '林鈺佑', 'george920102@gmail.com', 'Backend Developer'),
+                  buildCard(context, 'assets/images/chung.jpeg', '鍾弘浩',
+                      'chunghao777@gmail.com', 'Mobile Developer'),
+                  buildCard(context, 'assets/images/T.png', '談宇容',
+                      'sylvia15334@gmail.com', 'Backend Developer'),
+                  buildCard(context, 'assets/images/george.png', '林鈺佑',
+                      'george920102@gmail.com', 'Backend Developer'),
                   ListTile(
                     title: Text('特別感謝', textAlign: TextAlign.center),
                   ),
-                  buildCard(context, 'https://example.com/image5.jpg', '友情協助成員', '@gmail.com', ''),
+                  buildCard(context, 'https://example.com/image5.jpg', '友情協助成員',
+                      '@gmail.com', ''),
                   ListTile(
                     title: Text('問題回報', textAlign: TextAlign.center),
                   ),
@@ -71,7 +78,8 @@ class Aboutus extends StatelessWidget {
                               controller: _subjectController,
                               decoration: InputDecoration(
                                 labelText: 'Subject',
-                                focusColor: Color(0xFF7EC4CF), // Set the focus color here
+                                focusColor: Color(
+                                    0xFF7EC4CF), // Set the focus color here
                               ),
                               validator: (value) {
                                 if (value == null || value.isEmpty) {
@@ -84,7 +92,8 @@ class Aboutus extends StatelessWidget {
                               controller: _bodyController,
                               decoration: InputDecoration(
                                 labelText: 'Body',
-                                focusColor: Color(0xFF7EC4CF), // Set the focus color here
+                                focusColor: Color(
+                                    0xFF7EC4CF), // Set the focus color here
                               ),
                               validator: (value) {
                                 if (value == null || value.isEmpty) {
@@ -95,13 +104,16 @@ class Aboutus extends StatelessWidget {
                             ),
                             ElevatedButton(
                               onPressed: () {
-                                if (_formKey.currentState != null && _formKey.currentState!.validate()) {
+                                if (_formKey.currentState != null &&
+                                    _formKey.currentState!.validate()) {
                                   sendEmail(context, 'Subject', 'Body');
                                 }
                               },
                               child: Text('Submit'),
                               style: ButtonStyle(
-                                backgroundColor: MaterialStateProperty.all<Color>(Color(0xFF7EC4CF)), // Set the button color here
+                                backgroundColor:
+                                    MaterialStateProperty.all<Color>(Color(
+                                        0xFF7EC4CF)), // Set the button color here
                               ),
                             ),
                           ],
@@ -118,11 +130,12 @@ class Aboutus extends StatelessWidget {
     );
   }
 
-  Widget buildCard(BuildContext context, String imageUrl, String title, String email, String body) {
+  Widget buildCard(BuildContext context, String imageUrl, String title,
+      String email, String body) {
     return Card(
       margin: const EdgeInsets.symmetric(vertical: 8.0),
       child: Container(
-        width: MediaQuery.of(context).size.width * 0.8, 
+        width: MediaQuery.of(context).size.width * 0.8,
         child: Padding(
           padding: const EdgeInsets.all(16.0),
           child: Column(
@@ -133,7 +146,7 @@ class Aboutus extends StatelessWidget {
               ),
               SizedBox(height: 16.0),
               Padding(
-                padding: const EdgeInsets.symmetric(vertical: 8.0), 
+                padding: const EdgeInsets.symmetric(vertical: 8.0),
                 child: Text(title, textAlign: TextAlign.center),
               ),
               Text(' $email', textAlign: TextAlign.center),
@@ -146,22 +159,22 @@ class Aboutus extends StatelessWidget {
   }
 
   void sendEmail(BuildContext context, String subject, String body) async {
-  final String email = 'chunghao777@gmail.com';
-  final Uri params = Uri(
-    scheme: 'mailto',
-    path: email,
-    query: 'subject=$subject&body=$body',
-  );
-
-  String url = params.toString();
-  if (await canLaunch(url)) {
-    await launch(url);
-  } else {
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
-        content: Text('Could not launch $url. Please install a mail app.'),
-      ),
+    final String email = 'chunghao777@gmail.com';
+    final Uri params = Uri(
+      scheme: 'mailto',
+      path: email,
+      query: 'subject=$subject&body=$body',
     );
+
+    String url = params.toString();
+    if (await canLaunch(url)) {
+      await launch(url);
+    } else {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text('Could not launch $url. Please install a mail app.'),
+        ),
+      );
+    }
   }
-}
 }

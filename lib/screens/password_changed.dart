@@ -48,7 +48,6 @@ class _PasswordChangesPageState extends State<PasswordChangesPage> {
                   GoRouter.of(context).pushReplacement(Routers.loginpage.name);
                 },
                 color: Color(0xFF7EC4CF),
-                
               ),
             ),
           ],

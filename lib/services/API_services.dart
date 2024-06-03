@@ -3,9 +3,10 @@ import 'package:http/http.dart' as http;
 import 'package:SayAnything/services/Model.dart';
 
 class SignupApiService {
-  Future<void> registerUser(String username, String email, String password, String gender) async {  
+  Future<void> registerUser(
+      String username, String email, String password, String gender) async {
     final response = await http.post(
-      Uri.parse('https://sayanythingapi.sdpmlab.org/auth/register'), 
+      Uri.parse('https://sayanythingapi.sdpmlab.org/auth/register'),
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',
       },
@@ -13,7 +14,7 @@ class SignupApiService {
         'username': username,
         'email': email,
         'password': password,
-        'gender': gender,  
+        'gender': gender,
       }),
     );
 
@@ -27,7 +28,7 @@ class SignupApiService {
 
 class LoginApiService {
   Future<User> login(String email, String password) async {
-    var url = Uri.parse('https://sayanythingapi.sdpmlab.org/auth/login'); 
+    var url = Uri.parse('https://sayanythingapi.sdpmlab.org/auth/login');
 
     var response = await http.post(
       url,
@@ -40,61 +41,62 @@ class LoginApiService {
       }),
     );
 
- if (response.statusCode == 200) {
-  var jsonResponse = jsonDecode(response.body);
-  print('Server response: ${response.body}');
-  User user = User.fromJson(jsonResponse);
-  return user;
-} else {
-  throw Exception('Failed to log in');
-}
+    if (response.statusCode == 200) {
+      var jsonResponse = jsonDecode(response.body);
+      print('Server response: ${response.body}');
+      User user = User.fromJson(jsonResponse);
+      return user;
+    } else {
+      throw Exception('Failed to log in');
+    }
   }
 }
 
 class MatchApiService {
-
   Future<void> requestMatch(String userId) async {
-  var url = Uri.parse('https://80f8bfb1-1d54-4368-a44a-061504fc0b84.mock.pstmn.io/match'); // add flask api.
+    var url = Uri.parse(
+        'https://80f8bfb1-1d54-4368-a44a-061504fc0b84.mock.pstmn.io/match'); // add flask api.
 
-  var response = await http.post(
-    url,
-    headers: <String, String>{
-      'Content-Type': 'application/json; charset=UTF-8',
-    },
-  );
+    var response = await http.post(
+      url,
+      headers: <String, String>{
+        'Content-Type': 'application/json; charset=UTF-8',
+      },
+    );
 
-  if (response.statusCode == 200) {
-    print('${response.body}');
-  } else {
-    throw Exception('Failed to fetch match data');
-  }
+    if (response.statusCode == 200) {
+      print('${response.body}');
+    } else {
+      throw Exception('Failed to fetch match data');
+    }
   }
 
   Future<void> cancelMatch(String userId) async {
-  var url = Uri.parse('https://80f8bfb1-1d54-4368-a44a-061504fc0b84.mock.pstmn.io/match'); // add flask api.
+    var url = Uri.parse(
+        'https://80f8bfb1-1d54-4368-a44a-061504fc0b84.mock.pstmn.io/match'); // add flask api.
 
-  var response = await http.delete(
-    url,
-    headers: <String, String>{
-      'Content-Type': 'application/json; charset=UTF-8',
-    },
-    body: jsonEncode(<String, String>{
-      'userId': userId,
-    }),
-  );
+    var response = await http.delete(
+      url,
+      headers: <String, String>{
+        'Content-Type': 'application/json; charset=UTF-8',
+      },
+      body: jsonEncode(<String, String>{
+        'userId': userId,
+      }),
+    );
 
-  if (response.statusCode == 200) {
-    print('Match canceled successfully');
-  } else {
-    throw Exception('Failed to cancel match');
+    if (response.statusCode == 200) {
+      print('Match canceled successfully');
+    } else {
+      throw Exception('Failed to cancel match');
+    }
   }
-}
 }
 
 class ForgetPasswordApiService {
   Future<void> resetPassword(String email) async {
     final response = await http.post(
-      Uri.parse('https://sayanythingapi.sdpmlab.org/auth/forgetPassword'), 
+      Uri.parse('https://sayanythingapi.sdpmlab.org/auth/forgetPassword'),
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',
       },
@@ -114,7 +116,7 @@ class ForgetPasswordApiService {
 class OtpVerificationApiService {
   Future<int> verifyOtp(String otp) async {
     final response = await http.post(
-      Uri.parse('https://sayanythingapi.sdpmlab.org/auth/verifyOTP'), 
+      Uri.parse('https://sayanythingapi.sdpmlab.org/auth/verifyOTP'),
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',
       },
@@ -136,7 +138,7 @@ class OtpVerificationApiService {
 class PasswordResetApiService {
   Future<int> resetPassword(String newPassword) async {
     final response = await http.post(
-      Uri.parse('https://sayanythingapi.sdpmlab.org/auth/passwordReset'), 
+      Uri.parse('https://sayanythingapi.sdpmlab.org/auth/passwordReset'),
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',
       },
@@ -178,10 +180,10 @@ class NewsApiService {
   }
 }
 
-
 class JokeApi {
   Future<Joke> getJoke(int id) async {
-    final response = await http.get(Uri.parse('https://official-joke-api.appspot.com/random_joke'));
+    final response = await http
+        .get(Uri.parse('https://official-joke-api.appspot.com/random_joke'));
     print('${response.body}');
     if (response.statusCode == 200) {
       return Joke.fromJson(jsonDecode(response.body));

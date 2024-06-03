@@ -82,3 +82,11 @@ flutter pub run flutter_launcher_icons:main
 > 11. https://pub.dev/packages/flutter_launcher_icons
 
 > 12. https://api.flutter.dev/flutter/material/Icons-class.html 
+
+> 13. https://pub.dev/packages/flutter_speed_dial
+
+> 14. https://pub.dev/packages/flutter_tts
+
+> 15. https://pub.dev/packages/speech_to_text
+
+> 16. https://pub.dev/packages/flutter_speed_dial

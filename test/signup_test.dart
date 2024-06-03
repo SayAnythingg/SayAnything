@@ -4,7 +4,8 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
 
 class Api {
-  Future<void> register(String username, String gender, String email, String password) {
+  Future<void> register(
+      String username, String gender, String email, String password) {
     // Implementation goes here
     return Future.value();
   }
@@ -13,8 +14,7 @@ class Api {
 class MockApi extends Mock implements Api {}
 
 void main() {
-  testWidgets('test for register button',
-      (WidgetTester tester) async {
+  testWidgets('test for register button', (WidgetTester tester) async {
     final api = MockApi();
     final emailController = TextEditingController();
     final usernameController = TextEditingController();
@@ -40,7 +40,7 @@ void main() {
                 hinttext: 'Email',
                 obsecuretext: false,
                 controller: emailController,
-                addSuffix: true, 
+                addSuffix: true,
               ),
               CustomTextFormField(
                 hinttext: 'Password',
@@ -48,26 +48,30 @@ void main() {
                 controller: passwordController,
               ),
               ElevatedButton(
-              onPressed: () {
-                api.register(
-                  usernameController.text,
-                  genderController.text,
-                  emailController.text,
-                  passwordController.text,
-                );
-              },
-              child: Text('Register'),
-            ),
+                onPressed: () {
+                  api.register(
+                    usernameController.text,
+                    genderController.text,
+                    emailController.text,
+                    passwordController.text,
+                  );
+                },
+                child: Text('Register'),
+              ),
             ],
           ),
         ),
       ),
     );
 
-    await tester.enterText(find.widgetWithText(TextFormField, 'Username'), 'testuser');
-    await tester.enterText(find.widgetWithText(TextFormField, 'Gender'), 'male');
-    await tester.enterText(find.widgetWithText(TextFormField, 'Email'), '411077033');
-    await tester.enterText(find.widgetWithText(TextFormField, 'Password'), 'password123');
+    await tester.enterText(
+        find.widgetWithText(TextFormField, 'Username'), 'testuser');
+    await tester.enterText(
+        find.widgetWithText(TextFormField, 'Gender'), 'male');
+    await tester.enterText(
+        find.widgetWithText(TextFormField, 'Email'), '411077033');
+    await tester.enterText(
+        find.widgetWithText(TextFormField, 'Password'), 'password123');
     await tester.pump();
 
     expect(emailController.text, '411077033@mail.nknu.edu.tw');

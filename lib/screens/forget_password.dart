@@ -17,7 +17,6 @@ class ForgetPasswordPage extends StatefulWidget {
 }
 
 class _ForgetPasswordPageState extends State<ForgetPasswordPage> {
-
   final _emailController = TextEditingController();
   final _forgetPasswordApiService = ForgetPasswordApiService();
 
@@ -69,7 +68,7 @@ class _ForgetPasswordPageState extends State<ForgetPasswordPage> {
                 child: Form(
                   child: Column(
                     children: [
-                       FadeInAnimation(
+                      FadeInAnimation(
                         delay: 1.9,
                         child: CustomTextFormField(
                           controller: _emailController,
@@ -86,11 +85,12 @@ class _ForgetPasswordPageState extends State<ForgetPasswordPage> {
                           message: "Send Code ",
                           function: () async {
                             try {
-                              await _forgetPasswordApiService.resetPassword(_emailController.text);
-                              GoRouter.of(context).pushNamed(Routers.otpverification.name);
+                              await _forgetPasswordApiService
+                                  .resetPassword(_emailController.text);
+                              GoRouter.of(context)
+                                  .pushNamed(Routers.otpverification.name);
                             } catch (e) {
                               print(e);
-                              
                             }
                           },
                           color: Color(0xFF7EC4CF),

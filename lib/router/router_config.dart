@@ -59,5 +59,4 @@ final router = GoRouter(routes: [
       return const CupertinoPage(child: PasswordChangesPage());
     },
   ),
-   
 ]);

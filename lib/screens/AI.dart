@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:SayAnything/services/API_services.dart';
+import 'package:google_generative_ai/google_generative_ai.dart';
+import 'package:flutter_tts/flutter_tts.dart';
+import 'package:flutter_speed_dial/flutter_speed_dial.dart';
+import 'package:translator/translator.dart';
 
 final JokeApiService = JokeApi();
 
@@ -9,6 +13,32 @@ class multimedia extends StatefulWidget {
 }
 
 class _AIState extends State<multimedia> {
+  String aiResponse = '';
+  String userMessage = '';
+  final TextEditingController _controller = TextEditingController();
+  final FlutterTts flutterTts = FlutterTts();
+  final translator = GoogleTranslator();
+
+  Future<void> getAIResponse() async {
+    final apiKey = 'AIzaSyCu_nh_v-8fJn_f6UtoKtkVdMXaFK9iVdQ';
+    final model = GenerativeModel(
+        model: 'gemini-1.5-flash',
+        apiKey: apiKey,
+        generationConfig: GenerationConfig(maxOutputTokens: 100));
+    final chat = model.startChat(history: [
+      Content.text('Hello, I am a student'),
+      Content.model([TextPart('')])
+    ]);
+    var content = Content.text(userMessage);
+    var response = await chat.sendMessage(content);
+    setState(() {
+      aiResponse = response.text!;
+    });
+    _controller.clear();
+
+    await flutterTts.speak(aiResponse);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -18,29 +48,34 @@ class _AIState extends State<multimedia> {
           children: [
             Icon(Icons.psychology_rounded, size: 30, color: Color(0xFF545454)),
             SizedBox(width: 4),
-            Image.asset('assets/images/MultiMedia3.png', height: 135, width: 135),
+            Image.asset('assets/images/MultiMedia3.png',
+                height: 135, width: 135),
           ],
         ),
         automaticallyImplyLeading: false,
         backgroundColor: Color(0xFFDECFE2),
         elevation: 0,
-        actions: <Widget>[ 
-         IconButton(
-            icon: Icon(Icons.smart_toy_outlined, color: Color(0xFF545454),),
+        actions: <Widget>[
+          IconButton(
+            icon: Icon(
+              Icons.smart_toy_outlined,
+              color: Color(0xFF545454),
+            ),
             onPressed: () async {
-              final joke = await JokeApiService.getJoke(1); 
+              final joke = await JokeApiService.getJoke(1);
               showDialog(
                 context: context,
                 builder: (BuildContext context) {
                   return AlertDialog(
                     shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.all(Radius.circular(32.0))),
+                        borderRadius: BorderRadius.all(Radius.circular(32.0))),
                     content: Stack(
                       children: <Widget>[
                         Positioned(
                           top: 0,
                           left: 0,
-                          child: Image.asset('assets/images/logo.png', width: 50.0, height: 50.0),
+                          child: Image.asset('assets/images/logo.png',
+                              width: 50.0, height: 50.0),
                         ),
                         Column(
                           mainAxisSize: MainAxisSize.min,
@@ -48,7 +83,8 @@ class _AIState extends State<multimedia> {
                             SizedBox(height: 60),
                             Text(
                               joke.setup,
-                              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                              style: TextStyle(
+                                  fontSize: 18, fontWeight: FontWeight.bold),
                             ),
                             SizedBox(height: 20),
                             Text(
@@ -66,15 +102,11 @@ class _AIState extends State<multimedia> {
           ),
           IconButton(
             icon: Icon(Icons.api),
-            onPressed: () {
-             
-            },
+            onPressed: () {},
           ),
           IconButton(
             icon: Icon(Icons.api),
-            onPressed: () {
-              
-            },
+            onPressed: () {},
           ),
         ],
       ),
@@ -92,23 +124,194 @@ class _AIState extends State<multimedia> {
           SafeArea(
             child: Padding(
               padding: EdgeInsets.all(10.0),
-              child: Container(
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(20),
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.grey.withOpacity(0.5),
-                      spreadRadius: 5,
-                      blurRadius: 7,
-                      offset: Offset(0, 3), 
+              child: Column(
+                children: [
+                  Expanded(
+                    flex: 2,
+                    child: Container(
+                      padding: EdgeInsets.all(3),
+                      decoration: BoxDecoration(
+                        gradient: LinearGradient(
+                          begin: Alignment.topLeft,
+                          end: Alignment.bottomRight,
+                          colors: [Colors.grey[400]!, Colors.grey[500]!],
+                        ),
+                        borderRadius: BorderRadius.circular(20),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.grey.withOpacity(0.5),
+                            spreadRadius: 1,
+                            blurRadius: 7,
+                            offset: Offset(0, 3),
+                          ),
+                        ],
+                      ),
+                      child: Container(
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(20),
+                        ),
+                        child: Center(
+                          child: SingleChildScrollView(
+                            child: Text(aiResponse),
+                          ),
+                        ),
+                      ),
                     ),
-                  ],
-                ),
+                  ),
+                  SizedBox(height: 10),
+                  Expanded(
+                    flex: 2,
+                    child: Container(
+                      padding: EdgeInsets.all(3),
+                      decoration: BoxDecoration(
+                        gradient: LinearGradient(
+                          begin: Alignment.topLeft,
+                          end: Alignment.bottomRight,
+                          colors: [Colors.grey[400]!, Colors.grey[500]!],
+                        ),
+                        borderRadius: BorderRadius.circular(20),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.grey.withOpacity(0.5),
+                            spreadRadius: 1,
+                            blurRadius: 7,
+                            offset: Offset(0, 3),
+                          ),
+                        ],
+                      ),
+                      child: Container(
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(20),
+                        ),
+                        child: Center(),
+                      ),
+                    ),
+                  ),
+                  SizedBox(height: 10),
+                  Row(
+                    children: [
+                      Expanded(
+                        flex: 2,
+                        child: TextField(
+                          controller: _controller,
+                          onChanged: (value) {
+                            userMessage = value;
+                          },
+                          decoration: InputDecoration(
+                            contentPadding:
+                                EdgeInsets.fromLTRB(20.0, 10.0, 10.0, 10.0),
+                            hintText: 'Enter your message',
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(10.0),
+                            ),
+                            filled: true,
+                            fillColor: Colors.grey[100],
+                          ),
+                        ),
+                      ),
+                      SizedBox(width: 10),
+                      ElevatedButton(
+                        onPressed: getAIResponse,
+                        child: Text('Send'),
+                        style: ElevatedButton.styleFrom(
+                          foregroundColor: Colors.white,
+                          backgroundColor: Color.fromARGB(255, 166, 210, 246),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(10.0),
+                          ),
+                          padding: EdgeInsets.symmetric(
+                              horizontal: 20, vertical: 12),
+                        ),
+                      ),
+                    ],
+                  ),
+                  SizedBox(height: 10),
+                ],
               ),
             ),
-          ),
+          )
         ],
+      ),
+      floatingActionButton: Padding(
+        padding: EdgeInsets.only(bottom: 140.0),
+        child: SpeedDial(
+          backgroundColor: Color(0xFF7EC4CF),
+          animatedIcon: AnimatedIcons.menu_close,
+          children: [
+            SpeedDialChild(
+              child: Icon(Icons.person),
+              label: 'AI girlfriend',
+              onTap: () {
+                setState(() {
+                  aiResponse = 'You selected AI girlfriend';
+                });
+              },
+            ),
+            SpeedDialChild(
+              child: Icon(Icons.person),
+              label: 'AI boyfriend',
+              onTap: () {
+                setState(() {
+                  aiResponse = 'You selected AI boyfriend';
+                });
+              },
+            ),
+            SpeedDialChild(
+              child: Icon(Icons.school),
+              label: 'English teacher',
+              onTap: () async {
+                flutterTts.setLanguage('en-US');
+                if (userMessage.endsWith('給我英文')) {
+                  String messageToTranslate = userMessage
+                      .substring(0, userMessage.length - '給我英文'.length)
+                      .trim();
+                  final translation =
+                      await translator.translate(messageToTranslate, to: 'en');
+                  await flutterTts.speak(translation.text);
+                  setState(() {
+                    aiResponse =
+                        'You selected English teacher. Translation: ${translation.text}';
+                  });
+                } else {
+                  await flutterTts.speak(
+                      'This is English mode, mainly for English practice and guidance, you can also tell me Chinese, I can translate it to English for you');
+                  setState(() {
+                    aiResponse =
+                        'You selected English teacher. Translation: ${aiResponse}';
+                  });
+                }
+              },
+            ),
+            SpeedDialChild(
+              child: Icon(Icons.school),
+              label: 'Chinese teacher',
+              onTap: () async {
+                flutterTts.setLanguage('zh-CN');
+                if (userMessage.endsWith('請幫我翻譯成中文')) {
+                  String messageToTranslate = userMessage
+                      .substring(0, userMessage.length - '請幫我翻譯成中文'.length)
+                      .trim();
+                  final translation = await translator
+                      .translate(messageToTranslate, to: 'zh-TW');
+                  await flutterTts.speak(translation.text);
+                  setState(() {
+                    aiResponse =
+                        'You selected Chinese teacher. Translation: ${translation.text}';
+                  });
+                } else {
+                  await flutterTts
+                      .speak('這是中文模式, 主要給予中文的練習和指導, 你也可以告訴我英文,我可以翻譯給你中文');
+                  setState(() {
+                    aiResponse =
+                        'You selected Chinese teacher. Translation: ${aiResponse}';
+                  });
+                }
+              },
+            ),
+          ],
+        ),
       ),
     );
   }

@@ -35,7 +35,8 @@ class ChatListItem extends StatelessWidget {
               onTap: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => ChatPage(chatRoomName: chatRoom)),
+                  MaterialPageRoute(
+                      builder: (context) => ChatPage(chatRoomName: chatRoom)),
                 );
               },
             ),
