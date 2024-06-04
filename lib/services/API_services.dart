@@ -170,7 +170,6 @@ class NewsApiService {
     print('Response body: ${response.body}');
 
     if (response.statusCode == 200) {
-      print('News fetched successfully');
       List jsonResponse = json.decode(response.body)['datas'];
       return jsonResponse.map((item) => News.fromJson(item)).toList();
     } else {
