@@ -55,13 +55,16 @@ class LoginApiService {
 class MatchApiService {
   Future<void> requestMatch(String userId) async {
     var url = Uri.parse(
-        'https://80f8bfb1-1d54-4368-a44a-061504fc0b84.mock.pstmn.io/match'); 
+        'https://sayanythingapi.sdpmlab.org/match'); 
 
     var response = await http.post(
       url,
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',
       },
+      body: jsonEncode(<String, String>{
+        'userId': userId,
+      }),
     );
 
     if (response.statusCode == 200) {
@@ -73,7 +76,7 @@ class MatchApiService {
 
   Future<void> cancelMatch(String userId) async {
     var url = Uri.parse(
-        'https://80f8bfb1-1d54-4368-a44a-061504fc0b84.mock.pstmn.io/match'); 
+        'https://sayanythingapi.sdpmlab.org/match'); 
 
     var response = await http.delete(
       url,
