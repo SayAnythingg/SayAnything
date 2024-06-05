@@ -24,7 +24,7 @@ class _AIState extends State<multimedia> {
     final model = GenerativeModel(
         model: 'gemini-1.5-flash',
         apiKey: apiKey,
-        generationConfig: GenerationConfig(maxOutputTokens: 100));
+        generationConfig: GenerationConfig(maxOutputTokens: 500));
     final chat = model.startChat(history: [
       Content.text('Hello, I am a student'),
       Content.model([TextPart('')])
