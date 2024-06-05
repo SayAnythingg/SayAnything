@@ -55,7 +55,7 @@ class LoginApiService {
 class MatchApiService {
   Future<void> requestMatch(String userId) async {
     var url = Uri.parse(
-        'https://sayanythingapi.sdpmlab.org/match'); 
+        'https://sayanythingapi.sdpmlab.org/match/'); 
 
     var response = await http.post(
       url,
@@ -76,7 +76,7 @@ class MatchApiService {
 
   Future<void> cancelMatch(String userId) async {
     var url = Uri.parse(
-        'https://sayanythingapi.sdpmlab.org/match'); 
+        'https://sayanythingapi.sdpmlab.org/match/'); 
 
     var response = await http.delete(
       url,
