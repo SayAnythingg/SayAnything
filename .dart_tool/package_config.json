@@ -579,9 +579,9 @@
     },
     {
       "name": "js",
-      "rootUri": "file:///Users/zhonghonghao/.pub-cache/hosted/pub.dev/js-0.6.7",
+      "rootUri": "file:///Users/zhonghonghao/.pub-cache/hosted/pub.dev/js-0.7.1",
       "packageUri": "lib/",
-      "languageVersion": "2.19"
+      "languageVersion": "3.1"
     },
     {
       "name": "json_annotation",
@@ -633,7 +633,7 @@
     },
     {
       "name": "lottie",
-      "rootUri": "file:///Users/zhonghonghao/.pub-cache/hosted/pub.dev/lottie-3.0.0",
+      "rootUri": "file:///Users/zhonghonghao/.pub-cache/hosted/pub.dev/lottie-3.1.2",
       "packageUri": "lib/",
       "languageVersion": "3.2"
     },
@@ -741,15 +741,39 @@
     },
     {
       "name": "permission_handler",
-      "rootUri": "file:///Users/zhonghonghao/.pub-cache/hosted/pub.dev/permission_handler-8.3.0",
+      "rootUri": "file:///Users/zhonghonghao/.pub-cache/hosted/pub.dev/permission_handler-11.3.1",
       "packageUri": "lib/",
-      "languageVersion": "2.12"
+      "languageVersion": "2.15"
+    },
+    {
+      "name": "permission_handler_android",
+      "rootUri": "file:///Users/zhonghonghao/.pub-cache/hosted/pub.dev/permission_handler_android-12.0.6",
+      "packageUri": "lib/",
+      "languageVersion": "2.15"
+    },
+    {
+      "name": "permission_handler_apple",
+      "rootUri": "file:///Users/zhonghonghao/.pub-cache/hosted/pub.dev/permission_handler_apple-9.4.5",
+      "packageUri": "lib/",
+      "languageVersion": "2.15"
+    },
+    {
+      "name": "permission_handler_html",
+      "rootUri": "file:///Users/zhonghonghao/.pub-cache/hosted/pub.dev/permission_handler_html-0.1.1",
+      "packageUri": "lib/",
+      "languageVersion": "3.0"
     },
     {
       "name": "permission_handler_platform_interface",
-      "rootUri": "file:///Users/zhonghonghao/.pub-cache/hosted/pub.dev/permission_handler_platform_interface-3.12.0",
+      "rootUri": "file:///Users/zhonghonghao/.pub-cache/hosted/pub.dev/permission_handler_platform_interface-4.2.1",
       "packageUri": "lib/",
       "languageVersion": "2.14"
+    },
+    {
+      "name": "permission_handler_windows",
+      "rootUri": "file:///Users/zhonghonghao/.pub-cache/hosted/pub.dev/permission_handler_windows-0.2.1",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
     },
     {
       "name": "petitparser",
@@ -796,6 +820,12 @@
     {
       "name": "pub_semver",
       "rootUri": "file:///Users/zhonghonghao/.pub-cache/hosted/pub.dev/pub_semver-2.1.4",
+      "packageUri": "lib/",
+      "languageVersion": "2.17"
+    },
+    {
+      "name": "quickalert",
+      "rootUri": "file:///Users/zhonghonghao/.pub-cache/hosted/pub.dev/quickalert-1.1.0",
       "packageUri": "lib/",
       "languageVersion": "2.17"
     },
@@ -891,7 +921,7 @@
     },
     {
       "name": "speech_to_text",
-      "rootUri": "file:///Users/zhonghonghao/.pub-cache/hosted/pub.dev/speech_to_text-6.6.0",
+      "rootUri": "file:///Users/zhonghonghao/.pub-cache/hosted/pub.dev/speech_to_text-6.6.2",
       "packageUri": "lib/",
       "languageVersion": "3.0"
     },
@@ -1112,7 +1142,7 @@
       "languageVersion": "3.2"
     }
   ],
-  "generated": "2024-06-03T14:46:44.682124Z",
+  "generated": "2024-06-06T17:35:36.143494Z",
   "generator": "pub",
   "generatorVersion": "3.3.1"
 }

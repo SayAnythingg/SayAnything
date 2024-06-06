@@ -2,6 +2,12 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:SayAnything/services/Model.dart';
 
+class LoginException implements Exception {
+  final String message;
+
+  LoginException(this.message);
+}
+
 class SignupApiService {
   Future<void> registerUser(
       String username, String email, String password, String gender) async {
@@ -21,7 +27,8 @@ class SignupApiService {
     if (response.statusCode == 200) {
       print('User registered successfully');
     } else {
-      throw Exception('Failed to register user');
+      throw Exception(
+          'Failed to registered with status code ${response.statusCode} and response body ${response.body}');
     }
   }
 }
@@ -43,19 +50,18 @@ class LoginApiService {
 
     if (response.statusCode == 200) {
       var jsonResponse = jsonDecode(response.body);
-      print('${response.body}');
       User user = User.fromJson(jsonResponse);
       return user;
     } else {
-      throw Exception('Failed to log in');
+      var jsonResponse = jsonDecode(response.body);
+      throw LoginException(jsonResponse['Message']);
     }
   }
 }
 
 class MatchApiService {
-  Future<void> requestMatch(String userId) async {
-    var url = Uri.parse(
-        'https://sayanythingapi.sdpmlab.org/match/'); 
+  Future<Map<String, dynamic>> requestMatch(String userId) async {
+    var url = Uri.parse('https://sayanythingapi.sdpmlab.org/match/');
 
     var response = await http.post(
       url,
@@ -68,15 +74,14 @@ class MatchApiService {
     );
 
     if (response.statusCode == 200) {
-      print('${response.body}');
+      return jsonDecode(response.body);
     } else {
       throw Exception('Failed to fetch match data');
     }
   }
 
   Future<void> cancelMatch(String userId) async {
-    var url = Uri.parse(
-        'https://sayanythingapi.sdpmlab.org/match/'); 
+    var url = Uri.parse('https://sayanythingapi.sdpmlab.org/match/');
 
     var response = await http.delete(
       url,

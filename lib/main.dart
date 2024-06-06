@@ -20,7 +20,7 @@ class MyApp extends StatelessWidget {
         primaryColor: Color(0xFF35C2C1),
         backgroundColor: Colors.white,
       ),
-      themeMode: ThemeMode.system,
+      themeMode: ThemeMode.light,
       darkTheme: ThemeData.dark(useMaterial3: true),
       debugShowCheckedModeBanner: false,
       routeInformationParser: router.routeInformationParser,

@@ -8,7 +8,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
-
+import 'package:quickalert/quickalert.dart';
 import 'package:SayAnything/services/API_services.dart';
 
 final apiService = LoginApiService();
@@ -44,11 +44,37 @@ class _LoginPageState extends State<LoginPage> {
         ),
       );
     } catch (e) {
-      print('Failed to log in $e');
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text('Failed to log in: $e'),
-        ),
+      String errorMessage;
+      QuickAlertType alertType;
+      if (e is LoginException) {
+        switch (e.message) {
+          case 'Login Failed, Please Check.':
+            errorMessage = 'Incorrect password entered';
+            alertType = QuickAlertType.error;
+            break;
+          case 'Account not confirmed. Please check your email.':
+            errorMessage = 'Email not confirmed';
+            alertType = QuickAlertType.warning;
+            break;
+          case 'User not exists. Please sign up first.':
+            errorMessage = 'This user does not exist';
+            alertType = QuickAlertType.warning;
+            break;
+          default:
+            errorMessage = 'Failed';
+            alertType = QuickAlertType.error;
+            break;
+        }
+      } else {
+        errorMessage =
+            'The server is under maintenance, engineers are working hard to improve user quality';
+        alertType = QuickAlertType.info;
+      }
+      QuickAlert.show(
+        context: context,
+        type: alertType,
+        title: 'Oops...',
+        text: errorMessage,
       );
     }
   }

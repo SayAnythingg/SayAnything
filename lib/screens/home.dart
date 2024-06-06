@@ -130,27 +130,34 @@ class HomePage extends StatelessWidget {
                       },
                     );
 
-                    await matchApiService.requestMatch(user.userId);
+                    Map<String, dynamic> response =
+                        await matchApiService.requestMatch(user.userId);
 
-                    Navigator.pop(context);
-
-                    showDialog(
-                      context: context,
-                      builder: (BuildContext context) {
-                        return AlertDialog(
-                          title: Text('Success'),
-                          content: Text('Successfully matched!'),
-                          actions: <Widget>[
-                            TextButton(
-                              child: Text('OK'),
-                              onPressed: () {
-                                Navigator.of(context).pop();
-                              },
-                            ),
-                          ],
-                        );
-                      },
-                    );
+                    String message = response['Message'];
+                    if (message.contains('deleted')) {
+                      print('deleted');
+                    } else if (message.contains('matched')) {
+                      Navigator.pop(context);
+                      showDialog(
+                        context: context,
+                        builder: (BuildContext context) {
+                          return AlertDialog(
+                            title: Text('Success'),
+                            content: Text('Successfully matched!'),
+                            actions: <Widget>[
+                              TextButton(
+                                child: Text('OK'),
+                                onPressed: () {
+                                  Navigator.of(context).pop();
+                                },
+                              ),
+                            ],
+                          );
+                        },
+                      );
+                    } else if (message.contains('waiting')) {
+                      print('waitung');
+                    }
                   },
                   child: Icon(Icons.navigation),
                   backgroundColor: Color.fromARGB(255, 244, 246, 247),

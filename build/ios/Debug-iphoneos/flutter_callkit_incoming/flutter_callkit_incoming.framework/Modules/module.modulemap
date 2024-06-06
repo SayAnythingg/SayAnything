@@ -1,0 +1,11 @@
+framework module flutter_callkit_incoming {
+  umbrella header "flutter_callkit_incoming-umbrella.h"
+
+  export *
+  module * { export * }
+}
+
+module flutter_callkit_incoming.Swift {
+  header "flutter_callkit_incoming-Swift.h"
+  requires objc
+}

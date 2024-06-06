@@ -4,6 +4,7 @@ import 'package:google_generative_ai/google_generative_ai.dart';
 import 'package:flutter_tts/flutter_tts.dart';
 import 'package:flutter_speed_dial/flutter_speed_dial.dart';
 import 'package:translator/translator.dart';
+import 'package:speech_to_text/speech_to_text.dart';
 
 final JokeApiService = JokeApi();
 
@@ -18,13 +19,35 @@ class _AIState extends State<multimedia> {
   final TextEditingController _controller = TextEditingController();
   final FlutterTts flutterTts = FlutterTts();
   final translator = GoogleTranslator();
+  final SpeechToText speech = SpeechToText();
+
+  Future<void> startListening() async {
+    bool available = await speech.initialize(
+      onStatus: (status) => print('$status'),
+      onError: (error) => print('$error'),
+    );
+    if (available) {
+      speech.listen(
+        onResult: (result) {
+          setState(() {
+            userMessage = result.recognizedWords;
+          });
+          if (result.finalResult) {
+            getAIResponse();
+          }
+        },
+      );
+    } else {
+      print("The user has denied the use of speech recognition.");
+    }
+  }
 
   Future<void> getAIResponse() async {
     final apiKey = 'AIzaSyCu_nh_v-8fJn_f6UtoKtkVdMXaFK9iVdQ';
     final model = GenerativeModel(
         model: 'gemini-1.5-flash',
         apiKey: apiKey,
-        generationConfig: GenerationConfig(maxOutputTokens: 500));
+        generationConfig: GenerationConfig(maxOutputTokens: 150));
     final chat = model.startChat(history: [
       Content.text('Hello, I am a student'),
       Content.model([TextPart('')])
@@ -205,9 +228,12 @@ class _AIState extends State<multimedia> {
                             hintText: 'Enter your message',
                             border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(10.0),
+                              borderSide:
+                                  BorderSide(color: Colors.blue, width: 2.0),
                             ),
                             filled: true,
-                            fillColor: Colors.grey[100],
+                            fillColor: Colors.grey[200],
+                            prefixIcon: Icon(Icons.message, color: Colors.blue),
                           ),
                         ),
                       ),
@@ -223,6 +249,24 @@ class _AIState extends State<multimedia> {
                           ),
                           padding: EdgeInsets.symmetric(
                               horizontal: 20, vertical: 12),
+                        ),
+                      ),
+                      SizedBox(width: 10),
+                      GestureDetector(
+                        onLongPressStart: (details) => startListening(),
+                        onLongPressEnd: (details) => speech.stop(),
+                        child: ElevatedButton(
+                          onPressed: null,
+                          child: Text('Speak'),
+                          style: ElevatedButton.styleFrom(
+                            foregroundColor: Colors.white,
+                            backgroundColor: Color.fromARGB(255, 166, 210, 246),
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(10.0),
+                            ),
+                            padding: EdgeInsets.symmetric(
+                                horizontal: 20, vertical: 12),
+                          ),
                         ),
                       ),
                     ],

@@ -1,0 +1,25 @@
+---
+triple:          'arm64-apple-darwin'
+binary-path:     '/Users/zhonghonghao/SayAnything/build/ios/Release-iphoneos/smart_auth/smart_auth.framework/smart_auth'
+relocations:
+  - { offsetInCU: 0x34, offset: 0x5B14A, size: 0x8, addend: 0x0, symName: _smart_authVersionString, symObjAddr: 0x0, symBinAddr: 0x4800, symSize: 0x0 }
+  - { offsetInCU: 0x69, offset: 0x5B17F, size: 0x8, addend: 0x0, symName: _smart_authVersionNumber, symObjAddr: 0x28, symBinAddr: 0x4828, symSize: 0x0 }
+  - { offsetInCU: 0x27, offset: 0x5B1BC, size: 0x8, addend: 0x0, symName: '+[SmartAuthPlugin registerWithRegistrar:]', symObjAddr: 0x0, symBinAddr: 0x4000, symSize: 0xC }
+  - { offsetInCU: 0x91, offset: 0x5B226, size: 0x8, addend: 0x0, symName: '+[SmartAuthPlugin registerWithRegistrar:]', symObjAddr: 0x0, symBinAddr: 0x4000, symSize: 0xC }
+  - { offsetInCU: 0x27, offset: 0x5B2BA, size: 0x8, addend: 0x0, symName: '_$s10smart_auth20SwiftSmartAuthPluginC8register4withySo07FlutterF9Registrar_p_tFZ', symObjAddr: 0x0, symBinAddr: 0x400C, symSize: 0xD4 }
+  - { offsetInCU: 0xD4, offset: 0x5B367, size: 0x8, addend: 0x0, symName: '_$s10smart_auth20SwiftSmartAuthPluginC8register4withySo07FlutterF9Registrar_p_tFZTo', symObjAddr: 0x114, symBinAddr: 0x4120, symSize: 0xE8 }
+  - { offsetInCU: 0x19D, offset: 0x5B430, size: 0x8, addend: 0x0, symName: '_$s10smart_auth20SwiftSmartAuthPluginC6handle_6resultySo17FlutterMethodCallC_yypSgctFTo', symObjAddr: 0x358, symBinAddr: 0x4364, symSize: 0x70 }
+  - { offsetInCU: 0x1E5, offset: 0x5B478, size: 0x8, addend: 0x0, symName: '_$s10smart_auth20SwiftSmartAuthPluginCACycfcTo', symObjAddr: 0x3F8, symBinAddr: 0x4404, symSize: 0x3C }
+  - { offsetInCU: 0x236, offset: 0x5B4C9, size: 0x8, addend: 0x0, symName: '_$s10smart_auth20SwiftSmartAuthPluginC6handle_6resultySo17FlutterMethodCallC_yypSgctF015$syXlSgIeyBy_ypN7Iegn_TRyXlSgIeyBy_Tf1ncn_nTf4ddg_n', symObjAddr: 0x464, symBinAddr: 0x4470, symSize: 0x17C }
+  - { offsetInCU: 0x276, offset: 0x5B509, size: 0x8, addend: 0x0, symName: '_$s10smart_auth20SwiftSmartAuthPluginCMa', symObjAddr: 0xF4, symBinAddr: 0x4100, symSize: 0x20 }
+  - { offsetInCU: 0x28A, offset: 0x5B51D, size: 0x8, addend: 0x0, symName: '_$sypSgWOh', symObjAddr: 0x2D8, symBinAddr: 0x42E4, symSize: 0x40 }
+  - { offsetInCU: 0x29E, offset: 0x5B531, size: 0x8, addend: 0x0, symName: ___swift_instantiateConcreteTypeFromMangledName, symObjAddr: 0x318, symBinAddr: 0x4324, symSize: 0x40 }
+  - { offsetInCU: 0x2BD, offset: 0x5B550, size: 0x8, addend: 0x0, symName: '_$sypSgWOc', symObjAddr: 0x5E0, symBinAddr: 0x45EC, symSize: 0x48 }
+  - { offsetInCU: 0x2D1, offset: 0x5B564, size: 0x8, addend: 0x0, symName: ___swift_project_boxed_opaque_existential_0, symObjAddr: 0x628, symBinAddr: 0x4634, symSize: 0x24 }
+  - { offsetInCU: 0x2E5, offset: 0x5B578, size: 0x8, addend: 0x0, symName: ___swift_destroy_boxed_opaque_existential_0, symObjAddr: 0x64C, symBinAddr: 0x4658, symSize: 0x20 }
+  - { offsetInCU: 0x45E, offset: 0x5B6F1, size: 0x8, addend: 0x0, symName: '_$s10smart_auth20SwiftSmartAuthPluginC8register4withySo07FlutterF9Registrar_p_tFZ', symObjAddr: 0x0, symBinAddr: 0x400C, symSize: 0xD4 }
+  - { offsetInCU: 0x4E2, offset: 0x5B775, size: 0x8, addend: 0x0, symName: '_$s10smart_auth20SwiftSmartAuthPluginCACycfC', symObjAddr: 0xD4, symBinAddr: 0x40E0, symSize: 0x20 }
+  - { offsetInCU: 0x516, offset: 0x5B7A9, size: 0x8, addend: 0x0, symName: '_$s10smart_auth20SwiftSmartAuthPluginC6handle_6resultySo17FlutterMethodCallC_yypSgctF', symObjAddr: 0x1FC, symBinAddr: 0x4208, symSize: 0xDC }
+  - { offsetInCU: 0x560, offset: 0x5B7F3, size: 0x8, addend: 0x0, symName: '_$s10smart_auth20SwiftSmartAuthPluginCACycfc', symObjAddr: 0x3C8, symBinAddr: 0x43D4, symSize: 0x30 }
+  - { offsetInCU: 0x591, offset: 0x5B824, size: 0x8, addend: 0x0, symName: '_$s10smart_auth20SwiftSmartAuthPluginCfD', symObjAddr: 0x434, symBinAddr: 0x4440, symSize: 0x30 }
+...

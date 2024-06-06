@@ -6,6 +6,7 @@ import 'package:SayAnything/screens/setting_page.dart';
 import 'package:flutter/material.dart';
 import 'package:SayAnything/screens/edit_name.dart';
 import 'package:SayAnything/services/Model.dart';
+import 'package:quickalert/quickalert.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class SideMenu extends StatelessWidget {
@@ -122,38 +123,21 @@ class SideMenu extends StatelessWidget {
             leading: Icon(Icons.logout, color: Color(0xFF7EC4CF)),
             title: Text('Logout', style: TextStyle(color: Color(0xFF7EC4CF))),
             onTap: () {
-              showDialog(
+              QuickAlert.show(
                 context: context,
-                builder: (BuildContext context) {
-                  return AlertDialog(
-                    backgroundColor: Color(0xFF7EC4CF),
-                    title: Text('Logout Confirmation',
-                        style: TextStyle(color: Colors.white)),
-                    content: Text('Are you sure you want to logout?',
-                        style: TextStyle(color: Colors.white)),
-                    actions: <Widget>[
-                      TextButton(
-                        child: Text('Cancel',
-                            style: TextStyle(color: Colors.white)),
-                        onPressed: () {
-                          Navigator.of(context).pop();
-                        },
-                      ),
-                      TextButton(
-                        child:
-                            Text('Yes', style: TextStyle(color: Colors.white)),
-                        onPressed: () async {
-                          SharedPreferences prefs =
-                              await SharedPreferences.getInstance();
-                          await prefs.clear();
-                          Navigator.pushReplacement(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => const Sayanything()),
-                          );
-                        },
-                      ),
-                    ],
+                type: QuickAlertType.confirm,
+                text: 'Do you want to logout',
+                confirmBtnText: 'Yes',
+                cancelBtnText: 'No',
+                confirmBtnColor: Colors.green,
+                onConfirmBtnTap: () async {
+                  SharedPreferences prefs =
+                      await SharedPreferences.getInstance();
+                  await prefs.clear();
+                  Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const Sayanything()),
                   );
                 },
               );

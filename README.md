@@ -90,3 +90,7 @@ flutter pub run flutter_launcher_icons:main
 > 15. https://pub.dev/packages/speech_to_text
 
 > 16. https://pub.dev/packages/flutter_speed_dial
+
+> 17. https://pub.dev/packages/speech_to_text
+
+> 18. https://pub.dev/packages/flutter_speed_dial
