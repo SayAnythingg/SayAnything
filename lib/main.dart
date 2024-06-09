@@ -18,7 +18,6 @@ class MyApp extends StatelessWidget {
         brightness: Brightness.light,
         useMaterial3: true,
         primaryColor: Color(0xFF35C2C1),
-        backgroundColor: Colors.white,
       ),
       themeMode: ThemeMode.light,
       darkTheme: ThemeData.dark(useMaterial3: true),

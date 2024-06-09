@@ -19,6 +19,13 @@ class _ChatListState extends State<ChatList> {
     '鍾弘浩',
   ];
 
+    void pinChatRoom(int index) {
+    setState(() {
+      String chatRoom = chatRooms.removeAt(index);
+      chatRooms.insert(0, chatRoom);
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -75,6 +82,7 @@ class _ChatListState extends State<ChatList> {
                           chatRooms.removeAt(index);
                         });
                       },
+                      pinChatRoom: () => pinChatRoom(index),
                     );
                   },
                 ),

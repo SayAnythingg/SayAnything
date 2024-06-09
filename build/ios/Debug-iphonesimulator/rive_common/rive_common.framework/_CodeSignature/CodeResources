@@ -74,7 +74,7 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		1YXFKfKPZ1Qf8QBYz18yQCV3XwY=
+		cHzOS2pjk2wfNtCT8H+aDKB34tI=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -82,11 +82,11 @@
 		</data>
 		<key>Modules/rive_common.swiftmodule/Project/arm64-apple-ios-simulator.swiftsourceinfo</key>
 		<data>
-		DFat5zYRb7Lxo80JXTN7RaK/dSM=
+		SLJ2F0zys7g5IQdi5ju1nuZvcfI=
 		</data>
 		<key>Modules/rive_common.swiftmodule/Project/x86_64-apple-ios-simulator.swiftsourceinfo</key>
 		<data>
-		sEWC/Xzih9dGKtcKo+mvF7VerDY=
+		giUIGQnvb8DNu5EMfJ7Qdw1p6Ns=
 		</data>
 		<key>Modules/rive_common.swiftmodule/arm64-apple-ios-simulator.abi.json</key>
 		<data>
@@ -94,11 +94,11 @@
 		</data>
 		<key>Modules/rive_common.swiftmodule/arm64-apple-ios-simulator.swiftdoc</key>
 		<data>
-		xiIMOUz884ssY0B5BqBiTHLChk8=
+		r47mkF6wONL+Kykg748s2tgH4so=
 		</data>
 		<key>Modules/rive_common.swiftmodule/arm64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		T2Z0O9CxQny/82AaunQNEcFMEDM=
+		ejYDSjc5Z+jOPdROa9wwYrMe8d8=
 		</data>
 		<key>Modules/rive_common.swiftmodule/x86_64-apple-ios-simulator.abi.json</key>
 		<data>
@@ -106,11 +106,11 @@
 		</data>
 		<key>Modules/rive_common.swiftmodule/x86_64-apple-ios-simulator.swiftdoc</key>
 		<data>
-		th9HDBvu2dNwGLgBG4Dq2KCcJIA=
+		dkViy5myzA76nFbON2VILadcKL0=
 		</data>
 		<key>Modules/rive_common.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		NmtScXBrQbL5waLGlmRLG4Jqbj0=
+		TMX3zf7TPApIUPFv7cqifeQXSAE=
 		</data>
 	</dict>
 	<key>files2</key>
@@ -245,14 +245,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			AZPNwkbtdhiaNIl7LeYcjwvG4piE+WpCVpHm3WJA7uk=
+			uZDJmmCBqkQh8m9JwAXYV1SrfVceP5WfhIzlbwOQXWA=
 			</data>
 		</dict>
 		<key>Modules/rive_common.swiftmodule/Project/x86_64-apple-ios-simulator.swiftsourceinfo</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			ciV/SRzRp9EySJHLnLgHOTmyrPQVaDo2Jdd7lm6sr8Q=
+			ug4UOm9X7uaix7S+Dxjv6MIU7CIqGJHm2E9Py+w5bUU=
 			</data>
 		</dict>
 		<key>Modules/rive_common.swiftmodule/arm64-apple-ios-simulator.abi.json</key>
@@ -266,14 +266,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			08PaQ25e5KBVBSei6NOADfsjvyrW3ml2avJa2hH+LR4=
+			ML0sW+hPPGOSdXoSnN0dOfu31mINdzfJ5eRxWUEFSCY=
 			</data>
 		</dict>
 		<key>Modules/rive_common.swiftmodule/arm64-apple-ios-simulator.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			F8CLxidQ9r4LgdPbvHrGvqxH8ryQ/9F7Gld4oPQ/6Rs=
+			Hn7CobToVWmwsAT6/PphbIn/8tEdLm5JU+AO/nHU0cY=
 			</data>
 		</dict>
 		<key>Modules/rive_common.swiftmodule/x86_64-apple-ios-simulator.abi.json</key>
@@ -287,14 +287,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			gWzLjbSdfOVj1sokb/mXhccJtdpW5NhCs+SHW6zZJIw=
+			RmT9pBYVu3u/8RC5JT9nhStTagPjYjJiqT2mYFdgnIg=
 			</data>
 		</dict>
 		<key>Modules/rive_common.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			5FRx5VPV3VaJ+eWhHcIbgrEDW6LUzrfJLdEWf/E/7Bk=
+			VV5JPhwFTNqc2A+RB+08Eq2u4PyfRPe4T9tK543D0zc=
 			</data>
 		</dict>
 	</dict>
