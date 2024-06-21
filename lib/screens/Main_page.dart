@@ -1,3 +1,4 @@
+// ignore: file_names
 import 'package:SayAnything/screens/chatList_page.dart';
 import 'package:flutter/material.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
@@ -9,9 +10,10 @@ class MainPage extends StatefulWidget {
   final int initialIndex;
   final User user;
 
-  MainPage({required this.initialIndex, required this.user});
+  const MainPage({super.key, required this.initialIndex, required this.user});
 
   @override
+  // ignore: library_private_types_in_public_api
   _MainPageState createState() => _MainPageState();
 }
 
@@ -24,11 +26,11 @@ class _MainPageState extends State<MainPage> {
     return <Widget>[
       multimedia(),
       HomePage(user: widget.user),
-      ChatList(),
+      const ChatList(),
     ];
   }
 
-  List<Color> _iconColors = List.generate(4, (index) => Color(0xFFDECFE2));
+  final List<Color> _iconColors = List.generate(4, (index) => const Color(0xFFDECFE2));
 
   @override
   void initState() {
@@ -37,20 +39,20 @@ class _MainPageState extends State<MainPage> {
     Future.delayed(Duration.zero, () {
       setState(() {
         _selectedIndex = widget.initialIndex;
-        _iconColors[_selectedIndex] = Color(0xFF7EC4CF);
+        _iconColors[_selectedIndex] = const Color(0xFF7EC4CF);
       });
     });
   }
 
   void _onItemTapped(int index) {
     setState(() {
-      _iconColors[_selectedIndex] = Color(0xFFDECFE2);
+      _iconColors[_selectedIndex] = const Color(0xFFDECFE2);
       _selectedIndex = index;
-      _iconColors[_selectedIndex] = Color(0xFF7EC4CF);
+      _iconColors[_selectedIndex] = const Color(0xFF7EC4CF);
     });
     _pageController.animateToPage(
       index,
-      duration: Duration(milliseconds: 300),
+      duration: const Duration(milliseconds: 300),
       curve: Curves.easeInOut,
     );
   }
@@ -62,9 +64,9 @@ class _MainPageState extends State<MainPage> {
         controller: _pageController,
         onPageChanged: (index) {
           setState(() {
-            _iconColors[_selectedIndex] = Color(0xFFDECFE2);
+            _iconColors[_selectedIndex] = const Color(0xFFDECFE2);
             _selectedIndex = index;
-            _iconColors[_selectedIndex] = Color(0xFF7EC4CF);
+            _iconColors[_selectedIndex] = const Color(0xFF7EC4CF);
           });
         },
         children: _widgetOptions,
@@ -72,7 +74,7 @@ class _MainPageState extends State<MainPage> {
       bottomNavigationBar: CurvedNavigationBar(
         index: _selectedIndex,
         height: 60.0,
-        backgroundColor: Color(0xFF7EC4CF),
+        backgroundColor: const Color(0xFF7EC4CF),
         items: <Widget>[
           Icon(Icons.psychology_rounded, size: 30, color: _iconColors[0]),
           Icon(Icons.home, size: 30, color: _iconColors[1]),

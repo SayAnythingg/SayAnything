@@ -1,5 +1,6 @@
 import 'package:SayAnything/screens/Main_page.dart';
 import 'package:SayAnything/services/Model.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_pdfview/flutter_pdfview.dart';
 import 'package:dio/dio.dart';
@@ -8,9 +9,10 @@ import 'package:path_provider/path_provider.dart';
 class PrivacyPolicyPage extends StatefulWidget {
   final User user;
 
-  PrivacyPolicyPage({required this.user});
+  const PrivacyPolicyPage({super.key, required this.user});
 
   @override
+  // ignore: library_private_types_in_public_api
   _PrivacyPolicyPageState createState() => _PrivacyPolicyPageState();
 }
 
@@ -36,7 +38,9 @@ class _PrivacyPolicyPageState extends State<PrivacyPolicyPage> {
       pdfPath = '${dir.path}/privacy_policy.pdf';
       setState(() {});
     } catch (e) {
-      print('Download error: $e');
+      if (kDebugMode) {
+        print('Download error: $e');
+      }
     }
   }
 
@@ -47,8 +51,8 @@ class _PrivacyPolicyPageState extends State<PrivacyPolicyPage> {
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
-        title: Text('Privacy Policy', style: TextStyle(color: Colors.white)),
-        backgroundColor: Color(0xFF7EC4CF),
+        title: const Text('Privacy Policy', style: TextStyle(color: Colors.white)),
+        backgroundColor: const Color(0xFF7EC4CF),
       ),
       body: Stack(
         children: [
@@ -62,9 +66,9 @@ class _PrivacyPolicyPageState extends State<PrivacyPolicyPage> {
                     autoSpacing: false,
                     pageFling: false,
                     fitPolicy: FitPolicy.BOTH,
-                    onRender: (_pages) {
+                    onRender: (pages) {
                       setState(() {
-                        _totalPages = _pages!;
+                        _totalPages = pages!;
                       });
                     },
                     onPageChanged: (int? page, int? total) {
@@ -75,7 +79,7 @@ class _PrivacyPolicyPageState extends State<PrivacyPolicyPage> {
                     },
                   ),
                 )
-              : Center(child: CircularProgressIndicator()),
+              : const Center(child: CircularProgressIndicator()),
           Positioned(
             bottom: 16.0,
             left: 0.0,
@@ -92,9 +96,9 @@ class _PrivacyPolicyPageState extends State<PrivacyPolicyPage> {
                         ),
                       );
                     },
-                    icon: Icon(Icons.check),
-                    label: Text('我已閱讀並確認'),
-                    backgroundColor: Color(0xFF7EC4CF),
+                    icon: const Icon(Icons.check),
+                    label: const Text('我已閱讀並確認'),
+                    backgroundColor: const Color(0xFF7EC4CF),
                   )
                 : Container(),
           ),

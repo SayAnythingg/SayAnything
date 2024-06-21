@@ -3,6 +3,7 @@ import 'package:SayAnything/router/router.dart';
 import 'package:SayAnything/screens/fade_animationtest.dart';
 import 'package:SayAnything/widgets/custom_widget.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:SayAnything/services/API_services.dart';
@@ -76,7 +77,7 @@ class _ForgetPasswordPageState extends State<ForgetPasswordPage> {
                           obsecuretext: false,
                         ),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 30,
                       ),
                       FadeInAnimation(
@@ -87,20 +88,23 @@ class _ForgetPasswordPageState extends State<ForgetPasswordPage> {
                             try {
                               await _forgetPasswordApiService
                                   .resetPassword(_emailController.text);
+                              // ignore: use_build_context_synchronously
                               GoRouter.of(context)
                                   .pushNamed(Routers.otpverification.name);
                             } catch (e) {
-                              print(e);
+                              if (kDebugMode) {
+                                print(e);
+                              }
                             }
                           },
-                          color: Color(0xFF7EC4CF),
+                          color: const Color(0xFF7EC4CF),
                         ),
                       ),
                     ],
                   ),
                 ),
               ),
-              Spacer(),
+              const Spacer(),
               FadeInAnimation(
                 delay: 2.4,
                 child: Padding(

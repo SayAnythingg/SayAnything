@@ -1,5 +1,6 @@
 import 'package:SayAnything/screens/fade_animationtest.dart';
 import 'package:SayAnything/services/Model.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:rive/rive.dart' as rive;
 import 'package:shared_preferences/shared_preferences.dart';
@@ -21,7 +22,7 @@ class UserIdService {
 
 class HomePage extends StatelessWidget {
   final User user;
-  HomePage({required this.user});
+  const HomePage({super.key, required this.user});
   @override
   Widget build(BuildContext context) {
     double screenWidth = MediaQuery.of(context).size.width;
@@ -31,7 +32,7 @@ class HomePage extends StatelessWidget {
       body: Stack(
         children: [
           Container(
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
               gradient: LinearGradient(
                 begin: Alignment.topCenter,
                 end: Alignment.bottomCenter,
@@ -55,7 +56,7 @@ class HomePage extends StatelessWidget {
                     Builder(
                       builder: (context) => Row(
                         children: [
-                          Text(
+                          const Text(
                             'on-line:3',
                             style: TextStyle(
                               color: Colors.black,
@@ -63,7 +64,7 @@ class HomePage extends StatelessWidget {
                             ),
                           ),
                           IconButton(
-                            icon: Container(
+                            icon: const SizedBox(
                               width: 30,
                               height: 30,
                               child: ColorFiltered(
@@ -88,10 +89,10 @@ class HomePage extends StatelessWidget {
                   child: Center(
                     child: FadeInAnimation(
                       delay: 1,
-                      child: Container(
+                      child: SizedBox(
                         height: 400,
                         width: screenWidth,
-                        child: rive.RiveAnimation.asset(
+                        child: const rive.RiveAnimation.asset(
                           'assets/animation/2.riv',
                           fit: BoxFit.cover,
                           alignment: Alignment.center,
@@ -109,17 +110,17 @@ class HomePage extends StatelessWidget {
               children: [
                 FadeInAnimation(
                   delay: 1,
-                  child: Container(
+                  child: SizedBox(
                     height: 300,
                     width: screenWidth,
-                    child: rive.RiveAnimation.asset(
+                    child: const rive.RiveAnimation.asset(
                       'assets/animation/hand.riv',
                       fit: BoxFit.cover,
                       alignment: Alignment.center,
                     ),
                   ),
                 ),
-                SizedBox(height: 20),
+                const SizedBox(height: 20),
                 FloatingActionButton(
                   onPressed: () async {
                     showDialog(
@@ -135,18 +136,22 @@ class HomePage extends StatelessWidget {
 
                     String message = response['Message'];
                     if (message.contains('deleted')) {
-                      print('deleted');
+                      if (kDebugMode) {
+                        print('deleted');
+                      }
                     } else if (message.contains('matched')) {
+                      // ignore: use_build_context_synchronously
                       Navigator.pop(context);
                       showDialog(
+                        // ignore: use_build_context_synchronously
                         context: context,
                         builder: (BuildContext context) {
                           return AlertDialog(
-                            title: Text('Success'),
-                            content: Text('Successfully matched!'),
+                            title: const Text('Success'),
+                            content: const Text('Successfully matched!'),
                             actions: <Widget>[
                               TextButton(
-                                child: Text('OK'),
+                                child: const Text('OK'),
                                 onPressed: () {
                                   Navigator.of(context).pop();
                                 },
@@ -156,11 +161,13 @@ class HomePage extends StatelessWidget {
                         },
                       );
                     } else if (message.contains('waiting')) {
-                      print('waitung');
+                      if (kDebugMode) {
+                        print('waitung');
+                      }
                     }
                   },
-                  child: Icon(Icons.navigation),
-                  backgroundColor: Color.fromARGB(255, 244, 246, 247),
+                  backgroundColor: const Color.fromARGB(255, 244, 246, 247),
+                  child: const Icon(Icons.navigation),
                 ),
               ],
             ),

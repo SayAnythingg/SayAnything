@@ -106,10 +106,10 @@ class _AIState extends State<multimedia> {
                             SizedBox(height: 60),
                             Text(
                               joke.setup,
-                              style: TextStyle(
+                              style: const TextStyle(
                                   fontSize: 18, fontWeight: FontWeight.bold),
                             ),
-                            SizedBox(height: 20),
+                            const SizedBox(height: 20),
                             Text(
                               joke.punchline,
                               style: TextStyle(fontSize: 16),
@@ -124,11 +124,11 @@ class _AIState extends State<multimedia> {
             },
           ),
           IconButton(
-            icon: Icon(Icons.api),
+            icon: const Icon(Icons.api),
             onPressed: () {},
           ),
           IconButton(
-            icon: Icon(Icons.api),
+            icon: const Icon(Icons.api),
             onPressed: () {},
           ),
         ],
@@ -182,11 +182,11 @@ class _AIState extends State<multimedia> {
                       ),
                     ),
                   ),
-                  SizedBox(height: 10),
+                  const SizedBox(height: 10),
                   Expanded(
                     flex: 2,
                     child: Container(
-                      padding: EdgeInsets.all(3),
+                      padding: const EdgeInsets.all(3),
                       decoration: BoxDecoration(
                         gradient: LinearGradient(
                           begin: Alignment.topLeft,
@@ -199,7 +199,7 @@ class _AIState extends State<multimedia> {
                             color: Colors.grey.withOpacity(0.5),
                             spreadRadius: 1,
                             blurRadius: 7,
-                            offset: Offset(0, 3),
+                            offset: const Offset(0, 3),
                           ),
                         ],
                       ),
@@ -212,7 +212,7 @@ class _AIState extends State<multimedia> {
                       ),
                     ),
                   ),
-                  SizedBox(height: 10),
+                  const SizedBox(height: 10),
                   Row(
                     children: [
                       Expanded(
@@ -224,54 +224,54 @@ class _AIState extends State<multimedia> {
                           },
                           decoration: InputDecoration(
                             contentPadding:
-                                EdgeInsets.fromLTRB(20.0, 10.0, 10.0, 10.0),
+                                const EdgeInsets.fromLTRB(20.0, 10.0, 10.0, 10.0),
                             hintText: 'Enter your message',
                             border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(10.0),
                               borderSide:
-                                  BorderSide(color: Colors.blue, width: 2.0),
+                                  const BorderSide(color: Colors.blue, width: 2.0),
                             ),
                             filled: true,
                             fillColor: Colors.grey[200],
-                            prefixIcon: Icon(Icons.message, color: Colors.blue),
+                            prefixIcon: const Icon(Icons.message, color: Colors.blue),
                           ),
                         ),
                       ),
-                      SizedBox(width: 10),
+                      const SizedBox(width: 10),
                       ElevatedButton(
                         onPressed: getAIResponse,
-                        child: Text('Send'),
                         style: ElevatedButton.styleFrom(
                           foregroundColor: Colors.white,
-                          backgroundColor: Color.fromARGB(255, 166, 210, 246),
+                          backgroundColor: const Color.fromARGB(255, 166, 210, 246),
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(10.0),
                           ),
-                          padding: EdgeInsets.symmetric(
+                          padding: const EdgeInsets.symmetric(
                               horizontal: 20, vertical: 12),
                         ),
+                        child: const Text('Send'),
                       ),
-                      SizedBox(width: 10),
+                      const SizedBox(width: 10),
                       GestureDetector(
                         onLongPressStart: (details) => startListening(),
                         onLongPressEnd: (details) => speech.stop(),
                         child: ElevatedButton(
                           onPressed: null,
-                          child: Text('Speak'),
                           style: ElevatedButton.styleFrom(
                             foregroundColor: Colors.white,
-                            backgroundColor: Color.fromARGB(255, 166, 210, 246),
+                            backgroundColor: const Color.fromARGB(255, 166, 210, 246),
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(10.0),
                             ),
-                            padding: EdgeInsets.symmetric(
+                            padding: const EdgeInsets.symmetric(
                                 horizontal: 20, vertical: 12),
                           ),
+                          child: const Text('Speak'),
                         ),
                       ),
                     ],
                   ),
-                  SizedBox(height: 10),
+                  const SizedBox(height: 10),
                 ],
               ),
             ),
@@ -279,9 +279,9 @@ class _AIState extends State<multimedia> {
         ],
       ),
       floatingActionButton: Padding(
-        padding: EdgeInsets.only(bottom: 140.0),
+        padding: const EdgeInsets.only(bottom: 140.0),
         child: SpeedDial(
-          backgroundColor: Color(0xFF7EC4CF),
+          backgroundColor: const Color(0xFF7EC4CF),
           animatedIcon: AnimatedIcons.menu_close,
           children: [
             SpeedDialChild(
@@ -294,7 +294,7 @@ class _AIState extends State<multimedia> {
               },
             ),
             SpeedDialChild(
-              child: Icon(Icons.person),
+              child: const Icon(Icons.person),
               label: 'AI boyfriend',
               onTap: () {
                 setState(() {
@@ -303,7 +303,7 @@ class _AIState extends State<multimedia> {
               },
             ),
             SpeedDialChild(
-              child: Icon(Icons.school),
+              child: const Icon(Icons.school),
               label: 'English teacher',
               onTap: () async {
                 flutterTts.setLanguage('en-US');
@@ -323,13 +323,13 @@ class _AIState extends State<multimedia> {
                       'This is English mode, mainly for English practice and guidance, you can also tell me Chinese, I can translate it to English for you');
                   setState(() {
                     aiResponse =
-                        'You selected English teacher. Translation: ${aiResponse}';
+                        'You selected English teacher. Translation: $aiResponse';
                   });
                 }
               },
             ),
             SpeedDialChild(
-              child: Icon(Icons.school),
+              child: const Icon(Icons.school),
               label: 'Chinese teacher',
               onTap: () async {
                 flutterTts.setLanguage('zh-CN');
@@ -349,7 +349,7 @@ class _AIState extends State<multimedia> {
                       .speak('這是中文模式, 主要給予中文的練習和指導, 你也可以告訴我英文,我可以翻譯給你中文');
                   setState(() {
                     aiResponse =
-                        'You selected Chinese teacher. Translation: ${aiResponse}';
+                        'You selected Chinese teacher. Translation: $aiResponse';
                   });
                 }
               },

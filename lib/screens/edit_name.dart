@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:string_validator/string_validator.dart';
 
 class EditNameFormPage extends StatefulWidget {
-  const EditNameFormPage({Key? key}) : super(key: key);
+  const EditNameFormPage({super.key});
 
   @override
   EditNameFormPageState createState() => EditNameFormPageState();
@@ -28,7 +28,7 @@ class EditNameFormPageState extends State<EditNameFormPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           gradient: LinearGradient(
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
@@ -38,12 +38,12 @@ class EditNameFormPageState extends State<EditNameFormPage> {
         child: Column(
           children: [
             AppBar(
-              title: Text(''),
+              title: const Text(''),
               backgroundColor: Colors.transparent,
               elevation: 0,
               automaticallyImplyLeading: false,
               leading: IconButton(
-                icon: Icon(Icons.arrow_back),
+                icon: const Icon(Icons.arrow_back),
                 onPressed: () {
                   Navigator.pop(context);
                 },
@@ -55,9 +55,9 @@ class EditNameFormPageState extends State<EditNameFormPage> {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: <Widget>[
-                  SizedBox(
+                  const SizedBox(
                     width: 330,
-                    child: const Text(
+                    child: Text(
                       "What's Your Name?",
                       style: TextStyle(
                         fontSize: 25,
@@ -70,7 +70,7 @@ class EditNameFormPageState extends State<EditNameFormPage> {
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       Padding(
-                        padding: EdgeInsets.fromLTRB(0, 40, 16, 0),
+                        padding: const EdgeInsets.fromLTRB(0, 40, 16, 0),
                         child: SizedBox(
                           height: 100,
                           width: 150,
@@ -84,13 +84,13 @@ class EditNameFormPageState extends State<EditNameFormPage> {
                               return null;
                             },
                             decoration:
-                                InputDecoration(labelText: 'First Name'),
+                                const InputDecoration(labelText: 'First Name'),
                             controller: firstNameController,
                           ),
                         ),
                       ),
                       Padding(
-                        padding: EdgeInsets.fromLTRB(0, 40, 16, 0),
+                        padding: const EdgeInsets.fromLTRB(0, 40, 16, 0),
                         child: SizedBox(
                           height: 100,
                           width: 150,
@@ -112,7 +112,7 @@ class EditNameFormPageState extends State<EditNameFormPage> {
                     ],
                   ),
                   Padding(
-                    padding: EdgeInsets.only(top: 150),
+                    padding: const EdgeInsets.only(top: 150),
                     child: Align(
                       alignment: Alignment.bottomCenter,
                       child: FadeInAnimation(
@@ -123,13 +123,11 @@ class EditNameFormPageState extends State<EditNameFormPage> {
                             if (_formKey.currentState!.validate() &&
                                 isAlpha(firstNameController.text +
                                     secondNameController.text)) {
-                              updateUserValue(firstNameController.text +
-                                  " " +
-                                  secondNameController.text);
+                              updateUserValue("${firstNameController.text} ${secondNameController.text}");
                               Navigator.pop(context);
                             }
                           },
-                          color: Color(0xFF7EC4CF),
+                          color: const Color(0xFF7EC4CF),
                         ),
                       ),
                     ),

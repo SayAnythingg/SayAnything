@@ -8,6 +8,8 @@ import 'package:SayAnything/screens/home.dart';
 MatchApiService matchApiService = MatchApiService();
 
 class LoadingPage extends StatelessWidget {
+  const LoadingPage({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -22,19 +24,19 @@ class LoadingPage extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
                   LoadingAnimationWidget.staggeredDotsWave(
-                    color: Color(0xFF7EC4CF),
+                    color: const Color(0xFF7EC4CF),
                     size: 50,
                   ),
-                  SizedBox(height: 20),
+                  const SizedBox(height: 20),
                   AnimatedTextKit(
                     animatedTexts: [
                       TypewriterAnimatedText(
                         'Pairing...',
-                        textStyle: TextStyle(
+                        textStyle: const TextStyle(
                           fontSize: 24,
                           color: Colors.white,
                         ),
-                        speed: Duration(milliseconds: 200),
+                        speed: const Duration(milliseconds: 200),
                       ),
                     ],
                     isRepeatingAnimation: true,
@@ -47,17 +49,18 @@ class LoadingPage extends StatelessWidget {
             bottom: MediaQuery.of(context).size.height / 3,
             left: 0,
             right: 0,
-            child: Container(
+            child: SizedBox(
               width: 40,
               height: 40,
               child: FloatingActionButton(
                 onPressed: () async {
                   String userId = await UserIdService.getCurrentUserId();
+                  // ignore: use_build_context_synchronously
                   Navigator.pop(context);
                   await matchApiService.cancelMatch(userId);
                 },
-                child: Icon(Icons.cancel, size: 20),
-                backgroundColor: Color(0xFF7EC4CF),
+                backgroundColor: const Color(0xFF7EC4CF),
+                child: const Icon(Icons.cancel, size: 20),
               ),
             ),
           ),

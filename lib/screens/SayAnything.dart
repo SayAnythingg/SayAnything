@@ -1,9 +1,7 @@
-import 'dart:ui';
 
 import 'package:SayAnything/router/router.dart';
 import 'package:SayAnything/screens/fade_animationtest.dart';
 import 'package:SayAnything/widgets/custom_widget.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:rive/rive.dart' as rive;
@@ -20,7 +18,7 @@ class _AuthenticationUIState extends State<Sayanything> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           gradient: LinearGradient(
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
@@ -36,9 +34,9 @@ class _AuthenticationUIState extends State<Sayanything> {
               child: SizedBox(
                 child: Column(
                   children: [
-                    FadeInAnimation(
+                    const FadeInAnimation(
                       delay: 1,
-                      child: Container(
+                      child: SizedBox(
                         height: 150,
                         width: 150,
                         child: rive.RiveAnimation.asset(
@@ -69,7 +67,7 @@ class _AuthenticationUIState extends State<Sayanything> {
                           GoRouter.of(context)
                               .pushNamed(Routers.loginpage.name);
                         },
-                        color: Color(0xFF7EC4CF),
+                        color: const Color(0xFF7EC4CF),
                       ),
                     ),
                     const SizedBox(
@@ -83,18 +81,18 @@ class _AuthenticationUIState extends State<Sayanything> {
                                 .pushNamed(Routers.signuppage.name);
                           },
                           style: ButtonStyle(
-                              side: const MaterialStatePropertyAll(
+                              side: const WidgetStatePropertyAll(
                                   BorderSide(color: Colors.black)),
-                              shape: MaterialStatePropertyAll(
+                              shape: WidgetStatePropertyAll(
                                   RoundedRectangleBorder(
                                       borderRadius: BorderRadius.circular(10))),
-                              fixedSize: const MaterialStatePropertyAll(
+                              fixedSize: const WidgetStatePropertyAll(
                                   Size.fromWidth(370)),
-                              padding: const MaterialStatePropertyAll(
+                              padding: const WidgetStatePropertyAll(
                                 EdgeInsets.symmetric(vertical: 20),
                               ),
                               backgroundColor:
-                                  const MaterialStatePropertyAll(Colors.white)),
+                                  const WidgetStatePropertyAll(Colors.white)),
                           child: const Text(
                             "Register",
                             style: TextStyle(

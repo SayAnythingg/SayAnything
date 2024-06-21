@@ -38,6 +38,7 @@ class _LoginPageState extends State<LoginPage> {
       User user =
           await apiService.login(emailController.text, passwordController.text);
       Navigator.push(
+        // ignore: use_build_context_synchronously
         context,
         MaterialPageRoute(
           builder: (context) => PrivacyPolicyPage(user: user),
@@ -71,6 +72,7 @@ class _LoginPageState extends State<LoginPage> {
         alertType = QuickAlertType.info;
       }
       QuickAlert.show(
+        // ignore: use_build_context_synchronously
         context: context,
         type: alertType,
         title: 'Oops...',
@@ -148,7 +150,7 @@ class _LoginPageState extends State<LoginPage> {
                             // Modify this line
                             obscureText: _isPasswordHidden,
                             decoration: InputDecoration(
-                              contentPadding: EdgeInsets.all(18),
+                              contentPadding: const EdgeInsets.all(18),
                               hintText: "Enter your password",
                               hintStyle: Common().hinttext,
                               border: OutlineInputBorder(
@@ -190,7 +192,7 @@ class _LoginPageState extends State<LoginPage> {
                             function: () {
                               _login();
                             },
-                            color: Color(0xFF7EC4CF),
+                            color: const Color(0xFF7EC4CF),
                           ),
                         ),
                       ],

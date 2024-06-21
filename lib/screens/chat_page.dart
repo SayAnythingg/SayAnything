@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'dart:io';
+import 'package:flutter/foundation.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
@@ -7,10 +8,13 @@ import 'package:flutter/services.dart' show rootBundle;
 import 'package:flutter_chat_types/flutter_chat_types.dart' as types;
 import 'package:flutter_chat_ui/flutter_chat_ui.dart';
 import 'package:http/http.dart' as http;
+// ignore: depend_on_referenced_packages
 import 'package:intl/date_symbol_data_local.dart';
+// ignore: depend_on_referenced_packages
 import 'package:mime/mime.dart';
 import 'package:open_filex/open_filex.dart';
 import 'package:path_provider/path_provider.dart';
+// ignore: depend_on_referenced_packages
 import 'package:uuid/uuid.dart';
 
 void main() {
@@ -31,7 +35,7 @@ class MyApp extends StatelessWidget {
 class ChatPage extends StatefulWidget {
   final String chatRoomName;
 
-  const ChatPage({Key? key, required this.chatRoomName}) : super(key: key);
+  const ChatPage({super.key, required this.chatRoomName});
 
   @override
   State<ChatPage> createState() => _ChatPageState();
@@ -59,7 +63,7 @@ class _ChatPageState extends State<ChatPage> {
     showModalBottomSheet<void>(
       context: context,
       builder: (BuildContext context) => Container(
-        color: Color(0xff7ec4cf),
+        color: const Color(0xff7ec4cf),
         child: SafeArea(
           child: SizedBox(
             height: 144,
@@ -71,7 +75,7 @@ class _ChatPageState extends State<ChatPage> {
                     Navigator.pop(context);
                     _handleImageSelection();
                   },
-                  child: Row(
+                  child: const Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: <Widget>[
                       Icon(Icons.photo), // Replace with your desired icon
@@ -84,7 +88,7 @@ class _ChatPageState extends State<ChatPage> {
                     Navigator.pop(context);
                     _handleFileSelection();
                   },
-                  child: Row(
+                  child: const Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: <Widget>[
                       Icon(Icons.file_upload), // Replace with your desired icon
@@ -94,7 +98,7 @@ class _ChatPageState extends State<ChatPage> {
                 ),
                 TextButton(
                   onPressed: () => Navigator.pop(context),
-                  child: Row(
+                  child: const Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: <Widget>[
                       Icon(Icons.cancel), // Replace with your desired icon
@@ -156,7 +160,9 @@ class _ChatPageState extends State<ChatPage> {
         _addMessage(message);
       }
     } catch (e) {
-      print('Error: $e');
+      if (kDebugMode) {
+        print('Error: $e');
+      }
     }
   }
 
@@ -230,9 +236,9 @@ class _ChatPageState extends State<ChatPage> {
     _addMessage(textMessage);
 
     // Simulate a response
-    Future.delayed(Duration(seconds: 1), () {
+    Future.delayed(const Duration(seconds: 1), () {
       final responseMessage = types.TextMessage(
-        author: types.User(id: 'Chris'), // The id of the other user
+        author: const types.User(id: 'Chris'), // The id of the other user
         createdAt: DateTime.now().millisecondsSinceEpoch,
         id: const Uuid().v4(),
         text: 'Automated Test .',

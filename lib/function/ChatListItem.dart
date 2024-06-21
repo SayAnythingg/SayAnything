@@ -6,11 +6,14 @@ class ChatListItem extends StatelessWidget {
   final String chatRoom;
   final Function removeChatRoom;
   final Function pinChatRoom;
-  final bool isPinned; 
+  final bool isPinned;
 
-  ChatListItem({required this.chatRoom, required this.removeChatRoom, required this.pinChatRoom, this.isPinned = false});
+  ChatListItem(
+      {required this.chatRoom,
+      required this.removeChatRoom,
+      required this.pinChatRoom,
+      this.isPinned = false});
 
-  
   @override
   Widget build(BuildContext context) {
     String lastMessage = "This is the last message from this chat room";
@@ -65,7 +68,7 @@ class ChatListItem extends StatelessWidget {
                 );
               },
             ),
-            if (isPinned) 
+            if (isPinned)
               Positioned(
                 top: 5,
                 left: 5,

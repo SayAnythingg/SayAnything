@@ -29,18 +29,19 @@ class _SignupPageState extends State<SignupPage> {
     showDialog(
       context: context,
       barrierDismissible: false,
-      builder: (BuildContext context) => LoadingPage(),
+      builder: (BuildContext context) => const LoadingPage(),
     );
 
     await asyncOperation();
 
+    // ignore: use_build_context_synchronously
     Navigator.pop(context);
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color.fromARGB(255, 255, 255, 255),
+      backgroundColor: const Color.fromARGB(255, 255, 255, 255),
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.all(10.0),
@@ -100,7 +101,7 @@ class _SignupPageState extends State<SignupPage> {
                         FadeInAnimation(
                           delay: 2.1,
                           child: DropdownButtonFormField<String>(
-                            decoration: InputDecoration(
+                            decoration: const InputDecoration(
                               labelText: 'Gender',
                             ),
                             items:
@@ -163,13 +164,13 @@ class _SignupPageState extends State<SignupPage> {
                                   context: context,
                                   builder: (BuildContext context) {
                                     return AlertDialog(
-                                      backgroundColor: Color(0xFF7EC4CF),
-                                      title: Text('Error'),
-                                      content: Text(
+                                      backgroundColor: const Color(0xFF7EC4CF),
+                                      title: const Text('Error'),
+                                      content: const Text(
                                           'Please make sure all fields are entered.'),
                                       actions: <Widget>[
                                         TextButton(
-                                          child: Text('Confirm'),
+                                          child: const Text('Confirm'),
                                           onPressed: () {
                                             Navigator.of(context).pop();
                                           },
@@ -184,13 +185,13 @@ class _SignupPageState extends State<SignupPage> {
                                   context: context,
                                   builder: (BuildContext context) {
                                     return AlertDialog(
-                                      backgroundColor: Color(0xFF7EC4CF),
-                                      title: Text('Error'),
-                                      content: Text(
+                                      backgroundColor: const Color(0xFF7EC4CF),
+                                      title: const Text('Error'),
+                                      content: const Text(
                                           'Please make sure the password and confirm password are the same.'),
                                       actions: <Widget>[
                                         TextButton(
-                                          child: Text('Confirm'),
+                                          child: const Text('Confirm'),
                                           onPressed: () {
                                             Navigator.of(context).pop();
                                           },
@@ -204,13 +205,13 @@ class _SignupPageState extends State<SignupPage> {
                                   context: context,
                                   builder: (BuildContext context) {
                                     return AlertDialog(
-                                      backgroundColor: Color(0xFF7EC4CF),
-                                      title: Text('Verification code sent'),
-                                      content: Text(
+                                      backgroundColor: const Color(0xFF7EC4CF),
+                                      title: const Text('Verification code sent'),
+                                      content: const Text(
                                           'Please check your email for a verification code and to confirm your account.'),
                                       actions: <Widget>[
                                         TextButton(
-                                          child: Text('Confirm'),
+                                          child: const Text('Confirm'),
                                           onPressed: () {
                                             Navigator.of(context).pop();
                                           },
@@ -227,7 +228,7 @@ class _SignupPageState extends State<SignupPage> {
                                 );
                               }
                             },
-                            color: Color(0xFF7EC4CF),
+                            color: const Color(0xFF7EC4CF),
                           ),
                         ),
                       ],

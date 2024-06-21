@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+// ignore: depend_on_referenced_packages
 import 'package:url_launcher/url_launcher.dart';
 
 class Aboutus extends StatelessWidget {
@@ -10,7 +11,7 @@ class Aboutus extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           gradient: LinearGradient(
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
@@ -20,12 +21,12 @@ class Aboutus extends StatelessWidget {
         child: Column(
           children: [
             AppBar(
-              title: Text('About Us'),
+              title: const Text('About Us'),
               backgroundColor: Colors.transparent,
               elevation: 0,
               automaticallyImplyLeading: false,
               leading: IconButton(
-                icon: Icon(Icons.arrow_back),
+                icon: const Icon(Icons.arrow_back),
                 onPressed: () {
                   Navigator.pop(context);
                 },
@@ -35,17 +36,17 @@ class Aboutus extends StatelessWidget {
               child: ListView(
                 padding: const EdgeInsets.all(8.0),
                 children: [
-                  ListTile(
+                  const ListTile(
                     title: Text('Origin👍', textAlign: TextAlign.center),
                     subtitle:
                         Text('Our history...', textAlign: TextAlign.center),
                   ),
-                  ListTile(
+                  const ListTile(
                     title: Text('Professor👨‍🏫', textAlign: TextAlign.center),
                   ),
                   buildCard(context, 'assets/images/ting.png', '李文廷',
                       'wtlee@mail.nknu.edu.tw', ''),
-                  ListTile(
+                  const ListTile(
                     title: Text('Developer👨‍🎓👩‍🎓👨‍🏫',
                         textAlign: TextAlign.center),
                   ),
@@ -55,12 +56,12 @@ class Aboutus extends StatelessWidget {
                       'sylvia15334@gmail.com', 'Backend Developer'),
                   buildCard(context, 'assets/images/george.png', '林鈺佑',
                       'george920102@gmail.com', 'Backend Developer'),
-                  ListTile(
+                  const ListTile(
                     title: Text('特別感謝', textAlign: TextAlign.center),
                   ),
                   buildCard(context, 'https://example.com/image5.jpg', '友情協助成員',
                       '@gmail.com', ''),
-                  ListTile(
+                  const ListTile(
                     title: Text('問題回報', textAlign: TextAlign.center),
                   ),
                   Form(
@@ -76,7 +77,7 @@ class Aboutus extends StatelessWidget {
                           children: <Widget>[
                             TextFormField(
                               controller: _subjectController,
-                              decoration: InputDecoration(
+                              decoration: const InputDecoration(
                                 labelText: 'Subject',
                                 focusColor: Color(
                                     0xFF7EC4CF), // Set the focus color here
@@ -90,7 +91,7 @@ class Aboutus extends StatelessWidget {
                             ),
                             TextFormField(
                               controller: _bodyController,
-                              decoration: InputDecoration(
+                              decoration: const InputDecoration(
                                 labelText: 'Body',
                                 focusColor: Color(
                                     0xFF7EC4CF), // Set the focus color here
@@ -109,12 +110,12 @@ class Aboutus extends StatelessWidget {
                                   sendEmail(context, 'Subject', 'Body');
                                 }
                               },
-                              child: Text('Submit'),
                               style: ButtonStyle(
                                 backgroundColor:
-                                    MaterialStateProperty.all<Color>(Color(
+                                    WidgetStateProperty.all<Color>(const Color(
                                         0xFF7EC4CF)), // Set the button color here
                               ),
+                              child: const Text('Submit'),
                             ),
                           ],
                         ),
@@ -144,7 +145,7 @@ class Aboutus extends StatelessWidget {
                 radius: 50,
                 backgroundImage: AssetImage(imageUrl),
               ),
-              SizedBox(height: 16.0),
+              const SizedBox(height: 16.0),
               Padding(
                 padding: const EdgeInsets.symmetric(vertical: 8.0),
                 child: Text(title, textAlign: TextAlign.center),
@@ -159,7 +160,7 @@ class Aboutus extends StatelessWidget {
   }
 
   void sendEmail(BuildContext context, String subject, String body) async {
-    final String email = 'chunghao777@gmail.com';
+    const String email = 'chunghao777@gmail.com';
     final Uri params = Uri(
       scheme: 'mailto',
       path: email,
@@ -167,9 +168,12 @@ class Aboutus extends StatelessWidget {
     );
 
     String url = params.toString();
+    // ignore: deprecated_member_use
     if (await canLaunch(url)) {
+      // ignore: deprecated_member_use
       await launch(url);
     } else {
+      // ignore: use_build_context_synchronously
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           content: Text('Could not launch $url. Please install a mail app.'),

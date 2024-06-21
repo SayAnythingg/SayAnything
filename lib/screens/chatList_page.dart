@@ -4,9 +4,10 @@ import 'package:SayAnything/function/ChatSearch.dart';
 import 'package:SayAnything/function/ChatListItem.dart';
 
 class ChatList extends StatefulWidget {
-  ChatList({Key? key}) : super(key: key);
+  const ChatList({super.key});
 
   @override
+  // ignore: library_private_types_in_public_api
   _ChatListState createState() => _ChatListState();
 }
 
@@ -19,7 +20,7 @@ class _ChatListState extends State<ChatList> {
     '鍾弘浩',
   ];
 
-    void pinChatRoom(int index) {
+  void pinChatRoom(int index) {
     setState(() {
       String chatRoom = chatRooms.removeAt(index);
       chatRooms.insert(0, chatRoom);
@@ -32,7 +33,7 @@ class _ChatListState extends State<ChatList> {
       body: Padding(
         padding: EdgeInsets.zero,
         child: Container(
-          decoration: BoxDecoration(
+          decoration: const BoxDecoration(
             gradient: LinearGradient(
               begin: Alignment.topCenter,
               end: Alignment.bottomCenter,
@@ -45,7 +46,7 @@ class _ChatListState extends State<ChatList> {
                 title: Row(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    Icon(Icons.wechat, size: 30, color: Color(0xFF545454)),
+                    const Icon(Icons.wechat, size: 30, color: Color(0xFF545454)),
                     Image.asset('assets/images/chat3.png',
                         height: 60, width: 60),
                   ],
@@ -55,7 +56,7 @@ class _ChatListState extends State<ChatList> {
                 automaticallyImplyLeading: false,
                 actions: [
                   IconButton(
-                    icon: Icon(Icons.search, color: Color(0xFF545454)),
+                    icon: const Icon(Icons.search, color: Color(0xFF545454)),
                     onPressed: () {
                       showSearch(
                         context: context,
@@ -68,11 +69,11 @@ class _ChatListState extends State<ChatList> {
               Container(
                 height: 50,
                 color: Colors.yellow,
-                child: Center(child: Text('廣告')),
+                child: const Center(child: Text('廣告')),
               ),
               Expanded(
                 child: ListView.builder(
-                  padding: EdgeInsets.only(top: 0),
+                  padding: const EdgeInsets.only(top: 0),
                   itemCount: chatRooms.length,
                   itemBuilder: (context, index) {
                     return ChatListItem(

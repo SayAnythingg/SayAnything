@@ -88,7 +88,7 @@ class _NewPasswordPageState extends State<NewPasswordPage> {
                           controller: confirmPasswordController,
                         ),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 30,
                       ),
                       FadeInAnimation(
@@ -99,7 +99,7 @@ class _NewPasswordPageState extends State<NewPasswordPage> {
                             if (newPasswordController.text !=
                                 confirmPasswordController.text) {
                               ScaffoldMessenger.of(context).showSnackBar(
-                                SnackBar(
+                                const SnackBar(
                                     content: Text('Passwords do not match')),
                               );
                               return;
@@ -108,28 +108,31 @@ class _NewPasswordPageState extends State<NewPasswordPage> {
                             final response = await passwordResetService
                                 .resetPassword(newPasswordController.text);
                             if (response == 200) {
+                              // ignore: use_build_context_synchronously
                               ScaffoldMessenger.of(context).showSnackBar(
-                                SnackBar(
+                                const SnackBar(
                                     content:
                                         Text('Password reset successfully')),
                               );
+                              // ignore: use_build_context_synchronously
                               GoRouter.of(context)
                                   .pushNamed(Routers.passwordchanges.name);
                             } else {
+                              // ignore: use_build_context_synchronously
                               ScaffoldMessenger.of(context).showSnackBar(
-                                SnackBar(
+                                const SnackBar(
                                     content: Text('Failed to reset password')),
                               );
                             }
                           },
-                          color: Color(0xFF7EC4CF),
+                          color: const Color(0xFF7EC4CF),
                         ),
                       ),
                     ],
                   ),
                 ),
               ),
-              Spacer(),
+              const Spacer(),
               FadeInAnimation(
                 delay: 2.5,
                 child: Padding(

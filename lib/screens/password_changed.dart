@@ -2,7 +2,6 @@ import 'package:SayAnything/common/common.dart';
 import 'package:SayAnything/router/router.dart';
 import 'package:SayAnything/screens/fade_animationtest.dart';
 import 'package:SayAnything/widgets/custom_widget.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:lottie/lottie.dart';
@@ -18,7 +17,7 @@ class _PasswordChangesPageState extends State<PasswordChangesPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color.fromARGB(255, 255, 255, 255),
+      backgroundColor: const Color.fromARGB(255, 255, 255, 255),
       body: SafeArea(
         child: Column(
           children: [
@@ -37,7 +36,7 @@ class _PasswordChangesPageState extends State<PasswordChangesPage> {
                 style: Common().mediumThemeblack,
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 30,
             ),
             FadeInAnimation(
@@ -47,7 +46,7 @@ class _PasswordChangesPageState extends State<PasswordChangesPage> {
                 function: () {
                   GoRouter.of(context).pushReplacement(Routers.loginpage.name);
                 },
-                color: Color(0xFF7EC4CF),
+                color: const Color(0xFF7EC4CF),
               ),
             ),
           ],

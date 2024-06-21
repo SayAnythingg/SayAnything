@@ -104,15 +104,18 @@ class _OtpVerificationPageState extends State<OtpVerificationPage> {
                           onCompleted: (pin) async {
                             final response = await otpService.verifyOtp(pin);
                             if (response == 200) {
+                              // ignore: use_build_context_synchronously
                               ScaffoldMessenger.of(context).showSnackBar(
-                                SnackBar(
+                                const SnackBar(
                                     content: Text('OTP verified successfully')),
                               );
+                              // ignore: use_build_context_synchronously
                               GoRouter.of(context)
                                   .pushNamed(Routers.newpassword.name);
                             } else if (response == 400) {
+                              // ignore: use_build_context_synchronously
                               ScaffoldMessenger.of(context).showSnackBar(
-                                SnackBar(content: Text('Failed to verify OTP')),
+                                const SnackBar(content: Text('Failed to verify OTP')),
                               );
                             }
                           },
@@ -129,7 +132,7 @@ class _OtpVerificationPageState extends State<OtpVerificationPage> {
                             GoRouter.of(context)
                                 .pushNamed(Routers.newpassword.name);
                           },
-                          color: Color(0xFF7EC4CF),
+                          color: const Color(0xFF7EC4CF),
                         ),
                       ),
                     ],
