@@ -111,8 +111,8 @@ class Aboutus extends StatelessWidget {
                                 }
                               },
                               style: ButtonStyle(
-                                backgroundColor:
-                                    WidgetStateProperty.all<Color>(const Color(
+                                backgroundColor: WidgetStateProperty.all<Color>(
+                                    const Color(
                                         0xFF7EC4CF)), // Set the button color here
                               ),
                               child: const Text('Submit'),

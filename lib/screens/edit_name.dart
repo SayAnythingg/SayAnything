@@ -123,7 +123,8 @@ class EditNameFormPageState extends State<EditNameFormPage> {
                             if (_formKey.currentState!.validate() &&
                                 isAlpha(firstNameController.text +
                                     secondNameController.text)) {
-                              updateUserValue("${firstNameController.text} ${secondNameController.text}");
+                              updateUserValue(
+                                  "${firstNameController.text} ${secondNameController.text}");
                               Navigator.pop(context);
                             }
                           },

@@ -220,53 +220,36 @@ class _AIState extends State<multimedia> {
                         child: TextField(
                           controller: _controller,
                           onChanged: (value) {
-                            userMessage = value;
+                            setState(() {
+                              userMessage = value;
+                            });
                           },
+                          style: const TextStyle(color: Colors.white),
                           decoration: InputDecoration(
-                            contentPadding:
-                                const EdgeInsets.fromLTRB(20.0, 10.0, 10.0, 10.0),
-                            hintText: 'Enter your message',
+                            contentPadding: const EdgeInsets.fromLTRB(
+                                20.0, 10.0, 10.0, 10.0),
+                            hintText: 'Type message here...',
+                            hintStyle: const TextStyle(color: Colors.grey),
                             border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(10.0),
-                              borderSide:
-                                  const BorderSide(color: Colors.blue, width: 2.0),
+                              borderRadius: BorderRadius.circular(30.0),
+                              borderSide: BorderSide.none,
                             ),
                             filled: true,
-                            fillColor: Colors.grey[200],
-                            prefixIcon: const Icon(Icons.message, color: Colors.blue),
+                            fillColor: Colors.black87,
+                            prefixIcon: const Icon(Icons.message,
+                                color: Color.fromARGB(249, 234, 242, 247)),
+                            suffixIcon: userMessage.isEmpty
+                                ? GestureDetector(
+                                    onLongPressStart: (details) =>
+                                        startListening(),
+                                    onLongPressEnd: (details) => speech.stop(),
+                                    child: Icon(Icons.mic, color: Colors.white),
+                                  )
+                                : IconButton(
+                                    icon: Icon(Icons.send, color: Colors.white),
+                                    onPressed: getAIResponse,
+                                  ),
                           ),
-                        ),
-                      ),
-                      const SizedBox(width: 10),
-                      ElevatedButton(
-                        onPressed: getAIResponse,
-                        style: ElevatedButton.styleFrom(
-                          foregroundColor: Colors.white,
-                          backgroundColor: const Color.fromARGB(255, 166, 210, 246),
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(10.0),
-                          ),
-                          padding: const EdgeInsets.symmetric(
-                              horizontal: 20, vertical: 12),
-                        ),
-                        child: const Text('Send'),
-                      ),
-                      const SizedBox(width: 10),
-                      GestureDetector(
-                        onLongPressStart: (details) => startListening(),
-                        onLongPressEnd: (details) => speech.stop(),
-                        child: ElevatedButton(
-                          onPressed: null,
-                          style: ElevatedButton.styleFrom(
-                            foregroundColor: Colors.white,
-                            backgroundColor: const Color.fromARGB(255, 166, 210, 246),
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(10.0),
-                            ),
-                            padding: const EdgeInsets.symmetric(
-                                horizontal: 20, vertical: 12),
-                          ),
-                          child: const Text('Speak'),
                         ),
                       ),
                     ],

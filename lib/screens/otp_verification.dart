@@ -115,7 +115,8 @@ class _OtpVerificationPageState extends State<OtpVerificationPage> {
                             } else if (response == 400) {
                               // ignore: use_build_context_synchronously
                               ScaffoldMessenger.of(context).showSnackBar(
-                                const SnackBar(content: Text('Failed to verify OTP')),
+                                const SnackBar(
+                                    content: Text('Failed to verify OTP')),
                               );
                             }
                           },

@@ -46,7 +46,8 @@ class _ChatListState extends State<ChatList> {
                 title: Row(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    const Icon(Icons.wechat, size: 30, color: Color(0xFF545454)),
+                    const Icon(Icons.wechat,
+                        size: 30, color: Color(0xFF545454)),
                     Image.asset('assets/images/chat3.png',
                         height: 60, width: 60),
                   ],

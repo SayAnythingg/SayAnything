@@ -206,7 +206,8 @@ class _SignupPageState extends State<SignupPage> {
                                   builder: (BuildContext context) {
                                     return AlertDialog(
                                       backgroundColor: const Color(0xFF7EC4CF),
-                                      title: const Text('Verification code sent'),
+                                      title:
+                                          const Text('Verification code sent'),
                                       content: const Text(
                                           'Please check your email for a verification code and to confirm your account.'),
                                       actions: <Widget>[

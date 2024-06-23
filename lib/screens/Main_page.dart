@@ -30,7 +30,8 @@ class _MainPageState extends State<MainPage> {
     ];
   }
 
-  final List<Color> _iconColors = List.generate(4, (index) => const Color(0xFFDECFE2));
+  final List<Color> _iconColors =
+      List.generate(4, (index) => const Color(0xFFDECFE2));
 
   @override
   void initState() {

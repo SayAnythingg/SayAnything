@@ -81,7 +81,8 @@ class _SettingsPageState extends State<SettingsPage> {
           SwitchListTile(
             title: const Text('Notification Permission',
                 style: TextStyle(color: Color(0xFF7EC4CF))),
-            secondary: const Icon(Icons.notifications, color: Color(0xFF7EC4CF)),
+            secondary:
+                const Icon(Icons.notifications, color: Color(0xFF7EC4CF)),
             value: _notificationPermission,
             onChanged: (bool value) {
               setState(() {
@@ -105,7 +106,8 @@ class _SettingsPageState extends State<SettingsPage> {
           SwitchListTile(
             title: const Text('Calendar Permission',
                 style: TextStyle(color: Color(0xFF7EC4CF))),
-            secondary: const Icon(Icons.calendar_today, color: Color(0xFF7EC4CF)),
+            secondary:
+                const Icon(Icons.calendar_today, color: Color(0xFF7EC4CF)),
             value: _calendarPermission,
             onChanged: (bool value) {
               setState(() {
@@ -117,7 +119,8 @@ class _SettingsPageState extends State<SettingsPage> {
           SwitchListTile(
             title: const Text('Health Data Permission',
                 style: TextStyle(color: Color(0xFF7EC4CF))),
-            secondary: const Icon(Icons.health_and_safety, color: Color(0xFF7EC4CF)),
+            secondary:
+                const Icon(Icons.health_and_safety, color: Color(0xFF7EC4CF)),
             value: _healthDataPermission,
             onChanged: (bool value) {
               setState(() {
