@@ -235,7 +235,7 @@ class _AIState extends State<multimedia> {
                               borderSide: BorderSide.none,
                             ),
                             filled: true,
-                            fillColor: Colors.black87,
+                            fillColor: const Color(0xFF545454),
                             prefixIcon: const Icon(Icons.message,
                                 color: Color.fromARGB(249, 234, 242, 247)),
                             suffixIcon: userMessage.isEmpty
