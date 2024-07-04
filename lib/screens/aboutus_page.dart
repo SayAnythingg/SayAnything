@@ -80,7 +80,7 @@ class Aboutus extends StatelessWidget {
                               decoration: const InputDecoration(
                                 labelText: 'Subject',
                                 focusColor: Color(
-                                    0xFF7EC4CF), // Set the focus color here
+                                    0xFF7EC4CF), 
                               ),
                               validator: (value) {
                                 if (value == null || value.isEmpty) {
@@ -94,7 +94,7 @@ class Aboutus extends StatelessWidget {
                               decoration: const InputDecoration(
                                 labelText: 'Body',
                                 focusColor: Color(
-                                    0xFF7EC4CF), // Set the focus color here
+                                    0xFF7EC4CF), 
                               ),
                               validator: (value) {
                                 if (value == null || value.isEmpty) {

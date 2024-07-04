@@ -20,15 +20,36 @@ class UserIdService {
   }
 }
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   final User user;
   const HomePage({super.key, required this.user});
+
+  @override
+  _HomePageState createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  int _onlineUserCount = 0;
+
+  @override
+  void initState() {
+    super.initState();
+    _loadOnlineUserCount();
+  }
+
+  void _loadOnlineUserCount() async {
+    int count = await OnlineUserCountService().getOnlineUserCount();
+    setState(() {
+      _onlineUserCount = count;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     double screenWidth = MediaQuery.of(context).size.width;
 
     return Scaffold(
-      endDrawer: SideMenu(user: user),
+      endDrawer: SideMenu(user: widget.user),
       body: Stack(
         children: [
           Container(
@@ -46,6 +67,8 @@ class HomePage extends StatelessWidget {
                     children: [
                       Image.asset('assets/images/logo.png', width: 50),
                       Image.asset('assets/images/logo_word.png', width: 120),
+                      Spacer(), // Add this line to push the text to the right
+                      Text('Online: $_onlineUserCount', style: TextStyle(fontSize: 14)), 
                     ],
                   ),
                   centerTitle: false,
@@ -56,13 +79,6 @@ class HomePage extends StatelessWidget {
                     Builder(
                       builder: (context) => Row(
                         children: [
-                          const Text(
-                            'on-line:3',
-                            style: TextStyle(
-                              color: Colors.black,
-                              fontSize: 12,
-                            ),
-                          ),
                           IconButton(
                             icon: const SizedBox(
                               width: 30,
@@ -132,7 +148,7 @@ class HomePage extends StatelessWidget {
                     );
 
                     Map<String, dynamic> response =
-                        await matchApiService.requestMatch(user.userId);
+                        await matchApiService.requestMatch(widget.user.userId);
 
                     String message = response['Message'];
                     if (message.contains('deleted')) {
@@ -140,10 +156,8 @@ class HomePage extends StatelessWidget {
                         print('deleted');
                       }
                     } else if (message.contains('matched')) {
-                      // ignore: use_build_context_synchronously
                       Navigator.pop(context);
                       showDialog(
-                        // ignore: use_build_context_synchronously
                         context: context,
                         builder: (BuildContext context) {
                           return AlertDialog(
@@ -162,7 +176,7 @@ class HomePage extends StatelessWidget {
                       );
                     } else if (message.contains('waiting')) {
                       if (kDebugMode) {
-                        print('waitung');
+                        print('waiting');
                       }
                     }
                   },

@@ -1,14 +1,19 @@
+import 'dart:async';
 import 'package:SayAnything/common/common.dart';
 import 'package:SayAnything/screens/fade_animationtest.dart';
 import 'package:SayAnything/screens/loading_page.dart';
+import 'package:SayAnything/screens/login_page.dart';
 import 'package:SayAnything/widgets/custom_widget.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:SayAnything/services/API_services.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 final apiService = SignupApiService();
+final resendMailService = ResendConfirmationMailService();
+final userConfirmService = UserConfirmStatusService();
 
 class SignupPage extends StatefulWidget {
   const SignupPage({super.key});
@@ -23,6 +28,100 @@ class _SignupPageState extends State<SignupPage> {
   final passwordController = TextEditingController();
   final genderController = TextEditingController();
   final confirmPasswordController = TextEditingController();
+  Timer? _timer;
+  int _start = 120;
+  
+
+  void startTimer() {
+    const oneSec = Duration(seconds: 1);
+    _timer?.cancel();
+    _timer = Timer.periodic(oneSec, (Timer timer) {
+      if (_start == 0) {
+        setState(() {
+          timer.cancel();
+        });
+      } else {
+        setState(() {
+          _start--;
+          _saveTimerState();
+        });
+      }
+    });
+  }
+
+  Future<void> _saveTimerState() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    prefs.setInt('timer_start', _start);
+    prefs.setInt('timer_last_update', DateTime.now().millisecondsSinceEpoch);
+  }
+
+  Future<void> _loadTimerState() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    int? savedStart = prefs.getInt('timer_start');
+    int? lastUpdate = prefs.getInt('timer_last_update');
+
+    if (savedStart != null && lastUpdate != null) {
+      int elapsed = ((DateTime.now().millisecondsSinceEpoch - lastUpdate) / 1000).round();
+      int newStart = savedStart - elapsed;
+      if (newStart > 0) {
+        setState(() {
+          _start = newStart;
+        });
+      } else {
+        setState(() {
+          _start = 0;
+        });
+      }
+    }
+  }
+
+  Future<void> _registerUser() async {
+
+    if (userConfirmService.response.body == 200) {
+
+      Navigator.push(
+  context,
+  MaterialPageRoute(
+    builder: (context) => const LoginPage(),
+  ),
+);
+    } 
+
+}
+
+  Future<void> _saveInputData() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    await prefs.setString('username', usernameController.text);
+    await prefs.setString('email', emailController.text);
+    await prefs.setString('password', passwordController.text);
+    await prefs.setString('gender', genderController.text);
+    await prefs.setString('confirmPassword', confirmPasswordController.text);
+  }
+
+  Future<void> _loadInputData() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    setState(() {
+      usernameController.text = prefs.getString('username') ?? '';
+      emailController.text = prefs.getString('email') ?? '';
+      passwordController.text = prefs.getString('password') ?? '';
+      genderController.text = prefs.getString('gender') ?? '';
+      confirmPasswordController.text = prefs.getString('confirmPassword') ?? '';
+    });
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _loadInputData();
+    _loadTimerState().then((_) => startTimer());
+  }
+
+  @override
+  void dispose() {
+    _timer?.cancel();
+    _saveInputData();
+    super.dispose();
+  }
 
   Future<void> performWithLoading(
       Future<void> Function() asyncOperation) async {
@@ -34,7 +133,6 @@ class _SignupPageState extends State<SignupPage> {
 
     await asyncOperation();
 
-    // ignore: use_build_context_synchronously
     Navigator.pop(context);
   }
 
@@ -215,6 +313,10 @@ class _SignupPageState extends State<SignupPage> {
                                           child: const Text('Confirm'),
                                           onPressed: () {
                                             Navigator.of(context).pop();
+                                            setState(() {
+                                              _start = 120;
+                                              startTimer();
+                                            });
                                           },
                                         ),
                                       ],
@@ -227,6 +329,7 @@ class _SignupPageState extends State<SignupPage> {
                                   passwordController.text,
                                   genderController.text,
                                 );
+                                await _registerUser();
                               }
                             },
                             color: const Color(0xFF7EC4CF),
@@ -236,11 +339,37 @@ class _SignupPageState extends State<SignupPage> {
                     ),
                   ),
                 ),
-                const SizedBox(
-                  height: 15,
+                FadeInAnimation(
+                  delay: 2.4, // Adjust the delay as needed
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      const Text("Didn't receive the email? "),
+                      TextButton(
+      onPressed: _start > 0
+          ? null
+          : () async {
+              // Start the timer
+              startTimer();
+              setState(() {
+                _start = 120;
+              });
+
+                final result = await resendMailService.resendConfirmationMail(emailController.text);
+                if (result['confirmStatus']) {
+                  ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Confirmation mail resent successfully.")));
+                } 
+            },
+      style: TextButton.styleFrom(
+        foregroundColor: const Color(0xFF7EC4CF),
+      ),
+      child: Text(_start > 0 ? '$_start s' : 'Resend'),
+    ),
+                    ],
+                  ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.all(12.0),
+                  padding: const EdgeInsets.all(2.0),
                   child: SizedBox(
                     height: 160,
                     width: double.infinity,

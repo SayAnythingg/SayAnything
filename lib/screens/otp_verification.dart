@@ -3,14 +3,14 @@
 import 'package:SayAnything/common/common.dart';
 import 'package:SayAnything/router/router.dart';
 import 'package:SayAnything/screens/fade_animationtest.dart';
+import 'package:SayAnything/services/API_services.dart';
 import 'package:SayAnything/widgets/custom_widget.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:pinput/pinput.dart';
-import 'package:SayAnything/services/API_services.dart';
 
-final otpServices = OtpVerificationApiService();
+final otpService = VerifyOTPService();
 
 class OtpVerificationPage extends StatefulWidget {
   const OtpVerificationPage({super.key});
@@ -20,7 +20,7 @@ class OtpVerificationPage extends StatefulWidget {
 }
 
 class _OtpVerificationPageState extends State<OtpVerificationPage> {
-  final otpService = OtpVerificationApiService();
+  final otpController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -95,6 +95,7 @@ class _OtpVerificationPageState extends State<OtpVerificationPage> {
                       FadeInAnimation(
                         delay: 1.9,
                         child: Pinput(
+                          controller: otpController,
                           defaultPinTheme: defaultPinTheme,
                           focusedPinTheme: focusedPinTheme,
                           submittedPinTheme: submittedPinTheme,
@@ -102,23 +103,7 @@ class _OtpVerificationPageState extends State<OtpVerificationPage> {
                               PinputAutovalidateMode.onSubmit,
                           showCursor: true,
                           onCompleted: (pin) async {
-                            final response = await otpService.verifyOtp(pin);
-                            if (response == 200) {
-                              // ignore: use_build_context_synchronously
-                              ScaffoldMessenger.of(context).showSnackBar(
-                                const SnackBar(
-                                    content: Text('OTP verified successfully')),
-                              );
-                              // ignore: use_build_context_synchronously
-                              GoRouter.of(context)
-                                  .pushNamed(Routers.newpassword.name);
-                            } else if (response == 400) {
-                              // ignore: use_build_context_synchronously
-                              ScaffoldMessenger.of(context).showSnackBar(
-                                const SnackBar(
-                                    content: Text('Failed to verify OTP')),
-                              );
-                            }
+                            otpController.text = pin;
                           },
                         ),
                       ),
@@ -129,9 +114,32 @@ class _OtpVerificationPageState extends State<OtpVerificationPage> {
                         delay: 2.1,
                         child: CustomElevatedButton(
                           message: "Verify",
-                          function: () {
-                            GoRouter.of(context)
-                                .pushNamed(Routers.newpassword.name);
+                          function: () async {
+                            try {
+                              final responseCode = await otpService.verifyOTP(otpController.text);
+                              if (responseCode == 200) {
+                                // ignore: use_build_context_synchronously
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  const SnackBar(
+                                      content: Text('OTP verified successfully')),
+                                );
+                                // ignore: use_build_context_synchronously
+                                GoRouter.of(context)
+                                    .pushNamed(Routers.newpassword.name);
+                              } else {
+                                // ignore: use_build_context_synchronously
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  const SnackBar(
+                                      content: Text('Failed to verify OTP')),
+                                );
+                              }
+                            } catch (e) {
+                              // ignore: use_build_context_synchronously
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                SnackBar(
+                                    content: Text('Failed to verify OTP: $e')),
+                              );
+                            }
                           },
                           color: const Color(0xFF7EC4CF),
                         ),

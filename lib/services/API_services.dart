@@ -199,3 +199,96 @@ class JokeApi {
     }
   }
 }
+
+class VerifyOTPService {
+  Future<int> verifyOTP(String otpCode) async {
+    final response = await http.post(
+      Uri.parse('https://sayanythingapi.sdpmlab.org/auth/verifyOTP'),
+      headers: <String, String>{
+        'Content-Type': 'application/json; charset=UTF-8',
+      },
+      body: jsonEncode(<String, String>{
+        'otp': otpCode,
+      }),
+    );
+
+    final responseBody = jsonDecode(response.body);
+
+    // 打印狀態碼和回應體以便調試
+    print('Status code: ${response.statusCode}');
+    print('Response body: $responseBody');
+
+    return response.statusCode;
+  }
+}
+
+class OnlineUserCountService {
+  Future<int> getOnlineUserCount() async {
+    final response = await http.get(
+      Uri.parse('https://sayanythingapi.sdpmlab.org/auth/onlineUserCount'),
+      headers: <String, String>{
+        'Content-Type': 'application/json; charset=UTF-8',
+      },
+    );
+
+    if (response.statusCode == 200) {
+      final responseBody = jsonDecode(response.body);
+      return responseBody['userCount'];
+    } else {
+      print('Failed to get online user count');
+      return 0;
+    }
+  }
+}
+
+class ResendConfirmationMailService {
+  Future<Map<String, dynamic>> resendConfirmationMail(String email) async {
+    final response = await http.post(
+      Uri.parse('https://sayanythingapi.sdpmlab.org/auth/resend_confirmMail'),
+      headers: <String, String>{
+        'Content-Type': 'application/json; charset=UTF-8',
+      },
+      body: jsonEncode(<String, String>{
+        'email': email,
+      }),
+    );
+
+    if (response.statusCode == 200) {
+      final responseBody = jsonDecode(response.body);
+      return {
+        'userId': responseBody['userId'],
+        'confirmStatus': responseBody['confirmStatus'],
+      };
+    } else {
+      print('Failed to resend confirmation mail');
+      return {'userId': 0, 'confirmStatus': false};
+    }
+  }
+}
+
+class UserConfirmStatusService {
+  get response => null;
+
+  Future<String> userConfirmStatus(String email) async {
+    final response = await http.post(
+      Uri.parse('https://sayanythingapi.sdpmlab.org/auth/userConfirmStatus'),
+      headers: <String, String>{
+        'Content-Type': 'application/json; charset=UTF-8',
+      },
+      body: jsonEncode({'email': email}),
+    );
+
+    final responseBody = jsonDecode(response.body);
+
+    print('Status code: ${response.statusCode}');
+    print('Response body: $responseBody');
+
+    if (response.statusCode == 200) {
+      return responseBody['Message'];
+    } else if (response.statusCode == 400) {
+      return responseBody['Message'];
+    } else {
+      return 'Unknown error occurred';
+    }
+  }
+}
