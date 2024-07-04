@@ -30,7 +30,6 @@ class _SignupPageState extends State<SignupPage> {
   final confirmPasswordController = TextEditingController();
   Timer? _timer;
   int _start = 120;
-  
 
   void startTimer() {
     const oneSec = Duration(seconds: 1);
@@ -61,7 +60,8 @@ class _SignupPageState extends State<SignupPage> {
     int? lastUpdate = prefs.getInt('timer_last_update');
 
     if (savedStart != null && lastUpdate != null) {
-      int elapsed = ((DateTime.now().millisecondsSinceEpoch - lastUpdate) / 1000).round();
+      int elapsed =
+          ((DateTime.now().millisecondsSinceEpoch - lastUpdate) / 1000).round();
       int newStart = savedStart - elapsed;
       if (newStart > 0) {
         setState(() {
@@ -76,18 +76,15 @@ class _SignupPageState extends State<SignupPage> {
   }
 
   Future<void> _registerUser() async {
-
     if (userConfirmService.response.body == 200) {
-
       Navigator.push(
-  context,
-  MaterialPageRoute(
-    builder: (context) => const LoginPage(),
-  ),
-);
-    } 
-
-}
+        context,
+        MaterialPageRoute(
+          builder: (context) => const LoginPage(),
+        ),
+      );
+    }
+  }
 
   Future<void> _saveInputData() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
@@ -340,31 +337,35 @@ class _SignupPageState extends State<SignupPage> {
                   ),
                 ),
                 FadeInAnimation(
-                  delay: 2.4, // Adjust the delay as needed
+                  delay: 2.4,
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       const Text("Didn't receive the email? "),
                       TextButton(
-      onPressed: _start > 0
-          ? null
-          : () async {
-              // Start the timer
-              startTimer();
-              setState(() {
-                _start = 120;
-              });
+                        onPressed: _start > 0
+                            ? null
+                            : () async {
+                                startTimer();
+                                setState(() {
+                                  _start = 120;
+                                });
 
-                final result = await resendMailService.resendConfirmationMail(emailController.text);
-                if (result['confirmStatus']) {
-                  ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Confirmation mail resent successfully.")));
-                } 
-            },
-      style: TextButton.styleFrom(
-        foregroundColor: const Color(0xFF7EC4CF),
-      ),
-      child: Text(_start > 0 ? '$_start s' : 'Resend'),
-    ),
+                                final result = await resendMailService
+                                    .resendConfirmationMail(
+                                        emailController.text);
+                                if (result['confirmStatus']) {
+                                  ScaffoldMessenger.of(context).showSnackBar(
+                                      SnackBar(
+                                          content: Text(
+                                              "Confirmation mail resent successfully.")));
+                                }
+                              },
+                        style: TextButton.styleFrom(
+                          foregroundColor: const Color(0xFF7EC4CF),
+                        ),
+                        child: Text(_start > 0 ? '$_start s' : 'Resend'),
+                      ),
                     ],
                   ),
                 ),

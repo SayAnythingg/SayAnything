@@ -79,8 +79,7 @@ class Aboutus extends StatelessWidget {
                               controller: _subjectController,
                               decoration: const InputDecoration(
                                 labelText: 'Subject',
-                                focusColor: Color(
-                                    0xFF7EC4CF), 
+                                focusColor: Color(0xFF7EC4CF),
                               ),
                               validator: (value) {
                                 if (value == null || value.isEmpty) {
@@ -93,8 +92,7 @@ class Aboutus extends StatelessWidget {
                               controller: _bodyController,
                               decoration: const InputDecoration(
                                 labelText: 'Body',
-                                focusColor: Color(
-                                    0xFF7EC4CF), 
+                                focusColor: Color(0xFF7EC4CF),
                               ),
                               validator: (value) {
                                 if (value == null || value.isEmpty) {

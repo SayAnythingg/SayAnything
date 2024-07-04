@@ -68,7 +68,8 @@ class _HomePageState extends State<HomePage> {
                       Image.asset('assets/images/logo.png', width: 50),
                       Image.asset('assets/images/logo_word.png', width: 120),
                       Spacer(), // Add this line to push the text to the right
-                      Text('Online: $_onlineUserCount', style: TextStyle(fontSize: 14)), 
+                      Text('Online: $_onlineUserCount',
+                          style: TextStyle(fontSize: 14)),
                     ],
                   ),
                   centerTitle: false,

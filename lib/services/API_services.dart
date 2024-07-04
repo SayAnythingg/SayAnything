@@ -214,7 +214,6 @@ class VerifyOTPService {
 
     final responseBody = jsonDecode(response.body);
 
-    // 打印狀態碼和回應體以便調試
     print('Status code: ${response.statusCode}');
     print('Response body: $responseBody');
 

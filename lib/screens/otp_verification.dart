@@ -116,12 +116,14 @@ class _OtpVerificationPageState extends State<OtpVerificationPage> {
                           message: "Verify",
                           function: () async {
                             try {
-                              final responseCode = await otpService.verifyOTP(otpController.text);
+                              final responseCode = await otpService
+                                  .verifyOTP(otpController.text);
                               if (responseCode == 200) {
                                 // ignore: use_build_context_synchronously
                                 ScaffoldMessenger.of(context).showSnackBar(
                                   const SnackBar(
-                                      content: Text('OTP verified successfully')),
+                                      content:
+                                          Text('OTP verified successfully')),
                                 );
                                 // ignore: use_build_context_synchronously
                                 GoRouter.of(context)
