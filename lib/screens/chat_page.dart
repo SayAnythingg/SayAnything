@@ -51,6 +51,7 @@ class _ChatPageState extends State<ChatPage> {
   void initState() {
     super.initState();
     _loadMessages();
+    _addFakeMessages(); // Add this line
   }
 
   void _addMessage(types.Message message) {
@@ -78,7 +79,7 @@ class _ChatPageState extends State<ChatPage> {
                   child: const Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: <Widget>[
-                      Icon(Icons.photo), // Replace with your desired icon
+                      Icon(Icons.photo),
                       Text('Photo'),
                     ],
                   ),
@@ -91,7 +92,7 @@ class _ChatPageState extends State<ChatPage> {
                   child: const Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: <Widget>[
-                      Icon(Icons.file_upload), // Replace with your desired icon
+                      Icon(Icons.file_upload),
                       Text('File'),
                     ],
                   ),
@@ -101,7 +102,7 @@ class _ChatPageState extends State<ChatPage> {
                   child: const Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: <Widget>[
-                      Icon(Icons.cancel), // Replace with your desired icon
+                      Icon(Icons.cancel),
                       Text('Cancel'),
                     ],
                   ),
@@ -238,10 +239,10 @@ class _ChatPageState extends State<ChatPage> {
     // Simulate a response
     Future.delayed(const Duration(seconds: 1), () {
       final responseMessage = types.TextMessage(
-        author: const types.User(id: 'Chris'), // The id of the other user
+        author: const types.User(id: 'Chris'),
         createdAt: DateTime.now().millisecondsSinceEpoch,
         id: const Uuid().v4(),
-        text: 'Automated Test .',
+        text: "it's so cool .",
       );
 
       _addMessage(responseMessage);
@@ -259,6 +260,34 @@ class _ChatPageState extends State<ChatPage> {
     });
   }
 
+  // Add this method
+  void _addFakeMessages() {
+    final fakeMessages = [
+      types.TextMessage(
+        author: const types.User(id: 'user-123'),
+        createdAt: DateTime.now().subtract(const Duration(minutes: 1)).millisecondsSinceEpoch,
+        id: const Uuid().v4(),
+        text: 'Hello, how are you?',
+      ),
+      types.TextMessage(
+        author: _user,
+        createdAt: DateTime.now().subtract(const Duration(minutes: 2)).millisecondsSinceEpoch,
+        id: const Uuid().v4(),
+        text: 'I am fine, thanks! How about you?',
+      ),
+      types.TextMessage(
+        author: const types.User(id: 'user-123'),
+        createdAt: DateTime.now().subtract(const Duration(minutes: 3)).millisecondsSinceEpoch,
+        id: const Uuid().v4(),
+        text: 'I\'m good too, thanks for asking!',
+      ),
+    ];
+
+    setState(() {
+      _messages.insertAll(0, fakeMessages);
+    });
+  }
+
   @override
   Widget build(BuildContext context) => Scaffold(
         appBar: AppBar(
@@ -270,18 +299,14 @@ class _ChatPageState extends State<ChatPage> {
           title: Row(
             children: <Widget>[
               CircleAvatar(
-                // Replace with your image
                 backgroundImage:
                     NetworkImage('https://via.placeholder.com/150'),
                 radius: 20,
               ),
-              SizedBox(
-                  width:
-                      10), // Give some spacing between the avatar and the title
+              SizedBox(width: 10),
               Text(
                 widget.chatRoomName,
-                style: TextStyle(
-                    fontSize: 18), // Make the font size smaller than the avatar
+                style: TextStyle(fontSize: 18),
               ),
             ],
           ),

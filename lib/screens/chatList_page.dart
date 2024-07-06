@@ -14,10 +14,8 @@ class ChatList extends StatefulWidget {
 class _ChatListState extends State<ChatList> {
   List<String> chatRooms = [
     'Chris',
-    'Anderson',
-    'Cosmo ',
-    'Ivy ',
-    '鍾弘浩',
+    'George',
+    'Sylvia',
   ];
 
   void pinChatRoom(int index) {

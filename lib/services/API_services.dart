@@ -291,3 +291,24 @@ class UserConfirmStatusService {
     }
   }
 }
+
+
+class UserOnlineState {
+  Future<bool> fetchUserOnlineStatus(String userId) async {
+    final uri = Uri.parse('https://sayanythingapi.sdpmlab.org/auth/userOnlineStatus')
+        .replace(queryParameters: {'userId': userId});
+    final response = await http.get(
+      uri,
+      headers: <String, String>{
+        'Content-Type': 'application/json',
+      },
+    );
+
+    if (response.statusCode == 200) {
+      final data = jsonDecode(response.body);
+      return data['userStatus'];
+    } else {
+      throw Exception('Failed to load user status');
+    }
+  }
+}

@@ -10,6 +10,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:SayAnything/services/API_services.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:quickalert/quickalert.dart';
 
 final apiService = SignupApiService();
 final resendMailService = ResendConfirmationMailService();
@@ -28,6 +29,7 @@ class _SignupPageState extends State<SignupPage> {
   final passwordController = TextEditingController();
   final genderController = TextEditingController();
   final confirmPasswordController = TextEditingController();
+  bool _hasAttemptedRegister = false;
   Timer? _timer;
   int _start = 120;
 
@@ -103,6 +105,12 @@ class _SignupPageState extends State<SignupPage> {
       passwordController.text = prefs.getString('password') ?? '';
       genderController.text = prefs.getString('gender') ?? '';
       confirmPasswordController.text = prefs.getString('confirmPassword') ?? '';
+    });
+  }
+
+  void _attemptRegister() {
+    setState(() {
+      _hasAttemptedRegister = true; 
     });
   }
 
@@ -255,69 +263,40 @@ class _SignupPageState extends State<SignupPage> {
                                   passwordController.text.isEmpty ||
                                   genderController.text.isEmpty ||
                                   confirmPasswordController.text.isEmpty) {
-                                showDialog(
+                                QuickAlert.show(
                                   context: context,
-                                  builder: (BuildContext context) {
-                                    return AlertDialog(
-                                      backgroundColor: const Color(0xFF7EC4CF),
-                                      title: const Text('Error'),
-                                      content: const Text(
-                                          'Please make sure all fields are entered.'),
-                                      actions: <Widget>[
-                                        TextButton(
-                                          child: const Text('Confirm'),
-                                          onPressed: () {
-                                            Navigator.of(context).pop();
-                                          },
-                                        ),
-                                      ],
-                                    );
-                                  },
+                                  type: QuickAlertType.error,
+                                  title: 'Error',
+                                  text: 'Please make sure all fields are entered.',
+                                  confirmBtnText: 'Confirm',
+                                  confirmBtnColor: Color(0xFF7EC4CF),
+                                  onConfirmBtnTap: () => Navigator.of(context).pop(),
                                 );
-                              } else if (passwordController.text !=
-                                  confirmPasswordController.text) {
-                                showDialog(
+                              } else if (passwordController.text != confirmPasswordController.text) {
+                                QuickAlert.show(
                                   context: context,
-                                  builder: (BuildContext context) {
-                                    return AlertDialog(
-                                      backgroundColor: const Color(0xFF7EC4CF),
-                                      title: const Text('Error'),
-                                      content: const Text(
-                                          'Please make sure the password and confirm password are the same.'),
-                                      actions: <Widget>[
-                                        TextButton(
-                                          child: const Text('Confirm'),
-                                          onPressed: () {
-                                            Navigator.of(context).pop();
-                                          },
-                                        ),
-                                      ],
-                                    );
-                                  },
+                                  type: QuickAlertType.error,
+                                  title: 'Error',
+                                  text: 'Please make sure the password and confirm password are the same.',
+                                  confirmBtnText: 'Confirm',
+                                  confirmBtnColor: Color(0xFF7EC4CF),
+                                  onConfirmBtnTap: () => Navigator.of(context).pop(),
                                 );
                               } else {
-                                showDialog(
+                                QuickAlert.show(
                                   context: context,
-                                  builder: (BuildContext context) {
-                                    return AlertDialog(
-                                      backgroundColor: const Color(0xFF7EC4CF),
-                                      title:
-                                          const Text('Verification code sent'),
-                                      content: const Text(
-                                          'Please check your email for a verification code and to confirm your account.'),
-                                      actions: <Widget>[
-                                        TextButton(
-                                          child: const Text('Confirm'),
-                                          onPressed: () {
-                                            Navigator.of(context).pop();
-                                            setState(() {
-                                              _start = 120;
-                                              startTimer();
-                                            });
-                                          },
-                                        ),
-                                      ],
-                                    );
+                                  type: QuickAlertType.success,
+                                  title: 'Verification code sent',
+                                  text: 'Please check your email for a verification code and to confirm your account.',
+                                  confirmBtnText: 'Confirm',
+                                  confirmBtnColor: Color(0xFF7EC4CF),
+                                  onConfirmBtnTap: () {
+                                    Navigator.of(context).pop();
+                                    setState(() {
+                                      _start = 120;
+                                      startTimer();
+                                      _attemptRegister(); 
+                                    });
                                   },
                                 );
                                 await apiService.registerUser(
@@ -336,39 +315,40 @@ class _SignupPageState extends State<SignupPage> {
                     ),
                   ),
                 ),
-                FadeInAnimation(
-                  delay: 2.4,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      const Text("Didn't receive the email? "),
-                      TextButton(
-                        onPressed: _start > 0
-                            ? null
-                            : () async {
-                                startTimer();
-                                setState(() {
-                                  _start = 120;
-                                });
+                if (_hasAttemptedRegister)
+                  FadeInAnimation(
+                    delay: 2.4,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        const Text("Didn't receive the email? "),
+                        TextButton(
+                          onPressed: _start > 0
+                              ? null
+                              : () async {
+                                  startTimer();
+                                  setState(() {
+                                    _start = 120;
+                                  });
 
-                                final result = await resendMailService
-                                    .resendConfirmationMail(
-                                        emailController.text);
-                                if (result['confirmStatus']) {
-                                  ScaffoldMessenger.of(context).showSnackBar(
-                                      SnackBar(
-                                          content: Text(
-                                              "Confirmation mail resent successfully.")));
-                                }
-                              },
-                        style: TextButton.styleFrom(
-                          foregroundColor: const Color(0xFF7EC4CF),
+                                  final result = await resendMailService
+                                      .resendConfirmationMail(
+                                          emailController.text);
+                                  if (result['confirmStatus']) {
+                                    ScaffoldMessenger.of(context).showSnackBar(
+                                        SnackBar(
+                                            content: Text(
+                                                "Confirmation mail resent successfully.")));
+                                  }
+                                },
+                          style: TextButton.styleFrom(
+                            foregroundColor: const Color(0xFF7EC4CF),
+                          ),
+                          child: Text(_start > 0 ? '$_start s' : 'Resend'),
                         ),
-                        child: Text(_start > 0 ? '$_start s' : 'Resend'),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
-                ),
                 Padding(
                   padding: const EdgeInsets.all(2.0),
                   child: SizedBox(
