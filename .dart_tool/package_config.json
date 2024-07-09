@@ -908,6 +908,18 @@
       "languageVersion": "2.16"
     },
     {
+      "name": "socket_io_client",
+      "rootUri": "file:///Users/zhonghonghao/.pub-cache/hosted/pub.dev/socket_io_client-3.0.0-beta.2",
+      "packageUri": "lib/",
+      "languageVersion": "3.0"
+    },
+    {
+      "name": "socket_io_common",
+      "rootUri": "file:///Users/zhonghonghao/.pub-cache/hosted/pub.dev/socket_io_common-3.0.0-beta.0",
+      "packageUri": "lib/",
+      "languageVersion": "3.0"
+    },
+    {
       "name": "source_gen",
       "rootUri": "file:///Users/zhonghonghao/.pub-cache/hosted/pub.dev/source_gen-1.5.0",
       "packageUri": "lib/",
@@ -1142,7 +1154,7 @@
       "languageVersion": "3.2"
     }
   ],
-  "generated": "2024-06-23T09:27:16.714118Z",
+  "generated": "2024-07-09T02:15:26.122303Z",
   "generator": "pub",
   "generatorVersion": "3.4.3",
   "flutterRoot": "file:///opt/homebrew/Caskroom/flutter/3.16.7/flutter",

@@ -1,12 +1,13 @@
 import 'package:SayAnything/screens/fade_animationtest.dart';
 import 'package:SayAnything/services/Model.dart';
-import 'package:flutter/foundation.dart';
+// import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:rive/rive.dart' as rive;
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:SayAnything/services/API_services.dart';
 import 'package:SayAnything/screens/loading_page.dart';
-
+// ignore: library_prefixes
+import 'package:socket_io_client/socket_io_client.dart' as IO;
 import 'package:SayAnything/widgets/sideMenu.dart';
 
 final matchApiService = MatchApiService();
@@ -29,12 +30,33 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  late IO.Socket socket;
   int _onlineUserCount = 0;
 
-  @override
+ @override
   void initState() {
     super.initState();
+    _initializeSocket();
     _loadOnlineUserCount();
+  }
+
+  void _initializeSocket() {
+    socket = IO.io('George這邊要改伺服器位址', <String, dynamic>{
+      'transports': ['websocket'],
+      'autoConnect': true,
+    });
+
+    socket.onConnect((_) {
+      print('Connected');
+    });
+
+    socket.on('eventFromBackend', (data) {
+      print(data);
+    });
+
+    socket.onDisconnect((_) {
+      print('Disconnected');
+    });
   }
 
   void _loadOnlineUserCount() async {
@@ -43,6 +65,20 @@ class _HomePageState extends State<HomePage> {
       _onlineUserCount = count;
     });
   }
+
+    void startMatching() {
+    showDialog(
+      context: context,
+      barrierDismissible: false,
+      builder: (BuildContext context) {
+        return LoadingPage();
+      },
+    );
+    print('Fucking done ... userId: ${widget.user.userId}');
+    socket.emit('startMatching', {'userId': widget.user.userId});
+  }
+
+  
 
   @override
   Widget build(BuildContext context) {
@@ -138,6 +174,7 @@ class _HomePageState extends State<HomePage> {
                   ),
                 ),
                 const SizedBox(height: 20),
+                /*-----------------------------------------------------
                 FloatingActionButton(
                   onPressed: () async {
                     showDialog(
@@ -181,6 +218,11 @@ class _HomePageState extends State<HomePage> {
                       }
                     }
                   },
+                  -----------------------------------------------------*/
+                  FloatingActionButton(
+                  onPressed: () async {
+                    startMatching();
+                  },
                   backgroundColor: const Color.fromARGB(255, 244, 246, 247),
                   child: const Icon(Icons.navigation),
                 ),
@@ -191,4 +233,11 @@ class _HomePageState extends State<HomePage> {
       ),
     );
   }
+
+  @override
+  void dispose() {
+    socket.disconnect();
+    super.dispose();
+  }
+
 }

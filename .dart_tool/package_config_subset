@@ -586,6 +586,14 @@ smart_auth
 2.16
 file:///Users/zhonghonghao/.pub-cache/hosted/pub.dev/smart_auth-1.1.1/
 file:///Users/zhonghonghao/.pub-cache/hosted/pub.dev/smart_auth-1.1.1/lib/
+socket_io_client
+3.0
+file:///Users/zhonghonghao/.pub-cache/hosted/pub.dev/socket_io_client-3.0.0-beta.2/
+file:///Users/zhonghonghao/.pub-cache/hosted/pub.dev/socket_io_client-3.0.0-beta.2/lib/
+socket_io_common
+3.0
+file:///Users/zhonghonghao/.pub-cache/hosted/pub.dev/socket_io_common-3.0.0-beta.0/
+file:///Users/zhonghonghao/.pub-cache/hosted/pub.dev/socket_io_common-3.0.0-beta.0/lib/
 source_gen
 3.0
 file:///Users/zhonghonghao/.pub-cache/hosted/pub.dev/source_gen-1.5.0/
