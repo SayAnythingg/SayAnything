@@ -24,7 +24,7 @@ class _PrivacyPolicyPageState extends State<PrivacyPolicyPage> {
   String? pdfPath;
   int _totalPages = 0;
   int _currentPage = 0;
-  bool _failedToLoad = false; // Flag to indicate if the PDF failed to load
+  bool _failedToLoad = false; 
 
   @override
   void initState() {
@@ -52,7 +52,7 @@ class _PrivacyPolicyPageState extends State<PrivacyPolicyPage> {
 
   @override
   Widget build(BuildContext context) {
-    if (_failedToLoad) { // Check if the PDF failed to load
+    if (_failedToLoad) { 
       WidgetsBinding.instance.addPostFrameCallback((_) {
         Navigator.of(context).pushReplacement(
           MaterialPageRoute(
