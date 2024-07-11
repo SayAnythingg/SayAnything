@@ -58,6 +58,7 @@ dependencies:
   permission_handler: ^11.3.1
   quickalert: ^1.1.0
   socket_io_client: ^3.0.0-beta.2
+  syncfusion_flutter_pdfviewer: ^26.1.41
 
 
 dev_dependencies:

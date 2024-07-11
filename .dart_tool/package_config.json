@@ -200,6 +200,18 @@
       "languageVersion": "3.0"
     },
     {
+      "name": "device_info_plus",
+      "rootUri": "file:///Users/zhonghonghao/.pub-cache/hosted/pub.dev/device_info_plus-9.1.2",
+      "packageUri": "lib/",
+      "languageVersion": "2.18"
+    },
+    {
+      "name": "device_info_plus_platform_interface",
+      "rootUri": "file:///Users/zhonghonghao/.pub-cache/hosted/pub.dev/device_info_plus_platform_interface-7.0.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "diffutil_dart",
       "rootUri": "file:///Users/zhonghonghao/.pub-cache/hosted/pub.dev/diffutil_dart-3.0.0",
       "packageUri": "lib/",
@@ -950,6 +962,12 @@
       "languageVersion": "3.0"
     },
     {
+      "name": "sprintf",
+      "rootUri": "file:///Users/zhonghonghao/.pub-cache/hosted/pub.dev/sprintf-7.0.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "stack_trace",
       "rootUri": "file:///Users/zhonghonghao/.pub-cache/hosted/pub.dev/stack_trace-1.11.1",
       "packageUri": "lib/",
@@ -978,6 +996,54 @@
       "rootUri": "file:///Users/zhonghonghao/.pub-cache/hosted/pub.dev/string_validator-1.0.2",
       "packageUri": "lib/",
       "languageVersion": "2.12"
+    },
+    {
+      "name": "syncfusion_flutter_core",
+      "rootUri": "file:///Users/zhonghonghao/.pub-cache/hosted/pub.dev/syncfusion_flutter_core-26.1.41",
+      "packageUri": "lib/",
+      "languageVersion": "2.17"
+    },
+    {
+      "name": "syncfusion_flutter_pdf",
+      "rootUri": "file:///Users/zhonghonghao/.pub-cache/hosted/pub.dev/syncfusion_flutter_pdf-26.1.41",
+      "packageUri": "lib/",
+      "languageVersion": "2.17"
+    },
+    {
+      "name": "syncfusion_flutter_pdfviewer",
+      "rootUri": "file:///Users/zhonghonghao/.pub-cache/hosted/pub.dev/syncfusion_flutter_pdfviewer-26.1.41",
+      "packageUri": "lib/",
+      "languageVersion": "2.17"
+    },
+    {
+      "name": "syncfusion_flutter_signaturepad",
+      "rootUri": "file:///Users/zhonghonghao/.pub-cache/hosted/pub.dev/syncfusion_flutter_signaturepad-26.1.41",
+      "packageUri": "lib/",
+      "languageVersion": "2.17"
+    },
+    {
+      "name": "syncfusion_pdfviewer_macos",
+      "rootUri": "file:///Users/zhonghonghao/.pub-cache/hosted/pub.dev/syncfusion_pdfviewer_macos-26.1.41",
+      "packageUri": "lib/",
+      "languageVersion": "2.17"
+    },
+    {
+      "name": "syncfusion_pdfviewer_platform_interface",
+      "rootUri": "file:///Users/zhonghonghao/.pub-cache/hosted/pub.dev/syncfusion_pdfviewer_platform_interface-26.1.41",
+      "packageUri": "lib/",
+      "languageVersion": "2.17"
+    },
+    {
+      "name": "syncfusion_pdfviewer_web",
+      "rootUri": "file:///Users/zhonghonghao/.pub-cache/hosted/pub.dev/syncfusion_pdfviewer_web-26.1.41",
+      "packageUri": "lib/",
+      "languageVersion": "2.17"
+    },
+    {
+      "name": "syncfusion_pdfviewer_windows",
+      "rootUri": "file:///Users/zhonghonghao/.pub-cache/hosted/pub.dev/syncfusion_pdfviewer_windows-26.1.41",
+      "packageUri": "lib/",
+      "languageVersion": "2.17"
     },
     {
       "name": "synchronized",
@@ -1071,9 +1137,9 @@
     },
     {
       "name": "uuid",
-      "rootUri": "file:///Users/zhonghonghao/.pub-cache/hosted/pub.dev/uuid-3.0.7",
+      "rootUri": "file:///Users/zhonghonghao/.pub-cache/hosted/pub.dev/uuid-4.4.0",
       "packageUri": "lib/",
-      "languageVersion": "2.12"
+      "languageVersion": "3.0"
     },
     {
       "name": "vector_graphics",
@@ -1130,6 +1196,12 @@
       "languageVersion": "3.2"
     },
     {
+      "name": "win32_registry",
+      "rootUri": "file:///Users/zhonghonghao/.pub-cache/hosted/pub.dev/win32_registry-1.1.2",
+      "packageUri": "lib/",
+      "languageVersion": "3.1"
+    },
+    {
       "name": "xdg_directories",
       "rootUri": "file:///Users/zhonghonghao/.pub-cache/hosted/pub.dev/xdg_directories-1.0.4",
       "packageUri": "lib/",
@@ -1154,7 +1226,7 @@
       "languageVersion": "3.2"
     }
   ],
-  "generated": "2024-07-09T02:15:26.122303Z",
+  "generated": "2024-07-11T01:45:56.255364Z",
   "generator": "pub",
   "generatorVersion": "3.4.3",
   "flutterRoot": "file:///opt/homebrew/Caskroom/flutter/3.16.7/flutter",

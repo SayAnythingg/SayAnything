@@ -1,10 +1,14 @@
+import 'dart:io';
+
 import 'package:SayAnything/screens/Main_page.dart';
 import 'package:SayAnything/services/Model.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_pdfview/flutter_pdfview.dart';
+import 'package:syncfusion_flutter_pdfviewer/pdfviewer.dart';
 import 'package:dio/dio.dart';
 import 'package:path_provider/path_provider.dart';
+
+
 
 class PrivacyPolicyPage extends StatefulWidget {
   final User user;
@@ -12,7 +16,6 @@ class PrivacyPolicyPage extends StatefulWidget {
   const PrivacyPolicyPage({super.key, required this.user});
 
   @override
-  // ignore: library_private_types_in_public_api
   _PrivacyPolicyPageState createState() => _PrivacyPolicyPageState();
 }
 
@@ -21,6 +24,7 @@ class _PrivacyPolicyPageState extends State<PrivacyPolicyPage> {
   String? pdfPath;
   int _totalPages = 0;
   int _currentPage = 0;
+  bool _failedToLoad = false; // Flag to indicate if the PDF failed to load
 
   @override
   void initState() {
@@ -36,23 +40,34 @@ class _PrivacyPolicyPageState extends State<PrivacyPolicyPage> {
           'https://drive.google.com/uc?export=download&id=1tCVd2Y_83El09nBis-7gMxLzgMLmOBC-',
           '${dir.path}/privacy_policy.pdf');
       pdfPath = '${dir.path}/privacy_policy.pdf';
-      setState(() {});
     } catch (e) {
       if (kDebugMode) {
         print('Download error: $e');
       }
+      _failedToLoad = true; 
+    } finally {
+      setState(() {});
     }
   }
 
   @override
   Widget build(BuildContext context) {
+    if (_failedToLoad) { // Check if the PDF failed to load
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        Navigator.of(context).pushReplacement(
+          MaterialPageRoute(
+            builder: (context) => MainPage(initialIndex: 1, user: widget.user),
+          ),
+        );
+      });
+    }
+
     double screenWidth = MediaQuery.of(context).size.width;
 
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
-        title:
-            const Text('Privacy Policy', style: TextStyle(color: Colors.white)),
+        title: const Text('Privacy Policy', style: TextStyle(color: Colors.white)),
         backgroundColor: const Color(0xFF7EC4CF),
       ),
       body: Stack(
@@ -60,22 +75,17 @@ class _PrivacyPolicyPageState extends State<PrivacyPolicyPage> {
           pdfPath != null
               ? Padding(
                   padding: EdgeInsets.symmetric(horizontal: screenWidth * 0.1),
-                  child: PDFView(
-                    filePath: pdfPath!,
-                    enableSwipe: true,
-                    swipeHorizontal: false,
-                    autoSpacing: false,
-                    pageFling: false,
-                    fitPolicy: FitPolicy.BOTH,
-                    onRender: (pages) {
+                  child: SfPdfViewer.file(
+                    File(pdfPath!),
+                    onPageChanged: (PdfPageChangedDetails details) {
                       setState(() {
-                        _totalPages = pages!;
+                        _currentPage = details.newPageNumber;
+                        _agreed = _currentPage == _totalPages;
                       });
                     },
-                    onPageChanged: (int? page, int? total) {
+                    onDocumentLoaded: (PdfDocumentLoadedDetails details) {
                       setState(() {
-                        _currentPage = page ?? 0;
-                        _agreed = _currentPage == (_totalPages - 1);
+                        _totalPages = details.document.pages.count;
                       });
                     },
                   ),
@@ -92,8 +102,7 @@ class _PrivacyPolicyPageState extends State<PrivacyPolicyPage> {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) =>
-                              MainPage(initialIndex: 1, user: widget.user),
+                          builder: (context) => MainPage(initialIndex: 1, user: widget.user),
                         ),
                       );
                     },

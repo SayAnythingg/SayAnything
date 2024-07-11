@@ -226,28 +226,51 @@ class _ChatPageState extends State<ChatPage> {
     });
   }
 
-  void _handleSendPressed(types.PartialText message) {
-    final textMessage = types.TextMessage(
-      author: _user,
-      createdAt: DateTime.now().millisecondsSinceEpoch,
-      id: const Uuid().v4(),
-      text: message.text,
-    );
+  int _conversationStep = 0;
 
-    _addMessage(textMessage);
+void _handleSendPressed(types.PartialText message) {
+  final textMessage = types.TextMessage(
+    author: _user,
+    createdAt: DateTime.now().millisecondsSinceEpoch,
+    id: const Uuid().v4(),
+    text: message.text,
+  );
 
-    // Simulate a response
-    Future.delayed(const Duration(seconds: 1), () {
-      final responseMessage = types.TextMessage(
+  _addMessage(textMessage);
+
+  Future.delayed(const Duration(seconds: 1), () {
+    types.TextMessage responseMessage;
+
+    if (_conversationStep == 0) {
+      responseMessage = types.TextMessage(
         author: const types.User(id: 'Chris'),
         createdAt: DateTime.now().millisecondsSinceEpoch,
         id: const Uuid().v4(),
-        text: "it's so cool .",
+        text: "That photo looks beautiful, where is it?",
       );
+    } else if (_conversationStep == 1) {
+      responseMessage = types.TextMessage(
+        author: const types.User(id: 'Chris'),
+        createdAt: DateTime.now().millisecondsSinceEpoch,
+        id: const Uuid().v4(),
+        text: "Hope we can go there for a picnic next time.",
+      );
+    } else if (_conversationStep == 2) {
+      responseMessage = types.TextMessage(
+        author: const types.User(id: 'Chris'),
+        createdAt: DateTime.now().millisecondsSinceEpoch,
+        id: const Uuid().v4(),
+        text: "Give me a few minutes to read this document.",
+      );
+    } else {
+      _conversationStep = -1; 
+      return;
+    }
 
-      _addMessage(responseMessage);
-    });
-  }
+    _addMessage(responseMessage);
+    _conversationStep++;
+  });
+}
 
   void _loadMessages() async {
     final response = await rootBundle.loadString('assets/messages.json');
@@ -260,26 +283,37 @@ class _ChatPageState extends State<ChatPage> {
     });
   }
 
-  // Add this method
   void _addFakeMessages() {
     final fakeMessages = [
       types.TextMessage(
         author: const types.User(id: 'user-123'),
-        createdAt: DateTime.now().subtract(const Duration(minutes: 1)).millisecondsSinceEpoch,
+        createdAt: DateTime.now().subtract(const Duration(minutes: 5)).millisecondsSinceEpoch,
         id: const Uuid().v4(),
-        text: 'Hello, how are you?',
+        text: 'Definitely! It\'s great to disconnect and enjoy nature. Also, I\'m really glad we met. You\'re a great friend.',
       ),
       types.TextMessage(
         author: _user,
-        createdAt: DateTime.now().subtract(const Duration(minutes: 2)).millisecondsSinceEpoch,
+        createdAt: DateTime.now().subtract(const Duration(minutes: 4)).millisecondsSinceEpoch,
         id: const Uuid().v4(),
-        text: 'I am fine, thanks! How about you?',
+        text: 'That sounds nice. I\'ve been meaning to get outside more too.',
       ),
       types.TextMessage(
         author: const types.User(id: 'user-123'),
         createdAt: DateTime.now().subtract(const Duration(minutes: 3)).millisecondsSinceEpoch,
         id: const Uuid().v4(),
-        text: 'I\'m good too, thanks for asking!',
+        text: 'Same here! It\'s a beautiful day. Went for a walk in the park.',
+      ),
+      types.TextMessage(
+        author: _user,
+        createdAt: DateTime.now().subtract(const Duration(minutes: 2)).millisecondsSinceEpoch,
+        id: const Uuid().v4(),
+        text: 'I\'m doing well, thanks! Enjoying the lovely weather. How about you?',
+      ),
+      types.TextMessage(
+        author: const types.User(id: 'user-123'),
+        createdAt: DateTime.now().subtract(const Duration(minutes: 1)).millisecondsSinceEpoch,
+        id: const Uuid().v4(),
+       text: 'Hey! How have you been?',
       ),
     ];
 
@@ -326,7 +360,7 @@ class _ChatPageState extends State<ChatPage> {
           showUserAvatars: true,
           showUserNames: true,
           user: _user,
-          theme: DefaultChatTheme(
+          theme: const DefaultChatTheme(
             backgroundColor: Color.fromARGB(255, 255, 255, 255),
             inputBackgroundColor: Color(0xFF7EC4CF),
             primaryColor: Color(0xFF7EC4CF),
