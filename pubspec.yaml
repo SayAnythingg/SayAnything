@@ -81,6 +81,7 @@ flutter:
     - assets/animation/setting.riv
     - assets/animation/switch.riv
     - assets/images/logo_all.png
+    - assets/3D/Anna_OBJ.obj
     
   fonts:
     - family: Urbanist
