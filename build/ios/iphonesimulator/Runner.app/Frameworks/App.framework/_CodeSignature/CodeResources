@@ -10,11 +10,11 @@
 		</data>
 		<key>flutter_assets/AssetManifest.bin</key>
 		<data>
-		Uhh+KL3b6G0cgJhATT2e+AWXbGw=
+		g/V4naZ2vgZOtUg5rpXi2ukY1c0=
 		</data>
 		<key>flutter_assets/AssetManifest.json</key>
 		<data>
-		u22L1/bPQFsxERgwRZUWz/XtZ0c=
+		+KA+zCUneFmx7+gzn/0k7UeEk1k=
 		</data>
 		<key>flutter_assets/FontManifest.json</key>
 		<data>
@@ -22,7 +22,19 @@
 		</data>
 		<key>flutter_assets/NOTICES.Z</key>
 		<data>
-		D1MGImSMKVlcpA3A+bSe9oSRUa0=
+		li1gYDe0yVNtO3u0EBOfT8a6284=
+		</data>
+		<key>flutter_assets/assets/3D/Anna_OBJ.obj</key>
+		<data>
+		bqr4yTsdL6T0+sxDFUCxxIOVoLg=
+		</data>
+		<key>flutter_assets/assets/3D/business_man.glb</key>
+		<data>
+		DuD2CTdbF6vFowI345KTUwgHKCk=
+		</data>
+		<key>flutter_assets/assets/3D/file.obj</key>
+		<data>
+		rx2cUV1OeyzYHUjX0/Uil3DfWx0=
 		</data>
 		<key>flutter_assets/assets/animation/2.riv</key>
 		<data>
@@ -206,11 +218,19 @@
 		</data>
 		<key>flutter_assets/kernel_blob.bin</key>
 		<data>
-		IsAaJHZovA3FcFAv9c62U7Hv5+o=
+		tyDNBiLBvfM7gOVh/A0sLXG0wdI=
 		</data>
 		<key>flutter_assets/packages/cupertino_icons/assets/CupertinoIcons.ttf</key>
 		<data>
 		P7bb/oR3EhwqCIH1M6LyTuBIWYU=
+		</data>
+		<key>flutter_assets/packages/flutter_3d_controller/assets/model-viewer.min.js</key>
+		<data>
+		pEqZNwexl3VZNFhTAPue1aZb0AQ=
+		</data>
+		<key>flutter_assets/packages/flutter_3d_controller/assets/template.html</key>
+		<data>
+		uxvrl3c09zjdHNmxzjyYivFo2rY=
 		</data>
 		<key>flutter_assets/packages/flutter_chat_ui/assets/2.0x/icon-arrow.png</key>
 		<data>
@@ -387,14 +407,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			E2ykgvRpSp0rNURw7jBuQlFURUToVPCTX4AP0glqBZw=
+			xMDUr+LBr3Jx96+kTYJn+tHWC/04kDkQWoX9mK6Aegs=
 			</data>
 		</dict>
 		<key>flutter_assets/AssetManifest.json</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			IeWx8CLRNaBE6M4uACi6vEayyfgi6QvvsX8xoTQYAY8=
+			iaPUud2/tiwL5R3cqlHJVh0V4vdysq+GeAz5/tPIDXI=
 			</data>
 		</dict>
 		<key>flutter_assets/FontManifest.json</key>
@@ -408,7 +428,28 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			/d2ZvCVxI856WHc86XNdH9Md046dr/ZT5UzmjE0JjB0=
+			vPFzLDc3RZ4gURC4wH7IQ/uICb6ItzSWRseCyqpDHL0=
+			</data>
+		</dict>
+		<key>flutter_assets/assets/3D/Anna_OBJ.obj</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			Exo/y4dZEje+jKnuf+eg/AavGGth9oLNrvtT7oJwycA=
+			</data>
+		</dict>
+		<key>flutter_assets/assets/3D/business_man.glb</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			v9rW5oXnXZL1ucOKY1cQUwontWc6bj06ERmsogS6J2A=
+			</data>
+		</dict>
+		<key>flutter_assets/assets/3D/file.obj</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			0KEmauGOw0e2NbGRBOTHSbSr5iemOjvb6KSC0WgEjf0=
 			</data>
 		</dict>
 		<key>flutter_assets/assets/animation/2.riv</key>
@@ -730,7 +771,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			zh3iEkMiW2Fqg6EJiH2klZcagEREp3qmMzyomeUA95s=
+			6Wd+RbInOG0v/wa3Rbe7yQ9Gql+p47GJTlPgGjcySLE=
 			</data>
 		</dict>
 		<key>flutter_assets/packages/cupertino_icons/assets/CupertinoIcons.ttf</key>
@@ -738,6 +779,20 @@
 			<key>hash2</key>
 			<data>
 			x6NX+tjyECiQtyzbbjyY8U2zoZ7GDbJtE+T+k/dzgI0=
+			</data>
+		</dict>
+		<key>flutter_assets/packages/flutter_3d_controller/assets/model-viewer.min.js</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			ucjiIpcWMYADqnOfCUbQCL+82rHJvwvWCdJuNDkrFUU=
+			</data>
+		</dict>
+		<key>flutter_assets/packages/flutter_3d_controller/assets/template.html</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			ImkR5lKe2VWjCMhiDLCnzjgpSd6qtDJJs9KgP5BS55E=
 			</data>
 		</dict>
 		<key>flutter_assets/packages/flutter_chat_ui/assets/2.0x/icon-arrow.png</key>

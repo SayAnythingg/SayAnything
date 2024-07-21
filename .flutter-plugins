@@ -1,4 +1,5 @@
 # This is a generated file; do not edit or check into version control.
+android_intent_plus=/Users/zhonghonghao/.pub-cache/hosted/pub.dev/android_intent_plus-4.0.3/
 audioplayers=/Users/zhonghonghao/.pub-cache/hosted/pub.dev/audioplayers-6.0.0/
 audioplayers_android=/Users/zhonghonghao/.pub-cache/hosted/pub.dev/audioplayers_android-5.0.0/
 audioplayers_darwin=/Users/zhonghonghao/.pub-cache/hosted/pub.dev/audioplayers_darwin-6.0.0/
@@ -51,10 +52,13 @@ syncfusion_flutter_pdfviewer=/Users/zhonghonghao/.pub-cache/hosted/pub.dev/syncf
 syncfusion_pdfviewer_macos=/Users/zhonghonghao/.pub-cache/hosted/pub.dev/syncfusion_pdfviewer_macos-26.1.41/
 syncfusion_pdfviewer_web=/Users/zhonghonghao/.pub-cache/hosted/pub.dev/syncfusion_pdfviewer_web-26.1.41/
 syncfusion_pdfviewer_windows=/Users/zhonghonghao/.pub-cache/hosted/pub.dev/syncfusion_pdfviewer_windows-26.1.41/
-url_launcher=/Users/zhonghonghao/.pub-cache/hosted/pub.dev/url_launcher-6.2.4/
-url_launcher_android=/Users/zhonghonghao/.pub-cache/hosted/pub.dev/url_launcher_android-6.2.2/
+url_launcher=/Users/zhonghonghao/.pub-cache/hosted/pub.dev/url_launcher-6.3.0/
+url_launcher_android=/Users/zhonghonghao/.pub-cache/hosted/pub.dev/url_launcher_android-6.3.3/
 url_launcher_ios=/Users/zhonghonghao/.pub-cache/hosted/pub.dev/url_launcher_ios-6.2.4/
 url_launcher_linux=/Users/zhonghonghao/.pub-cache/hosted/pub.dev/url_launcher_linux-3.1.1/
 url_launcher_macos=/Users/zhonghonghao/.pub-cache/hosted/pub.dev/url_launcher_macos-3.1.0/
 url_launcher_web=/Users/zhonghonghao/.pub-cache/hosted/pub.dev/url_launcher_web-2.3.1/
 url_launcher_windows=/Users/zhonghonghao/.pub-cache/hosted/pub.dev/url_launcher_windows-3.1.1/
+webview_flutter=/Users/zhonghonghao/.pub-cache/hosted/pub.dev/webview_flutter-4.8.0/
+webview_flutter_android=/Users/zhonghonghao/.pub-cache/hosted/pub.dev/webview_flutter_android-3.16.4/
+webview_flutter_wkwebview=/Users/zhonghonghao/.pub-cache/hosted/pub.dev/webview_flutter_wkwebview-3.14.0/
