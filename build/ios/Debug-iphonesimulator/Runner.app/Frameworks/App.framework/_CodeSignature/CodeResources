@@ -10,11 +10,11 @@
 		</data>
 		<key>flutter_assets/AssetManifest.bin</key>
 		<data>
-		g/V4naZ2vgZOtUg5rpXi2ukY1c0=
+		3ESIgrACHXHj5J6MAwn9eUaQ6I4=
 		</data>
 		<key>flutter_assets/AssetManifest.json</key>
 		<data>
-		+KA+zCUneFmx7+gzn/0k7UeEk1k=
+		qddeKz7L0/FZF6hrHJeU/lzgBRY=
 		</data>
 		<key>flutter_assets/FontManifest.json</key>
 		<data>
@@ -43,6 +43,10 @@
 		<key>flutter_assets/assets/animation/3.riv</key>
 		<data>
 		YD33eUBgwfd9XOv0dDmZT1SI6mU=
+		</data>
+		<key>flutter_assets/assets/animation/Man.riv</key>
+		<data>
+		aG5YC04ylm6ApJE7aVi2tpwBBHc=
 		</data>
 		<key>flutter_assets/assets/animation/buttoncta.riv</key>
 		<data>
@@ -407,14 +411,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			xMDUr+LBr3Jx96+kTYJn+tHWC/04kDkQWoX9mK6Aegs=
+			tXm0inAy3Mx5Gen17YHEhRuRWJfIpKuMTbAGSxplvEQ=
 			</data>
 		</dict>
 		<key>flutter_assets/AssetManifest.json</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			iaPUud2/tiwL5R3cqlHJVh0V4vdysq+GeAz5/tPIDXI=
+			zw2wCZCGdbRwAciKAVcHyEj/9wvLnljvNN4GdsJU5Hw=
 			</data>
 		</dict>
 		<key>flutter_assets/FontManifest.json</key>
@@ -464,6 +468,13 @@
 			<key>hash2</key>
 			<data>
 			U9jWtHXZ14d4TiIJIUCU8vgTi/GANM9OfxZxu4tnxLQ=
+			</data>
+		</dict>
+		<key>flutter_assets/assets/animation/Man.riv</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			DCQ8nGAHld01YnmJynnElfvEjgK+Q2fK+OI/U4BO/SY=
 			</data>
 		</dict>
 		<key>flutter_assets/assets/animation/buttoncta.riv</key>

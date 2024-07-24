@@ -5,6 +5,7 @@ import 'package:flutter_tts/flutter_tts.dart';
 import 'package:flutter_speed_dial/flutter_speed_dial.dart';
 import 'package:translator/translator.dart';
 import 'package:speech_to_text/speech_to_text.dart';
+import 'package:rive/rive.dart' as rive;
 
 final JokeApiService = JokeApi();
 
@@ -208,7 +209,12 @@ class _AIState extends State<multimedia> {
                           color: Colors.white,
                           borderRadius: BorderRadius.circular(20),
                         ),
-                        child: Center(),
+                        child: const Center(
+                          child: rive.RiveAnimation.asset(
+                            'assets/animation/Man.riv',
+                            fit: BoxFit.contain,
+                          ),
+                        ),
                       ),
                     ),
                   ),
@@ -315,7 +321,7 @@ class _AIState extends State<multimedia> {
               child: const Icon(Icons.school),
               label: 'Chinese teacher',
               onTap: () async {
-                flutterTts.setLanguage('zh-CN');
+                flutterTts.setLanguage('zh-TW');
                 if (userMessage.endsWith('請幫我翻譯成中文')) {
                   String messageToTranslate = userMessage
                       .substring(0, userMessage.length - '請幫我翻譯成中文'.length)
