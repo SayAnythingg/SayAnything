@@ -1,6 +1,6 @@
-// ignore: file_names
-import 'package:SayAnything/screens/chatList_page.dart';
+import 'dart:ui';
 import 'package:flutter/material.dart';
+import 'package:SayAnything/screens/chatList_page.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:SayAnything/screens/AI.dart';
 import 'package:SayAnything/screens/home.dart';
@@ -13,7 +13,6 @@ class MainPage extends StatefulWidget {
   const MainPage({super.key, required this.initialIndex, required this.user});
 
   @override
-  // ignore: library_private_types_in_public_api
   _MainPageState createState() => _MainPageState();
 }
 
@@ -24,7 +23,7 @@ class _MainPageState extends State<MainPage> {
 
   List<Widget> get _widgetOptions {
     return <Widget>[
-      multimedia(),
+      const Multimedia(),
       HomePage(user: widget.user),
       const ChatList(),
     ];

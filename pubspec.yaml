@@ -27,9 +27,7 @@ dependencies:
   shared_preferences: ^2.2.2
   image_picker: ^1.0.7
   path_provider: ^2.1.2
-  email_validator: ^2.0.1
   string_validator: ^1.0.2
-  flutter_spinkit: ^5.2.0
   loading_animation_widget: ^1.2.0+4
   flutter_riverpod: ^1.0.0
   audioplayers: ^6.0.0
@@ -60,6 +58,9 @@ dependencies:
   socket_io_client: ^3.0.0-beta.2
   syncfusion_flutter_pdfviewer: ^26.1.41
   flutter_3d_controller: ^1.3.1
+  dart_openai: ^5.1.0
+  avatar_glow: ^3.0.1
+  flutter_cube: ^0.1.1
 
 
 dev_dependencies:
@@ -86,6 +87,9 @@ flutter:
     - assets/3D/file.obj
     - assets/3D/business_man.glb
     - assets/animation/Man.riv
+    - assets/3D/bunny.obj
+    - assets/3D/cube.obj
+    - assets/animation/character.riv
     
   fonts:
     - family: Urbanist

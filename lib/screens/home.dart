@@ -103,7 +103,7 @@ class _HomePageState extends State<HomePage> {
                     children: [
                       Image.asset('assets/images/logo.png', width: 50),
                       Image.asset('assets/images/logo_word.png', width: 120),
-                      Spacer(), // Add this line to push the text to the right
+                      Spacer(), 
                       Text('Online: $_onlineUserCount',
                           style: TextStyle(fontSize: 14)),
                     ],
