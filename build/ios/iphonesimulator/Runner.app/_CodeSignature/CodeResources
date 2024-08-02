@@ -18,7 +18,7 @@
 		</data>
 		<key>Assets.car</key>
 		<data>
-		dkqLlTHyuNG2WlZysiLVy9gH7Kk=
+		mZ7oENe0z+NCLs0XFhQSPf1sYys=
 		</data>
 		<key>Base.lproj/LaunchScreen.storyboardc/01J-lp-oVM-view-Ze5-6b-2t3.nib</key>
 		<data>
@@ -46,7 +46,7 @@
 		</data>
 		<key>Frameworks/App.framework/App</key>
 		<data>
-		cYIqM94yupTToCbj02MYomYqSUI=
+		uHjYwRL6MBJNXWdC83rVS9/l3x8=
 		</data>
 		<key>Frameworks/App.framework/Info.plist</key>
 		<data>
@@ -54,15 +54,15 @@
 		</data>
 		<key>Frameworks/App.framework/_CodeSignature/CodeResources</key>
 		<data>
-		ngdILMr9iCSyf/bXXBTbPLWn94M=
+		RdqMaLYzP4+cUMXHKZC4HAnA36s=
 		</data>
 		<key>Frameworks/App.framework/flutter_assets/AssetManifest.bin</key>
 		<data>
-		3ESIgrACHXHj5J6MAwn9eUaQ6I4=
+		6AdCepkd2GEWov33nisB9XLOBls=
 		</data>
 		<key>Frameworks/App.framework/flutter_assets/AssetManifest.json</key>
 		<data>
-		qddeKz7L0/FZF6hrHJeU/lzgBRY=
+		JOnkIWIvaS6elM83ZwS3VvEvKU4=
 		</data>
 		<key>Frameworks/App.framework/flutter_assets/FontManifest.json</key>
 		<data>
@@ -70,15 +70,23 @@
 		</data>
 		<key>Frameworks/App.framework/flutter_assets/NOTICES.Z</key>
 		<data>
-		li1gYDe0yVNtO3u0EBOfT8a6284=
+		J7hFsRMB60hHYRmSX4uJQPkTSoE=
 		</data>
 		<key>Frameworks/App.framework/flutter_assets/assets/3D/Anna_OBJ.obj</key>
 		<data>
 		bqr4yTsdL6T0+sxDFUCxxIOVoLg=
 		</data>
+		<key>Frameworks/App.framework/flutter_assets/assets/3D/bunny.obj</key>
+		<data>
+		mC1fOBy6eDc3uY1WLlU9eVVA55k=
+		</data>
 		<key>Frameworks/App.framework/flutter_assets/assets/3D/business_man.glb</key>
 		<data>
 		DuD2CTdbF6vFowI345KTUwgHKCk=
+		</data>
+		<key>Frameworks/App.framework/flutter_assets/assets/3D/cube.obj</key>
+		<data>
+		vCn3SGbLHDi92kjDTJR2khBkCdg=
 		</data>
 		<key>Frameworks/App.framework/flutter_assets/assets/3D/file.obj</key>
 		<data>
@@ -103,6 +111,10 @@
 		<key>Frameworks/App.framework/flutter_assets/assets/animation/cat.riv</key>
 		<data>
 		DX6ZiAZEBsQTXxUCYcn0zV2CEIg=
+		</data>
+		<key>Frameworks/App.framework/flutter_assets/assets/animation/character.riv</key>
+		<data>
+		eWN7WemIuC4DoU1wUltdVMlAz/U=
 		</data>
 		<key>Frameworks/App.framework/flutter_assets/assets/animation/click.riv</key>
 		<data>
@@ -270,7 +282,7 @@
 		</data>
 		<key>Frameworks/App.framework/flutter_assets/kernel_blob.bin</key>
 		<data>
-		wr6Hf0IJrbwYkEoBQLQ+qk01EWU=
+		dTYBCvwLtLiwxHbLc+I0plofD3U=
 		</data>
 		<key>Frameworks/App.framework/flutter_assets/packages/cupertino_icons/assets/CupertinoIcons.ttf</key>
 		<data>
@@ -466,11 +478,11 @@
 		</data>
 		<key>Frameworks/DKImagePickerController.framework/DKImagePickerController</key>
 		<data>
-		ARymHfmqALAdzxOvc8P/0v+2N7g=
+		0aJj7rEMg9xd9E/MO9M3wuqGOWk=
 		</data>
 		<key>Frameworks/DKImagePickerController.framework/DKImagePickerController.bundle/Assets.car</key>
 		<data>
-		ZZyE2dqlcqrws/DcqsJnBlHDDhU=
+		y+9L8DIETKy+FngynVqq38UvkRo=
 		</data>
 		<key>Frameworks/DKImagePickerController.framework/DKImagePickerController.bundle/Base.lproj/DKImagePickerController.strings</key>
 		<dict>
@@ -662,15 +674,15 @@
 		</data>
 		<key>Frameworks/DKImagePickerController.framework/_CodeSignature/CodeResources</key>
 		<data>
-		EASNZssdTPJV6AAHbzkzhKgwES8=
+		HGMQ2zBYoAO2ktxndVt8iBBrtME=
 		</data>
 		<key>Frameworks/DKPhotoGallery.framework/DKPhotoGallery</key>
 		<data>
-		fZnS3uM/9qt2Bg+G8UnxhfnTZNE=
+		IjLBQbvKqMdB5PGSDUOQy+K6BMg=
 		</data>
 		<key>Frameworks/DKPhotoGallery.framework/DKPhotoGallery.bundle/Assets.car</key>
 		<data>
-		IjHUconteNQw4a1qz7N34p28eJA=
+		JuAkdVsnOx3OS9CYgiXcGMCRaHE=
 		</data>
 		<key>Frameworks/DKPhotoGallery.framework/DKPhotoGallery.bundle/Base.lproj/DKPhotoGallery.strings</key>
 		<dict>
@@ -709,7 +721,7 @@
 		</data>
 		<key>Frameworks/DKPhotoGallery.framework/_CodeSignature/CodeResources</key>
 		<data>
-		BjT393XIoQ2ydRHse5wPWlTNITY=
+		kB4yJeDkUkat/gTtg5ru87m+Nsc=
 		</data>
 		<key>Frameworks/FBLPromises.framework/FBLPromises</key>
 		<data>
@@ -1215,7 +1227,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			ZDNg5KXdVCK4jlyDgoGR2uwSI6prrBQYkZShSJe3bIA=
+			WeGXsIXR+wqIMatUqhaB544z/Xss9O17lsq4NiEfn98=
 			</data>
 		</dict>
 		<key>Base.lproj/LaunchScreen.storyboardc/01J-lp-oVM-view-Ze5-6b-2t3.nib</key>
@@ -1264,7 +1276,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			2u9JzRYe9ONGGLTt6YuhHZP0fvYjjWPqtK3jKya9P6o=
+			6bGH23gPlIGuGCqeX9xdujjp/iioUyy0MV+eBAetWzc=
 			</data>
 		</dict>
 		<key>Frameworks/App.framework/Info.plist</key>
@@ -1278,21 +1290,21 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			Jr7UeY8kQDac671nzWgkjjFOXqz/zyYhwK1Vyc1YKfI=
+			ee0Wr4lOsdSNAu4oFnAYc6QzbtbFpYAx22TUPoRtOhU=
 			</data>
 		</dict>
 		<key>Frameworks/App.framework/flutter_assets/AssetManifest.bin</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			tXm0inAy3Mx5Gen17YHEhRuRWJfIpKuMTbAGSxplvEQ=
+			GQC8XUlkNFb67v/rMVG2Q9ThDtNLpVZfURo/9cC3r1s=
 			</data>
 		</dict>
 		<key>Frameworks/App.framework/flutter_assets/AssetManifest.json</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			zw2wCZCGdbRwAciKAVcHyEj/9wvLnljvNN4GdsJU5Hw=
+			zz30XqzzJdDqQDe0YoyceXXxC1t9fUoalz9GZbHIagE=
 			</data>
 		</dict>
 		<key>Frameworks/App.framework/flutter_assets/FontManifest.json</key>
@@ -1306,7 +1318,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			vPFzLDc3RZ4gURC4wH7IQ/uICb6ItzSWRseCyqpDHL0=
+			wIi9K8S7uUPAE1LYRAYqWl0DDCZkIlOU3/WYlCgTN1g=
 			</data>
 		</dict>
 		<key>Frameworks/App.framework/flutter_assets/assets/3D/Anna_OBJ.obj</key>
@@ -1316,11 +1328,25 @@
 			Exo/y4dZEje+jKnuf+eg/AavGGth9oLNrvtT7oJwycA=
 			</data>
 		</dict>
+		<key>Frameworks/App.framework/flutter_assets/assets/3D/bunny.obj</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			4OGujoHFeg5ekQG3RG9yjCH8Tr8NECVieHCwp8qCzsk=
+			</data>
+		</dict>
 		<key>Frameworks/App.framework/flutter_assets/assets/3D/business_man.glb</key>
 		<dict>
 			<key>hash2</key>
 			<data>
 			v9rW5oXnXZL1ucOKY1cQUwontWc6bj06ERmsogS6J2A=
+			</data>
+		</dict>
+		<key>Frameworks/App.framework/flutter_assets/assets/3D/cube.obj</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			aY9BssDZuK5jhElIq9Y4gCzSEnHLWhxsjOnmK0dgCSQ=
 			</data>
 		</dict>
 		<key>Frameworks/App.framework/flutter_assets/assets/3D/file.obj</key>
@@ -1363,6 +1389,13 @@
 			<key>hash2</key>
 			<data>
 			ENIRjnwyWDGoJuhW0SSj5BzQwKRfMSoZTop2CFS/B58=
+			</data>
+		</dict>
+		<key>Frameworks/App.framework/flutter_assets/assets/animation/character.riv</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			Sz9/agaarKJvRwKyuEJosRdk5ghdRekbWjg+Q+ZweRI=
 			</data>
 		</dict>
 		<key>Frameworks/App.framework/flutter_assets/assets/animation/click.riv</key>
@@ -1656,7 +1689,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			qcQnJATGxSzKrpcYpXukuwlzbEIwOI3EDHrYolXTVdg=
+			MwjHAo6huxP+vlGb2o8d0dBDNRlyagj8QY44Z7l+ES0=
 			</data>
 		</dict>
 		<key>Frameworks/App.framework/flutter_assets/packages/cupertino_icons/assets/CupertinoIcons.ttf</key>
@@ -1999,14 +2032,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			GsJ9SuyUS7DlIR2B4y8e5RwfsQe+7QbwlbOHJ4COfT0=
+			4Jub0WfyC5xR4/n8uxtnaUmgWdQvx9lh4VkWElFywbM=
 			</data>
 		</dict>
 		<key>Frameworks/DKImagePickerController.framework/DKImagePickerController.bundle/Assets.car</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			CfhSzVX3asOz7xHRfeG6S0g0S1OEVDLKrMqMiR53udY=
+			MJSDnztwKts36C+6Lllav4hHnCKRYvCWQNzQoVQi9Xg=
 			</data>
 		</dict>
 		<key>Frameworks/DKImagePickerController.framework/DKImagePickerController.bundle/Base.lproj/DKImagePickerController.strings</key>
@@ -2207,21 +2240,21 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			bqt0sjU04nfuvBY1kg+F1AEKMsbE2GLV5zp6oSIjhwQ=
+			cmCOyUfK/2oUwcfktMY8qjCkhMMXp8URV9kZG8QAKqw=
 			</data>
 		</dict>
 		<key>Frameworks/DKPhotoGallery.framework/DKPhotoGallery</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			O8qosuD+6zvs9LP3dC9qhAAE19UwFaj24KjXR0uLDDA=
+			QL+CulQ0eZbox2cv90Mew3uE2Q2TW0/kOuFkbj2jZx8=
 			</data>
 		</dict>
 		<key>Frameworks/DKPhotoGallery.framework/DKPhotoGallery.bundle/Assets.car</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			eoMo/3Cl2d3Cmr27Etxc/RyC0UtCvyRHy1rl6G6dSzI=
+			5NlSWPb8iWEYgnkLzOiOB65UFsNURK4NEhXRdFPebcE=
 			</data>
 		</dict>
 		<key>Frameworks/DKPhotoGallery.framework/DKPhotoGallery.bundle/Base.lproj/DKPhotoGallery.strings</key>
@@ -2269,7 +2302,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			SdLFZXmJortHEJappbNdfX8YiLtfnuyjyhXKxX8cpvA=
+			Td1k1CqKtgtZ1hpHSR3981GVUukh6IAn8YGgie+SbPo=
 			</data>
 		</dict>
 		<key>Frameworks/FBLPromises.framework/FBLPromises</key>

@@ -90,6 +90,7 @@ flutter:
     - assets/3D/bunny.obj
     - assets/3D/cube.obj
     - assets/animation/character.riv
+    - assets/animation/spiral.riv
     
   fonts:
     - family: Urbanist

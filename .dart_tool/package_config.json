@@ -242,12 +242,6 @@
       "languageVersion": "2.15"
     },
     {
-      "name": "email_validator",
-      "rootUri": "file:///Users/zhonghonghao/.pub-cache/hosted/pub.dev/email_validator-2.1.17",
-      "packageUri": "lib/",
-      "languageVersion": "2.12"
-    },
-    {
       "name": "equatable",
       "rootUri": "file:///Users/zhonghonghao/.pub-cache/hosted/pub.dev/equatable-2.0.5",
       "packageUri": "lib/",
@@ -448,12 +442,6 @@
     {
       "name": "flutter_speed_dial",
       "rootUri": "file:///Users/zhonghonghao/.pub-cache/hosted/pub.dev/flutter_speed_dial-7.0.0",
-      "packageUri": "lib/",
-      "languageVersion": "2.12"
-    },
-    {
-      "name": "flutter_spinkit",
-      "rootUri": "file:///Users/zhonghonghao/.pub-cache/hosted/pub.dev/flutter_spinkit-5.2.0",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
@@ -1292,7 +1280,7 @@
       "languageVersion": "3.2"
     }
   ],
-  "generated": "2024-08-01T03:01:35.609868Z",
+  "generated": "2024-08-02T00:59:20.719838Z",
   "generator": "pub",
   "generatorVersion": "3.4.4",
   "flutterRoot": "file:///opt/homebrew/Caskroom/flutter/3.16.7/flutter",

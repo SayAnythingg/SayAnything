@@ -174,51 +174,6 @@ class _HomePageState extends State<HomePage> {
                   ),
                 ),
                 const SizedBox(height: 20),
-                /*-----------------------------------------------------
-                FloatingActionButton(
-                  onPressed: () async {
-                    showDialog(
-                      context: context,
-                      barrierDismissible: false,
-                      builder: (BuildContext context) {
-                        return LoadingPage();
-                      },
-                    );
-
-                    Map<String, dynamic> response =
-                        await matchApiService.requestMatch(widget.user.userId);
-
-                    String message = response['Message'];
-                    if (message.contains('deleted')) {
-                      if (kDebugMode) {
-                        print('deleted');
-                      }
-                    } else if (message.contains('matched')) {
-                      Navigator.pop(context);
-                      showDialog(
-                        context: context,
-                        builder: (BuildContext context) {
-                          return AlertDialog(
-                            title: const Text('Success'),
-                            content: const Text('Successfully matched!'),
-                            actions: <Widget>[
-                              TextButton(
-                                child: const Text('OK'),
-                                onPressed: () {
-                                  Navigator.of(context).pop();
-                                },
-                              ),
-                            ],
-                          );
-                        },
-                      );
-                    } else if (message.contains('waiting')) {
-                      if (kDebugMode) {
-                        print('waiting');
-                      }
-                    }
-                  },
-                  -----------------------------------------------------*/
                   FloatingActionButton(
                   onPressed: () async {
                     startMatching();
