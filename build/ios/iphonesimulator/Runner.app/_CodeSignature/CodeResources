@@ -18,7 +18,7 @@
 		</data>
 		<key>Assets.car</key>
 		<data>
-		L72Z/BDUPi0LPomdQjy9VFftQak=
+		Ah5g5yP7KExj8arJdo9agv6zEyU=
 		</data>
 		<key>Base.lproj/LaunchScreen.storyboardc/01J-lp-oVM-view-Ze5-6b-2t3.nib</key>
 		<data>
@@ -482,11 +482,11 @@
 		</data>
 		<key>Frameworks/DKImagePickerController.framework/DKImagePickerController</key>
 		<data>
-		pGzK8YmhQ3tyo+etcVYszJ0gb4Q=
+		FykGSTwiqzhG0a978fx0nv5ANTk=
 		</data>
 		<key>Frameworks/DKImagePickerController.framework/DKImagePickerController.bundle/Assets.car</key>
 		<data>
-		aoyPosb0DVNZX1ow+CMoD1OT0sg=
+		/83DcCd2h2WaAd6dPcd+JA0BdgE=
 		</data>
 		<key>Frameworks/DKImagePickerController.framework/DKImagePickerController.bundle/Base.lproj/DKImagePickerController.strings</key>
 		<dict>
@@ -678,15 +678,15 @@
 		</data>
 		<key>Frameworks/DKImagePickerController.framework/_CodeSignature/CodeResources</key>
 		<data>
-		IJR8TbhV/QVQg6Ia5p39uUTtx3Y=
+		q4adYuP51XoTsd9Kl/BiYcTZ78Q=
 		</data>
 		<key>Frameworks/DKPhotoGallery.framework/DKPhotoGallery</key>
 		<data>
-		e+u8B0/CMQd5YeUeiJPWsudTp+E=
+		9jYe7qIFT5/EZAkEOBYDT6keASU=
 		</data>
 		<key>Frameworks/DKPhotoGallery.framework/DKPhotoGallery.bundle/Assets.car</key>
 		<data>
-		ZWnW6tQZ/CibCAXhh01oD5G5JlQ=
+		A16mGqAN08GnuxfTxBy10sosP+s=
 		</data>
 		<key>Frameworks/DKPhotoGallery.framework/DKPhotoGallery.bundle/Base.lproj/DKPhotoGallery.strings</key>
 		<dict>
@@ -725,7 +725,7 @@
 		</data>
 		<key>Frameworks/DKPhotoGallery.framework/_CodeSignature/CodeResources</key>
 		<data>
-		e76cf+LXvwZXtXVVfV5hY30Qq1c=
+		TC1DJ4kdL1zPOaIQnvwHnSziqlI=
 		</data>
 		<key>Frameworks/FBLPromises.framework/FBLPromises</key>
 		<data>
@@ -1231,7 +1231,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			/wLf3KjhhhYvqrjumcUWI2X2lEw3Pn7IglE9rxS/yyI=
+			BRXkMJLkliXNGg/jA7v62BE53hoYsapPXpJ0pZzyp5E=
 			</data>
 		</dict>
 		<key>Base.lproj/LaunchScreen.storyboardc/01J-lp-oVM-view-Ze5-6b-2t3.nib</key>
@@ -2043,14 +2043,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			ttdvBYmtYmAE2cxJIvdiaE6N4LJrdPoFGPTnTFw3UVo=
+			5+b+2Gob/9Li08qMVe+mR8b29L7OoK1JumUqSpk5QCQ=
 			</data>
 		</dict>
 		<key>Frameworks/DKImagePickerController.framework/DKImagePickerController.bundle/Assets.car</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			z/T3SRPy0aXEPyp7SKDaaRc9sfG1gMMEXOdtYZGcisQ=
+			VoLZru6fhsoEpPydHHEdcvX0uMgEAMN8xGEDEXd3jcQ=
 			</data>
 		</dict>
 		<key>Frameworks/DKImagePickerController.framework/DKImagePickerController.bundle/Base.lproj/DKImagePickerController.strings</key>
@@ -2251,21 +2251,21 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			Brh1cg2a3jVAxhkMhZ2LW77pcAJEVLafaNLmSMQpxa8=
+			5RFI65GG2M6jNN1NBUE4SYn+o+Q6qf/lwtW3Iye5pMo=
 			</data>
 		</dict>
 		<key>Frameworks/DKPhotoGallery.framework/DKPhotoGallery</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			sLFiKMZ04wLWe1Tgh9O4dY4wejw8TomWpldTYaOCZpU=
+			8D3omPuoJwvJ9fMBKu+Vv3PsDUOpbVEf9ilJV2M1Nhw=
 			</data>
 		</dict>
 		<key>Frameworks/DKPhotoGallery.framework/DKPhotoGallery.bundle/Assets.car</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			4vPEpixicWdA1mQDFB2RAa2qDWki4YR8AG+wsgnN9fI=
+			Hzaxa05hhK9HqC7h3sbSasb58Y839/mRP1ZN/be5HIo=
 			</data>
 		</dict>
 		<key>Frameworks/DKPhotoGallery.framework/DKPhotoGallery.bundle/Base.lproj/DKPhotoGallery.strings</key>
@@ -2313,7 +2313,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			zUCQhu6M60nXS9tT6k99l8OUsEajrr0s7mOtFv7+gOc=
+			1n+fDJGSi6MxNjDSYT17iuxgyt8LV5pjLhs545L9fBM=
 			</data>
 		</dict>
 		<key>Frameworks/FBLPromises.framework/FBLPromises</key>

@@ -3,6 +3,8 @@ import 'package:SayAnything/screens/PrivacyPolicy_Page.dart';
 import 'package:SayAnything/screens/SayAnything.dart';
 import 'package:SayAnything/screens/aboutus_page.dart';
 import 'package:SayAnything/screens/setting_page.dart';
+import 'package:SayAnything/services/API_services.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:SayAnything/screens/edit_name.dart';
 import 'package:SayAnything/services/Model.dart';
@@ -11,6 +13,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 class SideMenu extends StatelessWidget {
   final User user;
+  final apiService = LoginApiService();
 
   SideMenu({required this.user});
 
@@ -126,33 +129,41 @@ class SideMenu extends StatelessWidget {
               QuickAlert.show(
                 context: context,
                 type: QuickAlertType.confirm,
-                text: 'Do you want to logout',
+                text: 'Do you want to logout?',
                 confirmBtnText: 'Yes',
                 cancelBtnText: 'No',
                 confirmBtnColor: Colors.green,
                 onConfirmBtnTap: () async {
-                  SharedPreferences prefs =
-                      await SharedPreferences.getInstance();
-                  await prefs.clear();
-                  Navigator.pushReplacement(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => const Sayanything()),
-                  );
+                  try {
+                    var logoutService = LogoutService();
+                    await logoutService.logout(user.userId);  
+
+                    SharedPreferences prefs = await SharedPreferences.getInstance();
+                    await prefs.clear();
+
+                    Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(builder: (context) => const Sayanything()),
+                    );
+                  } catch (error) {
+                    if (kDebugMode) {
+                      print('Logout failed: $error');
+                    }
+                  }
                 },
               );
             },
           ),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
+          const Padding(
+            padding: EdgeInsets.all(8.0),
             child: Text(
               'Version 1.0.0',
               style: TextStyle(color: Color(0xFF7EC4CF)),
               textAlign: TextAlign.center,
             ),
           ),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
+          const Padding(
+            padding: EdgeInsets.all(8.0),
             child: Text(
               'Copyright © SayAnything',
               style: TextStyle(color: Color(0xFF7EC4CF)),

@@ -312,3 +312,33 @@ class UserOnlineState {
     }
   }
 }
+class LogoutService {
+  LogoutService();
+
+  Future<void> logout(String userId) async {
+    var url = Uri.parse('https://sayanythingapi.sdpmlab.org/auth/logout');
+
+    try {
+      var response = await http.post(
+        url,
+        headers: <String, String>{
+          'Content-Type': 'application/json; charset=UTF-8',
+        },
+        body: jsonEncode(<String, String>{
+          'userId': userId,
+        }),
+      );
+
+      if (response.statusCode == 200) {
+        print('Logout successful');
+      } else {
+        print('Failed to logout. Status code: ${response.statusCode}');
+        print('Response body: ${response.body}');
+        throw Exception('Failed to logout');
+      }
+    } catch (e) {
+      print('An error occurred: $e');
+      throw Exception('Failed to logout due to an error');
+    }
+  }
+}
