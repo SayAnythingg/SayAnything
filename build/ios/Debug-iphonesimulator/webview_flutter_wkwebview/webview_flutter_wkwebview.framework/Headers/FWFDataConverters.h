@@ -175,7 +175,7 @@ extern FWFWKSecurityOriginData *FWFWKSecurityOriginDataFromNativeWKSecurityOrigi
 /// @param data The data object containing information to create a WKPermissionDecision.
 ///
 /// @return A WKPermissionDecision or -1 if data could not be converted.
-API_AVAILABLE(ios(15.0))
+API_AVAILABLE(ios(15.0), macos(12))
 extern WKPermissionDecision FWFNativeWKPermissionDecisionFromData(
     FWFWKPermissionDecisionData *data);
 
@@ -184,7 +184,7 @@ extern WKPermissionDecision FWFNativeWKPermissionDecisionFromData(
 /// @param type The data object containing information to create a FWFWKMediaCaptureTypeData.
 ///
 /// @return A FWFWKMediaCaptureTypeData or nil if data could not be converted.
-API_AVAILABLE(ios(15.0))
+API_AVAILABLE(ios(15.0), macos(12))
 extern FWFWKMediaCaptureTypeData *FWFWKMediaCaptureTypeDataFromNativeWKMediaCaptureType(
     WKMediaCaptureType type);
 

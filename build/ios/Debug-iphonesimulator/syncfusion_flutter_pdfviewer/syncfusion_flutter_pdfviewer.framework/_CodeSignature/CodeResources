@@ -10,7 +10,7 @@
 		</data>
 		<key>Headers/syncfusion_flutter_pdfviewer-Swift.h</key>
 		<data>
-		WNYA62QLqfm6sVMXB/snoIFFP38=
+		IzXn2QfdNm5YO8W7SeY5bRAZosY=
 		</data>
 		<key>Headers/syncfusion_flutter_pdfviewer-umbrella.h</key>
 		<data>
@@ -18,7 +18,7 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		TnylIglzjRDxZEi3qUdVVbO1Ws8=
+		nD+YYqcrh9KEcbfcaaaJIs69iuY=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -26,35 +26,35 @@
 		</data>
 		<key>Modules/syncfusion_flutter_pdfviewer.swiftmodule/Project/arm64-apple-ios-simulator.swiftsourceinfo</key>
 		<data>
-		SSt8Lo584nXLtKjSezBc4Zyx1aQ=
+		cMdA3hD9dE/CYULSoj4xwX6ApdY=
 		</data>
 		<key>Modules/syncfusion_flutter_pdfviewer.swiftmodule/Project/x86_64-apple-ios-simulator.swiftsourceinfo</key>
 		<data>
-		Ql9aOX9rOmI2twgS68JLT5vNWcc=
+		zHJMLEUfKMjF3LlqiD8iFP/rnEE=
 		</data>
 		<key>Modules/syncfusion_flutter_pdfviewer.swiftmodule/arm64-apple-ios-simulator.abi.json</key>
 		<data>
-		FSPnLbho3G+LL9smI3XgVOqBIQ4=
+		gcwBsH4BgyFY4sVtNt+/xOKS3vY=
 		</data>
 		<key>Modules/syncfusion_flutter_pdfviewer.swiftmodule/arm64-apple-ios-simulator.swiftdoc</key>
 		<data>
-		12AGue9nqsrq5x37fwamhrcfDJw=
+		lR2ZVFjAVPJ3NGobeLHMbJ+VUVE=
 		</data>
 		<key>Modules/syncfusion_flutter_pdfviewer.swiftmodule/arm64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		8s9WIErHJ+y/50z9G4kSRmYpcII=
+		lwAH5CbmnBrcugmo84fn3pcwBs8=
 		</data>
 		<key>Modules/syncfusion_flutter_pdfviewer.swiftmodule/x86_64-apple-ios-simulator.abi.json</key>
 		<data>
-		FSPnLbho3G+LL9smI3XgVOqBIQ4=
+		gcwBsH4BgyFY4sVtNt+/xOKS3vY=
 		</data>
 		<key>Modules/syncfusion_flutter_pdfviewer.swiftmodule/x86_64-apple-ios-simulator.swiftdoc</key>
 		<data>
-		t4Ecn6/Y/tKOAhN1abxNbU45mDo=
+		z0eS9VSMQbBzZTAf2i/kUL9Ga/g=
 		</data>
 		<key>Modules/syncfusion_flutter_pdfviewer.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		EVGutHUk5ijm4EF14OeUBvbXy80=
+		vsuRSajlTOlusdc7BV59KycyQtM=
 		</data>
 	</dict>
 	<key>files2</key>
@@ -70,7 +70,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			+WZMhhR2lsShpuhGqe1DLce0g+L/glx5tnhd37FjLdo=
+			8Xwrct1g/JdBZu5ax5RngIO7GHTBUZZn8kt93lt6GDA=
 			</data>
 		</dict>
 		<key>Headers/syncfusion_flutter_pdfviewer-umbrella.h</key>
@@ -91,56 +91,56 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			5EVLlnVhRffuWyMPy1J6NVQUQlaD4FETyqf1N4gOWBc=
+			2zfErhIXlMtDiHchM2RNYIn6HAqnp+aWzbZ1RRRq2B4=
 			</data>
 		</dict>
 		<key>Modules/syncfusion_flutter_pdfviewer.swiftmodule/Project/x86_64-apple-ios-simulator.swiftsourceinfo</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			Rzt+YhoOdvP0p50QfSOCEZHEGPyueW2gSuF6huhz6sY=
+			hP6xchMOu4SST7qaVg2S3yNLdEly37zuEGlN4tD8mwg=
 			</data>
 		</dict>
 		<key>Modules/syncfusion_flutter_pdfviewer.swiftmodule/arm64-apple-ios-simulator.abi.json</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			KnRdWE4y6t4QM5zi5JDptPdHFgJy1Tku+7GLkZS2aNM=
+			Qnesa0n4URGWAopawg9bGx36dUwkYV00BoCJ8LFzlyg=
 			</data>
 		</dict>
 		<key>Modules/syncfusion_flutter_pdfviewer.swiftmodule/arm64-apple-ios-simulator.swiftdoc</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			QPLcEATUqheCA1EIjGiEzthZiVoqHUv08sN8RiYfR+4=
+			wnMhNbsfVqoM1bU8SK7NrP8omGqiVXJJtm9sFKFU948=
 			</data>
 		</dict>
 		<key>Modules/syncfusion_flutter_pdfviewer.swiftmodule/arm64-apple-ios-simulator.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			QQzGhcYy47AJTj2HWr7BF7Qh0uCx3poxt0RBYoimE88=
+			lBbOH+BxUwrs3WLImpY3hhCQwHn/qYoxMufx0+sovfg=
 			</data>
 		</dict>
 		<key>Modules/syncfusion_flutter_pdfviewer.swiftmodule/x86_64-apple-ios-simulator.abi.json</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			KnRdWE4y6t4QM5zi5JDptPdHFgJy1Tku+7GLkZS2aNM=
+			Qnesa0n4URGWAopawg9bGx36dUwkYV00BoCJ8LFzlyg=
 			</data>
 		</dict>
 		<key>Modules/syncfusion_flutter_pdfviewer.swiftmodule/x86_64-apple-ios-simulator.swiftdoc</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			NRLH6h1/abNiRmcrNnKUhs3EmKZOwYYzh6sCzhYp778=
+			QORx4n8pFx4sagG23DN7yt671apyGITH0OwK3Jq1yX4=
 			</data>
 		</dict>
 		<key>Modules/syncfusion_flutter_pdfviewer.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			H15oC8j6/M2SJhPS9u3Z3nfS9YLpcj1/6152NF9+f7k=
+			BYszb73LwhKuCxnfYpTbui+JHThUFk2sUk9ChtpcKaU=
 			</data>
 		</dict>
 	</dict>

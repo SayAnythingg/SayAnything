@@ -4,6 +4,14 @@
 <dict>
 	<key>files</key>
 	<dict>
+		<key>GoogleUtilities_Privacy.bundle/Info.plist</key>
+		<data>
+		ApzODm+XyFf1k31gwf6QziVmFOM=
+		</data>
+		<key>GoogleUtilities_Privacy.bundle/PrivacyInfo.xcprivacy</key>
+		<data>
+		TrRzpkxcmDwPf9xXhrQKnuRceyI=
+		</data>
 		<key>Headers/GULAppEnvironmentUtil.h</key>
 		<data>
 		NGo9Y7oLjVb4AS8n5vgMLDZ0uqM=
@@ -46,7 +54,7 @@
 		</data>
 		<key>Headers/GULSecureCoding.h</key>
 		<data>
-		t/fXV0x5vnY3wbVku4mOWIkSf9o=
+		NqI3HnVooz9+xSkTFaaO0Qu9wPE=
 		</data>
 		<key>Headers/GULURLSessionDataResponse.h</key>
 		<data>
@@ -62,7 +70,7 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		VDlpCNxPKLNL+00t4YSCUnAwU/E=
+		wwgqTPD0rBCuPEVHyRha45JEngw=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -71,6 +79,28 @@
 	</dict>
 	<key>files2</key>
 	<dict>
+		<key>GoogleUtilities_Privacy.bundle/Info.plist</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			ApzODm+XyFf1k31gwf6QziVmFOM=
+			</data>
+			<key>hash2</key>
+			<data>
+			Ae5HFQLjL6s5XqsMcOsu2HpUXPZSLrOg+c5KjpuWYdY=
+			</data>
+		</dict>
+		<key>GoogleUtilities_Privacy.bundle/PrivacyInfo.xcprivacy</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			TrRzpkxcmDwPf9xXhrQKnuRceyI=
+			</data>
+			<key>hash2</key>
+			<data>
+			jxZCM8XSFfsGzrh4STQCHd3X05qJ15Xla6XIMqsPs/c=
+			</data>
+		</dict>
 		<key>Headers/GULAppEnvironmentUtil.h</key>
 		<dict>
 			<key>hash</key>
@@ -185,11 +215,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			t/fXV0x5vnY3wbVku4mOWIkSf9o=
+			NqI3HnVooz9+xSkTFaaO0Qu9wPE=
 			</data>
 			<key>hash2</key>
 			<data>
-			kWT1ykqi+tOoUFBDwqhOPx7axNyeUYgduCruJb7EaTQ=
+			3L9JDOv4n3TFP3Gm7AeKtTU8ZIbY0RCDqXIDiY1SBtM=
 			</data>
 		</dict>
 		<key>Headers/GULURLSessionDataResponse.h</key>

@@ -14,11 +14,19 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		ZJdBMP5du20P9R+tOgigRZnk6Mc=
+		LEJMlekXlfZefIpfeiWUn1NFmuw=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
 		FgvfDWSicujjjNMktmC7NHiARtQ=
+		</data>
+		<key>device_info_plus_privacy.bundle/Info.plist</key>
+		<data>
+		c7kTjcakftM+O5ANYU3uUjWpTBI=
+		</data>
+		<key>device_info_plus_privacy.bundle/PrivacyInfo.xcprivacy</key>
+		<data>
+		/LX0ZlwxwIAIhjZaDB8EiH5KpXA=
 		</data>
 	</dict>
 	<key>files2</key>
@@ -42,6 +50,20 @@
 			<key>hash2</key>
 			<data>
 			nT9sjRCS7UxfpwNi9AnFhCxfwvEP2AsKDJH3D8Rmc5E=
+			</data>
+		</dict>
+		<key>device_info_plus_privacy.bundle/Info.plist</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			Q8auhx8KqipQj/uxhLNVudEAqfq/SQ/m23iczWb7yXw=
+			</data>
+		</dict>
+		<key>device_info_plus_privacy.bundle/PrivacyInfo.xcprivacy</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			bS2g2NkwIn1CjB2TY7CtbjoS4sm2jFzilxWKdBL8jDE=
 			</data>
 		</dict>
 	</dict>

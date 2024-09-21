@@ -2,6 +2,11 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
+// Using directory structure to remove platform-specific files doesn't work
+// well with umbrella headers and module maps, so just no-op the file for
+// other platforms instead.
+#if TARGET_OS_IOS
+
 #import <Flutter/Flutter.h>
 
 #import "FWFGeneratedWebKitApis.h"
@@ -17,3 +22,5 @@ NS_ASSUME_NONNULL_BEGIN
 @end
 
 NS_ASSUME_NONNULL_END
+
+#endif

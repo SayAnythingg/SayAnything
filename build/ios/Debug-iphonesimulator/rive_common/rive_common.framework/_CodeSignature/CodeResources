@@ -66,7 +66,7 @@
 		</data>
 		<key>Headers/rive_common-Swift.h</key>
 		<data>
-		p3NuCqOnlT3cM/nLCZsPV9EMcYg=
+		h6oxc5W7k+xpT5Z6F4rpOp9ooFE=
 		</data>
 		<key>Headers/rive_common-umbrella.h</key>
 		<data>
@@ -74,7 +74,7 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		+lOkD+lAWzRvhF0sjfA23qpCFZI=
+		qFwguDZeNsh5Vm7wFjzp57k0biw=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -82,35 +82,43 @@
 		</data>
 		<key>Modules/rive_common.swiftmodule/Project/arm64-apple-ios-simulator.swiftsourceinfo</key>
 		<data>
-		SLJ2F0zys7g5IQdi5ju1nuZvcfI=
+		9WdXbh2BxOYkwCtqEa/dZ4OetTI=
 		</data>
 		<key>Modules/rive_common.swiftmodule/Project/x86_64-apple-ios-simulator.swiftsourceinfo</key>
 		<data>
-		giUIGQnvb8DNu5EMfJ7Qdw1p6Ns=
+		uBHUPHiqTKEPCiMmD0Q9yunZmJg=
 		</data>
 		<key>Modules/rive_common.swiftmodule/arm64-apple-ios-simulator.abi.json</key>
 		<data>
-		FSPnLbho3G+LL9smI3XgVOqBIQ4=
+		gcwBsH4BgyFY4sVtNt+/xOKS3vY=
 		</data>
 		<key>Modules/rive_common.swiftmodule/arm64-apple-ios-simulator.swiftdoc</key>
 		<data>
-		r47mkF6wONL+Kykg748s2tgH4so=
+		71ijG2Jp5aGkOijYKQwz/uM10sI=
 		</data>
 		<key>Modules/rive_common.swiftmodule/arm64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		ejYDSjc5Z+jOPdROa9wwYrMe8d8=
+		2ML+RNJ26O/7hfH8TPLz0JZwq0k=
 		</data>
 		<key>Modules/rive_common.swiftmodule/x86_64-apple-ios-simulator.abi.json</key>
 		<data>
-		FSPnLbho3G+LL9smI3XgVOqBIQ4=
+		gcwBsH4BgyFY4sVtNt+/xOKS3vY=
 		</data>
 		<key>Modules/rive_common.swiftmodule/x86_64-apple-ios-simulator.swiftdoc</key>
 		<data>
-		dkViy5myzA76nFbON2VILadcKL0=
+		bH4tYvL/jI3Q/yLvqThuhllIEuk=
 		</data>
 		<key>Modules/rive_common.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		TMX3zf7TPApIUPFv7cqifeQXSAE=
+		hdjyNQiMq3pGuwi1EDAKX77L8s0=
+		</data>
+		<key>rive_common_privacy.bundle/Info.plist</key>
+		<data>
+		8+NQ3QDH29JwBqj5+MBjoX2m2l4=
+		</data>
+		<key>rive_common_privacy.bundle/PrivacyInfo.xcprivacy</key>
+		<data>
+		u3FBBI2JBIr2AeWIMZE9FfE7ncI=
 		</data>
 	</dict>
 	<key>files2</key>
@@ -224,7 +232,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			bVqGubs9tAX1BbzEn57NawkXMVJV2ovdqaajgyC+4qs=
+			MlMjdGzcAJDIYGgtZLHffKN6BVAkwowxigRDGvxEo98=
 			</data>
 		</dict>
 		<key>Headers/rive_common-umbrella.h</key>
@@ -245,56 +253,70 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			uZDJmmCBqkQh8m9JwAXYV1SrfVceP5WfhIzlbwOQXWA=
+			SV1aLwSAog/lzD4FVm1yRyLi5qF4eCTIPv7md0ObSSQ=
 			</data>
 		</dict>
 		<key>Modules/rive_common.swiftmodule/Project/x86_64-apple-ios-simulator.swiftsourceinfo</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			ug4UOm9X7uaix7S+Dxjv6MIU7CIqGJHm2E9Py+w5bUU=
+			v1OiCpU/oPlwclJhci6acN+t4Ee0vzFk8mc3t4ZOvO0=
 			</data>
 		</dict>
 		<key>Modules/rive_common.swiftmodule/arm64-apple-ios-simulator.abi.json</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			KnRdWE4y6t4QM5zi5JDptPdHFgJy1Tku+7GLkZS2aNM=
+			Qnesa0n4URGWAopawg9bGx36dUwkYV00BoCJ8LFzlyg=
 			</data>
 		</dict>
 		<key>Modules/rive_common.swiftmodule/arm64-apple-ios-simulator.swiftdoc</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			ML0sW+hPPGOSdXoSnN0dOfu31mINdzfJ5eRxWUEFSCY=
+			z7R9iD0kebsO9oO1gdu9PHFWPLyBmLEyxe+gHBY2kW8=
 			</data>
 		</dict>
 		<key>Modules/rive_common.swiftmodule/arm64-apple-ios-simulator.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			Hn7CobToVWmwsAT6/PphbIn/8tEdLm5JU+AO/nHU0cY=
+			5GbJAzWoNZrVr0RNJts5qHahZDHj6Z5dWFRoOuHUZoY=
 			</data>
 		</dict>
 		<key>Modules/rive_common.swiftmodule/x86_64-apple-ios-simulator.abi.json</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			KnRdWE4y6t4QM5zi5JDptPdHFgJy1Tku+7GLkZS2aNM=
+			Qnesa0n4URGWAopawg9bGx36dUwkYV00BoCJ8LFzlyg=
 			</data>
 		</dict>
 		<key>Modules/rive_common.swiftmodule/x86_64-apple-ios-simulator.swiftdoc</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			RmT9pBYVu3u/8RC5JT9nhStTagPjYjJiqT2mYFdgnIg=
+			/kSsTE0bBvVSdQasSQQJfoV62oociuVFwBopvpmeqMU=
 			</data>
 		</dict>
 		<key>Modules/rive_common.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			VV5JPhwFTNqc2A+RB+08Eq2u4PyfRPe4T9tK543D0zc=
+			Ky7f3xxdpxSXJnWtKZJw7n7gmKqj44XrQ20xuUCUi/g=
+			</data>
+		</dict>
+		<key>rive_common_privacy.bundle/Info.plist</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			U5oaa5bt1kM042YyP/lRhCJtyRc+SPu1GdZVyZoDsgE=
+			</data>
+		</dict>
+		<key>rive_common_privacy.bundle/PrivacyInfo.xcprivacy</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			4V4V9YwyXsJYWW1cfHRXiMz4avhJFHtEVMMTIHwNZcI=
 			</data>
 		</dict>
 	</dict>

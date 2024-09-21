@@ -2,8 +2,13 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-#import <Flutter/Flutter.h>
 #import <WebKit/WebKit.h>
+
+#if TARGET_OS_OSX
+#import <FlutterMacOS/FlutterMacOS.h>
+#else
+#import <Flutter/Flutter.h>
+#endif
 
 #import "FWFGeneratedWebKitApis.h"
 #import "FWFInstanceManager.h"
@@ -19,7 +24,12 @@ NS_ASSUME_NONNULL_BEGIN
 @end
 
 /// Implementation of WKWebView that can be used as a FlutterPlatformView.
-@interface FWFWebView : WKWebView <FlutterPlatformView>
+@interface FWFWebView : WKWebView
+// The macOS platform view API doesn't have a FlutterPlatformView abstraction,
+// and uses NSView directly.
+#if TARGET_OS_IOS
+                        <FlutterPlatformView>
+#endif
 @property(readonly, nonnull, nonatomic) FWFObjectFlutterApiImpl *objectApi;
 
 - (instancetype)initWithFrame:(CGRect)frame

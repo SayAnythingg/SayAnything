@@ -2,11 +2,16 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-#import <Flutter/Flutter.h>
 #import <Foundation/Foundation.h>
 #import "FWFDataConverters.h"
 #import "FWFGeneratedWebKitApis.h"
 #import "FWFInstanceManager.h"
+
+#if TARGET_OS_OSX
+#import <FlutterMacOS/FlutterMacOS.h>
+#else
+#import <Flutter/Flutter.h>
+#endif
 
 NS_ASSUME_NONNULL_BEGIN
 
