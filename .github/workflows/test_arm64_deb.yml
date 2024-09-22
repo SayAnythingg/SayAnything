@@ -70,9 +70,3 @@ jobs:
           sed -i '/Architecture:/c\Architecture: arm64' ./control
           tar cJf control.tar.xz control postinst postrm
           ar rcs ../${{ steps.find_deb.outputs.deb_path }} debian-binary control.tar.xz data.tar.xz
-
-      - name: Upload deb file
-        uses: actions/upload-artifact@v4
-        with:
-          name: deb-arm-64-result
-          path: ${{ steps.find_deb.outputs.deb_path }}
