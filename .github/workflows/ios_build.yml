@@ -35,10 +35,10 @@ jobs:
         APPLE_ID: ${{ secrets.APPLE_ID }}
         APPLE_PASSWORD: ${{ secrets.APPLE_PASSWORD }}
         APPLE_TEAM_ID: ${{ secrets.APPLE_TEAM_ID }}
-      run: xcodebuild -workspace ios/Runner.xcworkspace -scheme Runner -sdk iphoneos18.0 -configuration Release -allowProvisioningUpdates
+      run: xcodebuild -workspace ios/Runner.xcworkspace -scheme Runner -sdk iphoneos17.5 -configuration Release -allowProvisioningUpdates
 
     - name: Archive iOS App
-      run: xcodebuild -workspace ios/Runner.xcworkspace -scheme Runner -sdk iphoneos18.0 -configuration Release -archivePath $PWD/build/Runner.xcarchive archive -allowProvisioningUpdates
+      run: xcodebuild -workspace ios/Runner.xcworkspace -scheme Runner -sdk iphoneos17.5 -configuration Release -archivePath $PWD/build/Runner.xcarchive archive -allowProvisioningUpdates
 
     - name: Export iOS App
       run: xcodebuild -exportArchive -archivePath $PWD/build/Runner.xcarchive -exportOptionsPlist ios/Runner/ExportOptions.plist -exportPath $PWD/build -allowProvisioningUpdates
