@@ -314,7 +314,6 @@ class UserOnlineState {
 }
 class LogoutService {
   LogoutService();
-
   Future<void> logout(String userId) async {
     var url = Uri.parse('https://sayanythingapi.sdpmlab.org/auth/logout');
 
@@ -339,6 +338,28 @@ class LogoutService {
     } catch (e) {
       print('An error occurred: $e');
       throw Exception('Failed to logout due to an error');
+    }
+  }
+}
+
+
+class UpdateProfileApiService {
+  Future<Map<String, dynamic>> updateProfile(String userId, String newUsername) async {
+    final response = await http.put(
+      Uri.parse('https://sayanythingapi.sdpmlab.org/auth/updateProfile'),
+      headers: <String, String>{
+        'Content-Type': 'application/json; charset=UTF-8',
+      },
+      body: jsonEncode(<String, String>{
+        'userId': userId,
+        'newUsername': newUsername,
+      }),
+    );
+
+    if (response.statusCode == 200) {
+      return jsonDecode(response.body);
+    } else {
+      throw Exception('Failed to update profile');
     }
   }
 }

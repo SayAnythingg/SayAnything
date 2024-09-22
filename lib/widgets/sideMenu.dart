@@ -6,7 +6,7 @@ import 'package:SayAnything/screens/setting_page.dart';
 import 'package:SayAnything/services/API_services.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:SayAnything/screens/edit_name.dart';
+import 'package:SayAnything/screens/edit_name.dart' as edit_name;
 import 'package:SayAnything/services/Model.dart';
 import 'package:quickalert/quickalert.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -55,7 +55,7 @@ class SideMenu extends StatelessWidget {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => EditNameFormPage()),
+                            builder: (context) => edit_name.EditNameFormPage(user: user)),
                       );
                     },
                   ),

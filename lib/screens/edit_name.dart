@@ -1,10 +1,15 @@
 import 'package:SayAnything/screens/fade_animationtest.dart';
+import 'package:SayAnything/services/API_services.dart';
+import 'package:SayAnything/services/Model.dart';
 import 'package:SayAnything/widgets/custom_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:string_validator/string_validator.dart';
 
 class EditNameFormPage extends StatefulWidget {
-  const EditNameFormPage({super.key});
+  final User user;
+  EditNameFormPage({super.key, required this.user});
+  final apiService = LoginApiService();
+  final updateProfileApiService = UpdateProfileApiService();
 
   @override
   EditNameFormPageState createState() => EditNameFormPageState();
@@ -12,17 +17,29 @@ class EditNameFormPage extends StatefulWidget {
 
 class EditNameFormPageState extends State<EditNameFormPage> {
   final _formKey = GlobalKey<FormState>();
-  final firstNameController = TextEditingController();
-  final secondNameController = TextEditingController();
+  final nameController = TextEditingController();
 
-  @override
+   @override
   void dispose() {
-    firstNameController.dispose();
-    secondNameController.dispose();
+    nameController.dispose();
     super.dispose();
   }
 
-  void updateUserValue(String name) {}
+void updateUserValue(String newUsername, dynamic user) async {
+  final response = await widget.updateProfileApiService.updateProfile(user.userId, newUsername);
+  
+  if (!mounted) return; 
+
+  if (response.containsKey('message')) {
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(content: Text(response['message'])),
+    );
+  } else {
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(content: Text('Failed to update profile')),
+    );
+  }
+}
 
   @override
   Widget build(BuildContext context) {
@@ -65,51 +82,24 @@ class EditNameFormPageState extends State<EditNameFormPage> {
                       ),
                     ),
                   ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.fromLTRB(0, 40, 16, 0),
-                        child: SizedBox(
-                          height: 100,
-                          width: 150,
-                          child: TextFormField(
-                            validator: (value) {
-                              if (value == null || value.isEmpty) {
-                                return 'Please enter your first name';
-                              } else if (!isAlpha(value)) {
-                                return 'Only Letters Please';
-                              }
-                              return null;
-                            },
-                            decoration:
-                                const InputDecoration(labelText: 'First Name'),
-                            controller: firstNameController,
-                          ),
-                        ),
+                  Padding(
+                    padding: const EdgeInsets.fromLTRB(0, 40, 16, 0),
+                    child: SizedBox(
+                      height: 100,
+                      width: 300,
+                      child: TextFormField(
+                        validator: (value) {
+                          if (value == null || value.isEmpty) {
+                            return 'Please enter your name';
+                          } else if (!isAlpha(value.replaceAll(' ', ''))) {
+                            return 'Only Letters Please';
+                          }
+                          return null;
+                        },
+                        decoration: const InputDecoration(labelText: 'Name'),
+                        controller: nameController,
                       ),
-                      Padding(
-                        padding: const EdgeInsets.fromLTRB(0, 40, 16, 0),
-                        child: SizedBox(
-                          height: 100,
-                          width: 150,
-                          child: TextFormField(
-                            validator: (value) {
-                              if (value == null || value.isEmpty) {
-                                return 'Please enter your last name';
-                              } else if (!isAlpha(value)) {
-                                return 'Only Letters Please';
-                              }
-                              return null;
-                            },
-                            decoration:
-                                const InputDecoration(labelText: 'Last Name'),
-                            controller: secondNameController,
-                          ),
-                        ),
-                      ),
-                    ],
+                    ),
                   ),
                   Padding(
                     padding: const EdgeInsets.only(top: 150),
@@ -120,11 +110,8 @@ class EditNameFormPageState extends State<EditNameFormPage> {
                         child: CustomElevatedButton(
                           message: "Save",
                           function: () {
-                            if (_formKey.currentState!.validate() &&
-                                isAlpha(firstNameController.text +
-                                    secondNameController.text)) {
-                              updateUserValue(
-                                  "${firstNameController.text} ${secondNameController.text}");
+                            if (_formKey.currentState!.validate()) {
+                              updateUserValue(nameController.text, widget.user);
                               Navigator.pop(context);
                             }
                           },
@@ -142,3 +129,4 @@ class EditNameFormPageState extends State<EditNameFormPage> {
     );
   }
 }
+
