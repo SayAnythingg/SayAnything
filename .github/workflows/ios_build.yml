@@ -20,14 +20,5 @@ jobs:
         with:
           channel: stable
 
-      - name: Run flutter pub get
-        run: flutter pub get  
-
-      - name: Clean flutter build
-        run: flutter clean  
-
-      - name: Generate app icons
-        run: flutter pub run flutter_launcher_icons:main  
-
       - name: Build iOS
         run: flutter build ios --release --no-codesign  
