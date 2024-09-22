@@ -1,0 +1,40 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  ios:
+    name: iOS Build & Test
+    runs-on: macos-latest
+    steps:
+    - name: Check out the repository
+      uses: actions/checkout@v2
+
+    - name: Set up Flutter
+      uses: subosito/flutter-action@v2
+      with:
+        flutter-version: '3.24.3'
+
+    - name: Install dependencies
+      run: flutter pub get
+
+    - name: Set up Xcode
+      run: sudo xcode-select --switch /Applications/Xcode.app/Contents/Developer
+
+    - name: Install CocoaPods dependencies
+      run: pod install --project-directory=ios
+
+    - name: Build iOS App with Provisioning Updates
+      run: xcodebuild -workspace ios/Runner.xcworkspace -scheme Runner -sdk iphoneos -configuration Release -allowProvisioningUpdates
+
+    - name: Archive iOS App
+      run: xcodebuild -workspace ios/Runner.xcworkspace -scheme Runner -sdk iphoneos -configuration Release -archivePath $PWD/build/Runner.xcarchive archive -allowProvisioningUpdates
+
+    - name: Export iOS App
+      run: xcodebuild -exportArchive -archivePath $PWD/build/Runner.xcarchive -exportOptionsPlist ios/Runner/ExportOptions.plist -exportPath $PWD/build -allowProvisioningUpdates
