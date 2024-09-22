@@ -55,7 +55,8 @@ class SideMenu extends StatelessWidget {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => edit_name.EditNameFormPage(user: user)),
+                            builder: (context) =>
+                                edit_name.EditNameFormPage(user: user)),
                       );
                     },
                   ),
@@ -80,8 +81,8 @@ class SideMenu extends StatelessWidget {
             ),
           ),
           ListTile(
-            leading: Icon(Icons.info, color: Color(0xFF7EC4CF)),
-            title: Text('Privacy Policy',
+            leading: const Icon(Icons.info, color: Color(0xFF7EC4CF)),
+            title: const Text('Privacy Policy',
                 style: TextStyle(color: Color(0xFF7EC4CF))),
             onTap: () {
               Navigator.push(
@@ -92,8 +93,8 @@ class SideMenu extends StatelessWidget {
             },
           ),
           ListTile(
-            leading: Icon(Icons.fiber_new, color: Color(0xFF7EC4CF)),
-            title: Text('News', style: TextStyle(color: Color(0xFF7EC4CF))),
+            leading: const Icon(Icons.fiber_new, color: Color(0xFF7EC4CF)),
+            title: const Text('News', style: TextStyle(color: Color(0xFF7EC4CF))),
             onTap: () {
               Navigator.push(
                 context,
@@ -102,8 +103,8 @@ class SideMenu extends StatelessWidget {
             },
           ),
           ListTile(
-            leading: Icon(Icons.info, color: Color(0xFF7EC4CF)),
-            title: Text('About Us', style: TextStyle(color: Color(0xFF7EC4CF))),
+            leading: const Icon(Icons.info, color: Color(0xFF7EC4CF)),
+            title: const Text('About Us', style: TextStyle(color: Color(0xFF7EC4CF))),
             onTap: () {
               Navigator.push(
                 context,
@@ -112,8 +113,8 @@ class SideMenu extends StatelessWidget {
             },
           ),
           ListTile(
-            leading: Icon(Icons.settings, color: Color(0xFF7EC4CF)),
-            title: Text('Settings', style: TextStyle(color: Color(0xFF7EC4CF))),
+            leading: const Icon(Icons.settings, color: Color(0xFF7EC4CF)),
+            title: const Text('Settings', style: TextStyle(color: Color(0xFF7EC4CF))),
             onTap: () {
               Navigator.push(
                 context,
@@ -123,8 +124,8 @@ class SideMenu extends StatelessWidget {
             },
           ),
           ListTile(
-            leading: Icon(Icons.logout, color: Color(0xFF7EC4CF)),
-            title: Text('Logout', style: TextStyle(color: Color(0xFF7EC4CF))),
+            leading: const Icon(Icons.logout, color: Color(0xFF7EC4CF)),
+            title: const Text('Logout', style: TextStyle(color: Color(0xFF7EC4CF))),
             onTap: () {
               QuickAlert.show(
                 context: context,
@@ -136,14 +137,16 @@ class SideMenu extends StatelessWidget {
                 onConfirmBtnTap: () async {
                   try {
                     var logoutService = LogoutService();
-                    await logoutService.logout(user.userId);  
+                    await logoutService.logout(user.userId);
 
-                    SharedPreferences prefs = await SharedPreferences.getInstance();
+                    SharedPreferences prefs =
+                        await SharedPreferences.getInstance();
                     await prefs.clear();
 
                     Navigator.pushReplacement(
                       context,
-                      MaterialPageRoute(builder: (context) => const Sayanything()),
+                      MaterialPageRoute(
+                          builder: (context) => const Sayanything()),
                     );
                   } catch (error) {
                     if (kDebugMode) {

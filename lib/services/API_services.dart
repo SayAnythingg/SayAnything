@@ -292,11 +292,11 @@ class UserConfirmStatusService {
   }
 }
 
-
 class UserOnlineState {
   Future<bool> fetchUserOnlineStatus(String userId) async {
-    final uri = Uri.parse('https://sayanythingapi.sdpmlab.org/auth/userOnlineStatus')
-        .replace(queryParameters: {'userId': userId});
+    final uri =
+        Uri.parse('https://sayanythingapi.sdpmlab.org/auth/userOnlineStatus')
+            .replace(queryParameters: {'userId': userId});
     final response = await http.get(
       uri,
       headers: <String, String>{
@@ -312,6 +312,7 @@ class UserOnlineState {
     }
   }
 }
+
 class LogoutService {
   LogoutService();
   Future<void> logout(String userId) async {
@@ -342,9 +343,9 @@ class LogoutService {
   }
 }
 
-
 class UpdateProfileApiService {
-  Future<Map<String, dynamic>> updateProfile(String userId, String newUsername) async {
+  Future<Map<String, dynamic>> updateProfile(
+      String userId, String newUsername) async {
     final response = await http.put(
       Uri.parse('https://sayanythingapi.sdpmlab.org/auth/updateProfile'),
       headers: <String, String>{

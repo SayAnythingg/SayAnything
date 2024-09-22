@@ -33,7 +33,7 @@ class _HomePageState extends State<HomePage> {
   late IO.Socket socket;
   int _onlineUserCount = 0;
 
- @override
+  @override
   void initState() {
     super.initState();
     _initializeSocket();
@@ -66,7 +66,7 @@ class _HomePageState extends State<HomePage> {
     });
   }
 
-    void startMatching() {
+  void startMatching() {
     showDialog(
       context: context,
       barrierDismissible: false,
@@ -77,8 +77,6 @@ class _HomePageState extends State<HomePage> {
     print('Fucking done ... userId: ${widget.user.userId}');
     socket.emit('startMatching', {'userId': widget.user.userId});
   }
-
-  
 
   @override
   Widget build(BuildContext context) {
@@ -103,7 +101,7 @@ class _HomePageState extends State<HomePage> {
                     children: [
                       Image.asset('assets/images/logo.png', width: 50),
                       Image.asset('assets/images/logo_word.png', width: 120),
-                      Spacer(), 
+                      Spacer(),
                       Text('Online: $_onlineUserCount',
                           style: TextStyle(fontSize: 14)),
                     ],
@@ -174,7 +172,7 @@ class _HomePageState extends State<HomePage> {
                   ),
                 ),
                 const SizedBox(height: 20),
-                  FloatingActionButton(
+                FloatingActionButton(
                   onPressed: () async {
                     startMatching();
                   },
@@ -194,5 +192,4 @@ class _HomePageState extends State<HomePage> {
     socket.disconnect();
     super.dispose();
   }
-
 }

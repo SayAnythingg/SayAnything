@@ -1,10 +1,14 @@
 name: Build arm64 deb
 
 on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
   workflow_dispatch:
 
 env:
-  FLUTTER_VERSION: "3.13.9"
+  FLUTTER_VERSION: "latest"
 
 jobs:
   build:
@@ -18,7 +22,7 @@ jobs:
       - name: Get version from pubspec.yaml
         id: get_version
         run: |
-          VERSION=$(sed -n 's/^version: \([0-9]*\.[0-9]*\.[0-9]*\).*/\1/p' app/pubspec.yaml)
+          VERSION=$(sed -n 's/^version: \([0-9]*\.[0-9]*\.[0-9]*\).*/\1/p' pubspec.yaml)
           echo "version=$VERSION" >> $GITHUB_OUTPUT
 
   # Manage the Flutter version on the self-hosted runner manually!
@@ -39,14 +43,13 @@ jobs:
         run: dart pub global activate flutter_distributor
 
       - name: Build deb package
-        working-directory: app
         run: PATH="$PATH:$HOME/.pub-cache/bin" flutter_distributor package --platform linux --targets deb
 
       - name: Find deb file
         id: find_deb
         run: |
           VERSION=${{ needs.build.outputs.version }}
-          DEB_PATH=$(find app/dist -name "localsend_app-$VERSION*-linux.deb")
+          DEB_PATH=$(find dist -name "localsend_app-$VERSION*-linux.deb")
           echo "deb_path=$DEB_PATH" >> $GITHUB_OUTPUT
 
       - name: Check if deb file exists

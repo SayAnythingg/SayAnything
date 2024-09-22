@@ -228,49 +228,49 @@ class _ChatPageState extends State<ChatPage> {
 
   int _conversationStep = 0;
 
-void _handleSendPressed(types.PartialText message) {
-  final textMessage = types.TextMessage(
-    author: _user,
-    createdAt: DateTime.now().millisecondsSinceEpoch,
-    id: const Uuid().v4(),
-    text: message.text,
-  );
+  void _handleSendPressed(types.PartialText message) {
+    final textMessage = types.TextMessage(
+      author: _user,
+      createdAt: DateTime.now().millisecondsSinceEpoch,
+      id: const Uuid().v4(),
+      text: message.text,
+    );
 
-  _addMessage(textMessage);
+    _addMessage(textMessage);
 
-  Future.delayed(const Duration(seconds: 1), () {
-    types.TextMessage responseMessage;
+    Future.delayed(const Duration(seconds: 1), () {
+      types.TextMessage responseMessage;
 
-    if (_conversationStep == 0) {
-      responseMessage = types.TextMessage(
-        author: const types.User(id: 'Chris'),
-        createdAt: DateTime.now().millisecondsSinceEpoch,
-        id: const Uuid().v4(),
-        text: "That photo looks beautiful, where is it?",
-      );
-    } else if (_conversationStep == 1) {
-      responseMessage = types.TextMessage(
-        author: const types.User(id: 'Chris'),
-        createdAt: DateTime.now().millisecondsSinceEpoch,
-        id: const Uuid().v4(),
-        text: "Hope we can go there for a picnic next time.",
-      );
-    } else if (_conversationStep == 2) {
-      responseMessage = types.TextMessage(
-        author: const types.User(id: 'Chris'),
-        createdAt: DateTime.now().millisecondsSinceEpoch,
-        id: const Uuid().v4(),
-        text: "Give me a few minutes to read this document.",
-      );
-    } else {
-      _conversationStep = -1; 
-      return;
-    }
+      if (_conversationStep == 0) {
+        responseMessage = types.TextMessage(
+          author: const types.User(id: 'Chris'),
+          createdAt: DateTime.now().millisecondsSinceEpoch,
+          id: const Uuid().v4(),
+          text: "That photo looks beautiful, where is it?",
+        );
+      } else if (_conversationStep == 1) {
+        responseMessage = types.TextMessage(
+          author: const types.User(id: 'Chris'),
+          createdAt: DateTime.now().millisecondsSinceEpoch,
+          id: const Uuid().v4(),
+          text: "Hope we can go there for a picnic next time.",
+        );
+      } else if (_conversationStep == 2) {
+        responseMessage = types.TextMessage(
+          author: const types.User(id: 'Chris'),
+          createdAt: DateTime.now().millisecondsSinceEpoch,
+          id: const Uuid().v4(),
+          text: "Give me a few minutes to read this document.",
+        );
+      } else {
+        _conversationStep = -1;
+        return;
+      }
 
-    _addMessage(responseMessage);
-    _conversationStep++;
-  });
-}
+      _addMessage(responseMessage);
+      _conversationStep++;
+    });
+  }
 
   void _loadMessages() async {
     final response = await rootBundle.loadString('assets/messages.json');
@@ -287,33 +287,45 @@ void _handleSendPressed(types.PartialText message) {
     final fakeMessages = [
       types.TextMessage(
         author: const types.User(id: 'user-123'),
-        createdAt: DateTime.now().subtract(const Duration(minutes: 5)).millisecondsSinceEpoch,
+        createdAt: DateTime.now()
+            .subtract(const Duration(minutes: 5))
+            .millisecondsSinceEpoch,
         id: const Uuid().v4(),
-        text: 'Definitely! It\'s great to disconnect and enjoy nature. Also, I\'m really glad we met. You\'re a great friend.',
+        text:
+            'Definitely! It\'s great to disconnect and enjoy nature. Also, I\'m really glad we met. You\'re a great friend.',
       ),
       types.TextMessage(
         author: _user,
-        createdAt: DateTime.now().subtract(const Duration(minutes: 4)).millisecondsSinceEpoch,
+        createdAt: DateTime.now()
+            .subtract(const Duration(minutes: 4))
+            .millisecondsSinceEpoch,
         id: const Uuid().v4(),
         text: 'That sounds nice. I\'ve been meaning to get outside more too.',
       ),
       types.TextMessage(
         author: const types.User(id: 'user-123'),
-        createdAt: DateTime.now().subtract(const Duration(minutes: 3)).millisecondsSinceEpoch,
+        createdAt: DateTime.now()
+            .subtract(const Duration(minutes: 3))
+            .millisecondsSinceEpoch,
         id: const Uuid().v4(),
         text: 'Same here! It\'s a beautiful day. Went for a walk in the park.',
       ),
       types.TextMessage(
         author: _user,
-        createdAt: DateTime.now().subtract(const Duration(minutes: 2)).millisecondsSinceEpoch,
+        createdAt: DateTime.now()
+            .subtract(const Duration(minutes: 2))
+            .millisecondsSinceEpoch,
         id: const Uuid().v4(),
-        text: 'I\'m doing well, thanks! Enjoying the lovely weather. How about you?',
+        text:
+            'I\'m doing well, thanks! Enjoying the lovely weather. How about you?',
       ),
       types.TextMessage(
         author: const types.User(id: 'user-123'),
-        createdAt: DateTime.now().subtract(const Duration(minutes: 1)).millisecondsSinceEpoch,
+        createdAt: DateTime.now()
+            .subtract(const Duration(minutes: 1))
+            .millisecondsSinceEpoch,
         id: const Uuid().v4(),
-       text: 'Hey! How have you been?',
+        text: 'Hey! How have you been?',
       ),
     ];
 

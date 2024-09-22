@@ -38,7 +38,7 @@ class WaveWidget extends StatelessWidget {
             clipper: WaveClipper(),
             child: Container(
               height: 200,
-              color: Colors.white, 
+              color: Colors.white,
             ),
           ),
         ],

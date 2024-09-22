@@ -8,8 +8,6 @@ import 'package:syncfusion_flutter_pdfviewer/pdfviewer.dart';
 import 'package:dio/dio.dart';
 import 'package:path_provider/path_provider.dart';
 
-
-
 class PrivacyPolicyPage extends StatefulWidget {
   final User user;
 
@@ -24,7 +22,7 @@ class _PrivacyPolicyPageState extends State<PrivacyPolicyPage> {
   String? pdfPath;
   int _totalPages = 0;
   int _currentPage = 0;
-  bool _failedToLoad = false; 
+  bool _failedToLoad = false;
 
   @override
   void initState() {
@@ -44,7 +42,7 @@ class _PrivacyPolicyPageState extends State<PrivacyPolicyPage> {
       if (kDebugMode) {
         print('Download error: $e');
       }
-      _failedToLoad = true; 
+      _failedToLoad = true;
     } finally {
       setState(() {});
     }
@@ -52,7 +50,7 @@ class _PrivacyPolicyPageState extends State<PrivacyPolicyPage> {
 
   @override
   Widget build(BuildContext context) {
-    if (_failedToLoad) { 
+    if (_failedToLoad) {
       WidgetsBinding.instance.addPostFrameCallback((_) {
         Navigator.of(context).pushReplacement(
           MaterialPageRoute(
@@ -67,7 +65,8 @@ class _PrivacyPolicyPageState extends State<PrivacyPolicyPage> {
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
-        title: const Text('Privacy Policy', style: TextStyle(color: Colors.white)),
+        title:
+            const Text('Privacy Policy', style: TextStyle(color: Colors.white)),
         backgroundColor: const Color(0xFF7EC4CF),
       ),
       body: Stack(
@@ -102,7 +101,8 @@ class _PrivacyPolicyPageState extends State<PrivacyPolicyPage> {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => MainPage(initialIndex: 1, user: widget.user),
+                          builder: (context) =>
+                              MainPage(initialIndex: 1, user: widget.user),
                         ),
                       );
                     },

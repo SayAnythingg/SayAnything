@@ -115,8 +115,7 @@ class _MultimediaState extends State<Multimedia> {
   }
 
   void _sendToOpenAI(String text) async {
-    String prompt =
-        "$text\n請自然的跟我對答聊天";
+    String prompt = "$text\n請自然的跟我對答聊天";
 
     try {
       final response = await OpenAI.instance.chat.create(
@@ -158,142 +157,145 @@ class _MultimediaState extends State<Multimedia> {
     super.dispose();
   }
 
-@override
-Widget build(BuildContext context) {
-  return Scaffold(
-    appBar: AppBar(
-      title: Row(
-        mainAxisAlignment: MainAxisAlignment.start,
-        children: [
-          Icon(Icons.psychology_rounded, size: 30, color: Color(0xFF545454)),
-          SizedBox(width: 4),
-          Image.asset('assets/images/MultiMedia3.png', height: 135, width: 135),
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Row(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+            Icon(Icons.psychology_rounded, size: 30, color: Color(0xFF545454)),
+            SizedBox(width: 4),
+            Image.asset('assets/images/MultiMedia3.png',
+                height: 135, width: 135),
+          ],
+        ),
+        automaticallyImplyLeading: false,
+        backgroundColor: Color(0xFFDECFE2),
+        elevation: 0,
+        actions: <Widget>[
+          IconButton(
+            icon: Icon(Icons.smart_toy_outlined, color: Color(0xFF545454)),
+            onPressed: () async {
+              final joke = await JokeApiService.getJoke(1);
+              showDialog(
+                context: context,
+                builder: (BuildContext context) {
+                  return AlertDialog(
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.all(Radius.circular(32.0))),
+                    content: Stack(
+                      children: <Widget>[
+                        Positioned(
+                          top: 0,
+                          left: 0,
+                          child: Image.asset('assets/images/logo.png',
+                              width: 50.0, height: 50.0),
+                        ),
+                        Column(
+                          mainAxisSize: MainAxisSize.min,
+                          children: <Widget>[
+                            SizedBox(height: 60),
+                            Text(
+                              joke.setup,
+                              style: const TextStyle(
+                                  fontSize: 18, fontWeight: FontWeight.bold),
+                            ),
+                            const SizedBox(height: 20),
+                            Text(
+                              joke.punchline,
+                              style: TextStyle(fontSize: 16),
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                  );
+                },
+              );
+            },
+          ),
+          IconButton(
+            icon: const Icon(Icons.api),
+            onPressed: () {},
+          ),
+          IconButton(
+            icon: const Icon(Icons.api),
+            onPressed: () {},
+          ),
         ],
       ),
-      automaticallyImplyLeading: false,
-      backgroundColor: Color(0xFFDECFE2),
-      elevation: 0,
-      actions: <Widget>[
-        IconButton(
-          icon: Icon(Icons.smart_toy_outlined, color: Color(0xFF545454)),
-          onPressed: () async {
-            final joke = await JokeApiService.getJoke(1);
-            showDialog(
-              context: context,
-              builder: (BuildContext context) {
-                return AlertDialog(
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.all(Radius.circular(32.0))),
-                  content: Stack(
-                    children: <Widget>[
-                      Positioned(
-                        top: 0,
-                        left: 0,
-                        child: Image.asset('assets/images/logo.png', width: 50.0, height: 50.0),
-                      ),
-                      Column(
-                        mainAxisSize: MainAxisSize.min,
-                        children: <Widget>[
-                          SizedBox(height: 60),
-                          Text(
-                            joke.setup,
-                            style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-                          ),
-                          const SizedBox(height: 20),
-                          Text(
-                            joke.punchline,
-                            style: TextStyle(fontSize: 16),
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
-                );
-              },
-            );
-          },
-        ),
-        IconButton(
-          icon: const Icon(Icons.api),
-          onPressed: () {},
-        ),
-        IconButton(
-          icon: const Icon(Icons.api),
-          onPressed: () {},
-        ),
-      ],
-    ),
-    body: Container(
-      decoration: BoxDecoration(
-        gradient: LinearGradient(
-          colors: [Color(0xFFDECFE2), Color(0xFF7EC4CF)],
-          begin: Alignment.topLeft,
-          end: Alignment.bottomRight,
-        ),
-      ),
-      child: Column(
-        children: [
-          Expanded(
-            child: Center(
-              child: rive.RiveAnimation.asset(
-                'assets/animation/character.riv',
-                controllers: [_riveController],
-              ),
-            ),
+      body: Container(
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            colors: [Color(0xFFDECFE2), Color(0xFF7EC4CF)],
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
           ),
-          Expanded(
-            child: Chat(
-              messages: _messages,
-              onSendPressed: (text) {},
-              user: _user,
-              emptyState: Center(
-                child: Container(
-                  padding: const EdgeInsets.all(16.0),
-                  child: const Text(
-                    'Please start talking to me',
-                    style: TextStyle(fontSize: 18, color: Colors.black54),
-                  ),
+        ),
+        child: Column(
+          children: [
+            Expanded(
+              child: Center(
+                child: rive.RiveAnimation.asset(
+                  'assets/animation/character.riv',
+                  controllers: [_riveController],
                 ),
               ),
-              customBottomWidget: Container(),
             ),
-          ),
-          const SizedBox(height: 32.0),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Column(
-              children: [
-                AvatarGlow(
-                  animate: true,
-                  glowColor: Color.fromARGB(255, 255, 255, 255),
-                  duration: const Duration(milliseconds: 2000),
-                  repeat: true,
-                  child: InkWell(
-                    onTap: _isListening ? _stopListening : _startListening,
-                    customBorder: const CircleBorder(),
-                    child: CircleAvatar(
-                      radius: 36,
-                      backgroundColor: Colors.white,
-                      child: Icon(
-                        _isListening ? Icons.mic : Icons.mic_none,
-                        color: const Color(0xFF7EC4CF),
-                        size: 36,
-                      ),
+            Expanded(
+              child: Chat(
+                messages: _messages,
+                onSendPressed: (text) {},
+                user: _user,
+                emptyState: Center(
+                  child: Container(
+                    padding: const EdgeInsets.all(16.0),
+                    child: const Text(
+                      'Please start talking to me',
+                      style: TextStyle(fontSize: 18, color: Colors.black54),
                     ),
                   ),
                 ),
-                const SizedBox(height: 16.0),
-                Text(
-                  _isListening ? '$_seconds s' : '',
-                  style: const TextStyle(fontSize: 16),
-                ),
-              ],
+                customBottomWidget: Container(),
+              ),
             ),
-          ),
-          const SizedBox(height: 12.0),
-        ],
+            const SizedBox(height: 32.0),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Column(
+                children: [
+                  AvatarGlow(
+                    animate: true,
+                    glowColor: Color.fromARGB(255, 255, 255, 255),
+                    duration: const Duration(milliseconds: 2000),
+                    repeat: true,
+                    child: InkWell(
+                      onTap: _isListening ? _stopListening : _startListening,
+                      customBorder: const CircleBorder(),
+                      child: CircleAvatar(
+                        radius: 36,
+                        backgroundColor: Colors.white,
+                        child: Icon(
+                          _isListening ? Icons.mic : Icons.mic_none,
+                          color: const Color(0xFF7EC4CF),
+                          size: 36,
+                        ),
+                      ),
+                    ),
+                  ),
+                  const SizedBox(height: 16.0),
+                  Text(
+                    _isListening ? '$_seconds s' : '',
+                    style: const TextStyle(fontSize: 16),
+                  ),
+                ],
+              ),
+            ),
+            const SizedBox(height: 12.0),
+          ],
+        ),
       ),
-    ),
-  );
-}
+    );
+  }
 }

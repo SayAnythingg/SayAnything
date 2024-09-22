@@ -19,27 +19,28 @@ class EditNameFormPageState extends State<EditNameFormPage> {
   final _formKey = GlobalKey<FormState>();
   final nameController = TextEditingController();
 
-   @override
+  @override
   void dispose() {
     nameController.dispose();
     super.dispose();
   }
 
-void updateUserValue(String newUsername, dynamic user) async {
-  final response = await widget.updateProfileApiService.updateProfile(user.userId, newUsername);
-  
-  if (!mounted) return; 
+  void updateUserValue(String newUsername, dynamic user) async {
+    final response = await widget.updateProfileApiService
+        .updateProfile(user.userId, newUsername);
 
-  if (response.containsKey('message')) {
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(content: Text(response['message'])),
-    );
-  } else {
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(content: Text('Failed to update profile')),
-    );
+    if (!mounted) return;
+
+    if (response.containsKey('message')) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text(response['message'])),
+      );
+    } else {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Failed to update profile')),
+      );
+    }
   }
-}
 
   @override
   Widget build(BuildContext context) {
@@ -129,4 +130,3 @@ void updateUserValue(String newUsername, dynamic user) async {
     );
   }
 }
-

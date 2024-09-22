@@ -110,7 +110,7 @@ class _SignupPageState extends State<SignupPage> {
 
   void _attemptRegister() {
     setState(() {
-      _hasAttemptedRegister = true; 
+      _hasAttemptedRegister = true;
     });
   }
 
@@ -267,27 +267,33 @@ class _SignupPageState extends State<SignupPage> {
                                   context: context,
                                   type: QuickAlertType.error,
                                   title: 'Error',
-                                  text: 'Please make sure all fields are entered.',
+                                  text:
+                                      'Please make sure all fields are entered.',
                                   confirmBtnText: 'Confirm',
                                   confirmBtnColor: Color(0xFF7EC4CF),
-                                  onConfirmBtnTap: () => Navigator.of(context).pop(),
+                                  onConfirmBtnTap: () =>
+                                      Navigator.of(context).pop(),
                                 );
-                              } else if (passwordController.text != confirmPasswordController.text) {
+                              } else if (passwordController.text !=
+                                  confirmPasswordController.text) {
                                 QuickAlert.show(
                                   context: context,
                                   type: QuickAlertType.error,
                                   title: 'Error',
-                                  text: 'Please make sure the password and confirm password are the same.',
+                                  text:
+                                      'Please make sure the password and confirm password are the same.',
                                   confirmBtnText: 'Confirm',
                                   confirmBtnColor: Color(0xFF7EC4CF),
-                                  onConfirmBtnTap: () => Navigator.of(context).pop(),
+                                  onConfirmBtnTap: () =>
+                                      Navigator.of(context).pop(),
                                 );
                               } else {
                                 QuickAlert.show(
                                   context: context,
                                   type: QuickAlertType.success,
                                   title: 'Verification code sent',
-                                  text: 'Please check your email for a verification code and to confirm your account.',
+                                  text:
+                                      'Please check your email for a verification code and to confirm your account.',
                                   confirmBtnText: 'Confirm',
                                   confirmBtnColor: Color(0xFF7EC4CF),
                                   onConfirmBtnTap: () {
@@ -295,7 +301,7 @@ class _SignupPageState extends State<SignupPage> {
                                     setState(() {
                                       _start = 120;
                                       startTimer();
-                                      _attemptRegister(); 
+                                      _attemptRegister();
                                     });
                                   },
                                 );

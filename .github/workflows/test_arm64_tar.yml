@@ -1,10 +1,14 @@
 name: Build arm64 tar
 
 on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
   workflow_dispatch:
 
 env:
-  FLUTTER_VERSION: "3.13.9"
+  FLUTTER_VERSION: "latest"
 
 jobs:
   build:
@@ -18,7 +22,7 @@ jobs:
       - name: Get version from pubspec.yaml
         id: get_version
         run: |
-          VERSION=$(sed -n 's/^version: \([0-9]*\.[0-9]*\.[0-9]*\).*/\1/p' app/pubspec.yaml)
+          VERSION=$(sed -n 's/^version: \([0-9]*\.[0-9]*\.[0-9]*\).*/\1/p' pubspec.yaml)
           echo "version=$VERSION" >> $GITHUB_OUTPUT
 
   # Manage the Flutter version on the self-hosted runner manually!
@@ -36,20 +40,18 @@ jobs:
           sudo apt-get install -y clang cmake libgtk-3-dev ninja-build libayatana-appindicator3-dev
 
       - name: Dependencies
-        working-directory: app
         run: flutter pub get
 
       - name: Compile linux
-        working-directory: app
         run: flutter build linux
 
       - name: Create tar.gz archive
         run: |
-          cd app/build/linux/arm64/release/bundle
+          cd build/linux/arm64/release/bundle
           tar -czvf ../../../../../result.tar.gz *
 
       - name: Upload tar.gz archive
         uses: actions/upload-artifact@v4
         with:
           name: tar-gz-arm-64-result
-          path: ./app/*.tar.gz
+          path: ./*.tar.gz
