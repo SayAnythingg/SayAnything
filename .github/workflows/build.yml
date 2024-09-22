@@ -16,6 +16,12 @@ jobs:
     - name: Check out the repository
       uses: actions/checkout@v2
 
+    - name: Set up Java
+      uses: actions/setup-java@v2
+      with:
+        distribution: 'temurin'
+        java-version: '11'
+
     - name: Set up Flutter
       uses: subosito/flutter-action@v2
       with:
@@ -24,8 +30,8 @@ jobs:
     - name: Install dependencies
       run: flutter pub get
 
-    - name: Dry-run Android Build
-      run: flutter build apk 
+    - name: Build Android APK
+      run: flutter build apk
 
   ios:
     name: iOS Build & Test
@@ -42,8 +48,8 @@ jobs:
     - name: Install dependencies
       run: flutter pub get
 
-    - name: Dry-run iOS Build
-      run: flutter build ios
+    - name: Build iOS App
+      run: flutter build ios --no-codesign
 
   macos:
     name: macOS Build & Test
@@ -57,10 +63,14 @@ jobs:
       with:
         flutter-version: '3.24.3'
 
+    - name: Update macOS Deployment Target
+      run: |
+        sed -i '' 's/platform :osx, .*/platform :osx, '\''11.0'\''/' macos/Podfile
+
     - name: Install dependencies
       run: flutter pub get
 
-    - name: Dry-run macOS Build
+    - name: Build macOS App
       run: flutter build macos
 
   web:
@@ -78,5 +88,5 @@ jobs:
     - name: Install dependencies
       run: flutter pub get
 
-    - name: Dry-run Web Build
-      run: flutter build web 
+    - name: Build Web App
+      run: flutter build web
