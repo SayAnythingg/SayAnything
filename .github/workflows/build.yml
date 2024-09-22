@@ -20,7 +20,7 @@ jobs:
       uses: actions/setup-java@v2
       with:
         distribution: 'temurin'
-        java-version: '11'
+        java-version: '17'
 
     - name: Set up Flutter
       uses: subosito/flutter-action@v2
@@ -48,8 +48,14 @@ jobs:
     - name: Install dependencies
       run: flutter pub get
 
+    - name: Set up Xcode
+      run: sudo xcode-select --switch /Applications/Xcode.app/Contents/Developer
+
     - name: Build iOS App
       run: flutter build ios --no-codesign
+
+    - name: Build iOS App with Provisioning Updates
+      run: xcodebuild -workspace ios/Runner.xcworkspace -scheme Runner -allowProvisioningUpdates
 
   macos:
     name: macOS Build & Test
