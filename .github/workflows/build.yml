@@ -1,4 +1,4 @@
-name: Flutter CI
+name: CI
 
 on:
   push:
@@ -25,7 +25,7 @@ jobs:
       run: flutter pub get
 
     - name: Dry-run Android Build
-      run: flutter build apk --dry-run
+      run: flutter build apk 
 
   ios:
     name: iOS Build & Test
@@ -43,7 +43,7 @@ jobs:
       run: flutter pub get
 
     - name: Dry-run iOS Build
-      run: flutter build ios --no-codesign --dry-run
+      run: flutter build ios
 
   macos:
     name: macOS Build & Test
@@ -61,7 +61,7 @@ jobs:
       run: flutter pub get
 
     - name: Dry-run macOS Build
-      run: flutter build macos --dry-run
+      run: flutter build macos
 
   web:
     name: Web Build & Test
@@ -79,4 +79,4 @@ jobs:
       run: flutter pub get
 
     - name: Dry-run Web Build
-      run: flutter build web --dry-run
+      run: flutter build web 
