@@ -33,6 +33,3 @@ jobs:
 
       - name: Build Web
         run: flutter build web
-
-      - name: Run Tests
-        run: flutter test

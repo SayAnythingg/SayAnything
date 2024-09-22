@@ -25,15 +25,6 @@ jobs:
           VERSION=$(sed -n 's/^version: \([0-9]*\.[0-9]*\.[0-9]*\).*/\1/p' pubspec.yaml)
           echo "version=$VERSION" >> $GITHUB_OUTPUT
 
-  # Manage the Flutter version on the self-hosted runner manually!
-  # Flutter currently doesn't provide Linux ARM64 binaries.
-  build_deb_arm_64:
-    needs: build
-    runs-on: [self-hosted, linux, arm64]
-
-    steps:
-      - uses: actions/checkout@v4
-
       - name: Install dependencies
         run: |
           sudo apt-get update
@@ -48,7 +39,7 @@ jobs:
       - name: Find deb file
         id: find_deb
         run: |
-          VERSION=${{ needs.build.outputs.version }}
+          VERSION=${{ steps.get_version.outputs.version }}
           DEB_PATH=$(find dist -name "localsend_app-$VERSION*-linux.deb")
           echo "deb_path=$DEB_PATH" >> $GITHUB_OUTPUT
 
