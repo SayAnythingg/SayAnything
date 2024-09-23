@@ -11,7 +11,6 @@ import 'package:say_anything/screens/loading_page.dart';
 import 'package:socket_io_client/socket_io_client.dart' as IO;
 import 'package:say_anything/widgets/sideMenu.dart';
 
-final matchApiService = MatchApiService();
 final controller = rive.SimpleAnimation('Animation1');
 
 class UserIdService {
@@ -79,7 +78,7 @@ class _HomePageState extends State<HomePage> {
       context: context,
       barrierDismissible: false,
       builder: (BuildContext context) {
-        return const LoadingPage();
+        return LoadingPage(socket: socket, user: widget.user,);
       },
     );
     if (kDebugMode) {

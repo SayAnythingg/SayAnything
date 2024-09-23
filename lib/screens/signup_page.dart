@@ -1,7 +1,6 @@
 import 'dart:async';
 import 'package:say_anything/common/common.dart';
 import 'package:say_anything/screens/fade_animationtest.dart';
-import 'package:say_anything/screens/loading_page.dart';
 import 'package:say_anything/screens/login_page.dart';
 import 'package:say_anything/widgets/custom_widget.dart';
 import 'package:flutter/cupertino.dart';
@@ -133,7 +132,7 @@ class _SignupPageState extends State<SignupPage> {
     showDialog(
       context: context,
       barrierDismissible: false,
-      builder: (BuildContext context) => const LoadingPage(),
+      builder: (BuildContext context) => const LoginPage(),
     );
 
     await asyncOperation();

@@ -1,14 +1,62 @@
 import 'dart:ui';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
-import 'package:say_anything/services/API_services.dart';
-import 'package:say_anything/screens/home.dart';
+import 'package:say_anything/services/Model.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+// ignore: library_prefixes
+import 'package:socket_io_client/socket_io_client.dart' as IO;
 
-MatchApiService matchApiService = MatchApiService();
+class UserIdService {
+  static Future<String> getCurrentUserId() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    String userId = prefs.getString('userId') ?? 'default_value';
+    return userId;
+  }
+}
 
-class LoadingPage extends StatelessWidget {
-  const LoadingPage({super.key});
+class LoadingPage extends StatefulWidget {
+  final IO.Socket socket;
+  final User user;
+
+  const LoadingPage({super.key, required this.socket, required this.user});
+
+  @override
+  // ignore: library_private_types_in_public_api
+  _LoadingPageState createState() => _LoadingPageState();
+}
+
+class _LoadingPageState extends State<LoadingPage> {
+  @override
+  void initState() {
+    super.initState();
+    widget.socket.on('pair_response', (data) {
+      if (data['userId'] != null) {
+        _showMatchSuccessDialog();
+      }
+    });
+  }
+
+  void _showMatchSuccessDialog() {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: const Text('Match Success'),
+          content: const Text('You have been successfully paired!'),
+          actions: <Widget>[
+            TextButton(
+              child: const Text('OK'),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+          ],
+        );
+      },
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -54,10 +102,12 @@ class LoadingPage extends StatelessWidget {
               height: 40,
               child: FloatingActionButton(
                 onPressed: () async {
-                  String userId = await UserIdService.getCurrentUserId();
+                  widget.socket.emit('cancelMatch', {'userId': widget.user.userId});
+                  if (kDebugMode) {
+                    print('Cancel matching ... userId: ${widget.user.userId}');
+                  }
                   // ignore: use_build_context_synchronously
                   Navigator.pop(context);
-                  await matchApiService.cancelMatch(userId);
                 },
                 backgroundColor: const Color(0xFF7EC4CF),
                 child: const Icon(Icons.cancel, size: 20),
