@@ -1,6 +1,6 @@
 import 'dart:io';
 
-import 'package:SayAnything/router/router_config.dart';
+import 'package:say_anything/router/router_config.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         brightness: Brightness.light,
         useMaterial3: true,
-        primaryColor: Color(0xFF35C2C1),
+        primaryColor: const Color(0xFF35C2C1),
       ),
       themeMode: ThemeMode.light,
       darkTheme: ThemeData.dark(useMaterial3: true),

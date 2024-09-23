@@ -7,6 +7,8 @@ class Aboutus extends StatelessWidget {
   final _subjectController = TextEditingController();
   final _bodyController = TextEditingController();
 
+  Aboutus({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -72,7 +74,7 @@ class Aboutus extends StatelessWidget {
                         borderRadius: BorderRadius.circular(30.0),
                       ),
                       child: Padding(
-                        padding: EdgeInsets.all(16.0),
+                        padding: const EdgeInsets.all(16.0),
                         child: Column(
                           children: <Widget>[
                             TextFormField(
@@ -133,7 +135,7 @@ class Aboutus extends StatelessWidget {
       String email, String body) {
     return Card(
       margin: const EdgeInsets.symmetric(vertical: 8.0),
-      child: Container(
+      child: SizedBox(
         width: MediaQuery.of(context).size.width * 0.8,
         child: Padding(
           padding: const EdgeInsets.all(16.0),

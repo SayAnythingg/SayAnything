@@ -1,4 +1,4 @@
-import 'package:SayAnything/services/API_services.dart';
+import 'package:say_anything/services/API_services.dart';
 import 'package:flutter/material.dart';
 // ignore: depend_on_referenced_packages
 import 'package:avatar_glow/avatar_glow.dart';
@@ -17,6 +17,7 @@ import 'package:dart_openai/dart_openai.dart';
 import 'package:flutter_tts/flutter_tts.dart';
 import 'package:rive/rive.dart' as rive;
 
+// ignore: non_constant_identifier_names
 final JokeApiService = JokeApi();
 
 class Multimedia extends StatefulWidget {
@@ -164,25 +165,26 @@ class _MultimediaState extends State<Multimedia> {
         title: Row(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
-            Icon(Icons.psychology_rounded, size: 30, color: Color(0xFF545454)),
-            SizedBox(width: 4),
+            const Icon(Icons.psychology_rounded, size: 30, color: Color(0xFF545454)),
+            const SizedBox(width: 4),
             Image.asset('assets/images/MultiMedia3.png',
                 height: 135, width: 135),
           ],
         ),
         automaticallyImplyLeading: false,
-        backgroundColor: Color(0xFFDECFE2),
+        backgroundColor: const Color(0xFFDECFE2),
         elevation: 0,
         actions: <Widget>[
           IconButton(
-            icon: Icon(Icons.smart_toy_outlined, color: Color(0xFF545454)),
+            icon: const Icon(Icons.smart_toy_outlined, color: Color(0xFF545454)),
             onPressed: () async {
               final joke = await JokeApiService.getJoke(1);
               showDialog(
+                // ignore: use_build_context_synchronously
                 context: context,
                 builder: (BuildContext context) {
                   return AlertDialog(
-                    shape: RoundedRectangleBorder(
+                    shape: const RoundedRectangleBorder(
                         borderRadius: BorderRadius.all(Radius.circular(32.0))),
                     content: Stack(
                       children: <Widget>[
@@ -195,7 +197,7 @@ class _MultimediaState extends State<Multimedia> {
                         Column(
                           mainAxisSize: MainAxisSize.min,
                           children: <Widget>[
-                            SizedBox(height: 60),
+                            const SizedBox(height: 60),
                             Text(
                               joke.setup,
                               style: const TextStyle(
@@ -204,7 +206,7 @@ class _MultimediaState extends State<Multimedia> {
                             const SizedBox(height: 20),
                             Text(
                               joke.punchline,
-                              style: TextStyle(fontSize: 16),
+                              style: const TextStyle(fontSize: 16),
                             ),
                           ],
                         ),
@@ -226,7 +228,7 @@ class _MultimediaState extends State<Multimedia> {
         ],
       ),
       body: Container(
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           gradient: LinearGradient(
             colors: [Color(0xFFDECFE2), Color(0xFF7EC4CF)],
             begin: Alignment.topLeft,
@@ -267,7 +269,7 @@ class _MultimediaState extends State<Multimedia> {
                 children: [
                   AvatarGlow(
                     animate: true,
-                    glowColor: Color.fromARGB(255, 255, 255, 255),
+                    glowColor: const Color.fromARGB(255, 255, 255, 255),
                     duration: const Duration(milliseconds: 2000),
                     repeat: true,
                     child: InkWell(

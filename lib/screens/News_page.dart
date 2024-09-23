@@ -1,7 +1,7 @@
 // ignore: file_names
-import 'package:SayAnything/widgets/wait.dart';
-import 'package:SayAnything/services/API_services.dart';
-import 'package:SayAnything/services/Model.dart';
+import 'package:say_anything/widgets/wait.dart';
+import 'package:say_anything/services/API_services.dart';
+import 'package:say_anything/services/Model.dart';
 import 'package:flutter/material.dart';
 
 class NewsPage extends StatefulWidget {
@@ -32,7 +32,7 @@ class _NewsPageState extends State<NewsPage> {
         List<News> newsList;
 
         if (snapshot.connectionState == ConnectionState.waiting) {
-          return WaitPage();
+          return const WaitPage();
         } else if (snapshot.hasError) {
           newsList = defaultNews;
         } else {

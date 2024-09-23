@@ -1,10 +1,9 @@
-import 'dart:ui';
 import 'package:flutter/material.dart';
-import 'package:SayAnything/screens/chatList_page.dart';
+import 'package:say_anything/screens/chatList_page.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
-import 'package:SayAnything/screens/AI.dart';
-import 'package:SayAnything/screens/home.dart';
-import 'package:SayAnything/services/Model.dart';
+import 'package:say_anything/screens/AI.dart';
+import 'package:say_anything/screens/home.dart';
+import 'package:say_anything/services/Model.dart';
 
 class MainPage extends StatefulWidget {
   final int initialIndex;
@@ -13,6 +12,7 @@ class MainPage extends StatefulWidget {
   const MainPage({super.key, required this.initialIndex, required this.user});
 
   @override
+  // ignore: library_private_types_in_public_api
   _MainPageState createState() => _MainPageState();
 }
 

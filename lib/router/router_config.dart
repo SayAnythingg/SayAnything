@@ -1,11 +1,11 @@
-import 'package:SayAnything/router/router.dart';
-import 'package:SayAnything/screens/SayAnything.dart';
-import 'package:SayAnything/screens/forget_password.dart';
-import 'package:SayAnything/screens/login_page.dart';
-import 'package:SayAnything/screens/new_password.dart';
-import 'package:SayAnything/screens/otp_verification.dart';
-import 'package:SayAnything/screens/password_changed.dart';
-import 'package:SayAnything/screens/signup_page.dart';
+import 'package:say_anything/router/router.dart';
+import 'package:say_anything/screens/SayAnything.dart';
+import 'package:say_anything/screens/forget_password.dart';
+import 'package:say_anything/screens/login_page.dart';
+import 'package:say_anything/screens/new_password.dart';
+import 'package:say_anything/screens/otp_verification.dart';
+import 'package:say_anything/screens/password_changed.dart';
+import 'package:say_anything/screens/signup_page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:go_router/go_router.dart';
 

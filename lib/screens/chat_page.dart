@@ -337,28 +337,28 @@ class _ChatPageState extends State<ChatPage> {
   @override
   Widget build(BuildContext context) => Scaffold(
         appBar: AppBar(
-          backgroundColor: Color(0xFF7EC4CF),
+          backgroundColor: const Color(0xFF7EC4CF),
           leading: IconButton(
-            icon: Icon(Icons.arrow_back),
+            icon: const Icon(Icons.arrow_back),
             onPressed: () => Navigator.pop(context),
           ),
           title: Row(
             children: <Widget>[
-              CircleAvatar(
+              const CircleAvatar(
                 backgroundImage:
                     NetworkImage('https://via.placeholder.com/150'),
                 radius: 20,
               ),
-              SizedBox(width: 10),
+              const SizedBox(width: 10),
               Text(
                 widget.chatRoomName,
-                style: TextStyle(fontSize: 18),
+                style: const TextStyle(fontSize: 18),
               ),
             ],
           ),
           actions: <Widget>[
             IconButton(
-              icon: Icon(Icons.phone),
+              icon: const Icon(Icons.phone),
               onPressed: () {},
             ),
           ],

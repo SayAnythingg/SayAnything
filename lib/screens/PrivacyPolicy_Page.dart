@@ -1,7 +1,7 @@
 import 'dart:io';
 
-import 'package:SayAnything/screens/Main_page.dart';
-import 'package:SayAnything/services/Model.dart';
+import 'package:say_anything/screens/Main_page.dart';
+import 'package:say_anything/services/Model.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:syncfusion_flutter_pdfviewer/pdfviewer.dart';
@@ -14,6 +14,7 @@ class PrivacyPolicyPage extends StatefulWidget {
   const PrivacyPolicyPage({super.key, required this.user});
 
   @override
+  // ignore: library_private_types_in_public_api
   _PrivacyPolicyPageState createState() => _PrivacyPolicyPageState();
 }
 

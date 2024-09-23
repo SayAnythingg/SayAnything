@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:flutter/foundation.dart';
 import 'package:google_generative_ai/google_generative_ai.dart';
 
 Future<void> main() async {
@@ -7,7 +8,9 @@ Future<void> main() async {
   final apiKey =
       Platform.environment['AIzaSyCu_nh_v-8fJn_f6UtoKtkVdMXaFK9iVdQ'];
   if (apiKey == null) {
-    print('No \$API_KEY environment variable');
+    if (kDebugMode) {
+      print('No \$API_KEY environment variable');
+    }
     exit(1);
   }
   // The Gemini 1.5 models are versatile and work with multi-turn conversations (like chat)
@@ -22,5 +25,7 @@ Future<void> main() async {
   ]);
   var content = Content.text('');
   var response = await chat.sendMessage(content);
-  print(response.text);
+  if (kDebugMode) {
+    print(response.text);
+  }
 }

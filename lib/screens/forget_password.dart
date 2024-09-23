@@ -1,12 +1,12 @@
-import 'package:SayAnything/common/common.dart';
-import 'package:SayAnything/router/router.dart';
-import 'package:SayAnything/screens/fade_animationtest.dart';
-import 'package:SayAnything/widgets/custom_widget.dart';
+import 'package:say_anything/common/common.dart';
+import 'package:say_anything/router/router.dart';
+import 'package:say_anything/screens/fade_animationtest.dart';
+import 'package:say_anything/widgets/custom_widget.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:SayAnything/services/API_services.dart';
+import 'package:say_anything/services/API_services.dart';
 
 final apiService = ForgetPasswordApiService();
 

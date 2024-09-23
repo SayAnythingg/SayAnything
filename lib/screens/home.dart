@@ -1,14 +1,15 @@
-import 'package:SayAnything/screens/fade_animationtest.dart';
-import 'package:SayAnything/services/Model.dart';
+import 'package:say_anything/screens/fade_animationtest.dart';
+import 'package:say_anything/services/Model.dart';
+import 'package:flutter/foundation.dart';
 // import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:rive/rive.dart' as rive;
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:SayAnything/services/API_services.dart';
-import 'package:SayAnything/screens/loading_page.dart';
+import 'package:say_anything/services/API_services.dart';
+import 'package:say_anything/screens/loading_page.dart';
 // ignore: library_prefixes
 import 'package:socket_io_client/socket_io_client.dart' as IO;
-import 'package:SayAnything/widgets/sideMenu.dart';
+import 'package:say_anything/widgets/sideMenu.dart';
 
 final matchApiService = MatchApiService();
 final controller = rive.SimpleAnimation('Animation1');
@@ -26,6 +27,7 @@ class HomePage extends StatefulWidget {
   const HomePage({super.key, required this.user});
 
   @override
+  // ignore: library_private_types_in_public_api
   _HomePageState createState() => _HomePageState();
 }
 
@@ -47,15 +49,21 @@ class _HomePageState extends State<HomePage> {
     });
 
     socket.onConnect((_) {
-      print('Connected');
+      if (kDebugMode) {
+        print('Connected');
+      }
     });
 
     socket.on('eventFromBackend', (data) {
-      print(data);
+      if (kDebugMode) {
+        print(data);
+      }
     });
 
     socket.onDisconnect((_) {
-      print('Disconnected');
+      if (kDebugMode) {
+        print('Disconnected');
+      }
     });
   }
 
@@ -71,10 +79,12 @@ class _HomePageState extends State<HomePage> {
       context: context,
       barrierDismissible: false,
       builder: (BuildContext context) {
-        return LoadingPage();
+        return const LoadingPage();
       },
     );
-    print('Fucking done ... userId: ${widget.user.userId}');
+    if (kDebugMode) {
+      print('Fucking done ... userId: ${widget.user.userId}');
+    }
     socket.emit('startMatching', {'userId': widget.user.userId});
   }
 
@@ -101,9 +111,9 @@ class _HomePageState extends State<HomePage> {
                     children: [
                       Image.asset('assets/images/logo.png', width: 50),
                       Image.asset('assets/images/logo_word.png', width: 120),
-                      Spacer(),
+                      const Spacer(),
                       Text('Online: $_onlineUserCount',
-                          style: TextStyle(fontSize: 14)),
+                          style: const TextStyle(fontSize: 14)),
                     ],
                   ),
                   centerTitle: false,

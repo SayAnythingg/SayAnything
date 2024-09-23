@@ -1,6 +1,6 @@
-import 'package:SayAnything/router/router.dart';
-import 'package:SayAnything/screens/fade_animationtest.dart';
-import 'package:SayAnything/widgets/custom_widget.dart';
+import 'package:say_anything/router/router.dart';
+import 'package:say_anything/screens/fade_animationtest.dart';
+import 'package:say_anything/widgets/custom_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:rive/rive.dart' as rive;

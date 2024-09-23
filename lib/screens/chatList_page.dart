@@ -1,7 +1,7 @@
 // ChatList.dart
 import 'package:flutter/material.dart';
-import 'package:SayAnything/function/ChatSearch.dart';
-import 'package:SayAnything/function/ChatListItem.dart';
+import 'package:say_anything/function/ChatSearch.dart';
+import 'package:say_anything/function/ChatListItem.dart';
 
 class ChatList extends StatefulWidget {
   const ChatList({super.key});

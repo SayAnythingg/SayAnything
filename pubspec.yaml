@@ -1,6 +1,6 @@
 # need to upgrade the audioplayers to v5.2.1
 
-name: SayAnything
+name: say_anything
 description: "A new Flutter project."
 publish_to: 'none'
 

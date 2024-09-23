@@ -1,4 +1,4 @@
-import 'package:SayAnything/screens/chat_page.dart';
+import 'package:say_anything/screens/chat_page.dart';
 import 'package:flutter/material.dart';
 
 class ChatSearch extends SearchDelegate<String> {
@@ -10,7 +10,7 @@ class ChatSearch extends SearchDelegate<String> {
   List<Widget> buildActions(BuildContext context) {
     return [
       IconButton(
-        icon: Icon(Icons.clear),
+        icon: const Icon(Icons.clear),
         onPressed: () {
           query = '';
         },
@@ -21,7 +21,7 @@ class ChatSearch extends SearchDelegate<String> {
   @override
   Widget buildLeading(BuildContext context) {
     return IconButton(
-      icon: Icon(Icons.arrow_back),
+      icon: const Icon(Icons.arrow_back),
       onPressed: () {
         close(context, '');
       },

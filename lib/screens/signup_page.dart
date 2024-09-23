@@ -1,14 +1,14 @@
 import 'dart:async';
-import 'package:SayAnything/common/common.dart';
-import 'package:SayAnything/screens/fade_animationtest.dart';
-import 'package:SayAnything/screens/loading_page.dart';
-import 'package:SayAnything/screens/login_page.dart';
-import 'package:SayAnything/widgets/custom_widget.dart';
+import 'package:say_anything/common/common.dart';
+import 'package:say_anything/screens/fade_animationtest.dart';
+import 'package:say_anything/screens/loading_page.dart';
+import 'package:say_anything/screens/login_page.dart';
+import 'package:say_anything/widgets/custom_widget.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
-import 'package:SayAnything/services/API_services.dart';
+import 'package:say_anything/services/API_services.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:quickalert/quickalert.dart';
 
@@ -138,6 +138,7 @@ class _SignupPageState extends State<SignupPage> {
 
     await asyncOperation();
 
+    // ignore: use_build_context_synchronously
     Navigator.pop(context);
   }
 
@@ -270,7 +271,7 @@ class _SignupPageState extends State<SignupPage> {
                                   text:
                                       'Please make sure all fields are entered.',
                                   confirmBtnText: 'Confirm',
-                                  confirmBtnColor: Color(0xFF7EC4CF),
+                                  confirmBtnColor: const Color(0xFF7EC4CF),
                                   onConfirmBtnTap: () =>
                                       Navigator.of(context).pop(),
                                 );
@@ -283,7 +284,7 @@ class _SignupPageState extends State<SignupPage> {
                                   text:
                                       'Please make sure the password and confirm password are the same.',
                                   confirmBtnText: 'Confirm',
-                                  confirmBtnColor: Color(0xFF7EC4CF),
+                                  confirmBtnColor: const Color(0xFF7EC4CF),
                                   onConfirmBtnTap: () =>
                                       Navigator.of(context).pop(),
                                 );
@@ -295,7 +296,7 @@ class _SignupPageState extends State<SignupPage> {
                                   text:
                                       'Please check your email for a verification code and to confirm your account.',
                                   confirmBtnText: 'Confirm',
-                                  confirmBtnColor: Color(0xFF7EC4CF),
+                                  confirmBtnColor: const Color(0xFF7EC4CF),
                                   onConfirmBtnTap: () {
                                     Navigator.of(context).pop();
                                     setState(() {
@@ -341,8 +342,9 @@ class _SignupPageState extends State<SignupPage> {
                                       .resendConfirmationMail(
                                           emailController.text);
                                   if (result['confirmStatus']) {
+                                    // ignore: use_build_context_synchronously
                                     ScaffoldMessenger.of(context).showSnackBar(
-                                        SnackBar(
+                                        const SnackBar(
                                             content: Text(
                                                 "Confirmation mail resent successfully.")));
                                   }

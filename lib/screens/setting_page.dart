@@ -1,4 +1,4 @@
-import 'package:SayAnything/services/Model.dart';
+import 'package:say_anything/services/Model.dart';
 import 'package:flutter/material.dart';
 
 class SettingsPage extends StatefulWidget {

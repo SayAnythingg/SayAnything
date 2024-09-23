@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
-import 'package:SayAnything/screens/chat_page.dart';
+import 'package:say_anything/screens/chat_page.dart';
 
 class ChatListItem extends StatelessWidget {
   final String chatRoom;
@@ -8,8 +8,8 @@ class ChatListItem extends StatelessWidget {
   final Function pinChatRoom;
   final bool isPinned;
 
-  ChatListItem(
-      {required this.chatRoom,
+  const ChatListItem(
+      {super.key, required this.chatRoom,
       required this.removeChatRoom,
       required this.pinChatRoom,
       this.isPinned = false});
@@ -27,7 +27,7 @@ class ChatListItem extends StatelessWidget {
         children: [
           SlidableAction(
             onPressed: (context) => removeChatRoom(),
-            backgroundColor: Color(0xFFFE4A49),
+            backgroundColor: const Color(0xFFFE4A49),
             foregroundColor: Colors.white,
             icon: Icons.delete,
             label: 'Delete',
@@ -35,11 +35,11 @@ class ChatListItem extends StatelessWidget {
         ],
       ),
       endActionPane: ActionPane(
-        motion: ScrollMotion(),
+        motion: const ScrollMotion(),
         children: [
           SlidableAction(
             onPressed: (context) => pinChatRoom(),
-            backgroundColor: Color(0xFF7BC043),
+            backgroundColor: const Color(0xFF7BC043),
             foregroundColor: Colors.white,
             icon: Icons.archive,
             label: 'Archive',
@@ -53,7 +53,7 @@ class ChatListItem extends StatelessWidget {
         child: Stack(
           children: [
             ListTile(
-              leading: Icon(Icons.person),
+              leading: const Icon(Icons.person),
               title: Text(chatRoom),
               subtitle: Text(
                 lastMessage,
@@ -69,7 +69,7 @@ class ChatListItem extends StatelessWidget {
               },
             ),
             if (isPinned)
-              Positioned(
+              const Positioned(
                 top: 5,
                 left: 5,
                 child: Icon(Icons.star, color: Colors.yellow),

@@ -1,6 +1,7 @@
 import 'dart:convert';
+import 'package:flutter/foundation.dart';
 import 'package:http/http.dart' as http;
-import 'package:SayAnything/services/Model.dart';
+import 'package:say_anything/services/Model.dart';
 
 class LoginException implements Exception {
   final String message;
@@ -25,7 +26,9 @@ class SignupApiService {
     );
 
     if (response.statusCode == 200) {
-      print('User registered successfully');
+      if (kDebugMode) {
+        print('User registered successfully');
+      }
     } else {
       throw Exception(
           'Failed to registered with status code ${response.statusCode} and response body ${response.body}');
@@ -94,7 +97,9 @@ class MatchApiService {
     );
 
     if (response.statusCode == 200) {
-      print('Match canceled successfully');
+      if (kDebugMode) {
+        print('Match canceled successfully');
+      }
     } else {
       throw Exception('Failed to cancel match');
     }
@@ -114,7 +119,9 @@ class ForgetPasswordApiService {
     );
 
     if (response.statusCode == 200) {
-      print('Password reset email sent successfully');
+      if (kDebugMode) {
+        print('Password reset email sent successfully');
+      }
     } else {
       throw Exception('Failed to send password reset email');
     }
@@ -134,9 +141,13 @@ class OtpVerificationApiService {
     );
 
     if (response.statusCode == 200) {
-      print('OTP verified successfully');
+      if (kDebugMode) {
+        print('OTP verified successfully');
+      }
     } else {
-      print('Failed to verify OTP');
+      if (kDebugMode) {
+        print('Failed to verify OTP');
+      }
     }
 
     return response.statusCode;
@@ -156,9 +167,13 @@ class PasswordResetApiService {
     );
 
     if (response.statusCode == 200) {
-      print('Password reset successfully');
+      if (kDebugMode) {
+        print('Password reset successfully');
+      }
     } else {
-      print('Failed to reset password');
+      if (kDebugMode) {
+        print('Failed to reset password');
+      }
     }
 
     return response.statusCode;
@@ -174,14 +189,20 @@ class NewsApiService {
       },
     );
 
-    print('Status code: ${response.statusCode}');
-    print('Response body: ${response.body}');
+    if (kDebugMode) {
+      print('Status code: ${response.statusCode}');
+    }
+    if (kDebugMode) {
+      print('Response body: ${response.body}');
+    }
 
     if (response.statusCode == 200) {
       List jsonResponse = json.decode(response.body)['datas'];
       return jsonResponse.map((item) => News.fromJson(item)).toList();
     } else {
-      print('Failed to fetch news');
+      if (kDebugMode) {
+        print('Failed to fetch news');
+      }
       throw Exception('Failed to load news');
     }
   }
@@ -191,7 +212,9 @@ class JokeApi {
   Future<Joke> getJoke(int id) async {
     final response = await http
         .get(Uri.parse('https://official-joke-api.appspot.com/random_joke'));
-    print('${response.body}');
+    if (kDebugMode) {
+      print(response.body);
+    }
     if (response.statusCode == 200) {
       return Joke.fromJson(jsonDecode(response.body));
     } else {
@@ -214,8 +237,12 @@ class VerifyOTPService {
 
     final responseBody = jsonDecode(response.body);
 
-    print('Status code: ${response.statusCode}');
-    print('Response body: $responseBody');
+    if (kDebugMode) {
+      print('Status code: ${response.statusCode}');
+    }
+    if (kDebugMode) {
+      print('Response body: $responseBody');
+    }
 
     return response.statusCode;
   }
@@ -234,7 +261,9 @@ class OnlineUserCountService {
       final responseBody = jsonDecode(response.body);
       return responseBody['userCount'];
     } else {
-      print('Failed to get online user count');
+      if (kDebugMode) {
+        print('Failed to get online user count');
+      }
       return 0;
     }
   }
@@ -259,7 +288,9 @@ class ResendConfirmationMailService {
         'confirmStatus': responseBody['confirmStatus'],
       };
     } else {
-      print('Failed to resend confirmation mail');
+      if (kDebugMode) {
+        print('Failed to resend confirmation mail');
+      }
       return {'userId': 0, 'confirmStatus': false};
     }
   }
@@ -279,8 +310,12 @@ class UserConfirmStatusService {
 
     final responseBody = jsonDecode(response.body);
 
-    print('Status code: ${response.statusCode}');
-    print('Response body: $responseBody');
+    if (kDebugMode) {
+      print('Status code: ${response.statusCode}');
+    }
+    if (kDebugMode) {
+      print('Response body: $responseBody');
+    }
 
     if (response.statusCode == 200) {
       return responseBody['Message'];
@@ -330,14 +365,22 @@ class LogoutService {
       );
 
       if (response.statusCode == 200) {
-        print('Logout successful');
+        if (kDebugMode) {
+          print('Logout successful');
+        }
       } else {
-        print('Failed to logout. Status code: ${response.statusCode}');
-        print('Response body: ${response.body}');
+        if (kDebugMode) {
+          print('Failed to logout. Status code: ${response.statusCode}');
+        }
+        if (kDebugMode) {
+          print('Response body: ${response.body}');
+        }
         throw Exception('Failed to logout');
       }
     } catch (e) {
-      print('An error occurred: $e');
+      if (kDebugMode) {
+        print('An error occurred: $e');
+      }
       throw Exception('Failed to logout due to an error');
     }
   }

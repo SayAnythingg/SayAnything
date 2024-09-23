@@ -1,5 +1,5 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
-import 'package:SayAnything/common/common.dart';
+import 'package:say_anything/common/common.dart';
 import 'package:flutter/material.dart';
 import 'dart:async';
 
@@ -14,13 +14,13 @@ class CustomTextFormField extends StatefulWidget {
   final bool addSuffix;
 
   const CustomTextFormField({
-    Key? key,
+    super.key,
     required this.hinttext,
     required this.obsecuretext,
     this.controller,
     this.decoration,
     this.addSuffix = false,
-  }) : super(key: key);
+  });
 
   @override
   State<CustomTextFormField> createState() => _CustomTextFormFieldState();
@@ -42,7 +42,7 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
   void _handleTextChanged() {
     if (widget.addSuffix &&
         !widget.controller!.text.endsWith('@mail.nknu.edu.tw')) {
-      widget.controller!.text = widget.controller!.text + '@mail.nknu.edu.tw';
+      widget.controller!.text = '${widget.controller!.text}@mail.nknu.edu.tw';
       widget.controller!.selection = TextSelection.fromPosition(
         TextPosition(
             offset:
@@ -57,18 +57,18 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
       controller: widget.controller,
       obscureText: widget.obsecuretext,
       decoration: widget.decoration?.copyWith(
-            contentPadding: EdgeInsets.all(18),
+            contentPadding: const EdgeInsets.all(18),
             border: OutlineInputBorder(
-              borderSide: BorderSide(color: Colors.black),
+              borderSide: const BorderSide(color: Colors.black),
               borderRadius: BorderRadius.circular(12),
             ),
             hintText: widget.hinttext,
             hintStyle: Common().hinttext,
           ) ??
           InputDecoration(
-            contentPadding: EdgeInsets.all(18),
+            contentPadding: const EdgeInsets.all(18),
             border: OutlineInputBorder(
-              borderSide: BorderSide(color: Colors.black),
+              borderSide: const BorderSide(color: Colors.black),
               borderRadius: BorderRadius.circular(12),
             ),
             hintText: widget.hinttext,
@@ -83,11 +83,11 @@ class CustomElevatedButton extends StatefulWidget {
   final FutureOr<void> Function() function;
   final Color? color;
   const CustomElevatedButton({
-    Key? key,
+    super.key,
     required this.message,
     required this.function,
     this.color,
-  }) : super(key: key);
+  });
 
   @override
   State<CustomElevatedButton> createState() => _CustomElevatedButtonState();
@@ -109,14 +109,14 @@ class _CustomElevatedButtonState extends State<CustomElevatedButton> {
         });
       },
       style: ButtonStyle(
-          side: MaterialStatePropertyAll(BorderSide(color: Colors.black)),
-          shape: MaterialStatePropertyAll(
+          side: const WidgetStatePropertyAll(BorderSide(color: Colors.black)),
+          shape: WidgetStatePropertyAll(
               RoundedRectangleBorder(borderRadius: BorderRadius.circular(10))),
-          fixedSize: const MaterialStatePropertyAll(Size.fromWidth(370)),
-          padding: MaterialStatePropertyAll(
+          fixedSize: const WidgetStatePropertyAll(Size.fromWidth(370)),
+          padding: const WidgetStatePropertyAll(
             EdgeInsets.symmetric(vertical: 20),
           ),
-          backgroundColor: MaterialStatePropertyAll(widget.color)),
+          backgroundColor: WidgetStatePropertyAll(widget.color)),
       child: loading
           ? const CupertinoActivityIndicator()
           : FittedBox(

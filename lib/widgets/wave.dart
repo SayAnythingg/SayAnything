@@ -1,4 +1,3 @@
-import 'dart:ui';
 
 import 'package:flutter/material.dart';
 
@@ -29,6 +28,8 @@ class WaveClipper extends CustomClipper<Path> {
 }
 
 class WaveWidget extends StatelessWidget {
+  const WaveWidget({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -48,7 +49,7 @@ class WaveWidget extends StatelessWidget {
 }
 
 void main() {
-  runApp(MaterialApp(
+  runApp(const MaterialApp(
     home: WaveWidget(),
   ));
 }

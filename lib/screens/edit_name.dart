@@ -1,7 +1,7 @@
-import 'package:SayAnything/screens/fade_animationtest.dart';
-import 'package:SayAnything/services/API_services.dart';
-import 'package:SayAnything/services/Model.dart';
-import 'package:SayAnything/widgets/custom_widget.dart';
+import 'package:say_anything/screens/fade_animationtest.dart';
+import 'package:say_anything/services/API_services.dart';
+import 'package:say_anything/services/Model.dart';
+import 'package:say_anything/widgets/custom_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:string_validator/string_validator.dart';
 
@@ -37,7 +37,7 @@ class EditNameFormPageState extends State<EditNameFormPage> {
       );
     } else {
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Failed to update profile')),
+        const SnackBar(content: Text('Failed to update profile')),
       );
     }
   }

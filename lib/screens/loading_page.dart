@@ -2,8 +2,8 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
-import 'package:SayAnything/services/API_services.dart';
-import 'package:SayAnything/screens/home.dart';
+import 'package:say_anything/services/API_services.dart';
+import 'package:say_anything/screens/home.dart';
 
 MatchApiService matchApiService = MatchApiService();
 
