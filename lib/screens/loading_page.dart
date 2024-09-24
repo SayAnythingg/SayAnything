@@ -6,6 +6,7 @@ import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:say_anything/services/Model.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:say_anything/function/SocketServices.dart';
+// ignore: implementation_imports
 import 'package:socket_io_client/src/socket.dart';
 
 class UserIdService {
