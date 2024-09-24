@@ -5,8 +5,8 @@ import 'package:loading_animation_widget/loading_animation_widget.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:say_anything/services/Model.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-// ignore: library_prefixes
-import 'package:socket_io_client/socket_io_client.dart' as IO;
+import 'package:say_anything/function/SocketServices.dart';
+import 'package:socket_io_client/src/socket.dart';
 
 class UserIdService {
   static Future<String> getCurrentUserId() async {
@@ -17,10 +17,10 @@ class UserIdService {
 }
 
 class LoadingPage extends StatefulWidget {
-  final IO.Socket socket;
+  final SocketService socketService;
   final User user;
 
-  const LoadingPage({super.key, required this.socket, required this.user});
+  const LoadingPage({super.key, required this.socketService, required this.user, required Socket socket});
 
   @override
   // ignore: library_private_types_in_public_api
@@ -31,7 +31,7 @@ class _LoadingPageState extends State<LoadingPage> {
   @override
   void initState() {
     super.initState();
-    widget.socket.on('pair_response', (data) {
+    widget.socketService.onEvent('pair_response', (data) {
       if (data['userId'] != null) {
         _showMatchSuccessDialog();
       }
@@ -102,7 +102,7 @@ class _LoadingPageState extends State<LoadingPage> {
               height: 40,
               child: FloatingActionButton(
                 onPressed: () async {
-                  widget.socket.emit('cancelMatch', {'userId': widget.user.userId});
+                  widget.socketService.emitEvent('cancelMatch', {'userId': widget.user.userId});
                   if (kDebugMode) {
                     print('Cancel matching ... userId: ${widget.user.userId}');
                   }

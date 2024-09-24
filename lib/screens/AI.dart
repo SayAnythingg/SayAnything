@@ -1,24 +1,15 @@
-import 'package:say_anything/services/API_services.dart';
-import 'package:flutter/material.dart';
-// ignore: depend_on_referenced_packages
-import 'package:avatar_glow/avatar_glow.dart';
-import 'package:flutter/foundation.dart';
 import 'dart:async';
-// ignore: depend_on_referenced_packages
-import 'package:speech_to_text/speech_to_text.dart' as stt;
-// ignore: depend_on_referenced_packages
+
+import 'package:flutter/material.dart';
+import 'package:avatar_glow/avatar_glow.dart';
 import 'package:flutter_chat_ui/flutter_chat_ui.dart';
-// ignore: depend_on_referenced_packages
 import 'package:flutter_chat_types/flutter_chat_types.dart' as types;
 // ignore: depend_on_referenced_packages
 import 'package:uuid/uuid.dart';
-// ignore: depend_on_referenced_packages
-import 'package:dart_openai/dart_openai.dart';
-import 'package:flutter_tts/flutter_tts.dart';
 import 'package:rive/rive.dart' as rive;
-
-// ignore: non_constant_identifier_names
-final JokeApiService = JokeApi();
+import 'package:say_anything/services/API_services.dart';
+import 'package:say_anything/function/SpeechServices.dart';
+import 'package:say_anything/function/AnimationService.dart';
 
 class Multimedia extends StatefulWidget {
   const Multimedia({super.key});
@@ -33,33 +24,36 @@ class _MultimediaState extends State<Multimedia> {
   final _user = const types.User(id: 'user');
   final _openAIUser = const types.User(id: 'openai');
 
-  late stt.SpeechToText _speech;
-  late FlutterTts _flutterTts;
+  late SpeechService _speechService;
+  late AIService _apiService;
+  late AnimationService _animationService;
+
   bool _isListening = false;
   String _text = '';
   Timer? _timer;
   int _seconds = 0;
 
-  late rive.RiveAnimationController _riveController;
-
   @override
   void initState() {
     super.initState();
-    OpenAI.apiKey = 'sk-proj-H6qL1pU1mM8SGE7efMrVT3BlbkFJTtxFghKPPgyhajLVhWVO';
-    _speech = stt.SpeechToText();
-    _flutterTts = FlutterTts();
-    _riveController = rive.SimpleAnimation('idle');
+    _speechService = SpeechService();
+    _apiService = AIService();
+    _animationService = AnimationService();
   }
 
   void _startListening() async {
-    bool available = await _speech.initialize(
-      onStatus: (val) {
+    bool available = await _speechService.initializeSpeech(
+      (val) => setState(() {
+        _text = val;
+      }),
+      (val) => debugPrint('onError: $val'),
+      (val) {
         if (val == 'notListening' && _isListening) {
           _startListening();
         }
       },
-      onError: (val) => debugPrint('onError: $val'),
     );
+
     if (available) {
       setState(() {
         _isListening = true;
@@ -70,17 +64,9 @@ class _MultimediaState extends State<Multimedia> {
           _seconds++;
         });
       });
-      _speech.listen(
-        onResult: (val) => setState(() {
-          _text = val.recognizedWords;
-        }),
-        localeId: 'zh-TW',
-        listenFor: const Duration(seconds: 100),
-        // ignore: deprecated_member_use
-        partialResults: true,
-        // ignore: deprecated_member_use
-        listenMode: stt.ListenMode.dictation,
-      );
+      _speechService.startListening((val) => setState(() {
+        _text = val;
+      }));
     }
   }
 
@@ -88,7 +74,7 @@ class _MultimediaState extends State<Multimedia> {
     setState(() {
       _isListening = false;
     });
-    _speech.stop();
+    _speechService.stopListening();
     _timer?.cancel();
     if (_text.isNotEmpty) {
       _addMessage(_text);
@@ -109,52 +95,19 @@ class _MultimediaState extends State<Multimedia> {
     });
   }
 
-  Future<void> _speak(String text) async {
-    await _flutterTts.setLanguage("zh-TW");
-    await _flutterTts.setPitch(1.0);
-    await _flutterTts.speak(text);
-  }
-
-  void _sendToOpenAI(String text) async {
-    String prompt = "$text\n請自然的跟我對答聊天";
-
-    try {
-      final response = await OpenAI.instance.chat.create(
-        model: "gpt-4o",
-        messages: [
-          OpenAIChatCompletionChoiceMessageModel(
-            content: [
-              OpenAIChatCompletionChoiceMessageContentItemModel.text(prompt),
-            ],
-            role: OpenAIChatMessageRole.user,
-          ),
-        ],
-        maxTokens: 1500,
-      );
-
-      final message = response.choices.first.message.content?.first.text;
-      if (message != null) {
-        _addMessage(message.trim(), isUserMessage: false);
-        await _speak(message.trim());
-        _playAnimation(); // Play animation when AI responds
-      }
-    } catch (e) {
-      if (kDebugMode) {
-        debugPrint("OpenAI 請求失敗: $e");
-      }
+  Future<void> _sendToOpenAI(String text) async {
+    final message = await _apiService.sendToOpenAI(text);
+    if (message != null) {
+      _addMessage(message.trim(), isUserMessage: false);
+      await _speechService.speak(message.trim());
+      _animationService.playAnimation(); 
     }
-  }
-
-  void _playAnimation() {
-    setState(() {
-      _riveController.isActive = true;
-    });
   }
 
   @override
   void dispose() {
     _timer?.cancel();
-    _flutterTts.stop();
+    _speechService.dispose();
     super.dispose();
   }
 
@@ -178,7 +131,7 @@ class _MultimediaState extends State<Multimedia> {
           IconButton(
             icon: const Icon(Icons.smart_toy_outlined, color: Color(0xFF545454)),
             onPressed: () async {
-              final joke = await JokeApiService.getJoke(1);
+              final joke = await _apiService.getJoke();
               showDialog(
                 // ignore: use_build_context_synchronously
                 context: context,
@@ -241,7 +194,7 @@ class _MultimediaState extends State<Multimedia> {
               child: Center(
                 child: rive.RiveAnimation.asset(
                   'assets/animation/character.riv',
-                  controllers: [_riveController],
+                  controllers: [_animationService.controller],
                 ),
               ),
             ),

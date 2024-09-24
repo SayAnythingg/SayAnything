@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:dart_openai/dart_openai.dart';
 import 'package:flutter/foundation.dart';
 import 'package:http/http.dart' as http;
 import 'package:say_anything/services/Model.dart';
@@ -405,5 +406,42 @@ class UpdateProfileApiService {
     } else {
       throw Exception('Failed to update profile');
     }
+  }
+}
+
+class AIService {
+  AIService() {
+    OpenAI.apiKey = 'sk-proj-H6qL1pU1mM8SGE7efMrVT3BlbkFJTtxFghKPPgyhajLVhWVO';
+  }
+
+  Future<String?> sendToOpenAI(String text) async {
+    String prompt = "$text\n請自然的跟我對答聊天";
+
+    try {
+      final response = await OpenAI.instance.chat.create(
+        model: "gpt-4o",
+        messages: [
+          OpenAIChatCompletionChoiceMessageModel(
+            content: [
+              OpenAIChatCompletionChoiceMessageContentItemModel.text(prompt),
+            ],
+            role: OpenAIChatMessageRole.user,
+          ),
+        ],
+        maxTokens: 1500,
+      );
+
+      return response.choices.first.message.content?.first.text;
+    } catch (e) {
+      if (kDebugMode) {
+        debugPrint("OpenAI 請求失敗: $e");
+      }
+      return null;
+    }
+  }
+
+  Future<Joke> getJoke() async {
+    final jokeApi = JokeApi();
+    return await jokeApi.getJoke(1);
   }
 }

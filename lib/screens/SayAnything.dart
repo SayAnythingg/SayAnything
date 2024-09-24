@@ -9,10 +9,10 @@ class Sayanything extends StatefulWidget {
   const Sayanything({super.key});
 
   @override
-  State<Sayanything> createState() => _AuthenticationUIState();
+  State<Sayanything> createState() => _SayanythingState();
 }
 
-class _AuthenticationUIState extends State<Sayanything> {
+class _SayanythingState extends State<Sayanything> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

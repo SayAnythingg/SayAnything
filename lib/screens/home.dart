@@ -7,9 +7,8 @@ import 'package:rive/rive.dart' as rive;
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:say_anything/services/API_services.dart';
 import 'package:say_anything/screens/loading_page.dart';
-// ignore: library_prefixes
-import 'package:socket_io_client/socket_io_client.dart' as IO;
 import 'package:say_anything/widgets/sideMenu.dart';
+import 'package:say_anything/function/SocketServices.dart';
 
 final controller = rive.SimpleAnimation('Animation1');
 
@@ -31,39 +30,15 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  late IO.Socket socket;
+  late SocketService socketService;
   int _onlineUserCount = 0;
 
   @override
   void initState() {
     super.initState();
-    _initializeSocket();
+    socketService = SocketService();
+    socketService.initializeSocket('George這邊要改伺服器位址');
     _loadOnlineUserCount();
-  }
-
-  void _initializeSocket() {
-    socket = IO.io('George這邊要改伺服器位址', <String, dynamic>{
-      'transports': ['websocket'],
-      'autoConnect': true,
-    });
-
-    socket.onConnect((_) {
-      if (kDebugMode) {
-        print('Connected');
-      }
-    });
-
-    socket.on('eventFromBackend', (data) {
-      if (kDebugMode) {
-        print(data);
-      }
-    });
-
-    socket.onDisconnect((_) {
-      if (kDebugMode) {
-        print('Disconnected');
-      }
-    });
   }
 
   void _loadOnlineUserCount() async {
@@ -78,13 +53,13 @@ class _HomePageState extends State<HomePage> {
       context: context,
       barrierDismissible: false,
       builder: (BuildContext context) {
-        return LoadingPage(socket: socket, user: widget.user,);
+        return LoadingPage(socket: socketService.socket, user: widget.user, socketService: socketService,);
       },
     );
     if (kDebugMode) {
       print('Fucking done ... userId: ${widget.user.userId}');
     }
-    socket.emit('startMatching', {'userId': widget.user.userId});
+    socketService.emitEvent('startMatching', {'userId': widget.user.userId});
   }
 
   @override
@@ -198,7 +173,7 @@ class _HomePageState extends State<HomePage> {
 
   @override
   void dispose() {
-    socket.disconnect();
+    socketService.disconnect();
     super.dispose();
   }
 }
