@@ -65,8 +65,8 @@ class _MultimediaState extends State<Multimedia> {
         });
       });
       _speechService.startListening((val) => setState(() {
-        _text = val;
-      }));
+            _text = val;
+          }));
     }
   }
 
@@ -100,7 +100,7 @@ class _MultimediaState extends State<Multimedia> {
     if (message != null) {
       _addMessage(message.trim(), isUserMessage: false);
       await _speechService.speak(message.trim());
-      _animationService.playAnimation(); 
+      _animationService.playAnimation();
     }
   }
 
@@ -118,7 +118,8 @@ class _MultimediaState extends State<Multimedia> {
         title: Row(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
-            const Icon(Icons.psychology_rounded, size: 30, color: Color(0xFF545454)),
+            const Icon(Icons.psychology_rounded,
+                size: 30, color: Color(0xFF545454)),
             const SizedBox(width: 4),
             Image.asset('assets/images/MultiMedia3.png',
                 height: 135, width: 135),
@@ -129,7 +130,8 @@ class _MultimediaState extends State<Multimedia> {
         elevation: 0,
         actions: <Widget>[
           IconButton(
-            icon: const Icon(Icons.smart_toy_outlined, color: Color(0xFF545454)),
+            icon:
+                const Icon(Icons.smart_toy_outlined, color: Color(0xFF545454)),
             onPressed: () async {
               final joke = await _apiService.getJoke();
               showDialog(

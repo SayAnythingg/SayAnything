@@ -10,7 +10,8 @@ class SpeechService {
     _flutterTts = FlutterTts();
   }
 
-  Future<bool> initializeSpeech(Function(String) onResult, stt.SpeechErrorListener? onError, Function(String) onStatus) async {
+  Future<bool> initializeSpeech(Function(String) onResult,
+      stt.SpeechErrorListener? onError, Function(String) onStatus) async {
     return await _speech.initialize(
       onStatus: onStatus,
       onError: onError,

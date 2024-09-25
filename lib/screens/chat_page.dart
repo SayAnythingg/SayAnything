@@ -51,7 +51,7 @@ class _ChatPageState extends State<ChatPage> {
   void initState() {
     super.initState();
     _loadMessages();
-    _addFakeMessages(); 
+    _addFakeMessages();
   }
 
   void _addMessage(types.Message message) {

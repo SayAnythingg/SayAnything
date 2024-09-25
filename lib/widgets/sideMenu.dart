@@ -32,7 +32,8 @@ class SideMenu extends StatelessWidget {
                 Positioned(
                   top: 70,
                   left: 10,
-                  child: Text(user.name, style: const TextStyle(color: Colors.white)),
+                  child: Text(user.name,
+                      style: const TextStyle(color: Colors.white)),
                 ),
                 Positioned(
                   top: 90,
@@ -43,8 +44,8 @@ class SideMenu extends StatelessWidget {
                 Positioned(
                   top: 110,
                   left: 10,
-                  child:
-                      Text(user.email, style: const TextStyle(color: Colors.white)),
+                  child: Text(user.email,
+                      style: const TextStyle(color: Colors.white)),
                 ),
                 Positioned(
                   top: 10,
@@ -94,7 +95,8 @@ class SideMenu extends StatelessWidget {
           ),
           ListTile(
             leading: const Icon(Icons.fiber_new, color: Color(0xFF7EC4CF)),
-            title: const Text('News', style: TextStyle(color: Color(0xFF7EC4CF))),
+            title:
+                const Text('News', style: TextStyle(color: Color(0xFF7EC4CF))),
             onTap: () {
               Navigator.push(
                 context,
@@ -104,7 +106,8 @@ class SideMenu extends StatelessWidget {
           ),
           ListTile(
             leading: const Icon(Icons.info, color: Color(0xFF7EC4CF)),
-            title: const Text('About Us', style: TextStyle(color: Color(0xFF7EC4CF))),
+            title: const Text('About Us',
+                style: TextStyle(color: Color(0xFF7EC4CF))),
             onTap: () {
               Navigator.push(
                 context,
@@ -114,7 +117,8 @@ class SideMenu extends StatelessWidget {
           ),
           ListTile(
             leading: const Icon(Icons.settings, color: Color(0xFF7EC4CF)),
-            title: const Text('Settings', style: TextStyle(color: Color(0xFF7EC4CF))),
+            title: const Text('Settings',
+                style: TextStyle(color: Color(0xFF7EC4CF))),
             onTap: () {
               Navigator.push(
                 context,
@@ -125,7 +129,8 @@ class SideMenu extends StatelessWidget {
           ),
           ListTile(
             leading: const Icon(Icons.logout, color: Color(0xFF7EC4CF)),
-            title: const Text('Logout', style: TextStyle(color: Color(0xFF7EC4CF))),
+            title: const Text('Logout',
+                style: TextStyle(color: Color(0xFF7EC4CF))),
             onTap: () {
               QuickAlert.show(
                 context: context,

@@ -9,7 +9,8 @@ class ChatListItem extends StatelessWidget {
   final bool isPinned;
 
   const ChatListItem(
-      {super.key, required this.chatRoom,
+      {super.key,
+      required this.chatRoom,
       required this.removeChatRoom,
       required this.pinChatRoom,
       this.isPinned = false});

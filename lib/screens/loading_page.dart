@@ -21,7 +21,11 @@ class LoadingPage extends StatefulWidget {
   final SocketService socketService;
   final User user;
 
-  const LoadingPage({super.key, required this.socketService, required this.user, required Socket socket});
+  const LoadingPage(
+      {super.key,
+      required this.socketService,
+      required this.user,
+      required Socket socket});
 
   @override
   // ignore: library_private_types_in_public_api
@@ -103,7 +107,8 @@ class _LoadingPageState extends State<LoadingPage> {
               height: 40,
               child: FloatingActionButton(
                 onPressed: () async {
-                  widget.socketService.emitEvent('cancelMatch', {'userId': widget.user.userId});
+                  widget.socketService
+                      .emitEvent('cancelMatch', {'userId': widget.user.userId});
                   if (kDebugMode) {
                     print('Cancel matching ... userId: ${widget.user.userId}');
                   }

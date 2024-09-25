@@ -53,7 +53,11 @@ class _HomePageState extends State<HomePage> {
       context: context,
       barrierDismissible: false,
       builder: (BuildContext context) {
-        return LoadingPage(socket: socketService.socket, user: widget.user, socketService: socketService,);
+        return LoadingPage(
+          socket: socketService.socket,
+          user: widget.user,
+          socketService: socketService,
+        );
       },
     );
     if (kDebugMode) {
