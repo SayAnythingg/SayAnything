@@ -1,8 +1,8 @@
 // ignore: file_names
 import 'package:say_anything/widgets/wait.dart';
-import 'package:say_anything/services/API_services.dart';
 import 'package:say_anything/services/Model.dart';
 import 'package:flutter/material.dart';
+import 'package:say_anything/controllers/NewsPageController.dart';
 
 class NewsPage extends StatefulWidget {
   const NewsPage({super.key});
@@ -13,28 +13,25 @@ class NewsPage extends StatefulWidget {
 }
 
 class _NewsPageState extends State<NewsPage> {
-  final Future<List<News>> futureNews = NewsApiService().getAllNews();
-  final ScrollController _scrollController = ScrollController();
+  final NewsPageController _controller = NewsPageController();
 
-  final List<News> defaultNews = [
-    News(
-        id: '0',
-        title: '歡迎進入最佳世界',
-        content: '歡迎加入這個大家庭',
-        createdTime: ' 2024-01-01 09:00:00'),
-  ];
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
     return FutureBuilder<List<News>>(
-      future: futureNews,
+      future: _controller.futureNews,
       builder: (context, snapshot) {
         List<News> newsList;
 
         if (snapshot.connectionState == ConnectionState.waiting) {
           return const WaitPage();
         } else if (snapshot.hasError) {
-          newsList = defaultNews;
+          newsList = _controller.defaultNews;
         } else {
           newsList = snapshot.data!;
         }
@@ -61,9 +58,9 @@ class _NewsPageState extends State<NewsPage> {
               ),
             ),
             body: Scrollbar(
-              controller: _scrollController,
+              controller: _controller.scrollController,
               child: ListView.builder(
-                controller: _scrollController,
+                controller: _controller.scrollController,
                 itemCount: newsList.length,
                 itemBuilder: (context, index) {
                   News news = newsList[index];

@@ -400,12 +400,7 @@ class UpdateProfileApiService {
         'newUsername': newUsername,
       }),
     );
-
-    if (response.statusCode == 200) {
-      return jsonDecode(response.body);
-    } else {
-      throw Exception('Failed to update profile');
-    }
+    return jsonDecode(response.body);
   }
 }
 

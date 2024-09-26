@@ -3,12 +3,9 @@ import 'package:say_anything/router/router.dart';
 import 'package:say_anything/screens/fade_animationtest.dart';
 import 'package:say_anything/widgets/custom_widget.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:say_anything/services/API_services.dart';
-
-final apiService = ForgetPasswordApiService();
+import 'package:say_anything/controllers/ForgetPasswordController.dart';
 
 class ForgetPasswordPage extends StatefulWidget {
   const ForgetPasswordPage({super.key});
@@ -18,8 +15,13 @@ class ForgetPasswordPage extends StatefulWidget {
 }
 
 class _ForgetPasswordPageState extends State<ForgetPasswordPage> {
-  final _emailController = TextEditingController();
-  final _forgetPasswordApiService = ForgetPasswordApiService();
+  final controller = ForgetPasswordController();
+
+  @override
+  void dispose() {
+    controller.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -72,7 +74,7 @@ class _ForgetPasswordPageState extends State<ForgetPasswordPage> {
                       FadeInAnimation(
                         delay: 1.9,
                         child: CustomTextFormField(
-                          controller: _emailController,
+                          controller: controller.emailController,
                           hinttext: 'Enter your email',
                           obsecuretext: false,
                         ),
@@ -85,17 +87,7 @@ class _ForgetPasswordPageState extends State<ForgetPasswordPage> {
                         child: CustomElevatedButton(
                           message: "Send Code ",
                           function: () async {
-                            try {
-                              await _forgetPasswordApiService
-                                  .resetPassword(_emailController.text);
-                              // ignore: use_build_context_synchronously
-                              GoRouter.of(context)
-                                  .pushNamed(Routers.otpverification.name);
-                            } catch (e) {
-                              if (kDebugMode) {
-                                print(e);
-                              }
-                            }
+                            await controller.resetPassword(context);
                           },
                           color: const Color(0xFF7EC4CF),
                         ),

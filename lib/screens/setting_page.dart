@@ -1,5 +1,6 @@
 import 'package:say_anything/services/Model.dart';
 import 'package:flutter/material.dart';
+import 'package:say_anything/controllers/SettingsPageController.dart';
 
 class SettingsPage extends StatefulWidget {
   final User user;
@@ -12,14 +13,7 @@ class SettingsPage extends StatefulWidget {
 }
 
 class _SettingsPageState extends State<SettingsPage> {
-  bool _locationPermission = false;
-  bool _cameraPermission = false;
-  bool _microphonePermission = false;
-  bool _storagePermission = false;
-  bool _notificationPermission = false;
-  bool _contactsPermission = false;
-  bool _calendarPermission = false;
-  bool _healthDataPermission = false;
+  final SettingsPageController _controller = SettingsPageController();
 
   @override
   Widget build(BuildContext context) {
@@ -34,10 +28,10 @@ class _SettingsPageState extends State<SettingsPage> {
             title: const Text('Location Permission',
                 style: TextStyle(color: Color(0xFF7EC4CF))),
             secondary: const Icon(Icons.location_on, color: Color(0xFF7EC4CF)),
-            value: _locationPermission,
+            value: _controller.locationPermission,
             onChanged: (bool value) {
               setState(() {
-                _locationPermission = value;
+                _controller.setLocationPermission(value);
               });
             },
             activeColor: const Color(0xFF7EC4CF),
@@ -46,10 +40,10 @@ class _SettingsPageState extends State<SettingsPage> {
             title: const Text('Camera Permission',
                 style: TextStyle(color: Color(0xFF7EC4CF))),
             secondary: const Icon(Icons.camera_alt, color: Color(0xFF7EC4CF)),
-            value: _cameraPermission,
+            value: _controller.cameraPermission,
             onChanged: (bool value) {
               setState(() {
-                _cameraPermission = value;
+                _controller.setCameraPermission(value);
               });
             },
             activeColor: const Color(0xFF7EC4CF),
@@ -58,10 +52,10 @@ class _SettingsPageState extends State<SettingsPage> {
             title: const Text('Microphone Permission',
                 style: TextStyle(color: Color(0xFF7EC4CF))),
             secondary: const Icon(Icons.mic, color: Color(0xFF7EC4CF)),
-            value: _microphonePermission,
+            value: _controller.microphonePermission,
             onChanged: (bool value) {
               setState(() {
-                _microphonePermission = value;
+                _controller.setMicrophonePermission(value);
               });
             },
             activeColor: const Color(0xFF7EC4CF),
@@ -70,10 +64,10 @@ class _SettingsPageState extends State<SettingsPage> {
             title: const Text('Storage Permission',
                 style: TextStyle(color: Color(0xFF7EC4CF))),
             secondary: const Icon(Icons.folder, color: Color(0xFF7EC4CF)),
-            value: _storagePermission,
+            value: _controller.storagePermission,
             onChanged: (bool value) {
               setState(() {
-                _storagePermission = value;
+                _controller.setStoragePermission(value);
               });
             },
             activeColor: const Color(0xFF7EC4CF),
@@ -83,10 +77,10 @@ class _SettingsPageState extends State<SettingsPage> {
                 style: TextStyle(color: Color(0xFF7EC4CF))),
             secondary:
                 const Icon(Icons.notifications, color: Color(0xFF7EC4CF)),
-            value: _notificationPermission,
+            value: _controller.notificationPermission,
             onChanged: (bool value) {
               setState(() {
-                _notificationPermission = value;
+                _controller.setNotificationPermission(value);
               });
             },
             activeColor: const Color(0xFF7EC4CF),
@@ -95,10 +89,10 @@ class _SettingsPageState extends State<SettingsPage> {
             title: const Text('Contacts Permission',
                 style: TextStyle(color: Color(0xFF7EC4CF))),
             secondary: const Icon(Icons.contacts, color: Color(0xFF7EC4CF)),
-            value: _contactsPermission,
+            value: _controller.contactsPermission,
             onChanged: (bool value) {
               setState(() {
-                _contactsPermission = value;
+                _controller.setContactsPermission(value);
               });
             },
             activeColor: const Color(0xFF7EC4CF),
@@ -108,10 +102,10 @@ class _SettingsPageState extends State<SettingsPage> {
                 style: TextStyle(color: Color(0xFF7EC4CF))),
             secondary:
                 const Icon(Icons.calendar_today, color: Color(0xFF7EC4CF)),
-            value: _calendarPermission,
+            value: _controller.calendarPermission,
             onChanged: (bool value) {
               setState(() {
-                _calendarPermission = value;
+                _controller.setCalendarPermission(value);
               });
             },
             activeColor: const Color(0xFF7EC4CF),
@@ -121,10 +115,10 @@ class _SettingsPageState extends State<SettingsPage> {
                 style: TextStyle(color: Color(0xFF7EC4CF))),
             secondary:
                 const Icon(Icons.health_and_safety, color: Color(0xFF7EC4CF)),
-            value: _healthDataPermission,
+            value: _controller.healthDataPermission,
             onChanged: (bool value) {
               setState(() {
-                _healthDataPermission = value;
+                _controller.setHealthDataPermission(value);
               });
             },
             activeColor: const Color(0xFF7EC4CF),

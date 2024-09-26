@@ -3,14 +3,12 @@
 import 'package:say_anything/common/common.dart';
 import 'package:say_anything/router/router.dart';
 import 'package:say_anything/screens/fade_animationtest.dart';
-import 'package:say_anything/services/API_services.dart';
 import 'package:say_anything/widgets/custom_widget.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:pinput/pinput.dart';
-
-final otpService = VerifyOTPService();
+import 'package:say_anything/controllers/OtpVerificationPageController.dart';
 
 class OtpVerificationPage extends StatefulWidget {
   const OtpVerificationPage({super.key});
@@ -20,7 +18,13 @@ class OtpVerificationPage extends StatefulWidget {
 }
 
 class _OtpVerificationPageState extends State<OtpVerificationPage> {
-  final otpController = TextEditingController();
+  final OtpVerificationPageController _controller = OtpVerificationPageController();
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -95,7 +99,7 @@ class _OtpVerificationPageState extends State<OtpVerificationPage> {
                       FadeInAnimation(
                         delay: 1.9,
                         child: Pinput(
-                          controller: otpController,
+                          controller: _controller.otpController,
                           defaultPinTheme: defaultPinTheme,
                           focusedPinTheme: focusedPinTheme,
                           submittedPinTheme: submittedPinTheme,
@@ -103,7 +107,7 @@ class _OtpVerificationPageState extends State<OtpVerificationPage> {
                               PinputAutovalidateMode.onSubmit,
                           showCursor: true,
                           onCompleted: (pin) async {
-                            otpController.text = pin;
+                            _controller.otpController.text = pin;
                           },
                         ),
                       ),
@@ -116,8 +120,7 @@ class _OtpVerificationPageState extends State<OtpVerificationPage> {
                           message: "Verify",
                           function: () async {
                             try {
-                              final responseCode = await otpService
-                                  .verifyOTP(otpController.text);
+                              final responseCode = await _controller.verifyOtp();
                               if (responseCode == 200) {
                                 // ignore: use_build_context_synchronously
                                 ScaffoldMessenger.of(context).showSnackBar(

@@ -10,6 +10,7 @@ import 'package:go_router/go_router.dart';
 import 'package:say_anything/services/API_services.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:quickalert/quickalert.dart';
+import 'package:say_anything/controllers/SignupPageController.dart';
 
 final apiService = SignupApiService();
 final resendMailService = ResendConfirmationMailService();
@@ -23,11 +24,7 @@ class SignupPage extends StatefulWidget {
 }
 
 class _SignupPageState extends State<SignupPage> {
-  final usernameController = TextEditingController();
-  final emailController = TextEditingController();
-  final passwordController = TextEditingController();
-  final genderController = TextEditingController();
-  final confirmPasswordController = TextEditingController();
+  final SignupPageController _controller = SignupPageController();
   bool _hasAttemptedRegister = false;
   Timer? _timer;
   int _start = 120;
@@ -87,26 +84,6 @@ class _SignupPageState extends State<SignupPage> {
     }
   }
 
-  Future<void> _saveInputData() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    await prefs.setString('username', usernameController.text);
-    await prefs.setString('email', emailController.text);
-    await prefs.setString('password', passwordController.text);
-    await prefs.setString('gender', genderController.text);
-    await prefs.setString('confirmPassword', confirmPasswordController.text);
-  }
-
-  Future<void> _loadInputData() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    setState(() {
-      usernameController.text = prefs.getString('username') ?? '';
-      emailController.text = prefs.getString('email') ?? '';
-      passwordController.text = prefs.getString('password') ?? '';
-      genderController.text = prefs.getString('gender') ?? '';
-      confirmPasswordController.text = prefs.getString('confirmPassword') ?? '';
-    });
-  }
-
   void _attemptRegister() {
     setState(() {
       _hasAttemptedRegister = true;
@@ -116,14 +93,15 @@ class _SignupPageState extends State<SignupPage> {
   @override
   void initState() {
     super.initState();
-    _loadInputData();
+    _controller.loadInputData();
     _loadTimerState().then((_) => startTimer());
   }
 
   @override
   void dispose() {
     _timer?.cancel();
-    _saveInputData();
+    _controller.saveInputData();
+    _controller.dispose();
     super.dispose();
   }
 
@@ -195,7 +173,7 @@ class _SignupPageState extends State<SignupPage> {
                           child: CustomTextFormField(
                             hinttext: 'Username',
                             obsecuretext: false,
-                            controller: usernameController,
+                            controller: _controller.usernameController,
                           ),
                         ),
                         const SizedBox(
@@ -215,7 +193,7 @@ class _SignupPageState extends State<SignupPage> {
                               );
                             }).toList(),
                             onChanged: (value) {
-                              genderController.text = value!;
+                              _controller.genderController.text = value!;
                             },
                           ),
                         ),
@@ -225,7 +203,7 @@ class _SignupPageState extends State<SignupPage> {
                         CustomTextFormField(
                           hinttext: 'Email',
                           obsecuretext: false,
-                          controller: emailController,
+                          controller: _controller.emailController,
                           addSuffix: true,
                         ),
                         const SizedBox(
@@ -236,7 +214,7 @@ class _SignupPageState extends State<SignupPage> {
                           child: CustomTextFormField(
                             hinttext: 'Password',
                             obsecuretext: true,
-                            controller: passwordController,
+                            controller: _controller.passwordController,
                           ),
                         ),
                         const SizedBox(
@@ -247,7 +225,7 @@ class _SignupPageState extends State<SignupPage> {
                           child: CustomTextFormField(
                             hinttext: 'Confirm password',
                             obsecuretext: true,
-                            controller: confirmPasswordController,
+                            controller: _controller.confirmPasswordController,
                           ),
                         ),
                         const SizedBox(
@@ -258,11 +236,12 @@ class _SignupPageState extends State<SignupPage> {
                           child: CustomElevatedButton(
                             message: "Register",
                             function: () async {
-                              if (usernameController.text.isEmpty ||
-                                  emailController.text.isEmpty ||
-                                  passwordController.text.isEmpty ||
-                                  genderController.text.isEmpty ||
-                                  confirmPasswordController.text.isEmpty) {
+                              if (_controller.usernameController.text.isEmpty ||
+                                  _controller.emailController.text.isEmpty ||
+                                  _controller.passwordController.text.isEmpty ||
+                                  _controller.genderController.text.isEmpty ||
+                                  _controller.confirmPasswordController.text
+                                      .isEmpty) {
                                 QuickAlert.show(
                                   context: context,
                                   type: QuickAlertType.error,
@@ -274,8 +253,8 @@ class _SignupPageState extends State<SignupPage> {
                                   onConfirmBtnTap: () =>
                                       Navigator.of(context).pop(),
                                 );
-                              } else if (passwordController.text !=
-                                  confirmPasswordController.text) {
+                              } else if (_controller.passwordController.text !=
+                                  _controller.confirmPasswordController.text) {
                                 QuickAlert.show(
                                   context: context,
                                   type: QuickAlertType.error,
@@ -306,10 +285,10 @@ class _SignupPageState extends State<SignupPage> {
                                   },
                                 );
                                 await apiService.registerUser(
-                                  usernameController.text,
-                                  emailController.text,
-                                  passwordController.text,
-                                  genderController.text,
+                                  _controller.usernameController.text,
+                                  _controller.emailController.text,
+                                  _controller.passwordController.text,
+                                  _controller.genderController.text,
                                 );
                                 await _registerUser();
                               }
@@ -339,7 +318,7 @@ class _SignupPageState extends State<SignupPage> {
 
                                   final result = await resendMailService
                                       .resendConfirmationMail(
-                                          emailController.text);
+                                          _controller.emailController.text);
                                   if (result['confirmStatus']) {
                                     // ignore: use_build_context_synchronously
                                     ScaffoldMessenger.of(context).showSnackBar(

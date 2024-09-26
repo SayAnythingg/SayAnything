@@ -5,9 +5,7 @@ import 'package:say_anything/widgets/custom_widget.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:say_anything/services/API_services.dart';
-
-final apiService = PasswordResetApiService();
+import 'package:say_anything/controllers/NewPasswordController.dart';
 
 class NewPasswordPage extends StatefulWidget {
   const NewPasswordPage({super.key});
@@ -17,9 +15,13 @@ class NewPasswordPage extends StatefulWidget {
 }
 
 class _NewPasswordPageState extends State<NewPasswordPage> {
-  final newPasswordController = TextEditingController();
-  final confirmPasswordController = TextEditingController();
-  final passwordResetService = PasswordResetApiService();
+  final controller = NewPasswordController();
+
+  @override
+  void dispose() {
+    controller.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -74,7 +76,7 @@ class _NewPasswordPageState extends State<NewPasswordPage> {
                         child: CustomTextFormField(
                           hinttext: 'New password',
                           obsecuretext: false,
-                          controller: newPasswordController,
+                          controller: controller.newPasswordController,
                         ),
                       ),
                       const SizedBox(
@@ -85,7 +87,7 @@ class _NewPasswordPageState extends State<NewPasswordPage> {
                         child: CustomTextFormField(
                           hinttext: 'Confirm password',
                           obsecuretext: false,
-                          controller: confirmPasswordController,
+                          controller: controller.confirmPasswordController,
                         ),
                       ),
                       const SizedBox(
@@ -96,33 +98,9 @@ class _NewPasswordPageState extends State<NewPasswordPage> {
                         child: CustomElevatedButton(
                           message: "Reset Password ",
                           function: () async {
-                            if (newPasswordController.text !=
-                                confirmPasswordController.text) {
-                              ScaffoldMessenger.of(context).showSnackBar(
-                                const SnackBar(
-                                    content: Text('Passwords do not match')),
-                              );
-                              return;
-                            }
-
-                            final response = await passwordResetService
-                                .resetPassword(newPasswordController.text);
+                            final response = await controller.resetPassword(context);
                             if (response == 200) {
-                              // ignore: use_build_context_synchronously
-                              ScaffoldMessenger.of(context).showSnackBar(
-                                const SnackBar(
-                                    content:
-                                        Text('Password reset successfully')),
-                              );
-                              // ignore: use_build_context_synchronously
-                              GoRouter.of(context)
-                                  .pushNamed(Routers.passwordchanges.name);
-                            } else {
-                              // ignore: use_build_context_synchronously
-                              ScaffoldMessenger.of(context).showSnackBar(
-                                const SnackBar(
-                                    content: Text('Failed to reset password')),
-                              );
+                              GoRouter.of(context).pushNamed(Routers.passwordchanges.name);
                             }
                           },
                           color: const Color(0xFF7EC4CF),
@@ -146,8 +124,7 @@ class _NewPasswordPageState extends State<NewPasswordPage> {
                       ),
                       TextButton(
                           onPressed: () {
-                            GoRouter.of(context)
-                                .pushNamed(Routers.signuppage.name);
+                            GoRouter.of(context).pushNamed(Routers.signuppage.name);
                           },
                           child: Text(
                             "Register Now",

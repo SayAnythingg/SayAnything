@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:say_anything/controllers/FadeInAnimationController.dart';
 
 class FadeInAnimation extends StatefulWidget {
   const FadeInAnimation({super.key, required this.child, required this.delay});
@@ -12,34 +13,27 @@ class FadeInAnimation extends StatefulWidget {
 
 class _FadeInAnimationState extends State<FadeInAnimation>
     with TickerProviderStateMixin {
-  late AnimationController controller;
-  late Animation<double> animation;
-  late Animation<double> animation2;
+  late FadeInAnimationController controller;
 
   @override
   void initState() {
     super.initState();
-    controller = AnimationController(
-        duration: Duration(milliseconds: (500 * widget.delay).round()),
-        vsync: this);
-    animation2 = Tween<double>(begin: -40, end: 0).animate(controller)
-      ..addListener(() {
-        setState(() {});
-      });
-
-    animation = Tween<double>(begin: 0, end: 1).animate(controller)
-      ..addListener(() {
-        setState(() {});
-      });
+    controller = FadeInAnimationController(this, widget.delay);
+    controller.animation.addListener(() {
+      setState(() {});
+    });
+    controller.animation2.addListener(() {
+      setState(() {});
+    });
   }
 
   @override
   Widget build(BuildContext context) {
     controller.forward();
     return Transform.translate(
-      offset: Offset(0, animation2.value),
+      offset: Offset(0, controller.animation2.value),
       child: Opacity(
-        opacity: animation.value,
+        opacity: controller.animation.value,
         child: widget.child,
       ),
     );

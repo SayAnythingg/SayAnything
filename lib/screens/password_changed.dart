@@ -1,10 +1,9 @@
 import 'package:say_anything/common/common.dart';
-import 'package:say_anything/router/router.dart';
 import 'package:say_anything/screens/fade_animationtest.dart';
 import 'package:say_anything/widgets/custom_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 import 'package:lottie/lottie.dart';
+import 'package:say_anything/controllers/PasswordChangesPageController.dart';
 
 class PasswordChangesPage extends StatefulWidget {
   const PasswordChangesPage({super.key});
@@ -14,6 +13,8 @@ class PasswordChangesPage extends StatefulWidget {
 }
 
 class _PasswordChangesPageState extends State<PasswordChangesPage> {
+  final PasswordChangesPageController _controller = PasswordChangesPageController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -44,7 +45,7 @@ class _PasswordChangesPageState extends State<PasswordChangesPage> {
               child: CustomElevatedButton(
                 message: "Back to Login",
                 function: () {
-                  GoRouter.of(context).pushReplacement(Routers.loginpage.name);
+                  _controller.navigateToLogin(context);
                 },
                 color: const Color(0xFF7EC4CF),
               ),

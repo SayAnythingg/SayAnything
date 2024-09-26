@@ -1,5 +1,4 @@
 import 'dart:ui';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
@@ -8,6 +7,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:say_anything/function/SocketServices.dart';
 // ignore: implementation_imports
 import 'package:socket_io_client/src/socket.dart';
+import 'package:say_anything/controllers/LoadingController.dart';
 
 class UserIdService {
   static Future<String> getCurrentUserId() async {
@@ -33,34 +33,17 @@ class LoadingPage extends StatefulWidget {
 }
 
 class _LoadingPageState extends State<LoadingPage> {
+  late LoadingController controller;
+
   @override
   void initState() {
     super.initState();
-    widget.socketService.onEvent('pair_response', (data) {
-      if (data['userId'] != null) {
-        _showMatchSuccessDialog();
-      }
-    });
-  }
-
-  void _showMatchSuccessDialog() {
-    showDialog(
+    controller = LoadingController(
+      socketService: widget.socketService,
+      user: widget.user,
       context: context,
-      builder: (BuildContext context) {
-        return AlertDialog(
-          title: const Text('Match Success'),
-          content: const Text('You have been successfully paired!'),
-          actions: <Widget>[
-            TextButton(
-              child: const Text('OK'),
-              onPressed: () {
-                Navigator.of(context).pop();
-              },
-            ),
-          ],
-        );
-      },
     );
+    controller.init();
   }
 
   @override
@@ -106,14 +89,8 @@ class _LoadingPageState extends State<LoadingPage> {
               width: 40,
               height: 40,
               child: FloatingActionButton(
-                onPressed: () async {
-                  widget.socketService
-                      .emitEvent('cancelMatch', {'userId': widget.user.userId});
-                  if (kDebugMode) {
-                    print('Cancel matching ... userId: ${widget.user.userId}');
-                  }
-                  // ignore: use_build_context_synchronously
-                  Navigator.pop(context);
+                onPressed: () {
+                  controller.cancelMatch();
                 },
                 backgroundColor: const Color(0xFF7EC4CF),
                 child: const Icon(Icons.cancel, size: 20),

@@ -26,20 +26,10 @@ class EditNameFormPageState extends State<EditNameFormPage> {
   }
 
   void updateUserValue(String newUsername, dynamic user) async {
-    final response = await widget.updateProfileApiService
+    await widget.updateProfileApiService
         .updateProfile(user.userId, newUsername);
 
     if (!mounted) return;
-
-    if (response.containsKey('message')) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text(response['message'])),
-      );
-    } else {
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Failed to update profile')),
-      );
-    }
   }
 
   @override

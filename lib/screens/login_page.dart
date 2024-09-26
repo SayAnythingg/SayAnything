@@ -1,17 +1,12 @@
 import 'package:say_anything/common/common.dart';
 import 'package:say_anything/router/router.dart';
-import 'package:say_anything/screens/PrivacyPolicy_Page.dart';
 import 'package:say_anything/screens/fade_animationtest.dart';
-import 'package:say_anything/services/Model.dart';
 import 'package:say_anything/widgets/custom_widget.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
-import 'package:quickalert/quickalert.dart';
-import 'package:say_anything/services/API_services.dart';
-
-final apiService = LoginApiService();
+import 'package:say_anything/controllers/LoginController.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -21,64 +16,12 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
-  final emailController = TextEditingController();
-  final passwordController = TextEditingController();
-
-  bool _isPasswordHidden = true;
+  final controller = LoginController();
 
   @override
   void dispose() {
-    emailController.dispose();
-    passwordController.dispose();
+    controller.dispose();
     super.dispose();
-  }
-
-  Future<void> _login() async {
-    try {
-      User user =
-          await apiService.login(emailController.text, passwordController.text);
-      Navigator.push(
-        // ignore: use_build_context_synchronously
-        context,
-        MaterialPageRoute(
-          builder: (context) => PrivacyPolicyPage(user: user),
-        ),
-      );
-    } catch (e) {
-      String errorMessage;
-      QuickAlertType alertType;
-      if (e is LoginException) {
-        switch (e.message) {
-          case 'Login Failed, Please Check.':
-            errorMessage = 'Incorrect password entered';
-            alertType = QuickAlertType.error;
-            break;
-          case 'Account not confirmed. Please check your email.':
-            errorMessage = 'Email not confirmed';
-            alertType = QuickAlertType.warning;
-            break;
-          case 'User not exists. Please sign up first.':
-            errorMessage = 'This user does not exist';
-            alertType = QuickAlertType.warning;
-            break;
-          default:
-            errorMessage = 'Failed';
-            alertType = QuickAlertType.error;
-            break;
-        }
-      } else {
-        errorMessage =
-            'The server is under maintenance, engineers are working hard to improve user quality';
-        alertType = QuickAlertType.info;
-      }
-      QuickAlert.show(
-        // ignore: use_build_context_synchronously
-        context: context,
-        type: alertType,
-        title: 'Oops...',
-        text: errorMessage,
-      );
-    }
   }
 
   @override
@@ -135,7 +78,7 @@ class _LoginPageState extends State<LoginPage> {
                         FadeInAnimation(
                           delay: 1.9,
                           child: CustomTextFormField(
-                            controller: emailController,
+                            controller: controller.emailController,
                             hinttext: 'Enter your email',
                             obsecuretext: false,
                           ),
@@ -146,23 +89,20 @@ class _LoginPageState extends State<LoginPage> {
                         FadeInAnimation(
                           delay: 2.2,
                           child: TextFormField(
-                            controller: passwordController,
-                            // Modify this line
-                            obscureText: _isPasswordHidden,
+                            controller: controller.passwordController,
+                            obscureText: controller.isPasswordHidden,
                             decoration: InputDecoration(
                               contentPadding: const EdgeInsets.all(18),
                               hintText: "Enter your password",
                               hintStyle: Common().hinttext,
                               border: OutlineInputBorder(
-                                borderSide:
-                                    const BorderSide(color: Colors.black),
+                                borderSide: const BorderSide(color: Colors.black),
                                 borderRadius: BorderRadius.circular(12),
                               ),
                               suffixIcon: IconButton(
-                                // Modify this line
                                 onPressed: () {
                                   setState(() {
-                                    _isPasswordHidden = !_isPasswordHidden;
+                                    controller.isPasswordHidden = !controller.isPasswordHidden;
                                   });
                                 },
                                 icon: const Icon(Icons.remove_red_eye_outlined),
@@ -190,7 +130,7 @@ class _LoginPageState extends State<LoginPage> {
                           child: CustomElevatedButton(
                             message: "Login",
                             function: () {
-                              _login();
+                              controller.login(context);
                             },
                             color: const Color(0xFF7EC4CF),
                           ),

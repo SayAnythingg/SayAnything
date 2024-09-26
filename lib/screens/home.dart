@@ -1,14 +1,10 @@
-import 'package:say_anything/screens/fade_animationtest.dart';
-import 'package:say_anything/services/Model.dart';
-import 'package:flutter/foundation.dart';
-// import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:rive/rive.dart' as rive;
-import 'package:shared_preferences/shared_preferences.dart';
-import 'package:say_anything/services/API_services.dart';
-import 'package:say_anything/screens/loading_page.dart';
+import 'package:say_anything/services/Model.dart';
 import 'package:say_anything/widgets/sideMenu.dart';
-import 'package:say_anything/function/SocketServices.dart';
+import 'package:say_anything/screens/fade_animationtest.dart';
+import 'package:say_anything/controllers/HomeController.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 final controller = rive.SimpleAnimation('Animation1');
 
@@ -30,40 +26,13 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  late SocketService socketService;
-  int _onlineUserCount = 0;
+  late HomeController controller;
 
   @override
   void initState() {
     super.initState();
-    socketService = SocketService();
-    socketService.initializeSocket('George這邊要改伺服器位址');
-    _loadOnlineUserCount();
-  }
-
-  void _loadOnlineUserCount() async {
-    int count = await OnlineUserCountService().getOnlineUserCount();
-    setState(() {
-      _onlineUserCount = count;
-    });
-  }
-
-  void startMatching() {
-    showDialog(
-      context: context,
-      barrierDismissible: false,
-      builder: (BuildContext context) {
-        return LoadingPage(
-          socket: socketService.socket,
-          user: widget.user,
-          socketService: socketService,
-        );
-      },
-    );
-    if (kDebugMode) {
-      print('Fucking done ... userId: ${widget.user.userId}');
-    }
-    socketService.emitEvent('startMatching', {'userId': widget.user.userId});
+    controller = HomeController(context: context, user: widget.user);
+    controller.init();
   }
 
   @override
@@ -90,7 +59,7 @@ class _HomePageState extends State<HomePage> {
                       Image.asset('assets/images/logo.png', width: 50),
                       Image.asset('assets/images/logo_word.png', width: 120),
                       const Spacer(),
-                      Text('Online: $_onlineUserCount',
+                      Text('Online: ${controller.onlineUserCount}',
                           style: const TextStyle(fontSize: 14)),
                     ],
                   ),
@@ -162,7 +131,7 @@ class _HomePageState extends State<HomePage> {
                 const SizedBox(height: 20),
                 FloatingActionButton(
                   onPressed: () async {
-                    startMatching();
+                    controller.startMatching();
                   },
                   backgroundColor: const Color.fromARGB(255, 244, 246, 247),
                   child: const Icon(Icons.navigation),
@@ -177,7 +146,7 @@ class _HomePageState extends State<HomePage> {
 
   @override
   void dispose() {
-    socketService.disconnect();
+    controller.dispose();
     super.dispose();
   }
 }

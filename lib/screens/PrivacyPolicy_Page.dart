@@ -2,12 +2,9 @@ import 'dart:io';
 
 import 'package:say_anything/screens/Main_page.dart';
 import 'package:say_anything/services/Model.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:syncfusion_flutter_pdfviewer/pdfviewer.dart';
-import 'package:dio/dio.dart';
-import 'package:path_provider/path_provider.dart';
-
+import 'package:say_anything/controllers/PrivacyPolicyPageController.dart';
 class PrivacyPolicyPage extends StatefulWidget {
   final User user;
 
@@ -19,39 +16,19 @@ class PrivacyPolicyPage extends StatefulWidget {
 }
 
 class _PrivacyPolicyPageState extends State<PrivacyPolicyPage> {
-  bool _agreed = false;
-  String? pdfPath;
-  int _totalPages = 0;
-  int _currentPage = 0;
-  bool _failedToLoad = false;
+  final PrivacyPolicyPageController _controller = PrivacyPolicyPageController();
 
   @override
   void initState() {
     super.initState();
-    downloadFile();
-  }
-
-  Future<void> downloadFile() async {
-    Dio dio = Dio();
-    try {
-      var dir = await getApplicationDocumentsDirectory();
-      await dio.download(
-          'https://drive.google.com/uc?export=download&id=1tCVd2Y_83El09nBis-7gMxLzgMLmOBC-',
-          '${dir.path}/privacy_policy.pdf');
-      pdfPath = '${dir.path}/privacy_policy.pdf';
-    } catch (e) {
-      if (kDebugMode) {
-        print('Download error: $e');
-      }
-      _failedToLoad = true;
-    } finally {
+    _controller.downloadFile().then((_) {
       setState(() {});
-    }
+    });
   }
 
   @override
   Widget build(BuildContext context) {
-    if (_failedToLoad) {
+    if (_controller.failedToLoad) {
       WidgetsBinding.instance.addPostFrameCallback((_) {
         Navigator.of(context).pushReplacement(
           MaterialPageRoute(
@@ -72,20 +49,19 @@ class _PrivacyPolicyPageState extends State<PrivacyPolicyPage> {
       ),
       body: Stack(
         children: [
-          pdfPath != null
+          _controller.pdfFilePath != null
               ? Padding(
                   padding: EdgeInsets.symmetric(horizontal: screenWidth * 0.1),
                   child: SfPdfViewer.file(
-                    File(pdfPath!),
+                    File(_controller.pdfFilePath!),
                     onPageChanged: (PdfPageChangedDetails details) {
                       setState(() {
-                        _currentPage = details.newPageNumber;
-                        _agreed = _currentPage == _totalPages;
+                        _controller.onPageChanged(details.newPageNumber);
                       });
                     },
                     onDocumentLoaded: (PdfDocumentLoadedDetails details) {
                       setState(() {
-                        _totalPages = details.document.pages.count;
+                        _controller.onDocumentLoaded(details.document.pages.count);
                       });
                     },
                   ),
@@ -95,7 +71,7 @@ class _PrivacyPolicyPageState extends State<PrivacyPolicyPage> {
             bottom: 16.0,
             left: 0.0,
             right: 0.0,
-            child: _agreed
+            child: _controller.agreed
                 ? FloatingActionButton.extended(
                     onPressed: () {
                       Navigator.of(context).pop();

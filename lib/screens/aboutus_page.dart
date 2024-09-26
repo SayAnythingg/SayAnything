@@ -1,11 +1,8 @@
 import 'package:flutter/material.dart';
-// ignore: depend_on_referenced_packages
-import 'package:url_launcher/url_launcher.dart';
+import 'package:say_anything/controllers/AboutusController.dart';
 
 class Aboutus extends StatelessWidget {
-  final _formKey = GlobalKey<FormState>();
-  final _subjectController = TextEditingController();
-  final _bodyController = TextEditingController();
+  final controller = AboutusController();
 
   Aboutus({super.key});
 
@@ -67,7 +64,7 @@ class Aboutus extends StatelessWidget {
                     title: Text('問題回報', textAlign: TextAlign.center),
                   ),
                   Form(
-                    key: _formKey,
+                    key: controller.formKey,
                     child: Card(
                       color: Colors.white,
                       shape: RoundedRectangleBorder(
@@ -78,7 +75,7 @@ class Aboutus extends StatelessWidget {
                         child: Column(
                           children: <Widget>[
                             TextFormField(
-                              controller: _subjectController,
+                              controller: controller.subjectController,
                               decoration: const InputDecoration(
                                 labelText: 'Subject',
                                 focusColor: Color(0xFF7EC4CF),
@@ -91,7 +88,7 @@ class Aboutus extends StatelessWidget {
                               },
                             ),
                             TextFormField(
-                              controller: _bodyController,
+                              controller: controller.bodyController,
                               decoration: const InputDecoration(
                                 labelText: 'Body',
                                 focusColor: Color(0xFF7EC4CF),
@@ -105,15 +102,14 @@ class Aboutus extends StatelessWidget {
                             ),
                             ElevatedButton(
                               onPressed: () {
-                                if (_formKey.currentState != null &&
-                                    _formKey.currentState!.validate()) {
-                                  sendEmail(context, 'Subject', 'Body');
+                                if (controller.formKey.currentState != null &&
+                                    controller.formKey.currentState!.validate()) {
+                                  controller.sendEmail(context, 'Subject', 'Body');
                                 }
                               },
                               style: ButtonStyle(
                                 backgroundColor: WidgetStateProperty.all<Color>(
-                                    const Color(
-                                        0xFF7EC4CF)), // Set the button color here
+                                    const Color(0xFF7EC4CF)), // Set the button color here
                               ),
                               child: const Text('Submit'),
                             ),
@@ -157,28 +153,5 @@ class Aboutus extends StatelessWidget {
         ),
       ),
     );
-  }
-
-  void sendEmail(BuildContext context, String subject, String body) async {
-    const String email = 'chunghao777@gmail.com';
-    final Uri params = Uri(
-      scheme: 'mailto',
-      path: email,
-      query: 'subject=$subject&body=$body',
-    );
-
-    String url = params.toString();
-    // ignore: deprecated_member_use
-    if (await canLaunch(url)) {
-      // ignore: deprecated_member_use
-      await launch(url);
-    } else {
-      // ignore: use_build_context_synchronously
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text('Could not launch $url. Please install a mail app.'),
-        ),
-      );
-    }
   }
 }
