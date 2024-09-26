@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:say_anything/function/SocketServices.dart';
 import 'package:say_anything/services/Model.dart';
@@ -42,7 +43,9 @@ class LoadingController {
   }
 
   void cancelMatch() {
-    print('Canceling match for userId: ${user.userId}');
+    if (kDebugMode) {
+      print('Canceling match for userId: ${user.userId}');
+    }
     socketService.emitEvent('cancelMatch', {'userId': user.userId});
     Navigator.pop(context);
   }

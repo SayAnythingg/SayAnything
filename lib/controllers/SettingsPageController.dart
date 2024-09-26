@@ -1,4 +1,3 @@
-
 class SettingsPageController {
   bool _locationPermission = false;
   bool _cameraPermission = false;

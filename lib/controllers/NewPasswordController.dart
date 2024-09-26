@@ -14,12 +14,15 @@ class NewPasswordController {
       return -1;
     }
 
-    final response = await passwordResetService.resetPassword(newPasswordController.text);
+    final response =
+        await passwordResetService.resetPassword(newPasswordController.text);
     if (response == 200) {
+      // ignore: use_build_context_synchronously
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(content: Text('Password reset successfully')),
       );
     } else {
+      // ignore: use_build_context_synchronously
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(content: Text('Failed to reset password')),
       );

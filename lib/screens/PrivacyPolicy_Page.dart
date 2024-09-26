@@ -5,6 +5,7 @@ import 'package:say_anything/services/Model.dart';
 import 'package:flutter/material.dart';
 import 'package:syncfusion_flutter_pdfviewer/pdfviewer.dart';
 import 'package:say_anything/controllers/PrivacyPolicyPageController.dart';
+
 class PrivacyPolicyPage extends StatefulWidget {
   final User user;
 
@@ -61,7 +62,8 @@ class _PrivacyPolicyPageState extends State<PrivacyPolicyPage> {
                     },
                     onDocumentLoaded: (PdfDocumentLoadedDetails details) {
                       setState(() {
-                        _controller.onDocumentLoaded(details.document.pages.count);
+                        _controller
+                            .onDocumentLoaded(details.document.pages.count);
                       });
                     },
                   ),

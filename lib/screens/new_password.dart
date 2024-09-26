@@ -98,9 +98,12 @@ class _NewPasswordPageState extends State<NewPasswordPage> {
                         child: CustomElevatedButton(
                           message: "Reset Password ",
                           function: () async {
-                            final response = await controller.resetPassword(context);
+                            final response =
+                                await controller.resetPassword(context);
                             if (response == 200) {
-                              GoRouter.of(context).pushNamed(Routers.passwordchanges.name);
+                              // ignore: use_build_context_synchronously
+                              GoRouter.of(context)
+                                  .pushNamed(Routers.passwordchanges.name);
                             }
                           },
                           color: const Color(0xFF7EC4CF),
@@ -124,7 +127,8 @@ class _NewPasswordPageState extends State<NewPasswordPage> {
                       ),
                       TextButton(
                           onPressed: () {
-                            GoRouter.of(context).pushNamed(Routers.signuppage.name);
+                            GoRouter.of(context)
+                                .pushNamed(Routers.signuppage.name);
                           },
                           child: Text(
                             "Register Now",

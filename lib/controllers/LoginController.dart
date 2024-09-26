@@ -13,8 +13,10 @@ class LoginController {
 
   Future<void> login(BuildContext context) async {
     try {
-      User user = await apiService.login(emailController.text, passwordController.text);
+      User user =
+          await apiService.login(emailController.text, passwordController.text);
       Navigator.push(
+        // ignore: use_build_context_synchronously
         context,
         MaterialPageRoute(
           builder: (context) => PrivacyPolicyPage(user: user),
@@ -43,10 +45,12 @@ class LoginController {
             break;
         }
       } else {
-        errorMessage = 'The server is under maintenance, engineers are working hard to improve user quality';
+        errorMessage =
+            'The server is under maintenance, engineers are working hard to improve user quality';
         alertType = QuickAlertType.info;
       }
       QuickAlert.show(
+        // ignore: use_build_context_synchronously
         context: context,
         type: alertType,
         title: 'Oops...',

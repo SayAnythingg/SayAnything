@@ -103,13 +103,16 @@ class Aboutus extends StatelessWidget {
                             ElevatedButton(
                               onPressed: () {
                                 if (controller.formKey.currentState != null &&
-                                    controller.formKey.currentState!.validate()) {
-                                  controller.sendEmail(context, 'Subject', 'Body');
+                                    controller.formKey.currentState!
+                                        .validate()) {
+                                  controller.sendEmail(
+                                      context, 'Subject', 'Body');
                                 }
                               },
                               style: ButtonStyle(
                                 backgroundColor: WidgetStateProperty.all<Color>(
-                                    const Color(0xFF7EC4CF)), // Set the button color here
+                                    const Color(
+                                        0xFF7EC4CF)), // Set the button color here
                               ),
                               child: const Text('Submit'),
                             ),

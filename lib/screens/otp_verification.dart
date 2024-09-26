@@ -18,7 +18,8 @@ class OtpVerificationPage extends StatefulWidget {
 }
 
 class _OtpVerificationPageState extends State<OtpVerificationPage> {
-  final OtpVerificationPageController _controller = OtpVerificationPageController();
+  final OtpVerificationPageController _controller =
+      OtpVerificationPageController();
 
   @override
   void dispose() {
@@ -120,7 +121,8 @@ class _OtpVerificationPageState extends State<OtpVerificationPage> {
                           message: "Verify",
                           function: () async {
                             try {
-                              final responseCode = await _controller.verifyOtp();
+                              final responseCode =
+                                  await _controller.verifyOtp();
                               if (responseCode == 200) {
                                 // ignore: use_build_context_synchronously
                                 ScaffoldMessenger.of(context).showSnackBar(

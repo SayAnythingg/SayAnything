@@ -240,8 +240,8 @@ class _SignupPageState extends State<SignupPage> {
                                   _controller.emailController.text.isEmpty ||
                                   _controller.passwordController.text.isEmpty ||
                                   _controller.genderController.text.isEmpty ||
-                                  _controller.confirmPasswordController.text
-                                      .isEmpty) {
+                                  _controller
+                                      .confirmPasswordController.text.isEmpty) {
                                 QuickAlert.show(
                                   context: context,
                                   type: QuickAlertType.error,

@@ -7,7 +7,8 @@ import 'package:say_anything/screens/home.dart';
 class MainPageController {
   late PageController pageController;
   int selectedIndex = 0;
-  final List<Color> iconColors = List.generate(4, (index) => const Color(0xFFDECFE2));
+  final List<Color> iconColors =
+      List.generate(4, (index) => const Color(0xFFDECFE2));
 
   MainPageController(int initialIndex) {
     pageController = PageController(initialPage: initialIndex);

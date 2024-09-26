@@ -96,13 +96,15 @@ class _LoginPageState extends State<LoginPage> {
                               hintText: "Enter your password",
                               hintStyle: Common().hinttext,
                               border: OutlineInputBorder(
-                                borderSide: const BorderSide(color: Colors.black),
+                                borderSide:
+                                    const BorderSide(color: Colors.black),
                                 borderRadius: BorderRadius.circular(12),
                               ),
                               suffixIcon: IconButton(
                                 onPressed: () {
                                   setState(() {
-                                    controller.isPasswordHidden = !controller.isPasswordHidden;
+                                    controller.isPasswordHidden =
+                                        !controller.isPasswordHidden;
                                   });
                                 },
                                 icon: const Icon(Icons.remove_red_eye_outlined),

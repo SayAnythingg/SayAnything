@@ -13,7 +13,8 @@ class PasswordChangesPage extends StatefulWidget {
 }
 
 class _PasswordChangesPageState extends State<PasswordChangesPage> {
-  final PasswordChangesPageController _controller = PasswordChangesPageController();
+  final PasswordChangesPageController _controller =
+      PasswordChangesPageController();
 
   @override
   Widget build(BuildContext context) {

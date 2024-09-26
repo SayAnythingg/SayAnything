@@ -20,7 +20,8 @@ class HomeController {
 
   void init() {
     socketService = SocketService();
-    socketService.initializeSocket('https://sayanythingprotocol.sdpmlab.org/match/');
+    socketService
+        .initializeSocket('https://sayanythingprotocol.sdpmlab.org/match/');
     _loadOnlineUserCount();
   }
 

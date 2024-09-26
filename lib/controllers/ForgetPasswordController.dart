@@ -11,6 +11,7 @@ class ForgetPasswordController {
   Future<void> resetPassword(BuildContext context) async {
     try {
       await forgetPasswordApiService.resetPassword(emailController.text);
+      // ignore: use_build_context_synchronously
       GoRouter.of(context).pushNamed(Routers.otpverification.name);
     } catch (e) {
       if (kDebugMode) {
