@@ -479,10 +479,10 @@ packages:
     dependency: "direct main"
     description:
       name: flutter_buttombar_chung
-      sha256: "996e2e77a20dbf7df9e19ef6ebff716205bbf7ebb5c6e6286f2ef7758021b88f"
+      sha256: "37c365ea3c80f2d2ec6d27b260479b97b605b4a63f1b6817d59008f38aa5039b"
       url: "https://pub.dev"
     source: hosted
-    version: "0.0.9"
+    version: "0.1.1"
   flutter_callkit_incoming:
     dependency: "direct main"
     description:

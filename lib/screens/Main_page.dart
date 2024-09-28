@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:curved_navigation_bar/curved_navigation_bar.dart';
+import 'package:flutter_buttombar_chung/flutter_buttombar_chung.dart';
+import 'package:flutter_buttombar_chung/flutter_buttombar_chung_item.dart';
 import 'package:say_anything/services/Model.dart';
 import 'package:say_anything/controllers/MainPageController.dart';
 
@@ -41,16 +42,20 @@ class _MainPageState extends State<MainPage> {
         },
         children: _controller.getWidgetOptions(widget.user),
       ),
-      bottomNavigationBar: CurvedNavigationBar(
-        index: _controller.selectedIndex,
-        height: 60.0,
+      bottomNavigationBar: FlutterButtomBarChung(
         backgroundColor: const Color(0xFF7EC4CF),
-        items: <Widget>[
-          Icon(Icons.psychology_rounded,
-              size: 30, color: _controller.iconColors[0]),
-          Icon(Icons.home, size: 30, color: _controller.iconColors[1]),
-          Icon(Icons.wechat, size: 30, color: _controller.iconColors[2]),
+        items: <FlutterButtombarChungItem>[
+          FlutterButtombarChungItem(
+            child: Icon(Icons.psychology_rounded, color: _controller.iconColors[0]),
+          ),
+          FlutterButtombarChungItem(
+            child: Icon(Icons.home, color: _controller.iconColors[1]),
+          ),
+          FlutterButtombarChungItem(
+            child: Icon(Icons.wechat, color: _controller.iconColors[2]),
+          ),
         ],
+        index: _controller.selectedIndex,
         onTap: (index) {
           setState(() {
             _controller.onItemTapped(index);
