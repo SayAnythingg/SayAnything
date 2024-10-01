@@ -1,9 +1,9 @@
 # SayAnything - confide in each other
  
 [![License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
-[![GitHub Stars](https://img.shields.io/github/stars/CHUNG-HAO/iOS?style=flat&label=Stars)](https://github.com/chris911024/Embedded-Linux-kernel/stargazers)
-[![GitHub Forks](https://img.shields.io/github/forks/CHUNG-HAO/iOS?style=flat&label=Forks)](https://github.com/chris911024/Embedded-Linux-kernel/network/members)
-[![GitHub Issues](https://img.shields.io/github/issues/CHUNG-HAO/iOS?style=flat&label=Issues)](https://github.com/chris911024/Embedded-Linux-kernel/issues)
+[![GitHub Stars](https://img.shields.io/github/stars/SayAnythingg/SayAnything?style=flat&label=Stars)](https://github.com/chris911024/Embedded-Linux-kernel/stargazers)
+[![GitHub Forks](https://img.shields.io/github/forks/SayAnythingg/SayAnythin?style=flat&label=Forks)](https://github.com/chris911024/Embedded-Linux-kernel/network/members)
+[![GitHub Issues](https://img.shields.io/github/issues/SayAnythingg/SayAnything?style=flat&label=Issues)](https://github.com/chris911024/Embedded-Linux-kernel/issues)
 
 <p align="center">
   <img src="assets/images/logo_all.png">
