@@ -48,7 +48,7 @@ class HomeController {
     if (kDebugMode) {
       print('Fucking done ... userId: ${user.userId}');
     }
-    socketService.emitEvent('startMatching', {'userId': user.userId});
+    socketService.emitEvent('startmatching', {'userId': user.userId});
   }
 
   void dispose() {

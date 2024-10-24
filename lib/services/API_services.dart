@@ -11,6 +11,8 @@ class LoginException implements Exception {
 }
 
 class SignupApiService {
+
+
   Future<void> registerUser(
       String username, String email, String password, String gender) async {
     final response = await http.post(

@@ -17,7 +17,7 @@ class SocketService {
       }
     });
 
-    socket.on('eventFromBackend', (data) {
+    socket.on('pair_response', (data) {
       if (kDebugMode) {
         print(data);
       }
