@@ -16,7 +16,7 @@ class SignupApiService {
   Future<void> registerUser(
       String username, String email, String password, String gender) async {
     final response = await http.post(
-      Uri.parse('https://sayanythingapi.sdpmlab.org/auth/register'),
+      Uri.parse('https://sayanythingapi.sdpmlab.org/api/v1/auth/register'),
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',
       },
@@ -41,7 +41,7 @@ class SignupApiService {
 
 class LoginApiService {
   Future<User> login(String email, String password) async {
-    var url = Uri.parse('https://sayanythingapi.sdpmlab.org/auth/login');
+    var url = Uri.parse('https://sayanythingapi.sdpmlab.org/api/v1/auth/login');
 
     var response = await http.post(
       url,
@@ -67,7 +67,7 @@ class LoginApiService {
 
 class MatchApiService {
   Future<Map<String, dynamic>> requestMatch(String userId) async {
-    var url = Uri.parse('https://sayanythingapi.sdpmlab.org/match/');
+    var url = Uri.parse('https://sayanythingapi.sdpmlab.org/api/v1/match/');
 
     var response = await http.post(
       url,
@@ -87,7 +87,7 @@ class MatchApiService {
   }
 
   Future<void> cancelMatch(String userId) async {
-    var url = Uri.parse('https://sayanythingapi.sdpmlab.org/match/');
+    var url = Uri.parse('https://sayanythingapi.sdpmlab.org/api/v1/match/');
 
     var response = await http.delete(
       url,
@@ -112,7 +112,7 @@ class MatchApiService {
 class ForgetPasswordApiService {
   Future<void> resetPassword(String email) async {
     final response = await http.post(
-      Uri.parse('https://sayanythingapi.sdpmlab.org/auth/forgetPassword'),
+      Uri.parse('https://sayanythingapi.sdpmlab.org/api/v1/auth/forgotPassword/sendOtp'),
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',
       },
@@ -134,7 +134,7 @@ class ForgetPasswordApiService {
 class OtpVerificationApiService {
   Future<int> verifyOtp(String otp) async {
     final response = await http.post(
-      Uri.parse('https://sayanythingapi.sdpmlab.org/auth/verifyOTP'),
+      Uri.parse('https://sayanythingapi.sdpmlab.org/api/v1/auth/forgotPassword/getOtp'),
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',
       },
@@ -160,7 +160,7 @@ class OtpVerificationApiService {
 class PasswordResetApiService {
   Future<int> resetPassword(String newPassword) async {
     final response = await http.post(
-      Uri.parse('https://sayanythingapi.sdpmlab.org/auth/passwordReset'),
+      Uri.parse('https://sayanythingapi.sdpmlab.org/api/v1/auth/forgotPassword/resetPassword'),
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',
       },
@@ -186,7 +186,7 @@ class PasswordResetApiService {
 class NewsApiService {
   Future<List<News>> getAllNews() async {
     final response = await http.get(
-      Uri.parse('https://sayanythingapi.sdpmlab.org/news/'),
+      Uri.parse('https://sayanythingapi.sdpmlab.org/api/v1/news/'),
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',
       },
@@ -229,7 +229,7 @@ class JokeApi {
 class VerifyOTPService {
   Future<int> verifyOTP(String otpCode) async {
     final response = await http.post(
-      Uri.parse('https://sayanythingapi.sdpmlab.org/auth/verifyOTP'),
+      Uri.parse('https://sayanythingapi.sdpmlab.org/api/v1/auth/forgotPassword/getOtp'),
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',
       },
@@ -254,7 +254,7 @@ class VerifyOTPService {
 class OnlineUserCountService {
   Future<int> getOnlineUserCount() async {
     final response = await http.get(
-      Uri.parse('https://sayanythingapi.sdpmlab.org/auth/onlineUserCount'),
+      Uri.parse('https://sayanythingapi.sdpmlab.org/api/v1/auth/onlineUserCount'),
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',
       },
@@ -275,7 +275,7 @@ class OnlineUserCountService {
 class ResendConfirmationMailService {
   Future<Map<String, dynamic>> resendConfirmationMail(String email) async {
     final response = await http.post(
-      Uri.parse('https://sayanythingapi.sdpmlab.org/auth/resend_confirmMail'),
+      Uri.parse('https://sayanythingapi.sdpmlab.org/api/v1/auth/resend_confirmMail'),
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',
       },
@@ -304,7 +304,7 @@ class UserConfirmStatusService {
 
   Future<String> userConfirmStatus(String email) async {
     final response = await http.post(
-      Uri.parse('https://sayanythingapi.sdpmlab.org/auth/userConfirmStatus'),
+      Uri.parse('https://sayanythingapi.sdpmlab.org/api/v1/auth/userConfirmStatus'),
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',
       },
@@ -333,7 +333,7 @@ class UserConfirmStatusService {
 class UserOnlineState {
   Future<bool> fetchUserOnlineStatus(String userId) async {
     final uri =
-        Uri.parse('https://sayanythingapi.sdpmlab.org/auth/userOnlineStatus')
+        Uri.parse('https://sayanythingapi.sdpmlab.org/api/v1/auth/userOnlineStatus')
             .replace(queryParameters: {'userId': userId});
     final response = await http.get(
       uri,
@@ -354,7 +354,7 @@ class UserOnlineState {
 class LogoutService {
   LogoutService();
   Future<void> logout(String userId) async {
-    var url = Uri.parse('https://sayanythingapi.sdpmlab.org/auth/logout');
+    var url = Uri.parse('https://sayanythingapi.sdpmlab.org/api/v1/auth/logout');
 
     try {
       var response = await http.post(
@@ -393,7 +393,7 @@ class UpdateProfileApiService {
   Future<Map<String, dynamic>> updateProfile(
       String userId, String newUsername) async {
     final response = await http.put(
-      Uri.parse('https://sayanythingapi.sdpmlab.org/auth/updateProfile'),
+      Uri.parse('https://sayanythingapi.sdpmlab.org/api/v1/auth/updateProfile'),
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',
       },
