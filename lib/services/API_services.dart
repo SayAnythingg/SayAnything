@@ -406,39 +406,39 @@ class UpdateProfileApiService {
   }
 }
 
-class AIService {
-  AIService() {
-    OpenAI.apiKey = '';
-  }
+// class AIService {
+//   AIService() {
+//     OpenAI.apiKey = '';
+//   }
 
-  Future<String?> sendToOpenAI(String text) async {
-    String prompt = "$text\n請自然的跟我對答聊天";
+//   Future<String?> sendToOpenAI(String text) async {
+//     String prompt = "$text\n請自然的跟我對答聊天";
 
-    try {
-      final response = await OpenAI.instance.chat.create(
-        model: "",
-        messages: [
-          OpenAIChatCompletionChoiceMessageModel(
-            content: [
-              OpenAIChatCompletionChoiceMessageContentItemModel.text(prompt),
-            ],
-            role: OpenAIChatMessageRole.user,
-          ),
-        ],
-        maxTokens: 1500,
-      );
+//     try {
+//       final response = await OpenAI.instance.chat.create(
+//         model: "",
+//         messages: [
+//           OpenAIChatCompletionChoiceMessageModel(
+//             content: [
+//               OpenAIChatCompletionChoiceMessageContentItemModel.text(prompt),
+//             ],
+//             role: OpenAIChatMessageRole.user,
+//           ),
+//         ],
+//         maxTokens: 1500,
+//       );
 
-      return response.choices.first.message.content?.first.text;
-    } catch (e) {
-      if (kDebugMode) {
-        debugPrint("OpenAI 請求失敗: $e");
-      }
-      return null;
-    }
-  }
+//       return response.choices.first.message.content?.first.text;
+//     } catch (e) {
+//       if (kDebugMode) {
+//         debugPrint("OpenAI 請求失敗: $e");
+//       }
+//       return null;
+//     }
+//   }
 
-  Future<Joke> getJoke() async {
-    final jokeApi = JokeApi();
-    return await jokeApi.getJoke(1);
-  }
-}
+//   Future<Joke> getJoke() async {
+//     final jokeApi = JokeApi();
+//     return await jokeApi.getJoke(1);
+//   }
+// }
