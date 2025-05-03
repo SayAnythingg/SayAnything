@@ -408,7 +408,7 @@ class UpdateProfileApiService {
 
 class AIService {
   AIService() {
-    OpenAI.apiKey = 'sk-proj-H6qL1pU1mM8SGE7efMrVT3BlbkFJTtxFghKPPgyhajLVhWVO';
+    OpenAI.apiKey = '';
   }
 
   Future<String?> sendToOpenAI(String text) async {
@@ -416,7 +416,7 @@ class AIService {
 
     try {
       final response = await OpenAI.instance.chat.create(
-        model: "gpt-4o",
+        model: "",
         messages: [
           OpenAIChatCompletionChoiceMessageModel(
             content: [
